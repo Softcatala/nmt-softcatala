@@ -1,0 +1,1207 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/goocanvas/issues\n"
+"POT-Creation-Date: 2018-06-10 17:21+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/goocanvas.c:309
+msgid "Scale"
+msgstr ""
+
+#: src/goocanvas.c:310
+msgid "The magnification factor of the canvas"
+msgstr ""
+
+#: src/goocanvas.c:316
+msgid "Scale X"
+msgstr ""
+
+#: src/goocanvas.c:317
+msgid "The horizontal magnification factor of the canvas"
+msgstr ""
+
+#: src/goocanvas.c:323
+msgid "Scale Y"
+msgstr ""
+
+#: src/goocanvas.c:324
+msgid "The vertical magnification factor of the canvas"
+msgstr ""
+
+#: src/goocanvas.c:330 src/goocanvastext.c:158 src/goocanvaswidget.c:587
+msgid "Anchor"
+msgstr ""
+
+#: src/goocanvas.c:331
+msgid ""
+"Where to place the canvas when it is smaller than the widget's allocated area"
+msgstr ""
+
+#: src/goocanvas.c:338
+msgid "X1"
+msgstr ""
+
+#: src/goocanvas.c:339
+msgid "The x coordinate of the left edge of the canvas bounds, in canvas units"
+msgstr ""
+
+#: src/goocanvas.c:346
+msgid "Y1"
+msgstr ""
+
+#: src/goocanvas.c:347
+msgid "The y coordinate of the top edge of the canvas bounds, in canvas units"
+msgstr ""
+
+#: src/goocanvas.c:354
+msgid "X2"
+msgstr ""
+
+#: src/goocanvas.c:355
+msgid ""
+"The x coordinate of the right edge of the canvas bounds, in canvas units"
+msgstr ""
+
+#: src/goocanvas.c:363
+msgid "Y2"
+msgstr ""
+
+#: src/goocanvas.c:364
+msgid ""
+"The y coordinate of the bottom edge of the canvas bounds, in canvas units"
+msgstr ""
+
+#: src/goocanvas.c:373
+msgid "Automatic Bounds"
+msgstr ""
+
+#: src/goocanvas.c:374
+msgid ""
+"If the bounds are automatically calculated based on the bounds of all the "
+"items in the canvas"
+msgstr ""
+
+#: src/goocanvas.c:380
+msgid "Bounds From Origin"
+msgstr ""
+
+#: src/goocanvas.c:381
+msgid "If the automatic bounds are calculated from the origin"
+msgstr ""
+
+#: src/goocanvas.c:387
+msgid "Bounds Padding"
+msgstr ""
+
+#: src/goocanvas.c:388
+msgid "The padding added to the automatic bounds"
+msgstr ""
+
+#: src/goocanvas.c:394
+msgid "Units"
+msgstr ""
+
+#: src/goocanvas.c:395
+msgid "The units to use for the canvas"
+msgstr ""
+
+#: src/goocanvas.c:402
+msgid "Resolution X"
+msgstr ""
+
+#: src/goocanvas.c:403
+msgid "The horizontal resolution of the display, in dots per inch"
+msgstr ""
+
+#: src/goocanvas.c:410
+msgid "Resolution Y"
+msgstr ""
+
+#: src/goocanvas.c:411
+msgid "The vertical resolution of the display, in dots per inch"
+msgstr ""
+
+#: src/goocanvas.c:419
+msgid "Background Color"
+msgstr ""
+
+#: src/goocanvas.c:420
+msgid "The color to use for the canvas background"
+msgstr ""
+
+#: src/goocanvas.c:426
+msgid "Background Color RGB"
+msgstr ""
+
+#: src/goocanvas.c:427
+msgid ""
+"The color to use for the canvas background, specified as a 24-bit integer "
+"value, 0xRRGGBB"
+msgstr ""
+
+#: src/goocanvas.c:440
+msgid "Background Color GdkRGBA"
+msgstr ""
+
+#: src/goocanvas.c:441
+msgid "The color to use for the canvas background, specified as a GdkRGBA"
+msgstr ""
+
+#: src/goocanvas.c:447
+msgid "Integer Layout"
+msgstr ""
+
+#: src/goocanvas.c:448
+msgid "If all item layout is done to the nearest integer"
+msgstr ""
+
+#: src/goocanvas.c:454
+msgid "Clear Background"
+msgstr ""
+
+#: src/goocanvas.c:455
+msgid "If the background is cleared before the canvas is painted"
+msgstr ""
+
+#: src/goocanvas.c:461
+msgid "Redraw When Scrolled"
+msgstr ""
+
+#: src/goocanvas.c:462
+msgid ""
+"If the canvas is completely redrawn when scrolled, to reduce the flicker of "
+"static items. Note that since GTK+ 3.0 the canvas is always redrawn when "
+"scrolled, so this option has no effect."
+msgstr ""
+
+#: src/goocanvasellipse.c:77
+msgid "Center X"
+msgstr ""
+
+#: src/goocanvasellipse.c:78
+msgid "The x coordinate of the center of the ellipse"
+msgstr ""
+
+#: src/goocanvasellipse.c:85
+msgid "Center Y"
+msgstr ""
+
+#: src/goocanvasellipse.c:86
+msgid "The y coordinate of the center of the ellipse"
+msgstr ""
+
+#: src/goocanvasellipse.c:93 src/goocanvasrect.c:90
+msgid "Radius X"
+msgstr ""
+
+#: src/goocanvasellipse.c:94
+msgid "The horizontal radius of the ellipse"
+msgstr ""
+
+#: src/goocanvasellipse.c:100 src/goocanvasrect.c:97
+msgid "Radius Y"
+msgstr ""
+
+#: src/goocanvasellipse.c:101
+msgid "The vertical radius of the ellipse"
+msgstr ""
+
+#: src/goocanvasellipse.c:108
+msgid "The x coordinate of the left side of the ellipse"
+msgstr ""
+
+#: src/goocanvasellipse.c:116
+msgid "The y coordinate of the top of the ellipse"
+msgstr ""
+
+#: src/goocanvasellipse.c:123 src/goocanvasgrid.c:127 src/goocanvasgroup.c:106
+#: src/goocanvasimage.c:115 src/goocanvaspath.c:93 src/goocanvaspolyline.c:246
+#: src/goocanvasrect.c:76 src/goocanvastext.c:141 src/goocanvaswidget.c:570
+msgid "Width"
+msgstr ""
+
+#: src/goocanvasellipse.c:124
+msgid "The width of the ellipse"
+msgstr ""
+
+#: src/goocanvasellipse.c:130 src/goocanvasgrid.c:134 src/goocanvasgroup.c:114
+#: src/goocanvasimage.c:122 src/goocanvaspath.c:100 src/goocanvaspolyline.c:253
+#: src/goocanvasrect.c:83 src/goocanvastext.c:149 src/goocanvaswidget.c:578
+msgid "Height"
+msgstr ""
+
+#: src/goocanvasellipse.c:131
+msgid "The height of the ellipse"
+msgstr ""
+
+#: src/goocanvasgrid.c:112
+msgid "The x coordinate of the grid"
+msgstr ""
+
+#: src/goocanvasgrid.c:120
+msgid "The y coordinate of the grid"
+msgstr ""
+
+#: src/goocanvasgrid.c:128
+msgid "The width of the grid"
+msgstr ""
+
+#: src/goocanvasgrid.c:135
+msgid "The height of the grid"
+msgstr ""
+
+#: src/goocanvasgrid.c:142
+msgid "The distance between the vertical grid lines"
+msgstr ""
+
+#: src/goocanvasgrid.c:149
+msgid "The distance between the horizontal grid lines"
+msgstr ""
+
+#: src/goocanvasgrid.c:156
+msgid "The distance before the first vertical grid line"
+msgstr ""
+
+#: src/goocanvasgrid.c:163
+msgid "The distance before the first horizontal grid line"
+msgstr ""
+
+#: src/goocanvasgrid.c:169 src/goocanvastable.c:276
+msgid "Horizontal Grid Line Width"
+msgstr ""
+
+#: src/goocanvasgrid.c:170
+msgid "The width of the horizontal grid lines"
+msgstr ""
+
+#: src/goocanvasgrid.c:177 src/goocanvastable.c:283
+msgid "Vertical Grid Line Width"
+msgstr ""
+
+#: src/goocanvasgrid.c:178
+msgid "The width of the vertical grid lines"
+msgstr ""
+
+#: src/goocanvasgrid.c:185
+msgid "Horizontal Grid Line Pattern"
+msgstr ""
+
+#: src/goocanvasgrid.c:186
+msgid "The cairo pattern to paint the horizontal grid lines with"
+msgstr ""
+
+#: src/goocanvasgrid.c:192
+msgid "Vertical Grid Line Pattern"
+msgstr ""
+
+#: src/goocanvasgrid.c:193
+msgid "The cairo pattern to paint the vertical grid lines with"
+msgstr ""
+
+#: src/goocanvasgrid.c:199
+msgid "Border Width"
+msgstr ""
+
+#: src/goocanvasgrid.c:200
+msgid "The width of the border around the grid"
+msgstr ""
+
+#: src/goocanvasgrid.c:207
+msgid "Border Pattern"
+msgstr ""
+
+#: src/goocanvasgrid.c:208
+msgid "The cairo pattern to paint the border with"
+msgstr ""
+
+#: src/goocanvasgrid.c:214
+msgid "Show Horizontal Grid Lines"
+msgstr ""
+
+#: src/goocanvasgrid.c:215
+msgid "If the horizontal grid lines are shown"
+msgstr ""
+
+#: src/goocanvasgrid.c:221
+msgid "Show Vertical Grid Lines"
+msgstr ""
+
+#: src/goocanvasgrid.c:222
+msgid "If the vertical grid lines are shown"
+msgstr ""
+
+#: src/goocanvasgrid.c:228
+msgid "Vertical Grid Lines On Top"
+msgstr ""
+
+#: src/goocanvasgrid.c:229
+msgid "If the vertical grid lines are painted above the horizontal grid lines"
+msgstr ""
+
+#: src/goocanvasgrid.c:237
+msgid "Horizontal Grid Line Color"
+msgstr ""
+
+#: src/goocanvasgrid.c:238
+msgid "The color to use for the horizontal grid lines"
+msgstr ""
+
+#: src/goocanvasgrid.c:244
+msgid "Horizontal Grid Line Color RGBA"
+msgstr ""
+
+#: src/goocanvasgrid.c:245
+msgid ""
+"The color to use for the horizontal grid lines, specified as a 32-bit "
+"integer value"
+msgstr ""
+
+#: src/goocanvasgrid.c:258
+msgid "Horizontal Grid Line Color GdkRGBA"
+msgstr ""
+
+#: src/goocanvasgrid.c:259
+msgid "The color to use for the horizontal grid lines, specified as a GdkRGBA"
+msgstr ""
+
+#: src/goocanvasgrid.c:265
+msgid "Horizontal Grid Line Pixbuf"
+msgstr ""
+
+#: src/goocanvasgrid.c:266
+msgid "The pixbuf to use to draw the horizontal grid lines"
+msgstr ""
+
+#: src/goocanvasgrid.c:272
+msgid "Vertical Grid Line Color"
+msgstr ""
+
+#: src/goocanvasgrid.c:273
+msgid "The color to use for the vertical grid lines"
+msgstr ""
+
+#: src/goocanvasgrid.c:279
+msgid "Vertical Grid Line Color RGBA"
+msgstr ""
+
+#: src/goocanvasgrid.c:280
+msgid ""
+"The color to use for the vertical grid lines, specified as a 32-bit integer "
+"value"
+msgstr ""
+
+#: src/goocanvasgrid.c:293
+msgid "Vertical Grid Line Color GdkRGBA"
+msgstr ""
+
+#: src/goocanvasgrid.c:294
+msgid "The color to use for the vertical grid lines, specified as a GdkRGBA"
+msgstr ""
+
+#: src/goocanvasgrid.c:300
+msgid "Vertical Grid Line Pixbuf"
+msgstr ""
+
+#: src/goocanvasgrid.c:301
+msgid "The pixbuf to use to draw the vertical grid lines"
+msgstr ""
+
+#: src/goocanvasgrid.c:307
+msgid "Border Color"
+msgstr ""
+
+#: src/goocanvasgrid.c:308
+msgid "The color to use for the border"
+msgstr ""
+
+#: src/goocanvasgrid.c:314
+msgid "Border Color RGBA"
+msgstr ""
+
+#: src/goocanvasgrid.c:315
+msgid "The color to use for the border, specified as a 32-bit integer value"
+msgstr ""
+
+#: src/goocanvasgrid.c:328
+msgid "Border Color GdkRGBA"
+msgstr ""
+
+#: src/goocanvasgrid.c:329
+msgid "The color to use for the border, specified as a GdkRGBA"
+msgstr ""
+
+#: src/goocanvasgrid.c:335
+msgid "Border Pixbuf"
+msgstr ""
+
+#: src/goocanvasgrid.c:336
+msgid "The pixbuf to use to draw the border"
+msgstr ""
+
+#: src/goocanvasgroup.c:91
+msgid "The x coordinate of the group"
+msgstr ""
+
+#: src/goocanvasgroup.c:99
+msgid "The y coordinate of the group"
+msgstr ""
+
+#: src/goocanvasgroup.c:107
+msgid "The width of the group, or -1 to use the default width"
+msgstr ""
+
+#: src/goocanvasgroup.c:115
+msgid "The height of the group, or -1 to use the default height"
+msgstr ""
+
+#: src/goocanvasimage.c:92
+msgid "Pattern"
+msgstr ""
+
+#: src/goocanvasimage.c:93
+msgid "The cairo pattern to paint"
+msgstr ""
+
+#: src/goocanvasimage.c:100
+msgid "The x coordinate of the image"
+msgstr ""
+
+#: src/goocanvasimage.c:108
+msgid "The y coordinate of the image"
+msgstr ""
+
+#: src/goocanvasimage.c:116
+msgid "The width of the image"
+msgstr ""
+
+#: src/goocanvasimage.c:123
+msgid "The height of the image"
+msgstr ""
+
+#: src/goocanvasimage.c:129
+msgid "Scale To Fit"
+msgstr ""
+
+#: src/goocanvasimage.c:130
+msgid "If the image is scaled to fit the width and height settings"
+msgstr ""
+
+#: src/goocanvasimage.c:136
+msgid "Alpha"
+msgstr ""
+
+#: src/goocanvasimage.c:137
+msgid "The opacity of the image, 0.0 is fully transparent, and 1.0 is opaque."
+msgstr ""
+
+#: src/goocanvasimage.c:143
+msgid "Pixbuf"
+msgstr ""
+
+#: src/goocanvasimage.c:144
+msgid "The GdkPixbuf to display"
+msgstr ""
+
+#: src/goocanvasitem.c:467 src/goocanvasitemmodel.c:224
+msgid "Parent"
+msgstr ""
+
+#: src/goocanvasitem.c:468
+msgid "The parent item"
+msgstr ""
+
+#: src/goocanvasitem.c:474 src/goocanvasitemmodel.c:231
+msgid "Visibility"
+msgstr ""
+
+#: src/goocanvasitem.c:475 src/goocanvasitemmodel.c:232
+msgid "When the canvas item is visible"
+msgstr ""
+
+#: src/goocanvasitem.c:482 src/goocanvasitemmodel.c:239
+msgid "Visibility Threshold"
+msgstr ""
+
+#: src/goocanvasitem.c:483 src/goocanvasitemmodel.c:240
+msgid "The scale threshold at which the item becomes visible"
+msgstr ""
+
+#: src/goocanvasitem.c:491 src/goocanvasitemmodel.c:248
+msgid "Transform"
+msgstr ""
+
+#: src/goocanvasitem.c:492 src/goocanvasitemmodel.c:249
+msgid "The transformation matrix of the item"
+msgstr ""
+
+#: src/goocanvasitem.c:498 src/goocanvasitemmodel.c:255
+msgid "Pointer Events"
+msgstr ""
+
+#: src/goocanvasitem.c:499 src/goocanvasitemmodel.c:256
+msgid "Specifies when the item receives pointer events"
+msgstr ""
+
+#: src/goocanvasitem.c:506 src/goocanvasitemmodel.c:263
+msgid "Title"
+msgstr ""
+
+#: src/goocanvasitem.c:507 src/goocanvasitemmodel.c:264
+msgid ""
+"A short context-rich description of the item for use by assistive "
+"technologies"
+msgstr ""
+
+#: src/goocanvasitem.c:513 src/goocanvasitemmodel.c:270
+msgid "Description"
+msgstr ""
+
+#: src/goocanvasitem.c:514 src/goocanvasitemmodel.c:271
+msgid "A description of the item for use by assistive technologies"
+msgstr ""
+
+#: src/goocanvasitem.c:520 src/goocanvasitemmodel.c:277
+msgid "Can Focus"
+msgstr ""
+
+#: src/goocanvasitem.c:521 src/goocanvasitemmodel.c:278
+msgid "If the item can take the keyboard focus"
+msgstr ""
+
+#: src/goocanvasitem.c:536 src/goocanvasitemmodel.c:284
+msgid "Tooltip"
+msgstr ""
+
+#: src/goocanvasitem.c:537 src/goocanvasitemmodel.c:285
+msgid "The tooltip to display for the item"
+msgstr ""
+
+#: src/goocanvasitemmodel.c:225
+msgid "The parent item model"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:128
+msgid "Stroke Pattern"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:129
+msgid ""
+"The pattern to use to paint the perimeter of the item, or NULL disable "
+"painting"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:135
+msgid "Fill Pattern"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:136
+msgid ""
+"The pattern to use to paint the interior of the item, or NULL to disable "
+"painting"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:142
+msgid "Fill Rule"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:143
+msgid "The fill rule used to determine which parts of the item are filled"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:150
+msgid "Operator"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:151
+msgid "The compositing operator to use"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:158
+msgid "Antialias"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:159
+msgid "The antialiasing mode to use"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:167
+msgid "Line Width"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:168
+msgid "The line width to use for the item's perimeter"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:174
+msgid "Line Cap"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:175
+msgid "The line cap style to use"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:182
+msgid "Line Join"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:183
+msgid "The line join style to use"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:190
+msgid "Miter Limit"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:191
+msgid ""
+"The smallest angle to use with miter joins, in degrees. Bevel joins will be "
+"used below this limit"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:197
+msgid "Line Dash"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:198
+msgid "The dash pattern to use"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:205
+msgid "Font"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:206
+msgid "The base font to use for the text"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:212
+msgid "Font Description"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:213
+msgid "The attributes specifying which font to use"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:219
+msgid "Hint Metrics"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:220
+msgid "The hinting to be used for font metrics"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:228
+msgid "Stroke Color"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:229
+msgid ""
+"The color to use for the item's perimeter. To disable painting set the "
+"'stroke-pattern' property to NULL"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:235
+msgid "Stroke Color RGBA"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:236
+msgid ""
+"The color to use for the item's perimeter, specified as a 32-bit integer "
+"value. To disable painting set the 'stroke-pattern' property to NULL"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:249
+msgid "Stroke Color GdkRGBA"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:250
+msgid ""
+"The color to use for the item's perimeter, specified as a GdkRGBA. To "
+"disable painting set the 'stroke-pattern' property to NULL"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:256
+msgid "Stroke Pixbuf"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:257
+msgid ""
+"The pixbuf to use to draw the item's perimeter. To disable painting set the "
+"'stroke-pattern' property to NULL"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:263
+msgid "Fill Color"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:264
+msgid ""
+"The color to use to paint the interior of the item. To disable painting set "
+"the 'fill-pattern' property to NULL"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:270
+msgid "Fill Color RGBA"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:271
+msgid ""
+"The color to use to paint the interior of the item, specified as a 32-bit "
+"integer value. To disable painting set the 'fill-pattern' property to NULL"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:284
+msgid "Fill Color GdkRGBA"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:285
+msgid ""
+"The color to use to paint the interior of the item, specified as a GdkRGBA. "
+"To disable painting set the 'fill-pattern' property to NULL"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:291
+msgid "Fill Pixbuf"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:292
+msgid ""
+"The pixbuf to use to paint the interior of the item. To disable painting set "
+"the 'fill-pattern' property to NULL"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:342
+msgid "Clip Path"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:343
+msgid "The sequence of path commands specifying the clip path"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:349
+msgid "Clip Fill Rule"
+msgstr ""
+
+#: src/goocanvasitemsimple.c:350
+msgid "The fill rule used to determine which parts of the item are clipped"
+msgstr ""
+
+#: src/goocanvaspath.c:70
+msgid "Path Data"
+msgstr ""
+
+#: src/goocanvaspath.c:71
+msgid "The sequence of path commands"
+msgstr ""
+
+#: src/goocanvaspath.c:78
+msgid "The x coordinate of the path"
+msgstr ""
+
+#: src/goocanvaspath.c:86
+msgid "The y coordinate of the path"
+msgstr ""
+
+#: src/goocanvaspath.c:94
+msgid "The width of the path"
+msgstr ""
+
+#: src/goocanvaspath.c:101
+msgid "The height of the path"
+msgstr ""
+
+#: src/goocanvaspolyline.c:181
+msgid "Points"
+msgstr ""
+
+#: src/goocanvaspolyline.c:182
+msgid "The array of points"
+msgstr ""
+
+#: src/goocanvaspolyline.c:188
+msgid "Close Path"
+msgstr ""
+
+#: src/goocanvaspolyline.c:189
+msgid "If the last point should be connected to the first"
+msgstr ""
+
+#: src/goocanvaspolyline.c:195
+msgid "Start Arrow"
+msgstr ""
+
+#: src/goocanvaspolyline.c:196
+msgid "If an arrow should be displayed at the start of the polyline"
+msgstr ""
+
+#: src/goocanvaspolyline.c:202
+msgid "End Arrow"
+msgstr ""
+
+#: src/goocanvaspolyline.c:203
+msgid "If an arrow should be displayed at the end of the polyline"
+msgstr ""
+
+#: src/goocanvaspolyline.c:209
+msgid "Arrow Length"
+msgstr ""
+
+#: src/goocanvaspolyline.c:210
+msgid "The length of the arrows, as a multiple of the line width"
+msgstr ""
+
+#: src/goocanvaspolyline.c:216
+msgid "Arrow Width"
+msgstr ""
+
+#: src/goocanvaspolyline.c:217
+msgid "The width of the arrows, as a multiple of the line width"
+msgstr ""
+
+#: src/goocanvaspolyline.c:223
+msgid "Arrow Tip Length"
+msgstr ""
+
+#: src/goocanvaspolyline.c:224
+msgid "The length of the arrow tip, as a multiple of the line width"
+msgstr ""
+
+#: src/goocanvaspolyline.c:231
+msgid "The x coordinate of the left-most point of the polyline"
+msgstr ""
+
+#: src/goocanvaspolyline.c:239
+msgid "The y coordinate of the top-most point of the polyline"
+msgstr ""
+
+#: src/goocanvaspolyline.c:247
+msgid "The width of the polyline"
+msgstr ""
+
+#: src/goocanvaspolyline.c:254
+msgid "The height of the polyline"
+msgstr ""
+
+#: src/goocanvasrect.c:61
+msgid "The x coordinate of the rectangle"
+msgstr ""
+
+#: src/goocanvasrect.c:69
+msgid "The y coordinate of the rectangle"
+msgstr ""
+
+#: src/goocanvasrect.c:77
+msgid "The width of the rectangle"
+msgstr ""
+
+#: src/goocanvasrect.c:84
+msgid "The height of the rectangle"
+msgstr ""
+
+#: src/goocanvasrect.c:91
+msgid "The horizontal radius to use for rounded corners"
+msgstr ""
+
+#: src/goocanvasrect.c:98
+msgid "The vertical radius to use for rounded corners"
+msgstr ""
+
+#: src/goocanvastable.c:237
+msgid "Row Spacing"
+msgstr ""
+
+#: src/goocanvastable.c:238
+msgid "The default space between rows"
+msgstr ""
+
+#: src/goocanvastable.c:244
+msgid "Column Spacing"
+msgstr ""
+
+#: src/goocanvastable.c:245
+msgid "The default space between columns"
+msgstr ""
+
+#: src/goocanvastable.c:251
+msgid "Homogenous Rows"
+msgstr ""
+
+#: src/goocanvastable.c:252
+msgid "If all rows are the same height"
+msgstr ""
+
+#: src/goocanvastable.c:258
+msgid "Homogenous Columns"
+msgstr ""
+
+#: src/goocanvastable.c:259
+msgid "If all columns are the same width"
+msgstr ""
+
+#: src/goocanvastable.c:264
+msgid "X Border Spacing"
+msgstr ""
+
+#: src/goocanvastable.c:265
+msgid ""
+"The amount of spacing between the leftmost and rightmost cells and the "
+"border grid line"
+msgstr ""
+
+#: src/goocanvastable.c:270
+msgid "Y Border Spacing"
+msgstr ""
+
+#: src/goocanvastable.c:271
+msgid ""
+"The amount of spacing between the topmost and bottommost cells and the "
+"border grid line"
+msgstr ""
+
+#: src/goocanvastable.c:277
+msgid "The width of the grid line to draw between rows"
+msgstr ""
+
+#: src/goocanvastable.c:284
+msgid "The width of the grid line to draw between columns"
+msgstr ""
+
+#: src/goocanvastable.c:293
+msgid "Left Padding"
+msgstr ""
+
+#: src/goocanvastable.c:294
+msgid "Extra space to add to the left of the item"
+msgstr ""
+
+#: src/goocanvastable.c:299
+msgid "Right Padding"
+msgstr ""
+
+#: src/goocanvastable.c:300
+msgid "Extra space to add to the right of the item"
+msgstr ""
+
+#: src/goocanvastable.c:305
+msgid "Top Padding"
+msgstr ""
+
+#: src/goocanvastable.c:306
+msgid "Extra space to add above the item"
+msgstr ""
+
+#: src/goocanvastable.c:311
+msgid "Bottom Padding"
+msgstr ""
+
+#: src/goocanvastable.c:312
+msgid "Extra space to add below the item"
+msgstr ""
+
+#: src/goocanvastable.c:318
+msgid "X Align"
+msgstr ""
+
+#: src/goocanvastable.c:319
+msgid ""
+"The horizontal position of the item within its allocated space. 0.0 is left-"
+"aligned, 1.0 is right-aligned"
+msgstr ""
+
+#: src/goocanvastable.c:324
+msgid "Y Align"
+msgstr ""
+
+#: src/goocanvastable.c:325
+msgid ""
+"The vertical position of the item within its allocated space. 0.0 is top-"
+"aligned, 1.0 is bottom-aligned"
+msgstr ""
+
+#: src/goocanvastable.c:331
+msgid "Row"
+msgstr ""
+
+#: src/goocanvastable.c:332
+msgid "The row to place the item in"
+msgstr ""
+
+#: src/goocanvastable.c:337
+msgid "Column"
+msgstr ""
+
+#: src/goocanvastable.c:338
+msgid "The column to place the item in"
+msgstr ""
+
+#: src/goocanvastable.c:343
+msgid "Rows"
+msgstr ""
+
+#: src/goocanvastable.c:344
+msgid "The number of rows that the item spans"
+msgstr ""
+
+#: src/goocanvastable.c:349
+msgid "Columns"
+msgstr ""
+
+#: src/goocanvastable.c:350
+msgid "The number of columns that the item spans"
+msgstr ""
+
+#: src/goocanvastable.c:356
+msgid "X Expand"
+msgstr ""
+
+#: src/goocanvastable.c:357
+msgid "If the item expands horizontally as the table expands"
+msgstr ""
+
+#: src/goocanvastable.c:362
+msgid "X Fill"
+msgstr ""
+
+#: src/goocanvastable.c:363
+msgid "If the item fills all horizontal allocated space"
+msgstr ""
+
+#: src/goocanvastable.c:368
+msgid "X Shrink"
+msgstr ""
+
+#: src/goocanvastable.c:369
+msgid "If the item can shrink smaller than its requested size horizontally"
+msgstr ""
+
+#: src/goocanvastable.c:374
+msgid "Y Expand"
+msgstr ""
+
+#: src/goocanvastable.c:375
+msgid "If the item expands vertically as the table expands"
+msgstr ""
+
+#: src/goocanvastable.c:380
+msgid "Y Fill"
+msgstr ""
+
+#: src/goocanvastable.c:381
+msgid "If the item fills all vertical allocated space"
+msgstr ""
+
+#: src/goocanvastable.c:386
+msgid "Y Shrink"
+msgstr ""
+
+#: src/goocanvastable.c:387
+msgid "If the item can shrink smaller than its requested size vertically"
+msgstr ""
+
+#: src/goocanvastext.c:94
+msgid "Text"
+msgstr ""
+
+#: src/goocanvastext.c:95
+msgid "The text to display"
+msgstr ""
+
+#: src/goocanvastext.c:101
+msgid "Use Markup"
+msgstr ""
+
+#: src/goocanvastext.c:102
+msgid "Whether to parse PangoMarkup in the text, to support different styles"
+msgstr ""
+
+#: src/goocanvastext.c:108
+msgid "Ellipsize"
+msgstr ""
+
+#: src/goocanvastext.c:109
+msgid ""
+"The preferred place to ellipsize the string, if the label does not have "
+"enough room to display the entire string"
+msgstr ""
+
+#: src/goocanvastext.c:116
+msgid "Wrap"
+msgstr ""
+
+#: src/goocanvastext.c:117
+msgid "The preferred method of wrapping the string if a width has been set"
+msgstr ""
+
+#: src/goocanvastext.c:126
+msgid "The x coordinate of the text"
+msgstr ""
+
+#: src/goocanvastext.c:134
+msgid "The y coordinate of the text"
+msgstr ""
+
+#: src/goocanvastext.c:142
+msgid ""
+"The width to use to layout the text, or -1 to let the text use as much "
+"horizontal space as needed"
+msgstr ""
+
+#: src/goocanvastext.c:150
+msgid ""
+"The height to use to layout the text, or -1 to let the text use as much "
+"vertical space as needed"
+msgstr ""
+
+#: src/goocanvastext.c:159
+msgid "How to position the text relative to the given x and y coordinates"
+msgstr ""
+
+#: src/goocanvastext.c:166
+msgid "Alignment"
+msgstr ""
+
+#: src/goocanvastext.c:167
+msgid "How to align the text"
+msgstr ""
+
+#: src/goocanvaswidget.c:547
+msgid "Widget"
+msgstr ""
+
+#: src/goocanvaswidget.c:548
+msgid "The widget to place in the canvas"
+msgstr ""
+
+#: src/goocanvaswidget.c:555
+msgid "The x coordinate of the widget"
+msgstr ""
+
+#: src/goocanvaswidget.c:563
+msgid "The y coordinate of the widget"
+msgstr ""
+
+#: src/goocanvaswidget.c:571
+msgid "The width of the widget, or -1 to use its requested width"
+msgstr ""
+
+#: src/goocanvaswidget.c:579
+msgid "The height of the widget, or -1 to use its requested height"
+msgstr ""
+
+#: src/goocanvaswidget.c:588
+msgid ""
+"How to position the widget relative to the item's x and y coordinate settings"
+msgstr ""
