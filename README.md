@@ -4,37 +4,18 @@ This repository contains Neural Machine Translation proof of concepts done at So
 
 Test have been done with https://github.com/OpenNMT/OpenNMT-tf
 
-## git clone
-
-This repository uses lfs for large files.
-
-Once you have complete the standard `git clone` you also need `git-lfs`.
-
-The first time you need to:
-
-```
-sudo apt-get install git-lfs
-git lfs install
-```
-
-and then every time:
-
-```
-git lfs pull
-```
-
 # Runing the models
 
 ## Models
 
 We have created two models:
 
-* 1532515736
+* 1532515736 (https://www.softcatala.org/pub/softcatala/opennmt-models/1532307246.zip)
   * This model is build using Softcatalà translations only 
   * Total number of sentences: 190523
   * BLEU = 30.50
   * replace_unknown_target: yes
-* 1532307246
+* 1532307246 (https://www.softcatala.org/pub/softcatala/opennmt-models/1532515736.zip)
   * This model is build using all translations that we have
   * Total number of sentences: 566699
   * BLEU = 29.97
