@@ -13,13 +13,16 @@ We have created two models:
 * 1532515736 (https://www.softcatala.org/pub/softcatala/opennmt-models/1532307246.zip)
   * This model is build using Softcatalà translations only 
   * Total number of sentences: 190523
-  * BLEU = 30.50
   * replace_unknown_target: yes
+  * model: NMTSmall
+  * BLEU = 30.50
+
 * 1532307246 (https://www.softcatala.org/pub/softcatala/opennmt-models/1532515736.zip)
   * This model is build using all translations that we have
   * Total number of sentences: 566699
-  * BLEU = 29.97
   * replace_unknown_target: no
+  * model: NMTSmall
+  * BLEU = 29.97
 
 ## Samples
 
