@@ -61,7 +61,29 @@ These files should be copied
 
 ## Build model
 
+
+1\. Build the word vocabularies:
+
+```
+onmt-build-vocab --size 50000 --save_vocab data/toy-ende/src-vocab.txt data/toy-ende/src-train.txt
+onmt-build-vocab --size 50000 --save_vocab data/toy-ende/tgt-vocab.txt data/toy-ende/tgt-train.txt
+```
+
+2\. Train with preset parameters:
+
+```
 onmt-main train_and_eval --model_type NMTSmall --config config/opennmt-defaults.yml config/data/toy-ende.yml
+```
+
+
+3\. Translate a test file with the latest checkpoint and show Bleu:
+
+```
+onmt-main infer --config config/opennmt-defaults.yml config/data/toy-ende.yml --features_file data/toy-ende/src-test.txt --predictions_file predictions.txt
+```
+```
+perl third_party/multi-bleu.perl  data/toy-ende/tgt-test.txt < predictions.txt
+```
 
 # Contact
 
