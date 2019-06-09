@@ -16,6 +16,7 @@ We have created two models:
   * replace_unknown_target: yes
   * model: NMTSmall
   * BLEU = 30.50
+  * Default if no specified otherwise
 
 * 1532307246 (https://www.softcatala.org/pub/softcatala/opennmt-models/1532515736.zip)
   * This model is build using all translations that we have
@@ -23,6 +24,8 @@ We have created two models:
   * replace_unknown_target: no
   * model: NMTSmall
   * BLEU = 29.97
+
+Download the file you want and unzip it inside the folder models
 
 ## Samples
 
@@ -32,10 +35,10 @@ https://github.com/jordimas/nmt-softcatala/tree/master/translations
 
 ## Translating a new PO file
 
-Code is at ApplyToPoFile subdirectory
+Code is in ApplyToPoFile subdirectory
 
-* Install TensorFlow serving
-* Run ```run-model-sever.sh``` (server)
+* Install Tensorflow and TensorFlow serving
+* Run ```run-model-server.sh``` (server)
 * Run ```python3 ApplyToPoFile PO_file```
 
 By default all strings are marked as fuzzy

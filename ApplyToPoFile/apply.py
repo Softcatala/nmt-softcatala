@@ -141,11 +141,12 @@ def read_parameters():
         type='string',
         action='store',
         dest='po_file',
-        default='',
         help='PO File to translate'
     )
 
     (options, args) = parser.parse_args()
+    if options.po_file is None:  # if filename is not given
+        parser.error('PO file not given')
     return options.model_name, options.po_file
 
 def main():
