@@ -50,16 +50,14 @@ def _is_invalid(src, trg):
 
     return False
 
-def main():
 
-    print("Converts from PO to OpenNMT text files sets")
+def split_in_six_files(po_file):
 
+    srcs = set()
     percentage_train = 90
     percentage_validation = 5
-    #percentage_test = 5
     cnt = 0
     pairs = 0
-    srcs = set()
 
     with open("src-val.txt", "w") as source_val,\
         open("tgt-val.txt", "w") as target_val,\
@@ -68,7 +66,7 @@ def main():
         open("src-train.txt", "w") as source_train,\
         open("tgt-train.txt", "w") as target_train:
 
-        input_po = polib.pofile('softcatala-tm.po')
+        input_po = polib.pofile(po_file)
         for entry in input_po:
             src = _remove_accelerators(entry.msgid)
             trg = _remove_accelerators(entry.msgstr)
@@ -103,6 +101,53 @@ def main():
                 cnt = 0
 
     print("Pairs: " + str(pairs))
-       
+
+def split_in_two_files(po_file):
+
+    srcs = set()
+    pairs = 0
+    cnt = 0
+
+    with open("src.txt", "w") as source,\
+        open("tgt.txt", "w") as target:
+
+        input_po = polib.pofile(po_file)
+        for entry in input_po:
+            src = _remove_accelerators(entry.msgid)
+            trg = _remove_accelerators(entry.msgstr)
+
+            src = _remove_tags(src)
+            trg = _remove_tags(trg)
+
+            if _is_invalid(src, trg):
+                continue
+
+            if src in srcs:
+                #print('Duplicated:' + src)
+                continue
+
+            srcs.add(src)
+            pairs = pairs + 1
+
+            source.write(src + "\n")
+            target.write(trg + "\n")
+            cnt = cnt + 1
+
+    print("Pairs: " + str(pairs))
+
+
+def main():
+
+    print("Converts from PO to OpenNMT text files sets")
+
+    po_file = 'softcatala-tm.po'
+    twoFiles = True
+    print("Reading {0} and generating two files {1}".format(po_file, twoFiles))
+
+    if twoFiles:
+        split_in_two_files(po_file)
+    else:
+        split_in_six_files(po_file)
+
 if __name__ == "__main__":
     main()
