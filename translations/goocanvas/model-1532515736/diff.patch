@@ -1,7 +1,0 @@
-diff --git a/ApplyToPoFile/run-model-sever.sh b/ApplyToPoFile/run-model-sever.sh
-index ca25767..4ae8d7e 100755
---- a/ApplyToPoFile/run-model-sever.sh
-+++ b/ApplyToPoFile/run-model-sever.sh
-@@ -1 +1 @@
--tensorflow_model_server --port=9000 --enable_batching=true --batching_parameters_file=batching_parameters.txt --model_name=1531713563 --model_base_path=$(realpath ../models)
-+tensorflow_model_server --port=9000 --enable_batching=true --batching_parameters_file=batching_parameters.txt --model_name=1534193400 --model_base_path=/home/jordi/sc/OpenNMT/OpenNMT-remote

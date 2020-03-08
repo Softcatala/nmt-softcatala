@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2018 Jordi Mas i Hernandez <jmas@softcatala.org>
+# Copyright (c) 2018-2020 Jordi Mas i Hernandez <jmas@softcatala.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -20,15 +20,87 @@
 
 from __future__ import print_function
 import tensorflow as tf
-from grpc.beta import implementations
 from tensorflow_serving.apis import predict_pb2
-from tensorflow_serving.apis import prediction_service_pb2
+from tensorflow_serving.apis import prediction_service_pb2_grpc
+
 import polib
 from shutil import copyfile
 import re
 import logging
 import os
 from optparse import OptionParser
+import pyonmttok
+import grpc
+
+def pad_batch(batch_tokens):
+  """Pads a batch of tokens."""
+  lengths = [len(tokens) for tokens in batch_tokens]
+  max_length = max(lengths)
+  for tokens, length in zip(batch_tokens, lengths):
+    if max_length > length:
+      tokens += [""] * (max_length - length)
+  return batch_tokens, lengths, max_length
+
+def extract_prediction(result):
+  """Parses a translation result.
+
+  Args:
+    result: A `PredictResponse` proto.
+
+  Returns:
+    A generator over the hypotheses.
+  """
+  batch_lengths = tf.make_ndarray(result.outputs["length"])
+  batch_predictions = tf.make_ndarray(result.outputs["tokens"])
+  for hypotheses, lengths in zip(batch_predictions, batch_lengths):
+    # Only consider the first hypothesis (the best one).
+    best_hypothesis = hypotheses[0].tolist()
+    best_length = lengths[0]
+    if best_hypothesis[best_length - 1] == b"</s>":
+      best_length -= 1
+    yield best_hypothesis[:best_length]
+
+def send_request(stub, model_name, batch_tokens, timeout=5.0):
+  """Sends a translation request.
+
+  Args:
+    stub: The prediction service stub.
+    model_name: The model to request.
+    tokens: A list of tokens.
+    timeout: Timeout after this many seconds.
+
+  Returns:
+    A future.
+  """
+  batch_tokens, lengths, max_length = pad_batch(batch_tokens)
+  batch_size = len(lengths)
+  request = predict_pb2.PredictRequest()
+  request.model_spec.name = model_name
+  request.inputs["tokens"].CopyFrom(tf.make_tensor_proto(
+      batch_tokens, dtype=tf.string, shape=(batch_size, max_length)))
+  request.inputs["length"].CopyFrom(tf.make_tensor_proto(
+      lengths, dtype=tf.int32, shape=(batch_size,)))
+  return stub.Predict.future(request, timeout)
+
+def translate(stub, model_name, batch_text, tokenizer, timeout=5.0):
+  """Translates a batch of sentences.
+
+  Args:
+    stub: The prediction service stub.
+    model_name: The model to request.
+    batch_text: A list of sentences.
+    tokenizer: The tokenizer to apply.
+    timeout: Timeout after this many seconds.
+
+  Returns:
+    A generator over the detokenized predictions.
+  """
+  batch_input = [tokenizer.tokenize(text)[0] for text in batch_text]
+  future = send_request(stub, model_name, batch_input, timeout=timeout)
+  result = future.result()
+  batch_output = [tokenizer.detokenize(prediction) for prediction in extract_prediction(result)]
+  return batch_output
+
 
 def _clean_string(result):
     CHARS = (
@@ -52,50 +124,14 @@ def init_logging(del_logs):
     console.setLevel(logging.INFO)
     logger.addHandler(console)
 
-def parse_translation_result(result):
-    lengths = tf.make_ndarray(result.outputs["length"])[0]
-    hypotheses = tf.make_ndarray(result.outputs["tokens"])[0]
 
-    # Only consider the first hypothesis (the best one).
-    best_hypothesis = hypotheses[0]
-    best_length = lengths[0]
-    return best_hypothesis[0:best_length - 1] # Ignore </s>
-
-def translate(stub, model_name, tokens, timeout=5.0):
-    length = len(tokens)
-
-    request = predict_pb2.PredictRequest()
-    request.model_spec.name = model_name
-    request.inputs["tokens"].CopyFrom(
-        tf.make_tensor_proto([tokens], shape=(1, length)))
-    request.inputs["length"].CopyFrom(
-        tf.make_tensor_proto([length], shape=(1,)))
-
-    return stub.Predict.future(request, timeout)
-
-def _translate_sentence(stub, model_name, source):
-
-    batch_tokens = list(source.split(' '))
-
-    futures = []
-    future = translate(stub, model_name, batch_tokens, timeout=100)
-    futures.append(future)
-
-    for tokens, future in zip(batch_tokens, futures):
-        result = parse_translation_result(future.result())
- 
-    translated = ''
-    cnt = 0
-    last = len(result)
-    for token in list(result):
-        translated += str(token, encoding="utf8")
-        cnt = cnt + 1
-        if cnt < last:
-            translated += ' '
-       
-    # Fixes https://github.com/OpenNMT/OpenNMT-tf/issues/188
-    translated = re.sub("<\/s>","", translated)
-    return translated
+def _translate_sentence(stub, model_name, text):
+    print(text)
+    tokenizer = pyonmttok.Tokenizer("conservative")
+    _default=10.0
+    output = translate(stub, model_name, [text], tokenizer, timeout=_default)
+    print(output[0])
+    return output[0]
 
 def _translate_sentence_with_tags(stub, model_name, source):
     '''
@@ -158,8 +194,8 @@ def main():
     target_filename = input_filename + "-ca.po"
     copyfile(input_filename, target_filename)
 
-    channel = implementations.insecure_channel('localhost', 9000)
-    stub = prediction_service_pb2.beta_create_PredictionService_stub(channel)
+    channel = grpc.insecure_channel("%s:%d" % ('localhost', 8500))
+    stub = prediction_service_pb2_grpc.PredictionServiceStub(channel)
 
     po_file = polib.pofile(target_filename)
     translated = 0
@@ -173,14 +209,8 @@ def main():
         src = _clean_string(entry.msgid)
 
         add = True
-        try:
-            tgt = _translate_sentence_with_tags(stub, model_name, src)
-        except Exception as e:
-            logging.error(str(e))
-            logging.error("Processing: {0}".format(src))
-            add = False
-            errors = errors + 1
-
+#        try:
+        tgt = _translate_sentence_with_tags(stub, model_name, src)
         if add:
             translated = translated + 1
             entry.msgstr = tgt
