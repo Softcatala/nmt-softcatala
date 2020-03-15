@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 flask = "==1.1.1"
 gunicorn = ">=20.0.4"
+pyonmttok = ">=1.14.0"
+tensorflow-serving-api = "==2.0.0"
 
 [requires]
 python_version = "3.7"
