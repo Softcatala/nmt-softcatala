@@ -1,4 +1,4 @@
 
-docker run -t --rm -p 8501:8501 -p 8500:8500 \
+docker run -it --rm -p 8501:8501 -p 8700:8700 \
     -e MODEL_NAME=eng-cat \
     traductor-eng-cat
