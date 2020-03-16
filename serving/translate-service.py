@@ -132,7 +132,6 @@ def _translate_sentence(stub, model_name, text):
     tokenizer = pyonmttok.Tokenizer("conservative")
     _default=10.0
     output = translate(stub, model_name, [text], tokenizer, timeout=_default)
-    print(output[0])
     return output[0]
 
 
