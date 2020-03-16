@@ -17,4 +17,4 @@ RUN pip install -r requirements.txt
 EXPOSE $PORT
 #ENTRYPOINT gunicorn translate-service:app -b 0.0.0.0:$PORT
 #ENTRYPOINT gunicorn translate-service:app -b 0.0.0.0:8700
-ENTRYPOINT /bin/bash
+ENTRYPOINT bash

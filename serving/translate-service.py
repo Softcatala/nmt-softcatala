@@ -19,6 +19,7 @@
 # Boston, MA 02111-1307, USA.
 
 from __future__ import print_function
+import grpc
 import tensorflow as tf
 from tensorflow_serving.apis import predict_pb2
 from tensorflow_serving.apis import prediction_service_pb2_grpc
