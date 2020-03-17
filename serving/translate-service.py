@@ -29,7 +29,7 @@ import json
 import logging
 import os
 import pyonmttok
-
+import datetime
 
 app = Flask(__name__)
 
@@ -138,6 +138,7 @@ def _translate_sentence(stub, model_name, text):
 
 @app.route('/translate/', methods=['GET'])
 def translate_api():
+    start_time = datetime.datetime.now()
     text = request.args.get('text')
 
     channel = grpc.insecure_channel("%s:%d" % ('localhost', 8500))
@@ -149,13 +150,13 @@ def translate_api():
     result = {}
     result['text'] = text
     result['translated'] = translated
+    result['time'] = str(datetime.datetime.now() - start_time)
     return json_answer(json.dumps(result, indent=4, separators=(',', ': ')))
 
 def json_answer(data):
     resp = Response(data, mimetype='application/json')
     resp.headers['Access-Control-Allow-Origin'] = '*'
     return resp
-
 
 
 if __name__ == '__main__':
