@@ -128,12 +128,10 @@ def init_logging(del_logs):
 
 
 def _translate_sentence(stub, model_name, text):
-    print(text)
     tokenizer = pyonmttok.Tokenizer("conservative")
     _default=10.0
     output = translate(stub, model_name, [text], tokenizer, timeout=_default)
     return output[0]
-
 
 
 @app.route('/translate/', methods=['GET'])
