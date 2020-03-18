@@ -1,20 +1,26 @@
-FROM python:3.7.6-slim-buster
-RUN apt-get update && apt-get -y upgrade && apt-get install vim -y
-RUN pip install --upgrade pip
-RUN pip install --upgrade setuptools
+FROM opennmt/tensorflow-serving:2.1.0 
+
+RUN mkdir -p /models/eng-cat
+COPY models/eng-cat/ models/eng-cat/
+
+RUN apt-get update && apt-get -y upgrade 
+RUN apt-get install vim -y
+RUN apt-get install python3-pip -y
+RUN pip3 install --upgrade pip
+RUN pip3 install --upgrade setuptools
 
 ENV PORT 8700
 
 RUN mkdir -p /srv
 
-COPY *.py /srv/
-COPY requirements.txt /srv/
+COPY serving/*.py /srv/
+COPY serving/requirements.txt /srv/
+COPY serving/docker/entry-point.sh /srv/
 
 WORKDIR /srv
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
+
+ENTRYPOINT /srv/entry-point.sh
+#ENTRYPOINT bash
 
 
-EXPOSE $PORT
-#ENTRYPOINT gunicorn translate-service:app -b 0.0.0.0:$PORT
-#ENTRYPOINT gunicorn translate-service:app -b 0.0.0.0:8700
-ENTRYPOINT bash

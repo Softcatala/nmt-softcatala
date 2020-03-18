@@ -1,8 +1,10 @@
 # Introduction
 
-This repository contains Neural Machine Translation models built at Softcatalà using [OpenNMT-tf 2.00](https://github.com/OpenNMT/OpenNMT-tf) and [TensorFlow 2.0](https://www.tensorflow.org/)
+This repository contains Neural Machine Translation models built at Softcatalà using [OpenNMT-tf 2](https://github.com/OpenNMT/OpenNMT-tf) and [TensorFlow 2](https://www.tensorflow.org/)
 
 # Models
+
+## Softcatalà built models
 
 We have created the following models:
 
@@ -14,13 +16,54 @@ We have created the following models:
   * BLEU = 42.80
   * Default if no specified otherwise
 
-## Samples
+## Building your own model
+
+### Building a OpenNMT corpus from PO files
+
+* Download Softcatalà translation memory:
+https://www.softcatala.org/recursos/memories/softcatala-tm.po.zip
+
+* Run PoToOpenNMT/converter.py
+
+This produce 6 files:
+* src-test.txt - Source file used to test the model
+* tgt-test.txt - Target file used to test the model
+* src-train.txt - Source file used to train the model
+* tgt-train.txt - Target file used to train the model
+* src-val.txt - Source file used to validate the model
+* tgt-val.txt - Target file used to validate the model
+
+These files should be copied
+
+### Build model
+
+1\. Build the word vocabularies:
+
+```
+onmt-build-vocab --size 50000 --save_vocab src-vocab.txt src-train.txt
+onmt-build-vocab --size 50000 --save_vocab tgt-vocab.txt tgt-train.txt
+```
+
+2\. Train with preset parameters:
+
+```
+onmt-main --model_type Transformer --config data.yml --auto_config train --with_eval
+```
+
+3\. Translate a test file with the latest checkpoint and show Bleu:
+
+```
+onmt-main --config data.yml --auto_config infer --features_file src-test.txt > predictions.txt
+perl ../OpenNMT-py/tools/multi-bleu.perl tgt-test.txt < predictions.txt
+```
+
+## Translation samples with provided models
 
 Examples of how new files (not previous part of the training corpus) look when translated with these models:
 
 https://github.com/jordimas/nmt-softcatala/tree/master/translations
 
-# Using the models
+# Using the models in local (non-production environments)
 
 ## Install TensorFlow Serving
 
@@ -58,46 +101,30 @@ Code is in ApplyToPoFile subdirectory. For example to translate the file 'test.p
 
 By default all strings translated by the translation system are marked as 'fuzzy'
 
-# Building the models (if you do not want to use provided models)
+# Using the models in production
 
-## Building a OpenNMT corpus from PO files
+Our tentative approach to run these models in production is:
 
-* Download Softcatalà translation memory:
-https://www.softcatala.org/recursos/memories/softcatala-tm.po.zip
+* Leverage on a standard OpenNMT Docker image
+* Include our own model data
+* Include our own microservice (see [/serving](./serving)) to serve translations based on the model
 
-* Run PoToOpenNMT/converter.py
-
-This produce 6 files:
-* src-test.txt - Source file used to test the model
-* tgt-test.txt - Target file used to test the model
-* src-train.txt - Source file used to train the model
-* tgt-train.txt - Target file used to train the model
-* src-val.txt - Source file used to validate the model
-* tgt-val.txt - Target file used to validate the model
-
-These files should be copied
-
-## Build model
-
-1\. Build the word vocabularies:
+To build the container to be use in production execute:
 
 ```
-onmt-build-vocab --size 50000 --save_vocab src-vocab.txt src-train.txt
-onmt-build-vocab --size 50000 --save_vocab tgt-vocab.txt tgt-train.txt
+cd serving
+./build-docker.sh
 ```
-
-2\. Train with preset parameters:
-
-```
-onmt-main --model_type Transformer --config data.yml --auto_config train --with_eval
-```
-
-3\. Translate a test file with the latest checkpoint and show Bleu:
+To execute it:
 
 ```
-onmt-main --config data.yml --auto_config infer --features_file src-test.txt > predictions.txt
-perl ../OpenNMT-py/tools/multi-bleu.perl tgt-test.txt < predictions.txt
+cd serving
+./run-docker.sh
 ```
+
+and to test it:
+
+http://localhost:8700/translate/?text=hello
 
 # Contact
 
