@@ -103,17 +103,6 @@ def translate(stub, model_name, batch_text, tokenizer, timeout=5.0):
   batch_output = [tokenizer.detokenize(prediction) for prediction in extract_prediction(result)]
   return batch_output
 
-
-def _clean_string(result):
-    CHARS = (
-        '_', '&', '~',  # Accelerators.
-        ':', ',', '...', u'…'  # Punctuations.
-    )
-    for c in CHARS:
-        result = result.replace(c, '')
-
-    return result.strip()
-
 def init_logging(del_logs):
     logfile = 'apply.log'
 
