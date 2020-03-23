@@ -103,18 +103,6 @@ def translate(stub, model_name, batch_text, tokenizer, timeout=5.0):
   batch_output = [tokenizer.detokenize(prediction) for prediction in extract_prediction(result)]
   return batch_output
 
-def init_logging(del_logs):
-    logfile = 'apply.log'
-
-    if del_logs and os.path.isfile(logfile):
-        os.remove(logfile)
-
-    logging.basicConfig(filename=logfile, level=logging.DEBUG)
-    logger = logging.getLogger('')
-    console = logging.StreamHandler()
-    console.setLevel(logging.INFO)
-    logger.addHandler(console)
-
 
 def _translate_sentence(stub, model_name, text):
     tokenizer = pyonmttok.Tokenizer("conservative")
