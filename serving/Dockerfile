@@ -13,6 +13,7 @@ ENV PORT 8700
 
 RUN mkdir -p /srv
 
+COPY models/eng-cat/1/assets/*.model  /srv/
 COPY serving/*.py /srv/
 COPY serving/requirements.txt /srv/
 COPY serving/docker/entry-point.sh /srv/
