@@ -66,7 +66,6 @@ class OpenNMT():
     def _translate_request(self, batch_text, tokenizer, timeout=5.0):
         tokenizer = pyonmttok.Tokenizer(mode="none", sp_model_path="en_m.model")
         batch_input = [tokenizer.tokenize(text)[0] for text in batch_text]
-        print("Input {0}".format(batch_input))
         future = self._send_request(batch_input, timeout=timeout)
         result = future.result()
         tokenizer = pyonmttok.Tokenizer(mode="none", sp_model_path="ca_m.model")
@@ -77,7 +76,6 @@ class OpenNMT():
         tokenizer = pyonmttok.Tokenizer("conservative")
         _default = 10.0
         output = self._translate_request([text], tokenizer, timeout=_default)
-        print("Output X {0}".format(output))
         return output[0]
 
     def translate(self, model_name, text):
