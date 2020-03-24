@@ -126,11 +126,9 @@ def init_logging(del_logs):
 
 
 def _translate_sentence(stub, model_name, text):
-    print(text)
     tokenizer = pyonmttok.Tokenizer("conservative")
     _default=10.0
     output = translate(stub, model_name, [text], tokenizer, timeout=_default)
-    print(output[0])
     return output[0]
 
 def _translate_sentence_with_tags(stub, model_name, source):
@@ -206,20 +204,32 @@ def main():
             logging.debug('Already translated: ' + str(entry.msgid))
             continue
 
+        if 'fuzzy' in entry.flags:
+            continue
+
         src = _clean_string(entry.msgid)
 
-        add = True
-#        try:
-        tgt = _translate_sentence_with_tags(stub, model_name, src)
-        if add:
-            translated = translated + 1
-            entry.msgstr = tgt
-            entry.flags.append('fuzzy')
+        try:
+            tgt = _translate_sentence_with_tags(stub, model_name, src)
+            add = True
+            
+            if add:
+                translated = translated + 1
+                entry.msgstr = tgt
+                entry.tcomment = "Imported from NMT"
+                entry.flags.append('fuzzy')
 
-            logging.debug('Source: ' + str(entry.msgid))
-            logging.debug('Target: ' + str(tgt))
+                logging.debug('Source: ' + str(entry.msgid))
+                logging.debug('Target: ' + str(tgt))
 
-        po_file.save(target_filename)
+            if translated % 500 == 0:
+                print(translated)
+                po_file.save(target_filename)
+        
+        except Exception as e:
+            errors = errors + 1
+            
+    po_file.save(target_filename)
 
     print("Sentences translated: {0}".format(translated))
     print("Sentences unable to translate {0} (NMT errors)".format(errors))
