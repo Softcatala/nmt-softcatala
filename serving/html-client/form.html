@@ -6,13 +6,13 @@
 
 <body>
 
-    <form><p>Text: 
-            <input type="input" size="200" id="source_text" name="source_text">
-            <input id="send_button" type="submit" onclick="translate_text();return false;"></p>
-            <p>Translation: <span id="translated_text"></span> 
-            <p>Time: <span id="time_used"></span> 
+    <form><p>Text</p> 
+            <textarea id="source_text" name="source_text" cols="100" rows="10"></textarea>
+            <p><input id="send_button" type="submit" onclick="translate_text();return false;"></p>
     </form>
-
+    <p>Translation:</p> 
+    <textarea readonly id="translated_text" name="translated_text" cols="100" rows="10"></textarea>
+    <p>Time: <span id="time_used"></span></p>
 <body>
 </html>
 
