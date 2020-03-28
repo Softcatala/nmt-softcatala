@@ -20,10 +20,9 @@
 
 from __future__ import print_function
 from opennmt import OpenNMT
-
+import datetime
 import polib
 from shutil import copyfile
-import logging
 import os
 from optparse import OptionParser
 
@@ -38,18 +37,6 @@ def _clean_string(result):
         result = result.replace(c, '')
 
     return result.strip()
-
-def init_logging(del_logs):
-    logfile = 'apply.log'
-
-    if del_logs and os.path.isfile(logfile):
-        os.remove(logfile)
-
-    logging.basicConfig(filename=logfile, level=logging.DEBUG)
-    logger = logging.getLogger('')
-    console = logging.StreamHandler()
-    console.setLevel(logging.INFO)
-    logger.addHandler(console)
 
 
 def read_parameters():
@@ -81,9 +68,8 @@ def read_parameters():
 
 def main():
 
-    init_logging(True)
-
     print("Applies a OpenNMT model to translate a PO file")
+    start_time = datetime.datetime.now()
     model_name, input_filename = read_parameters()
     target_filename = input_filename + "-ca.po"
     copyfile(input_filename, target_filename)
@@ -96,7 +82,6 @@ def main():
     for entry in po_file:
 
         if entry.translated():
-            logging.debug('Already translated: ' + str(entry.msgid))
             continue
 
         if 'fuzzy' in entry.flags:
@@ -115,9 +100,6 @@ def main():
                 entry.tcomment = "Imported from NMT"
                 entry.flags.append('fuzzy')
 
-                logging.debug('Source: ' + str(entry.msgid))
-                logging.debug('Target: ' + str(tgt))
-
             if translated % 500 == 0:
                 print(translated)
                 po_file.save(target_filename)
@@ -128,7 +110,8 @@ def main():
     po_file.save(target_filename)
 
     print("Sentences translated: {0}".format(translated))
-    print("Sentences unable to translate {0} (NMT errors)".format(errors))
+    print("Sentences unable to translate: {0} (NMT errors)".format(errors))
+    print("Time used: {0}".format(str(datetime.datetime.now() - start_time)))
 
 
 if __name__ == "__main__":
