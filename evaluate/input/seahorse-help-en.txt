@@ -1,0 +1,392 @@
+translator-credits
+Jim Campbell
+2013
+A public key is used to encrypt communication. A private key is used to decrypt it.
+Public Key vs Private Key
+Although Public Keys and Private Keys are both referred to as keys, it helps to think of them a bit differently. Try to think of a Public Key as being like a padlock, and a Private Key as being like a key that unlocks the padlock.
+An Example: Sending a Secret Message in a Box
+Let's use an example to see how this works. Imagine that you want your friend to send you a secret message in a box. You could give your friend a box and a padlock, but only you would have the key that unlocks the padlock.
+Your friend could put their message in the box, lock the padlock, and then send you the locked box in the mail. When you receive it, you would use your key to unlock the box.
+This is similar to how a Public Key and a Private Key work. Like the padlock, you can freely give out your Public Key. This will make it easy for anyone to securely encrypt, or lock, a message that they want to send to you.
+On the other hand, a Private Key is like the key that allows you to decrypt, or unlock, the padlock. Because the Private Key is used to decrypt secure messages, you will want to keep your Private Key safe.
+Aruna Sankaranarayanan
+PGP keys are used to sign and encrypt emails and files.
+What is a PGP key?
+A PGP key is a public encryption key. A PGP key can be used to sign and encrypt emails and files. When you create a PGP key, a keypair having a public key and a private key is generated. You can share the public key with anyone who wishes to send you encrypted messages or files, but the private key must be known only to you and used to decrypt received messages.
+Encrypt and sign data using PGP keys
+Passwords and Keys is a key management application. Though it cannot be used to encrypt or sign files and messages, you can use it to sign trustworthy keys.
+To secure your communication, you can use email clients like Evolution that provide encryption and signing services.
+SSH keys are used to login to a remote computer, once a secure connection has been established.
+What is a Secure Shell key?
+A Secure Shell key, often just called an SSH key, helps you create a secure connection over an unsecured network.
+An SSH key actually consists of two parts:
+A public key, which is widely available.
+A private key, which is kept secret. The private key is used to unlock messages encrypted with a corresponding public key.
+The advantage of using an SSH key to create a connection between computers is that only the Public key needs to be sent over the network. Transmissions encrypted with a Public key can only be decoded by unlocking them with the corresponding Private key and a password. Because only the public key is sent over the network, the key's password is kept secret.
+2014
+Learn terms and concepts that are relevant to managing passwords and keys.
+Key Concepts and Terms
+A list of basic terms used.
+Glossary
+Passwords and Keys helps you to generate and manage tokens that can be used to protect your files and communication. Here are some basic terms that you will encounter while reading this help:
+Encryption
+Encryption is the process of making your important files and data unreadable to anyone but the intended recipient. When you encrypt your data, it becomes a scrambled sequence of numbers and letters. Encryption is done by someone who is sending a protected file, or sending a message in a protected conversation.
+Algorithm
+An algorithm is a sequence of steps used to encrypt or decrypt your data.
+Decryption
+Decryption is the process of retrieving the original text from the encrypted message or file. It is done by the receiver of the protected file or communication. Encrypted messages cannot be understood without decrypting them first.
+Plaintext
+Any data or file that is not encrypted, and can therefore be read by anyone who can access it, is called plaintext.
+Key
+A key is used to encrypt and decrypt files and communication. A key may also be used to login to a remote computer. Some types of keys are PGP keys and SSH keys.
+Keyring
+A keyring is a collection of passwords or keys.
+Passwords and Keys
+Passwords and Keys
+Ekaterina Gerasimova
+Use Passwords and Keys to remember your passwords, and to create and manage PGP and SSH keys.
+ Passwords and Keys
+SSH Keys
+PGP keys
+Stored passwords and password keyrings
+Use Passwords and Keys to create and manage PGP and SSH keys and to save passwords that are difficult to remember.
+Introduction
+Welcome to the Passwords and Keys help guide. Passwords and Keys creates and stores security tokens, helping to keep your information secure on your computer, and secure when you send information over a network.
+Using Passwords and Keys, you can:
+Copy and save passwords that are difficult to remember. To group related passwords, create keyrings.
+Create and manage PGP keys.
+Create and manage SSH keys.
+Hashem Nasarat
+Make additions to the list of keyservers in Passwords and Keys
+Add a keyserver
+Passwords and Keys have the following keyservers listed by default:
+hkp://pool.sks-keyservers.net
+ldap://keyserver.pgp.com
+To add a keyserver
+Select Edit Preferences
+Press the Add button.
+In the new dialog, select the appropriate Key Server Type. Key servers are identified by the protocol they use to communicate. Look for the first few letters in the Internet URL of your key server to identify its type.
+In the Host field, paste the Internet URL of your key server. Consult the documentation for the key server you're adding to see if it operates on a non-standard port. If so, enter the port after the ':'. If you're unsure, leave the text box after the ':' blank.
+Press OK to finish.
+Save new passwords to a different keyring by default.
+Change the default keyring
+When you add a new password, it is normally added to the default keyring. If you want to add it to a different keyring, you can choose another one while adding the new password, but you can also change the default keyring. The default keyring is normally the Login keyring.
+To change the default keyring:
+Select your choice for the default keyring from the list of keyrings under Passwords on the left side panel.
+Right click on the selected keyring and select Set as default.
+Passwords to some GNOME applications are stored automatically by Passwords and Keys in the Login keyring because it is the default keyring. When you change the default keyring, any new passwords created for GNOME applications will be stored in the new default keyring while GNOME application passwords created before the change will remain in the Login keyring.
+Use password keyrings to group stored passwords.
+Create a new keyring
+Use keyrings to group related passwords. You can choose to protect your keyring with a password.
+Create a new password keyring:
+Press the + button in the top-left corner of the window.
+Select Password Keyring from the list.
+Choose a name for your new keyring, then press Add to continue.
+To password protect your keyring, choose a password, and retype it to confirm your choice. Leave both the fields blank if you want your keyring to remain unlocked at all times.
+Press Continue to finish creating the keyring. If you have not protected your keyring with a password, you will need to confirm that this is how you want to proceed.
+Your new keyring will now be listed under Passwords.
+Lock and password protect your password keyrings to control access to the passwords stored in them.
+Lock your keyrings
+To safe-keep your passwords, store them in a password-protected keyring. When a password-protected keyring is locked, the passwords in it are kept hidden till someone unlocks the keyring with the correct password.
+You can choose to protect your keyring with a password while creating it.
+To lock your password keyring:
+From the list of keyrings under Passwords on the left side panel, select the keyring to be locked.
+Right click on the selected keyring and select Lock, or click on the small picture of an opened lock next to the name of the password keyring.
+To view passwords stored inside a locked keyring, unlock it.
+Unlock your keyrings
+A keyring may often be locked to protect the passwords it contains, similar to locking important things safely inside a trunk. In order to look at your passwords, you must unlock the keyring first.
+To unlock your keyring:
+Select the keyring to be unlocked from the panel on your left. It is listed under Passwords.
+Right click on the selected keyring and select Unlock from the menu, or alternatively, click the small picture of a closed lock next to the keyring name to unlock the keyring.
+If the keyring is password-protected, you will be prompted for a password to unlock the keyring. Enter the correct password in the Password field and press Unlock to finish.
+You can choose to password-protect your keyrings while creating them.
+Keep updating the passwords to your keyrings to ensure that they are protected well.
+Update the keyring password
+The password to unlock your keyring can be updated at any time.
+To update the password for a password keyring:
+Select the password keyring from the list, under Passwords, on the left side panel.
+Right click on the selected password keyring and select Change Password.
+Type your old password to authenticate yourself and press Continue.
+In the new dialog, type your new password, retype it to confirm the new password and press the Continue button to finish.
+A keyring is used to group related passwords and keys.
+What is a keyring?
+Much like a keyring in real life allows you to keep certain sets of keys together, a keyring in Passwords and Keys allows you to keep passwords and keys in separate groups.
+When you open Passwords and Keys for the first time, you will see keys and password grouped together. In the Login keyring, you may find stored passwords for GNOME applications such as Web, Accounts etc. The Login keyring is the default keyring in Passwords and keys.
+Creative Commons Attribution-ShareAlike 3.0 Unported License
+This work is licensed under a .
+Keep a copy of your keys in an external device.
+Securely back-up your keys
+It is always advisable to save a copy of your keys on an external memory device like a USB drive. The device should then be kept locked or stored somewhere safe. This way you will always have a copy of the key if your computer breaks or if the data on your computer is corrupted in some way.
+To back-up your keys:
+Export your key files:
+Export your PGP keys.
+Export your SSH keys.
+Copy the exported files on an external disk.
+The key fingerprint is a unique ID for each key, often used to verify the ownership of a key
+What is a key fingerprint?
+The fingerprint of a key is a unique sequence of letters and numbers used to identify the key. Just like the fingerprints of two different people, the fingerprints of two different keys can never be identical. The fingerprint is the best way to identify a particular key.
+A key has several properties like the name and email of the key owner, key type, key expiration date and so on. When you are searching for a public key and you find multiple keys with the same properties, the only way to identify the key you are looking for is to compare the fingerprints of the two keys with the fingerprint of the key you require.
+It is the fingerprint of a key that is verified when you try to login to a remote computer using SSH. While signing a PGP key, you must always check the key fingerprint and verify the key owner's identity to ensure that you are signing the correct key.
+Fingerprints on Passwords and Keys
+You can look at the fingerprint of a key on Passwords and Keys by checking the properties of the key.
+To check the fingerprint of a key:
+Select GnuPG keys from the left side panel.
+Select the PGP key from the list.
+Right click the key and select Properties.
+In the new dialog, select the Details tab.
+You can see the fingerprint of the key on the left hand side.
+Passwords and keys can remember your passwords for you.
+Store your passwords
+Passwords and Keys automatically stores passwords for certain GNOME applications in the Login keyring. Additionally, you can store any other password you want to remember.
+To create a new stored password:
+Select Password from the list.
+Select the password keyring in which you want to store your password from the Keyring menu.
+You can add additional information about the password in the Description field, like the date of creation, or the name of the application it protects, etc.
+Type the password in the Password field. You can tick the Show password checkbox if you want to see the password text while typing it out.
+Press the Add button to finish.
+The default keyring is displayed as the first choice in the Keyring drop down menu. You can change the default keyring.
+Use Passwords and Keys to check a stored password you have forgotten.
+View stored passwords
+If you ever forget a password stored in Passwords and Keys, you can view the contents of the stored password in Passwords and Keys to refresh your memory.
+To view your passwords:
+Select View By keyring.
+Unlock the password keyring that contains your password. A list of passwords stored in the keyring will be displayed.
+Right click on the password you want to check, and select Properties.
+Expand the Passwords panel, if necessary, and tick the Show password checkbox to view the password.
+Since the contents of any unlocked keyrings are available to programs you may be running, and Passwords and Keys does not seek to give a false sense of security, the contents of unlocked keyrings are able to be viewed without entering the password.
+This means that if you are logged-in, the contents of the Login keyring will available without entering a password from Passwords and Keys.
+If you need to lend your computer to another person, it is recommended that you create a user account for them, or allow them to use a guest account.
+Create and use GnuPG keys for encrypting and signing emails.
+Create PGP keys
+To make a new PGP key:
+Select PGP Key from the list.
+Enter your full name in the Full Name field.
+Optionally, add your email address and a comment to describe the key.
+Press Create.
+In the password dialog, enter a password for the key. Retype the password to confirm your choice.
+Passwords and Keys will take some time to generate your key. While your key is being created, move your mouse around, press some keys on your keyboard, or browse the web. This will help Passwords and Keys to create a truly random key. The key will be listed under GnuPG keys.
+The Full Name, Email Address and Comment details of a GnuPG key are called the user ID of the key.
+Advanced PGP key options
+Under Advanced key options you can choose custom values for encryption type, key strength and key expiration date.
+Encryption type
+Depending on your needs, create keys that can be used for signing only or for both encryption and signing. The RSA and DSA-Elgamal algorithms generate equally secure keys.
+Key Strength
+The key strength is measured in terms of the size of the key in bits. It is difficult and more time consuming to break a strong key, but strong keys will slow down the encryption and signing process. You should choose your key strength in Passwords and Keys depending on how long you want to use the key. A small key is sufficient for short term use while a large key is more suitable for long term use.
+Expiration Date
+When a key expires, certain actions no longer work. In Passwords and Keys, you can either set your key to Never Expire, or select an expiration date and time for it.
+It is recommended that you set an expiration date in case you lose access to the key. Even if your key expires, you can  change the expiration to a later date.
+Delete local copies of your keys or the keys of people you communicate with.
+Delete an existing key
+If you are no longer communicating with someone, you can delete the copy of their GnuPG key on your computer using Passwords and Keys. You can also permanently delete a key you own as long it has never been published on a key server. Deleting a GnuPG key deletes both the public key and the secret key.
+To delete a key:
+Select the key. (You may need to show all keys, with  ViewShow any )
+Right click, and choose Delete. Alternatively you can also select Edit Delete to delete the key.
+When you delete a GnuPG key that has been published on a key server, you only delete the key in your GnuPG keyring because a copy of the public key will still be present on some key server.
+If you delete your GnuPG key, this means that your private key will be permanently deleted, even though your public key can still be retrieved from a key server and used to encrypt messages to you that you won't be able to read! To prevent such a key from being used, retrieve and revoke the key. The revoked key can then be synced with a key server to prevent people from retrieving and using it.
+In the new dialog, confirm the deletion by ticking the I understand that this secret key will be permanently deleted checkbox, and press the Delete button to finish.
+Advance or postpone the expiration date of your keys.
+Change the expiration date of your keys
+If your PGP key has expired but you wish to continue its use, you can change its expiry date. You can also change the expiration settings to have a key expire on an earlier date.
+To change the expiration date of a PGP key:
+Right click on the selected key and select Properties.
+To change the expiration date of the master key, press the small button with the picture of a calendar next to Expires, on the right side of the dialog. You can then select the new expiration date from the calendar.
+To change the expiration date of a subkey, expand the Subkeys panel and select the subkey from the list. Press the Expire button on the left of the panel and select the new expiration date.
+If you are changing the expiration date of a key that has been published, you must synchronize the key with the key server after making the desired changes.
+Can I still use it? Can expiration dates be changed?
+What happens if my key expires?
+When your key expires, it becomes invalid. This means:
+It can no longer be used to encrypt and decrypt messages.
+It cannot sign other keys or receive signatures from other keys.
+Depending on how long you want your key to be valid, you can set an expiration date for it. By default, Passwords and Keys sets all keys to be valid forever. That is, the keys never expire.
+The expiration date on a key can be changed anytime, even after the key has expired. However, if you want to stop using the expired key, you should delete or revoke it.
+If you have any messages encrypted with an expired key, you must change the expiration date on the key to decrypt such messages before deleting or revoking it.
+Export your public and private PGP keys to store them in keyfiles.
+Export PGP keys
+Export the contents of your PGP keys and store them in keyfiles, to have a backup of your keys or to share your public key with someone.
+To export your public PGP key
+Select the GnuPG keys keyring from the left side panel.
+Select the Personal PGP key that has to be exported, from the list.
+Right-click on the key and select Export….
+To store the keys in the ASCII format, select Armored PGP keys from the menu above the Export button.
+Choose a location for your keyfile, and press Export to finish.
+To export your private PGP key
+Right click on the selected key and select PropertiesDetails.
+Press the Export button.
+Import keys from keyfiles into Passwords and Keys.
+Import PGP keys
+If you have received a key file by email, you might want to import it into Passwords and Keys. In most cases, Passwords and Keys automatically imports PGP keys from your computer. You can also manually import a particular key, if it has not been imported already.
+How do I manually import a key?
+Select Import from file… from the list.
+In the new dialog, select the key you wish to import. PGP keys end with pgp or asc, GPG keys end with gpg.
+Click Open.
+Once imported, the PGP and GPG keys are listed under GnuPG keys.
+Include a photo ID with your existing keys so that people can identify them easily.
+Attach a photo to your key
+You can attach a photo ID to your PGP keys so that everyone can verify the ownership of your keys after looking at your photo. Though a key with an attached photo will provide a slightly better level of security than a key with no photo, checking the photo on a key is not as safe as checking the fingerprint of the key because anyone having your photos can create a key with your photo ID while the key fingerprint cannot be mimicked.
+Unlike the restrictions in GPG, the photo ID you want to upload need not be in the JPEG format. Passwords and Keys lets you upload your photo in png, jpg and several other common image formats.
+To attach a photo ID to a PGP key:
+Select the PGP key.
+Right click on the chosen key and select Properties Owner.
+Press the button marked with a + on the left hand side to add a photo.
+Select the photo from your computer.
+Click Close to finish.
+The photos you select should be small in size, preferably about 120 by 150 pixels. Since a photo ID is always attached to its key, a large photo will increase the key size and slow down all operations that use the key. Passwords and Keys resizes large photos to the optimal size after asking for your confirmation.
+Aruna
+Publish your public keys on key servers, or export and mail them to your friends.
+Share your public keys
+If you want people to send you encrypted communication, you must share your GnuPG key with them. To share your key with a selected few people, export it and mail the resulting keyfile to them. To allow anyone to retrieve and use your public key, publish it on a key server.
+How do I publish my key on a key server?
+From the list, select the Personal PGP key you want to publish.
+Select Remote Sync and Publish Keys….
+Press the Key Servers button to see the list of key servers on which you can publish your public key.
+To publish your key on a key server, select the key server from the Publish keys to menu.
+Press Close to go back to the previous dialog.
+Press Sync to finish.
+You need to be connected to the Internet while publishing your keys.
+What is a keyserver?
+Key servers are computers that store copies of public encryption keys submitted to them, and share these copies with other key servers through the Internet.
+If you want to send an urgent encrypted message to someone, but do not have their key, you can retrieve their key from a remote key server.
+Retrieve remote keys
+You can retrieve someone's public GnuPG key from the Internet and store it in Passwords and Keys.
+To retrieve a remote key:
+Select Remote Find Remote Keys….
+Enter information about the key you wish to retrieve in the field provided. Details like key ID or the key owner's email address give more accurate results than the name of the key owner.
+Press the Search button.
+From the list of search results, select the key you want to import, right click on it and select Import. Alternatively, you can also press the Import button present at the top of the dialog after selecting the key.
+The imported key will be listed in the GnuPG keys keyring.
+If you cannot see the retrieved key, please select ViewShow any.
+If you want more information about a key, before importing it, select it, and press the properties button found at the top of the dialog. Alternatively you can also right click on the key and select Properties. This opens a new window that displays information like the key ID, key fingerprint, level of trust, owner's name, etc.
+If you trust a key, you can sign it.
+Sign keys
+To show that you trust and vouch for the genuineness of someone's key, you can sign it. A person's key must be signed only after you compare the user ID on the key with a valid proof of their identity, such as a passport, driver's license, or similar. If the two IDs match, the key is said to be trustworthy.
+To sign a key:
+Import the remote key or keyfile containing the key to be signed into Passwords and Keys.
+From the list of GnuPG keys select the imported key.
+Right click the key and select PropertiesTrust.
+Press the Sign this Key button.
+Depending on how carefully you have checked the key, choose one out of Not at all, Casually or Very carefully.
+Decide if you want to revoke your signature at a later date and if you want to make your signature public, by ticking the checkboxes provided.
+When you own more than one PGP key, select the key you want to sign with, from the list next to Signer.
+Press the Sign button to finish.
+Can I sign my own keys?
+When you create a new GnuPG key, it is automatically signed by you. Any new subkeys created using a GnuPG key, will also be signed automatically.
+A subkey is always bound to a master key in a PGP keypair. It is used for encryption.
+What is a subkey?
+Though it is very important to keep your keys safe, it can become quite tedious to do so when you have many keys. Passwords and Keys provides a simple solution to key safety by using subkeys for signing and encryption.
+Whenever you create a new public encryption key, a keypair is generated instead of a single key. This keypair consists of a main key, also called the master key and a subkey. A master key can be used to create additional subkeys that are then bound to it.
+What does each key in a keypair do?
+The master key is used for signing other keys, creating subkeys and revoking subkeys. Your master key must be kept very safe. Signatures of trust are also collected on your master key. If the master key is compromised, you have no choice but to revoke it and all the subkeys attached to it.
+The default subkey is used for encryption and decryption of messages. Additional subkeys can be created for signing. Though it is important that your subkeys are kept safe, you can always revoke a subkey if it is compromised and create a new one with the original master key.
+More about subkeys
+Synchronize information present in your local key with the corresponding key on a key server.
+Synchronize your keys
+PGP keys in your keyring have to be synchronized with a key server to ensure that any changes made to the key on the key server, like a new signature, are updated in your local copy of the key. Similarly, when you change information on your local key copy, like the expiration date, or when you sign someone's key, you should synchronize the keys to update the changes on the remote copy of the key. You need a working Internet connection to synchronize your keys.
+How do I synchronize a key?
+Select the PGP key you wish to synchronize.
+Click the Sync button to synchronize your key.
+Why is the Sync button not clickable?
+Only PGP keys that have been published on a key server can be synchronized. If the Sync button is not clickable, check if the key has been published on a key server. In the case of synchronizing your own keys, publish them, before synchronizing them.
+Having many user IDs helps you to use the same key to communicate with different people.
+Add extra user IDs to a key
+A key can have multiple user IDs. This is helpful when you want to use the same key while communicating with several people and one of them does not recognize, say, the email address in your user ID. This person may not want to import your public key since it contains information that they do not know. In such scenarios, if you do not want to create a new key with a different user ID, you can attach a new user ID to your existing key.
+To add an extra user ID:
+From the list, select the Personal PGP key of your choice.
+Right click on the key and select Properties Names and Signatures.
+Click the Add Name button to add a new user ID.
+In the new dialog, fill in details like Full Name, Email Address and Key Comment for the new user ID.
+Enter the correct passphrase and click OK to finish.
+Your new user ID will now be listed under the Names and Signatures panel.
+If your key has been published on a key server, synchronize it after adding new user IDs to update the remote copy of the key.
+Change your default user ID
+What is a primary user ID?
+When you have multiple user IDs, one of the user IDs is made the primary user ID. Passwords and Keys will attach the primary user ID by default with your key information, while encrypting or signing, unless you explicitly choose another user ID instead.
+To change the primary user ID in a PGP key:
+Select the Personal PGP key from the list.
+Right click on the selected key and select Properties Names and Signatures.
+Select the new primary user ID from the list and click Primary.
+The user ID will move to the top of the Names and Signatures list to become your primary user ID.
+Sync your keys after changing your primary user ID to update the remote copies of your key.
+Remove extra user IDs
+Detach a user ID from a key
+While it is essential that all keys have at least one user ID, you can remove any additional user IDs that you have attached to the key.
+To remove a user ID from a PGP key:
+Right click on the selected key and choose Properties Names and Signatures.
+Select the user ID you want to remove and click Delete.
+Synchronize your keys after detaching the user ID to update the changes on the remote copy of the key.
+Create keys with good user IDs and learn to add and remove user IDs.
+What is a user ID?
+When you create a key, you provide details, like your name, email and a key description. This information together constitutes a user ID. A good user ID helps people to recognize your key when they are trying to retrieve or import it. It is important to fill in authentic information while creating your user ID.
+Add, remove user IDs
+Use SSH keys to log in to another computer without entering a password.
+Connect to other computers
+You can use Passwords and Keys to install your SSH key onto a remote computer that can run an SSH server. You can also set up your SSH key for remote login while creating the key.
+Right click on the SSH key and select Configure Key for Secure Shell….
+In the dialog window that opens, enter the Server address that you normally use to log in to the remote computer via SSH, and press Set Up.
+The program will now attempt to connect to the specified Server address with the entered Login Name. If there are any problems in accessing the remote computer, a pop-up window will appear that explains the problem, and you can try again. Make sure that you have a network connection and that the remote computer is on and accessible.
+If connection to the remote computer was successful, a dialog box will appear which asks for the Password you use to log in to the remote computer. Enter your password, then press OK.
+You should now be able to log in to the remote computer via SSH without a password.
+Create SSH keys to log in to other computers.
+Create a new SSH key
+An SSH key will help you to create a secure connection between computers. Creating an SSH key creates both a Public and a Private key. Here is how to create a new key:
+Select Secure Shell Key from the list.
+Enter a description for the key. The key description will help you to identify the key later. For example, you could enter the date for the day, something about how the key will be used, or the server name on which you intend to install the key. The description field is optional, and how you describe the key is entirely up to you.
+You can also change default settings for encryption type or key strength.
+At this point, you can just create your key, or create your key and install it on a remote computer to enable password-free login.
+Create your key and do not set up remote login
+You can create the SSH key, and choose to set it up later.
+Press the Just Create Key button.
+Type a passphrase for your SSH key and press OK.
+Retype the passphrase and press OK to finish.
+The SSH key will now be listed in the OpenSSH keys keyring.
+When you try to use your SSH key, your operating system will prompt you for the passphrase used during creation. This ensures that if someone gets access to your SSH key, they can't use it without the passphrase.
+Create your key and install it on a remote computer
+One of the most useful things about having an SSH key is that you can install the public key on a remote computer. Doing this allows you to log in to a remote computer with SSH without needing to enter your password every time.
+Press the Create and Set Up button, and follow the above instructions on entering a passphrase.
+In the dialog window that opens, enter the Server address that you normally use to log in to the remote computer via SSH.
+Ensure that the Login name you use on the remote computer is correct, and press Set Up.
+The public part of the selected SSH key will now be installed on the remote computer and configured to allow password-free SSH login. You should now be able to log in to the remote computer via SSH without a password.
+If SSH key authentication fails and you cannot use password authentication, contact the service administrator for further help.
+Export your public and private SSH keys to store them in keyfiles.
+Export SSH keys
+Export the contents of your SSH keys and store them in keyfiles, to have a backup of your keys or to share your public key with someone.
+To export your public SSH key:
+Select the OpenSSH keys keyring from the left side panel.
+Select the Personal SSH key, that has to be exported, from the list.
+Press the Export button to save the exported public key on your computer.
+To export your private SSH key:
+Right click on the selected key and select Properties.
+Press the Export button to save the exported private key on your computer.
+Keep the exported private key file in a safe location, since the contents of the file must be kept private, to prevent misuse of your key.
+Import SSH keys from keyfiles into Passwords and Keys.
+Import SSH keys
+If you have received a key file by email, you might want to import it into Passwords and Keys. In most cases, Passwords and Keys automatically imports SSH keys from the /.ssh directory on your computer. You can also manually import keys into Passwords and Keys.
+In the new dialog, select the key you wish to import. Public SSH keys end with .pub.
+Imported keys are automatically grouped according to their type. So, SSH keys are listed in the OpenSSH keys section.
+Additional subkeys make your master key more secure.
+Add extra subkeys
+You can add extra subkeys to the same master key. You have to choose the right subkey each time you want to encrypt or sign when you do this.
+To add extra subkeys to a PGP key:
+If the Subkeys panel is not expanded, expand it.
+Click the Add button to add a new subkey.
+Choose the right properties for your key by selecting the appropriate Key Type, Key Length and Expiration Date and click OK.
+Always ensure that your subkey expires before your master key since a subkey is useless when its master key has expired.
+See all the subkeys listed under a PGP key.
+Where are my subkeys listed?
+You can check the contents of a keypair to see the properties of a subkey.
+To see all the subkeys in a PGP key:
+Select the GnuPG keys from the left side panel.
+Select the Personal PGP key.
+Right click on the key chosen in the previous step and select PropertiesDetails.
+All the subkeys for the selected PGP key will be listed in the panel.
+While signing another key, Passwords and Keys automatically chooses the master key for signing, when you select a GnuPG keys keypair to sign with.
+Revoke a subkey that has been compromised or is not being used.
+Revoke your subkeys
+If your subkey has been compromised or is no longer in use, it might be a good idea to revoke it to prevent misuse of the key.
+To revoke a subkey:
+Navigate to the Subkeys panel.
+Select the subkey from the list and press the Revoke button.
+In the new dialog, select a reason for revoking the key. Optionally, describe your reason in more detail in the Description field.
+Press the Revoke button.
+You will have to unlock the key with its passphrase.
+The Status of the subkey changes to Revoked in the Subkeys panel.
+If you have published your subkey, you must synchronize it with the key servers after revoking it to apply the revocation on all copies of the key.

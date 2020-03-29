@@ -1,0 +1,392 @@
+traductors de crèdits
+Jim Campbell
+2013
+Una clau pública s&#39;utilitza per xifrar la comunicació. Una clau privada s&#39;utilitza per desxifrar-la.
+Clau pública vs clau privada
+Tot i que les claus públiques i les claus privades s&#39;anomenen claus, les ajudes poden pensar-les una mica diferent. Intenta pensar en una clau pública com a un cadenat i una clau privada com una clau que desbloqueja el cadenat.
+Un exemple: Enviament d’un missatge secret en un requadre
+Utilitzem un exemple per veure com funciona. Imagineu-vos que voleu que el vostre amic us enviï un missatge secret en un requadre. Podríeu donar al vostre amic una caixa i un cadenat, però només tindríeu la clau que desbloqueja el cadenat.
+El vostre amic podria posar el seu missatge a la casella, bloquejar el cadenat i, a continuació, enviar-li la caixa bloquejada al correu. Quan el rebeu, faríeu servir la vostra clau per desbloquejar la caixa.
+Això és similar a com funciona una clau pública i una clau privada. Com el cadenat, podeu lliurar la vostra clau pública. D’aquesta manera serà fàcil que qualsevol pugui xifrar o bloquejar de forma segura un missatge que vol enviar-lo.
+D&#39;altra banda, una clau privada és com la clau que permet desxifrar o desbloquejar el cadenat. Com que la clau privada s’utilitza per desxifrar els missatges segurs, voldreu mantenir la vostra clau privada.
+Aruna Sankaranarayanan
+Les claus PGP s’utilitzen per signar i xifrar correus electrònics i fitxers.
+Què és una clau PGP?
+Una clau PGP és una clau de xifrat públic. Una clau PGP es pot utilitzar per signar i xifrar correus electrònics i fitxers. Quan es crea una clau PGP, es genera un paràmetre clau amb una clau pública i una clau privada. Podeu compartir la clau pública amb qualsevol persona que desitgi enviar-vos missatges o fitxers xifrats, però la clau privada només us serà coneguda i utilitzada per xifrar els missatges rebuts.
+Xifra i signa les dades mitjançant les tecles PGP
+Contrasenyes i claus és una aplicació de gestió de claus. Tot i que no es pot utilitzar per xifrar o signar fitxers i missatges, podeu utilitzar-lo per signar claus de confiança.
+Per protegir la vostra comunicació, podeu utilitzar clients de correu electrònic com Evolution que ofereixen serveis de xifratge i signatura.
+Les claus SSH s&#39;utilitzen per iniciar la sessió a un equip remot, un cop establerta una connexió segura.
+Què és una clau Secure Shell?
+Una clau Secure Shell, sovint anomenada clau SSH, us ajuda a crear una connexió segura a una xarxa no segura.
+Una clau SSH realment consta de dues parts:
+Una clau pública, àmpliament disponible.
+Una clau privada, que es manté en secret. La clau privada s&#39;utilitza per desbloquejar missatges xifrats amb una clau pública corresponent.
+L’avantatge d’utilitzar una clau SSH per crear una connexió entre equips és que només s’ha d’enviar la clau pública a la xarxa. Les transmissions xifrades amb una clau pública només es poden descodificar desbloquejant-les amb la clau privada corresponent i una contrasenya. Com que només s’envia la clau pública a la xarxa, la contrasenya de la clau es manté en secret.
+2014
+Apreneu termes i conceptes rellevants per a la gestió de contrasenyes i claus.
+Conceptes i termes clau
+Llista de termes bàsics utilitzats.
+Glossari
+Contrasenyes i claus us ajuda a generar i gestionar fitxes que es poden utilitzar per protegir els vostres fitxers i la vostra comunicació. A continuació, es detallen alguns termes bàsics que trobareu mentre llegiu aquesta ajuda:
+Xifrat
+El xifrat és el procés que fa que els vostres fitxers i dades importants siguin il·legibles per a qualsevol persona menys el destinatari previst. Quan xifres les dades, es converteix en una seqüència revoltada de números i lletres. El xifratge ho fa algú que envia un fitxer protegit o envia un missatge en una conversa protegida.
+Algoritme
+Un algorisme és una seqüència de passos utilitzats per xifrar o xifrar les dades.
+Xifrat
+El desxiframent és el procés de recuperació del text original del missatge o fitxer xifrat. Ho fa el receptor del fitxer o comunicació protegit. Els missatges xifrats no es poden entendre sense desxifrar-los primer.
+Text simple
+Les dades o fitxers que no estiguin xifrats i, per tant, puguin ser llegits per qualsevol que hi pugui accedir, s’anomena text complet.
+Clau
+Una clau s&#39;utilitza per xifrar i desxifrar fitxers i la comunicació. També es pot utilitzar una clau per iniciar la sessió a un equip remot. Alguns tipus de claus són claus PGP i claus SSH.
+Clauer
+Un clauer és una col·lecció de contrasenyes o claus.
+Contrasenyes i claus
+Contrasenyes i claus
+Ekaterina Gerasimova
+Utilitzeu Contrasenyes i claus per recordar les vostres contrasenyes i per crear i gestionar les claus PGP i SSH.
+Contrasenyes i claus
+Claus SSH
+Claus PGP
+Contrasenyes emmagatzemades i claus de contrasenya
+Utilitzeu Contrasenyes i claus per crear i gestionar claus PGP i SSH i per desar les contrasenyes de difícil record.
+Introducció
+Benvingut a la guia d&#39;ajuda de contrasenyes i claus. Contrasenyes i claus crea i emmagatzema fitxes de seguretat que ajuden a mantenir la informació segura a l’ordinador i a la seguretat quan envieu informació a través d’una xarxa.
+Usant contrasenyes i claus, podeu:
+Copieu i deseu les contrasenyes de difícil record. Per agrupar contrasenyes relacionades, creeu claus de comandes.
+Creeu i gestioneu les claus PGP.
+Crear i gestionar claus SSH.
+Hashem Nasarat
+Feu addicions a la llista de claus de claus de contrasenyes i claus
+Afegiu un servidor de claus
+Les contrasenyes i les claus tenen els seguidors de claus següents indicats de manera predeterminada:
+hkp: //pool.sks-keyservers.net
+ldap: //keyserver.pgp.com
+Per afegir un servidor de claus
+Seleccioneu Edita preferències
+Premeu el botó Afegeix.
+Al quadre de diàleg nou, seleccioneu el tipus de servidor de clau adequat. Els servidors clau s’identifiquen amb el protocol que utilitzen per comunicar-se. Cerqueu les primeres lletres a l’URL d’Internet del servidor de claus per identificar-ne el tipus.
+Al camp d&#39;amfitrió, enganxeu l&#39;URL d&#39;Internet del servidor de claus. Consulteu la documentació del servidor de claus que heu afegit per veure si funciona en un port no estàndard. Si és així, introduïu el port després de la secció &quot;:&quot;. Si no esteu segurs, deixeu el quadre de text després del buit &quot;:&quot;.
+Premeu OK per acabar.
+Deseu, de manera predeterminada, contrasenyes noves en un clau diferent.
+Canvieu el clau predefinit
+Quan s&#39;afegeix una nova contrasenya, normalment s&#39;afegeix al clau clau predeterminada. Si voleu afegir-la a un clau de trucada diferent, podeu triar-ne una altra mentre afegiu la nova contrasenya, però també podeu canviar la clau de predefinida. Els claus predeterminats normalment són els claus d&#39;inici de sessió.
+Per canviar el clau predefinit:
+Seleccioneu la vostra opció per a la clau de comanda predeterminada de la llista de claus a Contrasenyes del tauler lateral esquerre.
+Feu clic amb el botó dret del ratolí seleccionat i seleccioneu Definir com a predeterminat.
+Les contrasenyes d&#39;algunes aplicacions del GNOME s&#39;emmagatzemen automàticament mitjançant les claus de contrasenya i les claus de sessió d&#39;inici de sessió, ja que és el clau predefinit. Quan canvieu el clauer predeterminat, totes les contrasenyes noves creades per a les aplicacions GNOME es guardaran al nou clau clau predeterminat mentre que les contrasenyes de l’aplicació GNOME creades abans del canvi romandran al clauer d’inici de sessió.
+Utilitzeu les claus de contrasenya per agrupar les contrasenyes emmagatzemades.
+Creeu un nou clau
+Utilitzeu les claus per agrupar contrasenyes relacionades. Podeu triar protegir el vostre clau amb una contrasenya.
+Creeu un nou clau de contrasenya:
+Premeu el botó + a l&#39;extrem superior esquerre de la finestra.
+Seleccioneu Clau de contrasenya de la llista.
+Trieu un nom per al nou clauer i, a continuació, premeu Afegeix per continuar.
+Per protegir la contrasenya, escolliu una contrasenya i torneu-la a confirmar. Deixeu els dos camps en blanc si voleu que el vostre clau estigui desbloquejat sempre.
+Premeu Continuar per acabar de crear el clau. Si no heu protegit el vostre clauer amb una contrasenya, haureu de confirmar que voleu procedir.
+El vostre nou clauer es mostrarà a Contrasenyes.
+Bloquejar i contrasenya protegir les claus de contrasenya per controlar l’accés a les contrasenyes emmagatzemades en elles.
+Bloquegeu els vostres claus
+Per guardar les contrasenyes de forma segura, emmagatzemi-les en un clauer protegit amb contrasenya. Quan es tanca un clauer protegit amb contrasenya, les contrasenyes es mantenen ocultes fins que algú desconnecti la clau amb la contrasenya correcta.
+Podeu optar per protegir el vostre clau amb una contrasenya mentre la creeu.
+Per bloquejar la clau de contrasenya:
+A la llista de claus a Contrasenyes del tauler lateral esquerre, seleccioneu la clau de claus que es bloquejarà.
+Feu clic amb el botó dret sobre el clauer seleccionat i seleccioneu Bloquejar, o feu clic a la imatge petita d&#39;un pany obert al costat del nom del clau de contrasenya.
+Per visualitzar les contrasenyes emmagatzemades dins d’un clauer bloquejat, desbloqueu-la.
+Desbloquegeu els vostres claus
+Sovint es pot bloquejar un clau per protegir les contrasenyes que conté, semblant a bloquejar coses importants de manera segura dins d’un maleter. Per veure les contrasenyes, primer heu de desbloquejar la clau.
+Per desbloquejar el vostre clau:
+Seleccioneu la clau de claus que es desbloquejarà del tauler de la vostra esquerra. Es troba a la llista Contrasenyes.
+Feu clic amb el botó dret del ratolí seleccionat i seleccioneu Desbloqueja del menú, o bé, feu clic a la imatge petita d’un bloqueig tancat al costat del nom del clau per desbloquejar el clau.
+Si el clauer està protegit amb contrasenya, se us demanarà una contrasenya per desbloquejar la clau. Introduïu la contrasenya correcta al camp Contrasenya i premeu Desbloquejar per acabar.
+Podeu triar protegir amb contrasenya els vostres claus mentre els creeu.
+Seguiu actualitzant les contrasenyes de les vostres claus per assegurar-vos que es protegeixen bé.
+Actualitzeu la contrasenya del clau
+La contrasenya per desbloquejar el vostre clauer es pot actualitzar en qualsevol moment.
+Per actualitzar la contrasenya d’un clau de contrasenya:
+Seleccioneu la clau de contrasenya de la llista, a Contrasenyes, al tauler lateral esquerre.
+Feu clic amb el botó dret sobre el clau de contrasenya seleccionat i seleccioneu Canvia la contrasenya.
+Escriviu la vostra contrasenya antiga per autenticar-vos i premeu Continuar.
+Al quadre de diàleg nou, escriviu la vostra nova contrasenya, torneu-la a confirmar per confirmar la nova contrasenya i premeu el botó Continuar per acabar.
+Un clauer s’utilitza per agrupar contrasenyes i claus relacionades.
+Què és un clauer?
+Igual que un clauer a la vida real us permet mantenir determinats conjunts de claus, un clau en Contrasenyes i claus us permet mantenir les contrasenyes i les claus en grups separats.
+Quan obriu les contrasenyes i claus per primera vegada, veureu les claus i les contrasenyes agrupades. Al clau de sessió d&#39;inici de sessió, podeu trobar contrasenyes emmagatzemades per a aplicacions GNOME com web, comptes, etc. El clauer d&#39;inici de sessió és el clau clau predeterminat de Contrasenyes i claus.
+Creative Commons Reconeixement-Compartir-Igual 3.0 Llicència no autoritzada
+Aquesta obra es troba sota llicència a.
+Guardeu una còpia de les vostres claus en un dispositiu extern.
+Fes una còpia de seguretat de les teves claus
+Sempre és recomanable guardar una còpia de les teves claus en un dispositiu de memòria externa com una unitat USB. El dispositiu s&#39;ha de guardar bloquejat o emmagatzemar en algun lloc segur. D’aquesta manera sempre tindreu una còpia de la clau si l’ordinador es trenca o si les dades del vostre ordinador es corrompen d’alguna manera.
+Per fer una còpia de seguretat de les teves claus:
+Exporta els fitxers clau:
+Exporteu les vostres claus PGP.
+Exporta les teves claus SSH.
+Copieu els fitxers exportats en un disc extern.
+L’empremta digital de la clau és un identificador únic per a cada clau, sovint utilitzat per verificar la propietat d’una clau
+Què és una empremta digital?
+L’empremta digital d’una clau és una seqüència única de lletres i números que s’utilitzen per identificar la clau. Igual que les empremtes dactilars de dues persones diferents, les empremtes dactilars de dues tecles diferents mai no poden ser idèntiques. L’empremta digital és la millor manera d’identificar una determinada clau.
+Una clau té diverses propietats com el nom i el correu electrònic del propietari de la clau, tipus de clau, data de caducitat de la clau, etc. Quan cerqueu una clau pública i trobeu diverses tecles amb les mateixes propietats, l’única manera d’identificar la clau que busqueu és comparar les empremtes dactilars de les dues tecles amb l’empremta digital de la clau que necessiteu.
+És l’empremta digital d’una clau que es verifica quan intenteu iniciar la sessió en un equip remot mitjançant SSH. Durant la signatura d’una clau PGP, sempre heu de comprovar l’empremta digital de la clau i verificar la identitat del propietari de la clau per assegurar-vos que sigueu la clau correcta.
+Empremtes digitals a les contrasenyes i claus
+Podeu mirar l’empremta digital d’una clau de Contrasenyes i claus comprovant les propietats de la clau.
+Per comprovar l’empremta digital d’una clau:
+Seleccioneu les tecles GnuPG al tauler lateral esquerre.
+Seleccioneu la clau PGP de la llista.
+Feu clic amb el botó dret a la tecla i seleccioneu Propietats.
+Al quadre de diàleg nou, seleccioneu la pestanya Detalls.
+Podeu veure l’empremta digital de la clau a la part esquerra.
+Les contrasenyes i claus poden recordar les vostres contrasenyes.
+Guardeu les vostres contrasenyes
+Contrasenyes i claus emmagatzema automàticament contrasenyes per a determinades aplicacions GNOME a la clau de sessió. A més, podeu emmagatzemar qualsevol altra contrasenya que vulgueu recordar.
+Per crear una nova contrasenya emmagatzemada:
+Seleccioneu Contrasenya de la llista.
+Seleccioneu el clau de contrasenya en què voleu emmagatzemar la vostra contrasenya al menú de claus.
+Podeu afegir informació addicional sobre la contrasenya al camp Descripció, com la data de creació o el nom de l&#39;aplicació que protegeix, etc.
+Escriviu la contrasenya al camp Contrasenya. Podeu marcar la casella de selecció Mostra la contrasenya si voleu veure el text de la contrasenya mentre escriviu-la.
+Premeu el botó Afegeix per acabar.
+Els claus predeterminats es mostren com a primera opció al menú desplegable Clau. Podeu canviar la clau de clau predeterminada.
+Utilitzeu Contrasenyes i claus per comprovar una contrasenya que heu oblidat.
+Consulteu les contrasenyes emmagatzemades
+Si mai oblideu una contrasenya emmagatzemada a Contrasenyes i claus, podeu veure el contingut de la contrasenya emmagatzemada a Contrasenyes i claus per actualitzar la vostra memòria.
+Per veure les contrasenyes:
+Seleccioneu Visualitza per claus.
+Desbloquegeu la clau de clau que conté la vostra contrasenya. Es mostrarà una llista de contrasenyes emmagatzemades al clauer.
+Feu clic amb el botó dret a la contrasenya que vulgueu comprovar i seleccioneu Propietats.
+Si voleu, desplegueu el tauler de contrasenyes i marqueu la casella de selecció Mostra la contrasenya per veure la contrasenya.
+Com que el contingut de les claus desbloquejades està disponible per als programes que podeu executar i Clau de contrasenyes i claus no vol donar una falsa sensació de seguretat, el contingut dels claus desbloquejats es pot visualitzar sense introduir la contrasenya.
+Això vol dir que si teniu la sessió iniciada, el contingut de la clau de sessió estarà disponible sense introduir una contrasenya de les contrasenyes i claus.
+Si heu de prestar l&#39;equip a una altra persona, es recomana que creeu un compte d&#39;usuari per a ells o que els permeti utilitzar un compte de convidat.
+Creeu i utilitzeu claus GnuPG per xifrar i signar correus electrònics.
+Crear claus PGP
+Per crear una nova clau PGP:
+Seleccioneu la clau PGP de la llista.
+Introduïu el vostre nom complet al camp Nom complet.
+Opcionalment, afegiu la vostra adreça de correu electrònic i un comentari per descriure la clau.
+Premeu Crear.
+Al diàleg de contrasenya, introduïu una contrasenya per a la clau. Torneu a escriure la contrasenya per confirmar la vostra tria.
+Les contrasenyes i claus necessitaran un temps per generar la vostra clau. Mentre s’està creant la tecla, desplaça el ratolí, premeu algunes tecles del teclat o navegueu pel web. Això ajudarà a Contrasenyes i claus a crear una clau realment aleatòria. La clau apareixerà a les claus GnuPG.
+El nom complet, l&#39;adreça de correu electrònic i els detalls dels comentaris d&#39;una clau GnuPG s&#39;anomenen l&#39;ID d&#39;usuari de la clau.
+Opcions de clau PGP avançada
+A Opcions de clau avançada, podeu triar valors personalitzats per al tipus de xifrat, la força de la clau i la data de caducitat de la clau.
+Tipus de xifrat
+Segons les vostres necessitats, creeu claus que només es puguin utilitzar per a la signatura o tant per a encriptació com per a la signatura. Els algorismes RSA i DSA-Elgamal generen claus igualment segures.
+Força clau
+La força de la clau es mesura en termes de la mida de la clau en bits. És difícil i necessiteu més temps trencar una clau forta, però les claus fortes alentiran el procés de xifratge i signatura. Heu de triar la vostra clau de clau en contrasenyes i claus en funció del temps que vulgueu fer servir la clau. Una clau petita és suficient per a l&#39;ús a curt termini, mentre que una clau gran és més adequada per a ús llarg.
+Data de caducitat
+Quan una clau caduca, determinades accions ja no funcionen. A Contrasenyes i claus, podeu definir la vostra clau per a no caducar mai, o bé seleccionar una data i hora de caducitat.
+Es recomana establir una data de caducitat en cas que perdeu l’accés a la clau. Tot i que la vostra clau caduca, podeu canviar la caducitat a una data posterior.
+Elimineu còpies locals de les vostres claus o les claus de les persones amb qui us heu comunicat.
+Suprimeix una clau existent
+Si deixeu de comunicar-vos amb algú, podeu suprimir la còpia de la seva clau GnuPG del vostre ordinador mitjançant claus i claus. També podeu suprimir definitivament una clau de propietat sempre que no s&#39;hagi publicat mai en un servidor de claus. La supressió d&#39;una clau GnuPG elimina la clau pública i la secreta.
+Per eliminar una clau:
+Seleccioneu la clau. (Potser haureu de mostrar totes les tecles amb ViewShow qualsevol)
+Feu clic amb el botó dret i trieu Suprimeix. També podeu seleccionar Edita suprimeix per suprimir la clau.
+Quan suprimiu una clau de GnuPG publicada en un servidor de claus, només suprimireu la clau del clauer GnuPG perquè encara hi haurà una còpia de la clau pública en algun servidor de claus.
+Si suprimiu la vostra clau GnuPG, això significa que la vostra clau privada es suprimirà definitivament, tot i que la vostra clau pública encara es pot recuperar d&#39;un servidor de claus i us serveix per xifrar-vos missatges que no podreu llegir. Per evitar que s’utilitzi aquesta clau, recupereu i revogueu la clau. La clau revocada es pot sincronitzar amb un servidor de claus per evitar que la gent la pugui recuperar i utilitzar.
+Al nou quadre de diàleg, confirmeu la supressió marcant la casella de verificació Comprem que aquesta clau secreta serà eliminada definitivament i premeu el botó Elimina per acabar.
+Avanceu o ajorneu la data de caducitat de les vostres claus.
+Canvieu la data de caducitat de les vostres claus
+Si la vostra clau PGP ha caducat, però voleu continuar utilitzant-la, podeu canviar la data de caducitat. També podeu canviar la configuració de caducitat perquè la clau caduca una data anterior.
+Per canviar la data de caducitat d&#39;una clau PGP:
+Feu clic amb el botó dret a la tecla seleccionada i seleccioneu Propietats.
+Per canviar la data de caducitat de la tecla mestra, premeu el botó petit amb la imatge d’un calendari al costat de Caduca, a la part dreta del quadre de diàleg. A continuació, podeu seleccionar la nova data de caducitat del calendari.
+Per canviar la data de caducitat d&#39;una subclave, expandiu el tauler Subkeys i seleccioneu la subclau de la llista. Premeu el botó Expira a l&#39;esquerra del tauler i seleccioneu la nova data de caducitat.
+Si canvieu la data de caducitat d&#39;una clau publicada, heu de sincronitzar la clau amb el servidor de claus després de fer els canvis desitjats.
+Encara puc fer servir? Es poden canviar les dates de caducitat?
+Què passa si la meva clau caduca?
+Quan la vostra clau caduca es converteix en no vàlida. Això vol dir:
+Ja no es pot utilitzar per xifrar i desxifrar missatges.
+No pot signar altres claus ni rebre signatures d&#39;altres claus.
+Segons el temps que voleu que la vostra clau sigui vàlida, podeu establir una data de caducitat. De manera predeterminada, Contrasenyes i claus estableix que totes les claus siguin vàlides per a sempre. És a dir, les claus no caduquen mai.
+La data de caducitat d&#39;una clau es pot canviar en qualsevol moment, fins i tot després de la caducitat de la clau. Tanmateix, si voleu deixar d’utilitzar la clau caducada, haureu de suprimir-la o revocar-la.
+Si teniu missatges xifrats amb una clau caducada, heu de canviar la data de caducitat de la clau per desxifrar aquests missatges abans de suprimir-la o revocar-la.
+Exporteu les vostres claus PGP públiques i privades per emmagatzemar-les en fitxers de claus.
+Exporta les claus PGP
+Exporteu el contingut de les vostres claus PGP i emmagatzeneu-los en fitxers de claus, per tenir una còpia de seguretat de les vostres claus o compartir la vostra clau pública amb algú.
+Per exportar la vostra clau PGP pública
+Seleccioneu la clau de tecla GnuPG del tauler lateral esquerre.
+Seleccioneu la llista PGP personal que cal exportar de la llista.
+Feu clic amb el botó dret a la clau i seleccioneu Exporta ...
+Per emmagatzemar les claus en el format ASCII, seleccioneu les tecles PGP blindades al menú situat al damunt del botó Exportar.
+Trieu una ubicació per al fitxer de claus i premeu Exportar per acabar.
+Per exportar la vostra clau de PGP privada
+Feu clic amb el botó dret a la tecla seleccionada i seleccioneu Propietats detallades.
+Premeu el botó Exportar.
+Importa les claus dels fitxers de claus a les contrasenyes i claus.
+Importa les claus PGP
+Si heu rebut un fitxer clau per correu electrònic, potser voldreu importar-lo a Contrasenyes i claus. En la majoria dels casos, les contrasenyes i les claus importen automàticament claus PGP des del vostre ordinador. També podeu importar manualment una clau concreta, si ja no s’ha importat.
+Com importo manualment una clau?
+Seleccioneu Importa del fitxer ... de la llista.
+Al quadre de diàleg nou, seleccioneu la clau que voleu importar. Les tecles PGP acaben amb pgp o asc, les tecles GPG acaben amb gpg.
+Feu clic a Obrir.
+Un cop importades, les claus PGP i GPG es mostren a les claus GnuPG.
+Incloeu una identificació de foto amb les vostres claus existents perquè la gent les pugui identificar fàcilment.
+Adjunteu una foto a la vostra clau
+Podeu adjuntar una identificació de foto a les vostres claus PGP per tal que tothom pugui verificar la propietat de les vostres claus després de mirar-la. Tot i que una clau amb una foto adjunta proporcionarà un nivell de seguretat una mica millor que una clau sense cap foto, comprovar la foto sobre una clau no és tan segur com comprovar l’empremta digital de la clau perquè qualsevol que tingui les seves fotos pot crear una clau amb la seva ID de la foto mentre no es pot imitar l&#39;empremta digital de la clau.
+A diferència de les restriccions en GPG, l&#39;ID de fotos que voleu penjar no ha de ser en el format JPEG. Contrasenyes i claus us permet carregar la vostra foto a png, jpg i diversos altres formats d&#39;imatge comuns.
+Per connectar una identificació de foto a una clau PGP:
+Seleccioneu la clau PGP.
+Feu clic amb el botó dret a la tecla escollida i seleccioneu Propietari propietats.
+Premeu el botó marcat amb un + a la part esquerra per afegir una foto.
+Seleccioneu la foto del vostre ordinador.
+Feu clic a Tanca per acabar.
+Les fotografies que seleccioneu han de tenir una mida petita, preferiblement d’uns 120 per 150 píxels. Com que un identificador de foto sempre està unit a la seva clau, una foto gran augmentarà la mida de la clau i retardarà totes les operacions que utilitzin la clau. Contrasenyes i claus redimensiona les fotos grans a la mida òptima després de demanar-ne la confirmació.
+Aruna
+Publica les teves claus públiques en servidors clau o exporta-les i envia-les als teus amics.
+Compartiu les vostres claus públiques
+Si voleu que la gent us enviï una comunicació xifrada, heu de compartir la vostra clau GnuPG amb ells. Per compartir la vostra clau amb algunes persones seleccionades, exporteu-la i envieu-la per correu electrònic el fitxer clau. Per permetre que algú recuperi i utilitzi la vostra clau pública, publiqui-la en un servidor de claus.
+Com publico la meva clau en un servidor de claus?
+De la llista, seleccioneu la clau PGP personal que voleu publicar.
+Seleccioneu Remote Sync i publicar les claus ...
+Premeu el botó Servidors de claus per veure la llista de servidors de claus en què podeu publicar la vostra clau pública.
+Per publicar la clau en un servidor de claus, seleccioneu el servidor de claus del menú Publicar les claus al menú.
+Premeu Tancar per tornar al quadre de diàleg anterior.
+Premeu Sync per acabar.
+Heu d’estar connectat a Internet mentre publiqueu les vostres claus.
+Què és un servidor de claus?
+Els servidors clau són ordinadors que emmagatzemen còpies de claus de xifratge públic que se&#39;ls envien i comparteixen aquestes còpies amb altres servidors clau a través d&#39;Internet.
+Si voleu enviar un missatge xifrat urgent a algú, però no teniu la seva clau, podeu recuperar la seva clau d’un servidor de claus remot.
+Recupereu les tecles remotes
+Podeu recuperar la clau GnuPG pública d’algú d’Internet i emmagatzemar-la a Contrasenyes i claus.
+Per recuperar una clau remota:
+Seleccioneu les tecles remotes de cerca remota ...
+Introduïu informació sobre la clau que voleu recuperar al camp indicat. Detalls com l&#39;ID de clau o l&#39;adreça de correu electrònic del propietari de la clau proporcionen resultats més precisos que el nom del propietari de la clau.
+Premeu el botó Cerca.
+A la llista de resultats de la cerca, seleccioneu la clau que voleu importar, feu clic amb el botó dret sobre ella i seleccioneu Importa. De forma alternativa, també podeu prémer el botó Importar present a la part superior del quadre de diàleg després de seleccionar la tecla.
+La clau importada apareixerà a la clau de claus GnuPG.
+Si no veieu la clau recuperada, seleccioneu ViewShow qualsevol.
+Si voleu més informació sobre una clau, abans d’importar-la, seleccioneu-la i premeu el botó de propietats que es troba a la part superior del quadre de diàleg. També podeu fer clic dret sobre la tecla i seleccionar Propietats. S’obrirà una finestra nova que mostra informació com la clau d’identificació, l’empremta digital de la clau, el nivell de confiança, el nom del propietari, etc.
+Si confieu en una clau, podeu signar-la.
+Claus de signe
+Per demostrar que confieu i voleu per la genuïnitat de la clau d&#39;algú, podeu signar-la. La clau d’una persona només s’ha de signar després de comparar l’ID d’usuari de la clau amb una prova vàlida de la seva identitat, com ara un passaport, un permís de conduir o similar. Si els dos identificadors coincideixen, es diu que la clau és fiable.
+Per signar una clau:
+Importeu la clau remota o el fitxer de claus que conté la clau per iniciar la sessió a les claus de contrasenya i claus.
+A la llista de claus GnuPG, seleccioneu la clau importada.
+Feu clic amb el botó dret a la clau i seleccioneu PropertiesTrust.
+Premeu el botó Signar aquesta tecla.
+Depenent de quina atenció heu marcat la clau, escolliu-ne una de No, de manera casual o molt acurada.
+Decidiu si voleu revocar la vostra signatura en una data posterior i si voleu fer-la pública, si heu marcat les caselles de verificació indicades.
+Quan teniu més d&#39;una clau PGP, seleccioneu la clau amb la qual voleu signar, a la llista al costat del signador.
+Premeu el botó Signar per acabar.
+Puc signar les meves pròpies claus?
+Quan creeu una nova clau de GnuPG, la signarà automàticament. Qualsevol subconjunt nou creat mitjançant una clau GnuPG, també es signarà automàticament.
+Una subclave sempre està lligada a una clau mestra en un paràmetre PGP. S&#39;utilitza per a encriptació.
+Què és una subclave?
+Tot i que és molt important mantenir les teves claus, pot resultar força tediós fer-ho quan tingueu moltes claus. Contrasenyes i claus proporciona una solució senzilla a la seguretat de les claus mitjançant l’ús de les claus subjecció per a la signatura i el xifrat.
+Sempre que creeu una nova clau de xifrat públic, es genera un paràmetre de claus en lloc d’una sola clau. Aquesta pausa de claus consisteix en una clau principal, també anomenada clau mestra i una subclave. Una clau mestra es pot utilitzar per crear subkeys addicionals que s&#39;enllacen amb ella.
+Què fa cada clau d&#39;una paràmetre clau?
+La clau mestra s&#39;utilitza per signar altres claus, crear subkeys i revocar subkeys. Cal que la vostra clau mestra sigui molt segura. També es recullen signatures de confiança a la vostra clau mestra. Si la clau mestra està compromesa, no podreu revocar-la i totes les subcartes adjuntes.
+La subclau predeterminada s&#39;utilitza per xifrar i desxifrar missatges. Es poden crear subkeys addicionals per signar. Tot i que és important que les vostres subclaus es mantinguin segures, sempre podeu revocar una subclave si està compromesa i crear-ne una de nova amb la clau mestra original.
+Més sobre subkeys
+Sincronitzeu la informació present a la vostra clau local amb la clau corresponent en un servidor de claus.
+Sincronitza les teves claus
+Les claus PGP del clauer s’han de sincronitzar amb un servidor de claus per assegurar-se que els canvis que es facin a la clau del servidor de claus, com una nova signatura, s’actualitzin a la vostra còpia local de la clau. De la mateixa manera, quan canvieu informació de la vostra còpia de clau local, com la data de caducitat, o quan sigueu la clau d&#39;algú, hauríeu de sincronitzar les tecles per actualitzar els canvis de la còpia remota de la clau. Per sincronitzar les teves, necessiteu una connexió a Internet que funcioni.
+Com puc sincronitzar una clau?
+Seleccioneu la clau PGP que voleu sincronitzar.
+Feu clic al botó Sincronitza per sincronitzar la vostra clau.
+Per què no es pot fer clic el botó Sync?
+Només es poden sincronitzar les claus PGP publicades en un servidor de claus. Si el botó Sync no es pot fer clic, comproveu si la clau s&#39;ha publicat en un servidor de claus. En cas de sincronitzar les vostres pròpies claus, publiqueu-les abans de sincronitzar-les.
+El fet de tenir molts identificadors d’usuari us ajuda a utilitzar la mateixa clau per comunicar-vos amb persones diferents.
+Afegiu identificadors d’usuari addicionals a una clau
+Una clau pot tenir diversos identificadors d’usuari. Això és útil quan voleu utilitzar la mateixa clau mentre us comuniqueu amb diverses persones i una d’elles no reconeix, per exemple, l’adreça de correu electrònic del vostre identificador d’usuari. És possible que aquesta persona no vulgui importar la vostra clau pública, ja que conté informació que desconeix. En aquests escenaris, si no voleu crear una nova clau amb un identificador d&#39;usuari diferent, podeu adjuntar un nou identificador d&#39;usuari a la clau existent.
+Per afegir un identificador d&#39;usuari addicional:
+A la llista, seleccioneu la clau PGP personal que trieu.
+Feu clic amb el botó dret sobre la tecla i seleccioneu Noms i signatures de les propietats.
+Feu clic al botó Afegeix nom per afegir un nou identificador d&#39;usuari.
+Al quadre de diàleg nou, completeu detalls com ara Nom complet, Adreça de correu electrònic i Comentari clau per al nou ID d’usuari.
+Introduïu la contrasenya correcta i feu clic a D&#39;acord per acabar.
+El vostre nou identificador d&#39;usuari ara es mostrarà al tauler de noms i signatures.
+Si la vostra clau s&#39;ha publicat en un servidor de claus, sincronitzeu-la després d&#39;afegir nous ID d&#39;usuari per actualitzar la còpia remota de la clau.
+Canvieu l&#39;identificador d&#39;usuari predeterminat
+Què és un identificador d’usuari principal?
+Quan teniu diversos identificadors d’usuari, un dels identificadors d’usuari es fa l’ID d’usuari principal. Les contrasenyes i les claus s&#39;adjuntaran per defecte l&#39;ID d&#39;usuari principal amb la informació de la clau, mentre es xifren o es signen, tret que es faci una altra explicació.
+Per canviar l&#39;ID d&#39;usuari principal en una clau PGP:
+Seleccioneu la clau PGP personal de la llista.
+Feu clic amb el botó dret a la tecla seleccionada i seleccioneu Propietats noms i signatures.
+Seleccioneu el nou identificador d&#39;usuari principal de la llista i feu clic a Primària.
+L&#39;identificador d&#39;usuari es desplaçarà a la part superior de la llista de noms i signatures per convertir-se en el vostre ID d&#39;usuari principal.
+Sincronitzeu les vostres claus després de canviar l’identificador d’usuari principal per actualitzar les còpies remotes de la vostra clau.
+Elimineu els identificadors d’usuari addicionals
+Aparteu un identificador d’usuari d’una clau
+Si bé és fonamental que totes les claus tinguin almenys un identificador d’usuari, podeu suprimir els ID d’usuari addicionals que heu adjuntat a la clau.
+Per eliminar un identificador d&#39;usuari d&#39;una clau PGP:
+Feu clic amb el botó dret a la clau seleccionada i trieu Noms i signatures de les propietats.
+Seleccioneu l&#39;ID d&#39;usuari que voleu suprimir i feu clic a Suprimeix.
+Sincronitzeu les vostres claus després de desmarcar l&#39;ID d&#39;usuari per actualitzar els canvis de la còpia remota de la clau.
+Creeu claus amb un bon ID d’usuari i aprengueu a afegir i a eliminar els ID d’usuari.
+Què és un identificador d’usuari?
+Quan creeu una clau, proporcioneu detalls, com ara el vostre nom, correu electrònic i una descripció de la clau. Aquesta informació en conjunt constitueix un identificador d’usuari. Un bon identificador d’usuari ajuda les persones a reconèixer la vostra clau quan intenten recuperar-la o importar-la. És important omplir informació autèntica mentre es crea el vostre identificador d’usuari.
+Afegiu, elimineu els ID d’usuari
+Utilitzeu les tecles SSH per iniciar la sessió a un altre equip sense introduir una contrasenya.
+Connexió a altres equips
+Podeu utilitzar contrasenyes i claus per instal·lar la vostra clau SSH en un equip remot que pugui executar un servidor SSH. També podeu configurar la vostra clau SSH per iniciar la sessió remota mentre creeu la clau.
+Feu clic amb el botó dret a la clau SSH i seleccioneu Configuració de la clau per a la seguretat de Shell ...
+A la finestra de diàleg que s’obre, introduïu l’adreça del servidor que normalment utilitzeu per iniciar la sessió a l’ordinador remot mitjançant SSH i premeu Configuració.
+Ara el programa intentarà connectar-se a l’adreça del servidor especificada amb el nom d’inici de sessió introduït. Si hi ha algun problema per accedir a l’ordinador remot, apareixerà una finestra emergent que explica el problema i podeu tornar-ho a provar. Assegureu-vos que teniu una connexió de xarxa i que l&#39;ordinador remot estigui engegat i accessible.
+Si la connexió amb l’ordinador remot ha tingut èxit, apareixerà un quadre de diàleg que demana la contrasenya que utilitzeu per iniciar la sessió a l’ordinador remot. Introduïu la vostra contrasenya i premeu D&#39;acord.
+Ara haureu de poder iniciar la sessió a l’ordinador remot mitjançant SSH sense contrasenya.
+Creeu claus SSH per iniciar la sessió a altres equips.
+Creeu una nova clau SSH
+Una clau SSH us ajudarà a crear una connexió segura entre ordinadors. La creació d&#39;una clau SSH crea una clau pública i privada. A continuació, es mostra com crear una clau nova:
+Seleccioneu la clau de seguretat segura de la llista.
+Introduïu una descripció de la clau. La descripció de la clau us ajudarà a identificar la clau més endavant. Per exemple, podeu introduir la data del dia, alguna cosa sobre com s’utilitzarà la clau o el nom del servidor on voleu instal·lar la clau. El camp de descripció és opcional, i la vostra manera de descriure la clau us correspon.
+També podeu canviar la configuració predeterminada del tipus de xifrat o de la intensitat de la clau.
+En aquest moment, només podeu crear la vostra clau, o crear la clau i instal·lar-la en un equip remot per habilitar l’inici de sessió sense contrasenya.
+Creeu la vostra clau i no configureu l’inici de sessió remota
+Podeu crear la clau SSH i triar-la després.
+Premeu el botó Només crear.
+Escriviu una frase de contrasenya per a la vostra clau SSH i premeu D&#39;acord.
+Torneu a escriure la frase de contrasenya i premeu OK per acabar.
+La clau SSH ara apareixerà a la clau de claus OpenSSH.
+Quan intenteu utilitzar la vostra clau SSH, el sistema operatiu us demanarà la frase de contrasenya que s&#39;utilitza durant la creació. Això garanteix que si algú té accés a la vostra clau SSH, no la pot utilitzar sense la paraula de contrasenya.
+Creeu la vostra clau i instal·leu-la en un equip remot
+Una de les coses més útils sobre tenir una clau SSH és que podeu instal·lar la clau pública en un equip remot. Si ho fa, permet iniciar sessió en un equip remot amb SSH sense necessitat d’introduir la contrasenya cada vegada.
+Premeu el botó Crear i configurar i seguiu les instruccions anteriors per introduir una frase de contrasenya.
+A la finestra de diàleg que s&#39;obre, introduïu l&#39;adreça del servidor que normalment utilitzeu per iniciar sessió a l&#39;ordinador remot mitjançant SSH.
+Assegureu-vos que el nom d’inici de sessió que utilitzeu a l’ordinador remot sigui correcte i premeu Configuració.
+La part pública de la clau SSH seleccionada ara s’instal·larà a l’ordinador remot i es configurarà per permetre l’inici de sessió SSH sense contrasenya. Ara haureu de poder iniciar la sessió a l’ordinador remot mitjançant SSH sense contrasenya.
+Si falla l’autenticació de clau SSH i no podeu utilitzar l’autenticació de contrasenya, poseu-vos en contacte amb l’administrador del servei per obtenir més ajuda.
+Exporteu les vostres claus SSH públiques i privades per emmagatzemar-les en fitxers de claus.
+Exporta claus SSH
+Exporta el contingut de les teves claus SSH i emmagatzema-les en fitxers de claus, per tenir una còpia de seguretat de les teves claus o compartir la teva clau pública amb algú.
+Per exportar la vostra clau de SSH pública:
+Seleccioneu la clau de tecla OpenSSH del tauler lateral esquerre.
+Seleccioneu la llista personal de SSH que cal exportar de la llista.
+Premeu el botó Exportar per desar la clau pública exportada al vostre ordinador.
+Per exportar la vostra clau privada de SSH:
+Feu clic amb el botó dret a la tecla seleccionada i seleccioneu Propietats.
+Premeu el botó Exportar per desar la clau privada exportada a l’ordinador.
+Mantingueu el fitxer de clau privada exportat en un lloc segur, ja que el contingut del fitxer s&#39;ha de mantenir privat, per evitar el mal ús de la vostra clau.
+Importeu les claus SSH de fitxers de claus a Claus i contrasenyes.
+Importa les claus SSH
+Si heu rebut un fitxer clau per correu electrònic, potser voldreu importar-lo a Contrasenyes i claus. En la majoria dels casos, les contrasenyes i les claus importen automàticament claus SSH del directori /.ssh del vostre equip. També podeu importar manualment claus a Contrasenyes i claus.
+Al quadre de diàleg nou, seleccioneu la clau que voleu importar. Les claus SSH públiques finalitzen amb .pub.
+Les claus importades s&#39;agrupen automàticament segons el seu tipus. Per tant, les claus SSH es mostren a la secció de claus OpenSSH.
+Els subkeys addicionals asseguren la vostra clau mestra més segura.
+Afegiu subtítols addicionals
+Podeu afegir subconjunts addicionals a la mateixa clau mestra. Heu de triar la subclave adequada cada vegada que vulgueu xifrar o signar quan ho feu.
+Per afegir subconjunts addicionals a una clau PGP:
+Si el plafó Subkeys no s&#39;amplia, amplieu-lo.
+Feu clic al botó Afegeix per afegir una nova subclave.
+Trieu les propietats adequades per a la vostra clau seleccionant el tipus de clau, la longitud de la clau i la data de caducitat i feu clic a D&#39;acord.
+Assegureu-vos sempre que la vostra subclau caduca abans de la vostra clau mestra, ja que una subclave és inútil quan ha caducat la seva clau mestra.
+Consulteu totes les subcartes enumerades amb una clau PGP.
+On es llisten les meves subratlles?
+Podeu consultar el contingut d’una paràmetre clau per veure les propietats d’una subclave.
+Per veure totes les subcartes en una clau PGP:
+Seleccioneu les tecles GnuPG al tauler lateral esquerre.
+Seleccioneu la clau PGP personal.
+Feu clic amb el botó dret sobre la tecla escollida al pas anterior i seleccioneu Propietats detallades.
+Totes les subcartes de la clau PGP seleccionada apareixen a la llista del tauler.
+Mentre sigueu una altra clau, Contrasenyes i claus tria automàticament la clau mestra per signar-la, quan seleccioneu una clau de claus GnuPG per signar-la.
+Revoca una subclave que s&#39;ha vist compromesa o que no s&#39;està utilitzant.
+Revoca les teves subratlles
+Si la vostra subclave s’ha vist compromesa o ja no s’utilitza, pot ser una bona idea revocar-la per evitar un mal ús de la clau.
+Per revocar una subclave:
+Desplaceu-vos al tauler Subkeys.
+Seleccioneu la subclave de la llista i premeu el botó Revoca.
+Al quadre de diàleg nou, seleccioneu un motiu per revocar la clau. Opcionalment, descriviu la vostra raó amb més detall al camp Descripció.
+Premeu el botó Revoca.
+Haureu de desbloquejar la clau amb la seva frase de contrasenya.
+L’estat de la subclave canvia a Revocat al tauler Subkeys.
+Si heu publicat la vostra subclave, heu de sincronitzar-la amb els servidors de claus després de revocar-la per aplicar la revocació a totes les còpies de la clau.
