@@ -61,10 +61,20 @@ def read_parameters():
         help='TXT File to translate'
     )
 
+    parser.add_option(
+        '-t',
+        '--translated-file',
+        type='string',
+        action='store',
+        dest='translated_file',
+        default='translated.txt',
+        help='Name of the translated file'
+    )
+
     (options, args) = parser.parse_args()
     if options.txt_file is None:  # if filename is not given
         parser.error('TXT file not given')
-    return options.model_name, options.txt_file
+    return options.model_name, options.txt_file, options.translated_file
 
 def main():
 
@@ -73,12 +83,11 @@ def main():
 
     print("Applies a OpenNMT model to translate a TXT file")
     print("Requieres run-model-server.sh to be executed first")
-    model_name, input_filename = read_parameters()
-    target_filename = "translated.txt"
+    model_name, input_filename, translated_file = read_parameters()
     target_filename_review = "translated-review.txt"
 
     openNMT = OpenNMT()
-    with open(input_filename, 'r') as tf_en, open(target_filename, 'w') as tf_ca, open(target_filename_review, 'w') as tf_ca_review:
+    with open(input_filename, 'r') as tf_en, open(translated_file, 'w') as tf_ca, open(target_filename_review, 'w') as tf_ca_review:
         en_strings = tf_en.readlines()
     
         translated = 0
@@ -98,7 +107,7 @@ def main():
 
             translated = translated + 1
             tf_ca.write("{0}\n".format(tgt))
-            tf_ca_review.write("{0} - {1}\n".format(src, tgt))
+            tf_ca_review.write("{0}\n{1}\n\n".format(src, tgt))
             logging.debug('Source: ' + str(src))
             logging.debug('Target: ' + str(tgt))
 

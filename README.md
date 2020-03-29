@@ -8,6 +8,7 @@ This repository contains Neural Machine Translation tools and models built at So
 * *serving*: contains a microservice that provides a basic transtion API calling TensorFlow serving.
 * *use-models-tools*: contains tools to use the models to translate text files or PO files
 * *evaluate*: set of tools and corpus to evaluatate diferent translation systems
+* *quality*: set of corpus to evaluate the quality of the 'eng-cat' model only
 
 
 # Models
