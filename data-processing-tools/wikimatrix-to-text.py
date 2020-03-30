@@ -18,18 +18,7 @@
 # Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA 02111-1307, USA.
 
-import json
-import polib
-import re
-import os
-import fnmatch
-
     
-def clean_string(text):
-    text = re.sub('[_&~]', '', text)
-    text = re.sub('<[^>]*>', '', text) # Remove HTML tags
-    return text
-
 def main():
 
     print("Wikimatrix to text")
