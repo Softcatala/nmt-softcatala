@@ -32,6 +32,11 @@ class OpenNMT():
         self.model_name = None
         self.channel = None
         self.stub = None
+        self._server = 'localhost:8500'
+
+    @property
+    def server(self):
+        return self._server
 
     def _pad_batch(self, batch_tokens):
         lengths = [len(tokens) for tokens in batch_tokens]
@@ -80,7 +85,7 @@ class OpenNMT():
 
     def translate(self, model_name, text):
         self.model_name = model_name
-        self.channel = grpc.insecure_channel("%s:%d" % ('localhost', 8500))
+        self.channel = grpc.insecure_channel(self._server)
         self.stub = prediction_service_pb2_grpc.PredictionServiceStub(self.channel)
         translated = self._translate_sentence(text)
         return translated

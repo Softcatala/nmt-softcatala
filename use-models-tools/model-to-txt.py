@@ -80,13 +80,13 @@ def main():
 
     start_time = datetime.datetime.now()
     init_logging(True)
+    openNMT = OpenNMT()
 
     print("Applies a OpenNMT model to translate a TXT file")
-    print("Requieres run-model-server.sh to be executed first")
+    print("Requieres a TensorFlow server answeering '{0}'".format(openNMT.server))
     model_name, input_filename, translated_file = read_parameters()
     target_filename_review = "translated-review.txt"
 
-    openNMT = OpenNMT()
     with open(input_filename, 'r') as tf_en, open(translated_file, 'w') as tf_ca, open(target_filename_review, 'w') as tf_ca_review:
         en_strings = tf_en.readlines()
     
