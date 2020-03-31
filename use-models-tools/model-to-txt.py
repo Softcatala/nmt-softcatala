@@ -47,14 +47,14 @@ def read_parameters():
         '--model_name',
         type='string',
         action='store',
+        default='eng-cat',
         dest='model_name',
-        default='1532515736',
         help='Model name'
     )
 
     parser.add_option(
         '-f',
-        '--po-file',
+        '--txt-file',
         type='string',
         action='store',
         dest='txt_file',
@@ -67,13 +67,16 @@ def read_parameters():
         type='string',
         action='store',
         dest='translated_file',
-        default='translated.txt',
         help='Name of the translated file'
     )
 
     (options, args) = parser.parse_args()
-    if options.txt_file is None:  # if filename is not given
+    if options.txt_file is None:
         parser.error('TXT file not given')
+
+    if options.translated_file is None:
+        parser.error('Translate file not given')
+
     return options.model_name, options.txt_file, options.translated_file
 
 def main():
@@ -82,7 +85,7 @@ def main():
     init_logging(True)
     openNMT = OpenNMT()
 
-    print("Applies a OpenNMT model to translate a TXT file")
+    print("Applies an OpenNMT model to translate a TXT file")
     print("Requieres a TensorFlow server answeering '{0}'".format(openNMT.server))
     model_name, input_filename, translated_file = read_parameters()
     target_filename_review = "translated-review.txt"
