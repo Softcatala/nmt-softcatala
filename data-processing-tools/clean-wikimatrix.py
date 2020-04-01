@@ -19,7 +19,7 @@
 # Boston, MA 02111-1307, USA.
 
 import datetime
-from langua import Predict
+from langdetect import detect
     
 def main():
 
@@ -56,9 +56,8 @@ def main():
             trg = source_ca_lines[i]
 
             try:
-                p = Predict()
-                source_lang = p.get_lang(src)
-                target_lang = p.get_lang(trg)
+                source_lang = detect(src)
+                target_lang = detect(trg)
 
             except Exception as e:
                 print("Error:" + str(e))
@@ -71,9 +70,8 @@ def main():
                 discarded = discarded + 1
                 continue
 
-            if i % 5000 == 0:
+            if i % 100000 == 0:
                 print("{0} ({1:.2f}%)".format(i, 100 * i / len_source_en_lines))
-                break
                 
             tf_clean_en_file.write("{0}".format(src))
             tf_clean_ca_file.write("{0}".format(trg))

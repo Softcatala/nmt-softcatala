@@ -10,6 +10,7 @@ RUN pip3 install --upgrade pip
 RUN pip3 install --upgrade setuptools
 
 ENV PORT 8700
+EXPOSE $PORT
 
 RUN mkdir -p /srv
 
