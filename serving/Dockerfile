@@ -15,6 +15,7 @@ EXPOSE $PORT
 RUN mkdir -p /srv
 
 COPY models/eng-cat/1/assets/*.model  /srv/
+COPY models/eng-cat/1/assets/*.model  /srv/model_description.txt
 COPY serving/*.py /srv/
 COPY serving/requirements.txt /srv/
 COPY serving/docker/entry-point.sh /srv/

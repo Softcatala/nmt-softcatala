@@ -46,6 +46,17 @@ def translate_api():
     result['time'] = str(datetime.datetime.now() - start_time)
     return json_answer(json.dumps(result, indent=4, separators=(',', ': ')))
 
+@app.route('/version/', methods=['GET'])
+def version_api():
+
+    with open("model_description.txt", "r") as th_description:
+        lines = th_description.read().splitlines()
+
+    result = {}
+    result['version'] = lines
+    return json_answer(json.dumps(result, indent=4, separators=(',', ': ')))
+
+
 def json_answer(data):
     resp = Response(data, mimetype='application/json')
     resp.headers['Access-Control-Allow-Origin'] = '*'
