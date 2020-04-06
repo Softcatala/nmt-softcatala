@@ -1,13 +1,13 @@
 
-# Translation memories memories
-#python3 ../../data-processing-tools/po-to-text.py -f raw/tots-tm.po
-#mv -f src.txt preprocessed/tots-tm.en
-#mv -f tgt.txt preprocessed/tots-tm.ca
+# Translation memories
+python3 ../../data-processing-tools/po-to-text.py -f raw/tots-tm.po
+mv -f src.txt preprocessed/tots-tm.en
+mv -f tgt.txt preprocessed/tots-tm.ca
 
 # Remove * from Apertium
-#sed  's/*//g' raw/europarl.en-ca.ca.raw > preprocessed/europarl.en-ca.ca
+sed  's/*//g' raw/europarl.en-ca.ca > preprocessed/europarl.en-ca.ca
 
-#
+# Generate Wikimatrix from sources
 python3 ../../data-processing-tools/wikimatrix-tsv-to-text.py \
   --tsv raw/WikiMatrix.ca-en.tsv.gz \
   --bitext WikiMatrix.en-ca.txt \
