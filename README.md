@@ -17,14 +17,19 @@ This repository contains Neural Machine Translation tools and models built at So
 
 We have created the following models:
 
-* Model SC (https://gent.softcatala.org/jmas/files/model-sc-2020-03-29-1585459573.zip)
-  * This model is build using Softcatalà translations only (all source files are at training-sets/sc)
+* Softcatalà memories model (https://www.softcatala.org/pub/softcatala/opennmt/models/sc-memories-2020-03-29.zip)
+  * This model is build using Softcatalà translations only
   * Total number of sentences: 195532
   * replace_unknown_target: yes
   * model: Transformer
   * Tokenizer: SentencePiece
   * BLEU = 43.24
   * Default if no specified otherwise
+
+The corpus used to train this model can be obtain from the trainings-sets directory executing these scripts:
+
+* *get.sh* gets all the raw files
+* *preprocess.sh* that does the necessary preprocessing of the data
 
 # Serving the models in local (non-production environments)
 
