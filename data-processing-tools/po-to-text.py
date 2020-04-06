@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2018 Jordi Mas i Hernandez <jmas@softcatala.org>
+# Copyright (c) 2018-2020 Jordi Mas i Hernandez <jmas@softcatala.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -20,6 +20,7 @@
 
 import polib
 import re
+from optparse import OptionParser
 
 def _remove_accelerators(result):
     CHARS = (
@@ -32,24 +33,20 @@ def _remove_accelerators(result):
     return result.strip()
 
 def _remove_tags(text):
-    clean = re.sub("<[^>]*>","", text)
+    clean = re.sub("<[^>]*>", "", text)
     return clean
 
 def _is_invalid(src, trg):
     if len(src) < 2 or len(trg) < 2:
-        #print('Discard:' + entry.msgid + "->" + entry.msgstr)
         return True
 
     if '\n' in src or '\n' in trg:
-        #print('Discard:' + entry.msgstr)
         return True
 
     if '%' in src or '%' in trg:
-        #print('Discard:' + entry.msgstr)
         return True
 
     return False
-
 
 def split_in_six_files(po_file):
 
@@ -135,16 +132,42 @@ def split_in_two_files(po_file):
 
     print("Pairs: " + str(pairs))
 
+def read_parameters():
+    parser = OptionParser()
+
+    parser.add_option(
+        '-f',
+        '--po-file',
+        type='string',
+        action='store',
+        dest='po_file',
+        help='PO File to convert to Text'
+    )
+
+    parser.add_option(
+        '-6',
+        '--six',
+        action="store_false",
+        dest='two_files',
+        default='true',
+        help='By default generates 2 files (src & tgt) to be later added to other corpus or 6 files in this the target corpus for a training'
+    )
+
+    (options, args) = parser.parse_args()
+    if options.po_file is None:
+        parser.error('PO file not given')
+
+    return options.po_file, options.two_files
+
 
 def main():
 
     print("Converts from PO to OpenNMT text files sets")
 
-    po_file = 'softcatala-tm.po'
-    twoFiles = True
-    print("Reading {0} and generating two files {1}".format(po_file, twoFiles))
+    po_file, two_files = read_parameters()
+    print("Reading '{0}' and generating two files '{1}'".format(po_file, two_files))
 
-    if twoFiles:
+    if two_files:
         split_in_two_files(po_file)
     else:
         split_in_six_files(po_file)
