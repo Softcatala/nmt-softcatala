@@ -1,0 +1,16 @@
+source_files:
+    - preprocessed/tots-tm.en
+    - preprocessed/WikiMatrix.en-ca.txt.en
+    - raw/globalvoices-en.txt
+    - raw/europarl.en-ca.en
+    - raw/OpenSubtitles2018.en-ca.en
+    - raw/tedtalks.en-ca.en
+
+target_files:
+    - preprocessed/tots-tm.ca
+    - preprocessed/WikiMatrix.en-ca.txt.ca
+    - raw/globalvoices-ca.txt
+    - preprocessed/europarl.en-ca.ca
+    - raw/OpenSubtitles2018.en-ca.en
+    - raw/tedtalks.en-ca.en
+
