@@ -20,16 +20,49 @@
 
 import datetime
 from langdetect import detect
+from optparse import OptionParser
+
+def read_parameters():
+    parser = OptionParser()
+
+    parser.add_option(
+        '-s',
+        '--source-pattern',
+        type='string',
+        action='store',
+        dest='source_pattern',
+        help='Source pattern for input file'
+    )
+
+    parser.add_option(
+        '-t',
+        '--target-pattern',
+        type='string',
+        action='store',
+        dest='target_pattern',
+        help='Target pattern for output file'
+    )
+    (options, args) = parser.parse_args()
+    if options.source_pattern is None:
+        parser.error('Source pattern file not given')
+
+    if options.target_pattern is None:
+        parser.error('Target pattern file not given')
+
+    return options.source_pattern, options.target_pattern
+
     
 def main():
 
-    print("Wikimatrix corpus clean up. Removes non Catalan strings")
+    print("Wikimatrix corpus clean up. Removes source non-English and target non Catalan strings")
+
+    source_pattern, target_pattern = read_parameters()
 
     start_time = datetime.datetime.now()
-    source_en_file = 'input/WikiMatrix.en-ca.txt.en'
-    source_ca_file = 'input/WikiMatrix.en-ca.txt.ca'
-    clean_en_file = 'clean/wikimatrix-en.txt'
-    clean_ca_file = 'clean/wikimatrix-ca.txt'
+    source_en_file = source_pattern + '.en'
+    source_ca_file = source_pattern + '.ca'
+    clean_en_file = target_pattern + '.en'
+    clean_ca_file = target_pattern + '.ca'
     log_file = 'wikimatrix.log'
 
     strings = 0
