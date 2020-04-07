@@ -99,7 +99,7 @@ def append_lines_from_file(src_filename, trg_file):
             trg_file.write(line)
             line = tf.readline()
 
-    print("Appended {0} to {1}".format(lines, src_filename))
+    print("Appended {0} lines from {1}".format(lines, src_filename))
     return lines
 
 def read_configuration():
@@ -140,7 +140,7 @@ def join_multiple_sources_and_target_into_two_files():
 
 def main():
 
-    print("Converts from PO to OpenNMT text files sets")
+    print("Joins several corpus and creates a final train, validation and test dataset")
 
     read_configuration()
     join_multiple_sources_and_target_into_two_files()
