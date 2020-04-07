@@ -11,6 +11,6 @@ target_files:
     - preprocessed/WikiMatrix.en-ca.txt.ca
     - raw/globalvoices-ca.txt
     - preprocessed/europarl.en-ca.ca
-    - raw/OpenSubtitles2018.en-ca.en
-    - raw/tedtalks.en-ca.en
+    - raw/OpenSubtitles2018.en-ca.ca
+    - raw/tedtalks.en-ca.ca
 

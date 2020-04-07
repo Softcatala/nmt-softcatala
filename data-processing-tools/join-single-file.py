@@ -32,7 +32,7 @@ def split_in_six_files():
 
     srcs = set()
     number_validation = 3000
-    number_test = 3001 # number_test != number_validation
+    number_test = 3007 # number_test != number_validation
 
     cnt = 0
     pairs = 0
@@ -44,7 +44,7 @@ def split_in_six_files():
     test_each = round(total_lines / number_test)
 
     if test_each == validation_each:
-        print("test_each and validation_each cannot be equal")
+        print("test_each ({0}) and validation_each  ({0}) cannot be equal".format(test_each, validation_each))
         return
         
 
@@ -128,11 +128,13 @@ def join_multiple_sources_and_target_into_two_files():
     with open("src.txt", "w") as tf_source,\
         open("tgt.txt", "w") as tf_target:
 
+        print("**Sources")
         for source in sources:
             src_lines += append_lines_from_file(source, tf_source)
 
-        for source in sources:
-            trg_lines += append_lines_from_file(source, tf_target)
+        print("**Targets")
+        for target in targets:
+            trg_lines += append_lines_from_file(target, tf_target)
 
     print("src lines: " + str(src_lines))
     print("trg lines: " + str(trg_lines))
