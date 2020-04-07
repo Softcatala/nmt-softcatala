@@ -21,6 +21,7 @@
 import polib
 import re
 import yaml
+import os
 
 def file_len(fname):
     with open(fname) as f:
@@ -28,7 +29,7 @@ def file_len(fname):
             pass
     return i + 1
 
-def split_in_six_files():
+def split_in_six_files(src_filename, tgt_filename):
 
     srcs = set()
     number_validation = 3000
@@ -39,7 +40,7 @@ def split_in_six_files():
 
     print("Split src and tgt files in 6 files for training, text and validation")
 
-    total_lines = file_len("src.txt")
+    total_lines = file_len(src_filename)
     validation_each = round(total_lines / number_validation)
     test_each = round(total_lines / number_test)
 
@@ -54,8 +55,8 @@ def split_in_six_files():
         open("tgt-test.txt", "w") as target_test,\
         open("src-train.txt", "w") as source_train,\
         open("tgt-train.txt", "w") as target_train,\
-        open("src.txt", "r") as read_source,\
-        open("tgt.txt", "r") as read_target:
+        open(src_filename, "r") as read_source,\
+        open(tgt_filename, "r") as read_target:
 
         src = read_source.readline()
         trg = read_target.readline()
@@ -117,7 +118,7 @@ def read_configuration():
     return sources, targets
     
 
-def join_multiple_sources_and_target_into_two_files():
+def join_multiple_sources_and_target_into_two_files(src_filename, tgt_filename):
 
     src_lines = 0
     trg_lines = 0
@@ -125,8 +126,8 @@ def join_multiple_sources_and_target_into_two_files():
     sources, targets = read_configuration()
 
     print("Join multiple files in two src and tgt files")
-    with open("src.txt", "w") as tf_source,\
-        open("tgt.txt", "w") as tf_target:
+    with open(src_filename, "w") as tf_source,\
+        open(tgt_filename, "w") as tf_target:
 
         print("**Sources")
         for source in sources:
@@ -144,9 +145,12 @@ def main():
 
     print("Joins several corpus and creates a final train, validation and test dataset")
 
-    read_configuration()
-    join_multiple_sources_and_target_into_two_files()
-    split_in_six_files()
+    single_src = 'src.txt'
+    single_tgt = 'tgt.txt'
+    join_multiple_sources_and_target_into_two_files(single_src, single_tgt)
+    split_in_six_files(single_src, single_tgt)
+    os.remove(single_src)
+    os.remove(single_tgt)
 
 if __name__ == "__main__":
     main()

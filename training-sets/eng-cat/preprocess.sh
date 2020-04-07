@@ -19,5 +19,5 @@ rm WikiMatrix.en-ca.txt.ca
 rm WikiMatrix.en-ca.txt.en
 
 # Generate final src-val-test single files
-python3 ../../data-processing-tools/join-single-file.py 
+python3 ../../data-processing-tools/join-single-file.py
 
