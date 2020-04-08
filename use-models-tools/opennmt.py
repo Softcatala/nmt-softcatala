@@ -68,7 +68,7 @@ class OpenNMT():
             lengths, dtype=tf.int32, shape=(batch_size,)))
         return self.stub.Predict.future(request, timeout)
 
-    def _translate_request(self, batch_text, tokenizer, timeout):
+    def _translate_request(self, batch_text, timeout):
         tokenizer = pyonmttok.Tokenizer(mode="none", sp_model_path="en_m.model")
         batch_input = [tokenizer.tokenize(text)[0] for text in batch_text]
         future = self._send_request(batch_input, timeout=timeout)
@@ -78,9 +78,8 @@ class OpenNMT():
         return batch_output
 
     def _translate_sentence(self, text):
-        tokenizer = pyonmttok.Tokenizer("conservative")
         _default = 60.0
-        output = self._translate_request([text], tokenizer, timeout=_default)
+        output = self._translate_request([text], timeout=_default)
         return output[0]
 
     def translate(self, model_name, text):
