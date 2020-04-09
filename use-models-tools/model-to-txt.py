@@ -24,6 +24,7 @@ import os
 import datetime
 from optparse import OptionParser
 from opennmt import OpenNMT
+import pyonmttok
 
 
 def init_logging(del_logs):
@@ -84,6 +85,8 @@ def main():
     start_time = datetime.datetime.now()
     init_logging(True)
     openNMT = OpenNMT()
+    openNMT.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path="en_m.model")
+    openNMT.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path="ca_m.model")
 
     print("Applies an OpenNMT model to translate a TXT file")
     print("Requieres a TensorFlow server answeering '{0}'".format(openNMT.server))

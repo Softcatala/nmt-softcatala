@@ -33,6 +33,9 @@ class OpenNMT():
         self.channel = None
         self.stub = None
         self._server = 'localhost:8500'
+        self.tokenizer_source = None
+        self.tokenizer_target = None
+
 
     @property
     def server(self):
@@ -69,12 +72,10 @@ class OpenNMT():
         return self.stub.Predict.future(request, timeout)
 
     def _translate_request(self, batch_text, timeout):
-        tokenizer = pyonmttok.Tokenizer(mode="none", sp_model_path="en_m.model")
-        batch_input = [tokenizer.tokenize(text)[0] for text in batch_text]
+        batch_input = [self.tokenizer_source.tokenize(text)[0] for text in batch_text]
         future = self._send_request(batch_input, timeout=timeout)
         result = future.result()
-        tokenizer = pyonmttok.Tokenizer(mode="none", sp_model_path="ca_m.model")
-        batch_output = [tokenizer.detokenize(prediction) for prediction in self._extract_prediction(result)]
+        batch_output = [self.tokenizer_target.detokenize(prediction) for prediction in self._extract_prediction(result)]
         return batch_output
 
     def _translate_sentence(self, text):

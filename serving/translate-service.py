@@ -19,16 +19,17 @@
 # Boston, MA 02111-1307, USA.
 
 from __future__ import print_function
-#import grpc
-
 from flask import Flask, request, Response
 import json
 import datetime
-
 from opennmt import OpenNMT
+import pyonmttok
 
 
 app = Flask(__name__)
+openNMT = OpenNMT()
+openNMT.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path="en_m.model")
+openNMT.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path="ca_m.model")
 
 
 @app.route('/translate/', methods=['GET'])
@@ -36,7 +37,6 @@ def translate_api():
     start_time = datetime.datetime.now()
     text = request.args.get('text')
 
-    openNMT = OpenNMT()
     model_name = 'eng-cat'
     translated = openNMT.translate(model_name, text)
 
