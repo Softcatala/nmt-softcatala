@@ -1,0 +1,4 @@
+grpcio
+flask
+gunicorn>=20.0.4
+pyonmttok>=1.14.0
