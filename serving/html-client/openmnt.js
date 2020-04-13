@@ -1,5 +1,6 @@
 
-var URL='http://localhost:8700'
+// https://www.softcatala.org/sc/v2/api/nmt-engcat/
+var URL='http://localhost:8700' 
 
 var HttpClient = function() {
     this.get = function(aUrl, aCallback) {
@@ -35,11 +36,11 @@ function change_direction() {
     
     if (languages == 'eng-cat') {
         languages = 'cat-eng';
-        action_text = 'Canvia direcció a anglès -> català (actual català - anglès)';
+        action_text = 'Direcció català - anglès';
     }
     else {
         languages = 'eng-cat';
-        action_text = 'Canvia direcció a català -> anglès (actual anglès - català)';
+        action_text = 'Direcció actual anglès - català';
     }
 
     element.value = languages
@@ -51,7 +52,6 @@ function translate_text() {
     text = document.getElementById('source_text').value;
     languages = document.getElementById('languages').value;
     url = URL + `/translate/?text=${text}&languages=${languages}`;
-    alert(url)
 
     var client = new HttpClient();
     client.get(url, function(response) {
