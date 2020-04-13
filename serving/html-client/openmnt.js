@@ -12,6 +12,20 @@ var HttpClient = function() {
     }
 }
 
+function show_version() {
+    url = `http://localhost:8700/version/`;
+
+    var client = new HttpClient();
+    client.get(url, function(response) {
+        json = JSON.parse(response);
+
+        element = document.getElementById('version');
+        var text = JSON.stringify(json);
+        element.innerText = text;
+    });
+}
+
+
 function translate_text() {
 
     text = document.getElementById('source_text').value;
