@@ -5,7 +5,7 @@ COPY models/eng-cat/ models/eng-cat/
 COPY models/eng-cat/1/assets/*.model  /srv/
 COPY models/eng-cat/1/assets/model_description.txt  /srv/model-description-engcat.txt
 
-COPY models/cat-eng/ models/cat-eng/
+COPY models/cat-eng/ models/cat-eng/	
 COPY models/cat-eng/1/assets/model_description.txt  /srv/model-description-cateng.txt
 COPY serving/*.py /srv/
 COPY serving/models.conf /srv/models.conf
@@ -28,7 +28,7 @@ WORKDIR /srv
 RUN pip3 install -r requirements.txt
 #RUN pip3 install --ignore-installed --upgrade tensorflow-2.1.0-cp27-cp27mu-linux_x86_64.whl
 
-#ENTRYPOINT /srv/entry-point.sh
-ENTRYPOINT bash
+ENTRYPOINT /srv/entry-point.sh
+#ENTRYPOINT bash
 
 

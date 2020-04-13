@@ -36,7 +36,6 @@ class OpenNMT():
         self.tokenizer_source = None
         self.tokenizer_target = None
 
-
     @property
     def server(self):
         return self._server
