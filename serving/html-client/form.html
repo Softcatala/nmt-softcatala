@@ -6,6 +6,12 @@
 
 <body>
 
+    <form><p><input id="change_language" type="submit" value="Canvia direcció a català -> anglès (actual anglès - català)" 
+                    onclick="change_direction(); return false;"></p>
+    <input id="languages" type="hidden" value="eng-cat">
+    </form>
+
+
     <form><p>Text</p> 
             <textarea id="source_text" name="source_text" cols="100" rows="10"></textarea>
             <p><input id="send_button" type="submit" onclick="translate_text();show_version();return false;"></p>

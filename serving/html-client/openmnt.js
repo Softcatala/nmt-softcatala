@@ -1,4 +1,6 @@
 
+var URL='http://localhost:8700/'
+
 var HttpClient = function() {
     this.get = function(aUrl, aCallback) {
         var anHttpRequest = new XMLHttpRequest();
@@ -13,7 +15,7 @@ var HttpClient = function() {
 }
 
 function show_version() {
-    url = `http://localhost:8700/version/`;
+    url = URL + `version/`;
 
     var client = new HttpClient();
     client.get(url, function(response) {
@@ -25,11 +27,31 @@ function show_version() {
     });
 }
 
+function change_direction() {
+    
+    element = document.getElementById('languages');
+    element_action = document.getElementById('change_language');
+    languages = element.value;
+    
+    if (languages == 'eng-cat') {
+        languages = 'cat-eng';
+        action_text = 'Canvia direcció a anglès -> català (actual català - anglès)';
+    }
+    else {
+        languages = 'eng-cat';
+        action_text = 'Canvia direcció a català -> anglès (actual anglès - català)';
+    }
+
+    element.value = languages
+    element_action.value = action_text
+}
 
 function translate_text() {
 
     text = document.getElementById('source_text').value;
-    url = `http://localhost:8700/translate/?text=${text}`;
+    languages = document.getElementById('languages').value;
+    url = URL + `/translate/?text=${text}&languages=${languages}`;
+    alert(url)
 
     var client = new HttpClient();
     client.get(url, function(response) {
