@@ -1,5 +1,5 @@
 
-var URL='http://localhost:8700/'
+var URL='http://localhost:5000'
 
 var HttpClient = function() {
     this.get = function(aUrl, aCallback) {
@@ -15,7 +15,7 @@ var HttpClient = function() {
 }
 
 function show_version() {
-    url = URL + `version/`;
+    url = URL + `/version/`;
 
     var client = new HttpClient();
     client.get(url, function(response) {

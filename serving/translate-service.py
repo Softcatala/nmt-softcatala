@@ -27,18 +27,29 @@ import pyonmttok
 
 
 app = Flask(__name__)
-openNMT = OpenNMT()
-openNMT.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path="en_m.model")
-openNMT.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path="ca_m.model")
+openNMT_engcat = OpenNMT()
+openNMT_engcat.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path="en_m.model")
+openNMT_engcat.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path="ca_m.model")
+
+openNMT_cateng = OpenNMT()
+openNMT_cateng.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path="ca_m.model")
+openNMT_cateng.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path="en_m.model")
 
 
 @app.route('/translate/', methods=['GET'])
 def translate_api():
     start_time = datetime.datetime.now()
     text = request.args.get('text')
+    languages = request.args.get('languages')
 
-    model_name = 'eng-cat'
-    translated = openNMT.translate(model_name, text)
+    if languages == 'eng-cat':
+        model_name = 'eng-cat'
+        print(model_name)
+        translated = openNMT_engcat.translate(model_name, text)
+    else:
+        model_name = 'cat-eng'
+        print(model_name)
+        translated = openNMT_cateng.translate(model_name, text)
 
     result = {}
     result['text'] = text
@@ -49,8 +60,13 @@ def translate_api():
 @app.route('/version/', methods=['GET'])
 def version_api():
 
-    with open("model_description.txt", "r") as th_description:
+    with open("model-description-engcat.txt", "r") as th_description:
         lines = th_description.read().splitlines()
+
+    with open("model-description-cateng.txt", "r") as th_description:
+        lines_cat_eng = th_description.read().splitlines()
+
+    lines += lines_cat_eng
 
     result = {}
     result['version'] = lines
