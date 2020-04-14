@@ -44,11 +44,12 @@ def translate_api():
 
     if languages == 'eng-cat':
         model_name = 'eng-cat'
-        translated = openNMT_engcat.translate(model_name, text)
+        openNMT = openNMT_engcat
     else:
         model_name = 'cat-eng'
-        translated = openNMT_cateng.translate(model_name, text)
+        openNMT = openNMT_cateng
 
+    translated = openNMT.translate(model_name, text)
     result = {}
     result['text'] = text
     result['translated'] = translated
