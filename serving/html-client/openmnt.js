@@ -1,6 +1,6 @@
 
 // https://www.softcatala.org/sc/v2/api/nmt-engcat/
-var URL='http://localhost:8700' 
+var URL='http://localhost:8700'
 
 var HttpClient = function() {
     this.get = function(aUrl, aCallback) {
@@ -51,18 +51,31 @@ function translate_text() {
 
     text = document.getElementById('source_text').value;
     languages = document.getElementById('languages').value;
-    url = URL + `/translate/?text=${text}&languages=${languages}`;
 
-    var client = new HttpClient();
-    client.get(url, function(response) {
-        json = JSON.parse(response);
-        element = document.getElementById('translated_text');
-        text = json["translated"];
-        element.innerText = text;
+    var xhr = new XMLHttpRequest();
+    url = URL + `/translate/`;
+    xhr.open('POST', url);
+    xhr.setRequestHeader('Content-Type', 'application/json');
 
-        element = document.getElementById('time_used');
-        text = json["time"];
-        element.innerText = text;
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            json = JSON.parse(xhr.responseText);
+            element = document.getElementById('translated_text');
+            text = json["translated"];
+            element.value = text;
+
+            element = document.getElementById('time_used');
+            text = json["time"];
+            element.innerText = text;
+
+        }
+    }
+    payload = JSON.stringify({
+        "languages": languages,
+        "text": text,
     });
+
+    xhr.send(payload);
+
 }
 
