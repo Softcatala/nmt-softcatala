@@ -52,8 +52,8 @@ openNMT_cateng = OpenNMT()
 openNMT_cateng.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path="ca_m.model")
 openNMT_cateng.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path="en_m.model")
 
-@app.route('/translate2/', methods=['GET'])
-def translate2_api():
+@app.route('/translate_old/', methods=['GET'])
+def translate_old_api():
     start_time = datetime.datetime.now()
     text = request.args.get('text')
     languages = request.args.get('languages')
@@ -77,11 +77,10 @@ def translate_thread(sentence, openNMT, i, model_name, results):
         results[i] = ''
     else:
         results[i] = openNMT.translate(model_name, sentence)
-    print("{0} - {1} -> {2}".format(i, sentence, results[i]))
+#    print("{0} - {1} -> {2}".format(i, sentence, results[i]))
 
 @app.route('/translate/', methods=['GET'])
 def translate_api():
-    print("Hellou")
     start_time = datetime.datetime.now()
     text = request.args.get('text')
     languages = request.args.get('languages')
@@ -98,7 +97,6 @@ def translate_api():
     threads = []
     results = ["" for x in range(num_threads)]
     for i in range(num_threads):
-        print('Starting thread {0}'.format(i))
         process = Thread(target=translate_thread, args=[sentences[i], openNMT, i, model_name, results])
         process.start()
         threads.append(process)
@@ -106,7 +104,7 @@ def translate_api():
     for process in threads:
         process.join()
 
-    print("Done")
+    print("All threads processed")
 
     translated = ''
     for r in results:
