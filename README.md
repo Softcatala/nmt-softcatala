@@ -26,6 +26,22 @@ We have created the following models:
   * BLEU = 43.24
   * Default if no specified otherwise
 
+* English - Catalan model (https://www.softcatala.org/pub/softcatala/opennmt/models/sc-memories-2020-03-29.zip)
+  * Total number of sentences: 4426107
+  * replace_unknown_target: yes
+  * model: Transformer
+  * Tokenizer: SentencePiece
+  * BLEU = 40.12
+  * Default if no specified otherwise
+
+* Catalan - English model (https://www.softcatala.org/pub/softcatala/opennmt/models/cat-eng-2020-04-12.zip)
+  * Total number of sentences: 4426107
+  * replace_unknown_target: yes
+  * model: Transformer
+  * Tokenizer: SentencePiece
+  * BLEU = 40.36
+  * Default if no specified otherwise
+
 The corpus used to train this model can be obtain from the trainings-sets directory executing these scripts:
 
 * *get.sh* gets all the raw files
