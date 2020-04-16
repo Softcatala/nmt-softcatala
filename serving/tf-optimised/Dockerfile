@@ -1,4 +1,3 @@
-#FROM python:3.6.9-buster
 FROM opennmt/tensorflow-serving:2.1.0
 
 RUN apt-get update && apt-get -y upgrade && apt-get install wget vim curl git software-properties-common -y --no-install-recommends
