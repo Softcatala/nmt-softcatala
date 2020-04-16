@@ -27,6 +27,7 @@ from opennmt import OpenNMT
 import pyonmttok
 from threading import Thread
 import re
+from texttokenizer import TextTokenizer
 
 app = Flask(__name__)
 CORS(app)
@@ -35,46 +36,10 @@ openNMT_engcat = OpenNMT()
 openNMT_engcat.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path="en_m.model")
 openNMT_engcat.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path="ca_m.model")
 
-openNMT_engcat1 = OpenNMT()
-openNMT_engcat1.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path="en_m.model")
-openNMT_engcat1.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path="ca_m.model")
-
-openNMT_engcat2 = OpenNMT()
-openNMT_engcat2.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path="en_m.model")
-openNMT_engcat2.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path="ca_m.model")
-
-openNMT_engcat3 = OpenNMT()
-openNMT_engcat3.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path="en_m.model")
-openNMT_engcat3.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path="ca_m.model")
-
-openNMT_engcat4 = OpenNMT()
-openNMT_engcat4.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path="en_m.model")
-openNMT_engcat4.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path="ca_m.model")
-
-
 openNMT_cateng = OpenNMT()
 openNMT_cateng.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path="ca_m.model")
 openNMT_cateng.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path="en_m.model")
 
-@app.route('/translate_old/', methods=['GET'])
-def translate_old_api():
-    start_time = datetime.datetime.now()
-    text = request.args.get('text')
-    languages = request.args.get('languages')
-
-    if languages == 'eng-cat':
-        model_name = 'eng-cat'
-        openNMT = openNMT_engcat
-    else:
-        model_name = 'cat-eng'
-        openNMT = openNMT_cateng
-
-    translated = openNMT.translate(model_name, text)
-    result = {}
-    result['text'] = text
-    result['translated'] = translated
-    result['time'] = str(datetime.datetime.now() - start_time)
-    return json_answer(json.dumps(result, indent=4, separators=(',', ': ')))
 
 def translate_thread(sentence, openNMT, i, model_name, results):
     if sentence.strip() == '':
@@ -83,41 +48,6 @@ def translate_thread(sentence, openNMT, i, model_name, results):
         results[i] = openNMT.translate(model_name, sentence)
 #    print("{0} - {1} -> {2}".format(i, sentence, results[i]))
 
-def split_string(sentence):
-    strings = []
-    translate = []
-    start = 0
-    pos = 1
-
-    for i in range(0, len(sentence)):
-        pos = i
-        c = sentence[i]
-        if c == '.':
-            string = sentence[start:i+1]
-            strings.append(string)
-            translate.append(True)
-            start = i + 1
-
-        if c == '\n' or c == '\r':
-            if start < i:
-                string = sentence[start:i+1]
-                strings.append(string)
-                translate.append(True)
-             
-            string = sentence[i]
-            strings.append(string)
-            translate.append(False)
-            start = i + 1
- 
-    if start < pos:
-        string = sentence[start:pos+1]
-        strings.append(string)
-        translate.append(True)
-    
-#    for i in range(0, len(strings)):
-#        print("{0}->'{1}':{2}".format(i, strings[i], translate[i]))
-
-    return strings, translate
 
 @cross_origin(origin='*',headers=['Content-Type','Authorization'])
 @app.route('/translate/', methods=['POST'])
@@ -134,7 +64,8 @@ def translate_api():
         openNMT = openNMT_cateng
 
 #    print("Input:" + text)
-    sentences, translate = split_string(text)
+    tokenizer = TextTokenizer()
+    sentences, translate = tokenizer.tokenize(text)
 
     num_sentences = len(sentences)
     num_threads = 0
