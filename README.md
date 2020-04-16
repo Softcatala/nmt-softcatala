@@ -26,7 +26,7 @@ We have created the following models:
   * BLEU = 43.24
   * Default if no specified otherwise
 
-* English - Catalan model (https://www.softcatala.org/pub/softcatala/opennmt/models/sc-memories-2020-03-29.zip)
+* English - Catalan model (https://www.softcatala.org/pub/softcatala/opennmt/models/eng-cat-2020-04-11.zip)
   * Total number of sentences: 4426107
   * replace_unknown_target: yes
   * model: Transformer
@@ -110,9 +110,13 @@ This is assumes that you are already serving the models.
 
 Code is in ApplyToPoFile subdirectory. For example to translate the file 'test.po' with the 'model-sc'
 
-* Run ```python3 ApplyToPoFile test.po model-sc```
+* Run ```python3 model-to-po.py -f test.po -m model-sc```
 
 By default all strings translated by the translation system are marked as 'fuzzy'
+
+## Translating a plain text file
+
+* Run ```python3 model-to-txt.py --help``` for all details
 
 
 # Contact
