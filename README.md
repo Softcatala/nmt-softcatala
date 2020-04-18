@@ -92,6 +92,13 @@ This is useful for example if you want to translate large volumes using our preb
 
 * Type ```pip install -r requirements.txt``` . You should be able to use the tools at use-models-tools
 
+To test that every works:
+
+* Run ```echo "I am going to the party" > source.txt```
+
+* Run ```python3 model-to-txt.py -f source.txt -t translate.txt && cat translate.txt ```
+
+
 # Serving the models in production
 
 Our tentative approach to run these models in production is:
