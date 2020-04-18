@@ -50,7 +50,7 @@ def read_parameters():
         action='store',
         default='eng-cat',
         dest='model_name',
-        help='Model name'
+        help="Tensorflow model name. For example 'eng-cat' or 'cat-eng'"
     )
 
     parser.add_option(
