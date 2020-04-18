@@ -25,7 +25,7 @@ import polib
 from shutil import copyfile
 import os
 from optparse import OptionParser
-
+import pyonmttok
 
 
 def _clean_string(result):
@@ -48,7 +48,7 @@ def read_parameters():
         type='string',
         action='store',
         dest='model_name',
-        default='1532515736',
+        default='eng-cat',
         help='Model name'
     )
 
@@ -75,6 +75,8 @@ def main():
     copyfile(input_filename, target_filename)
 
     openNMT = OpenNMT()
+    openNMT.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path="en_m.model")
+    openNMT.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path="ca_m.model")
     
     po_file = polib.pofile(target_filename)
     translated = 0
