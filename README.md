@@ -76,13 +76,13 @@ docker run -t --rm -p 8501:8501 -p 8500:8500 \
 
 Note: you need to map 8501 ports (gRPC) and 8500 (REST)
 
-# Using Softcatalà English Catalan translation locally
+# Using Softcatalà English Catalan translation Docker container locally
 
-* docker pull jordimash/traductor-eng-cat:XX (where XX is the latest label published here https://hub.docker.com/r/jordimash/traductor-eng-cat/tags)
+* Type ```docker pull jordimash/traductor-eng-cat:XX``` (where XX is the latest label published here https://hub.docker.com/r/jordimash/traductor-eng-cat/tags)
 
-* Start container using ```docker run -it --rm  -p 8500:8500 -p 8501:8501 -p 8700:8700 jordimash/traductor-eng-cat:v10```
+* Start container using ```docker run -it --rm  -p 8500:8500 -p 8501:8501 -p 8700:8700 jordimash/traductor-eng-cat:XXX``` (where XXX is the tag)
 
-* git clone https://hub.docker.com/r/jordimash/traductor-eng-cat/tags (to have the tools)
+* Type ```https://github.com/Softcatala/nmt-softcatala``` (to have the tools to use the models)
 
 * Go to use-models-tools directory and do ```docker cp traductor-eng-cat:/srv/en_m.model .``` and ```docker cp traductor-eng-cat:/srv/ca_m.model .```
 
