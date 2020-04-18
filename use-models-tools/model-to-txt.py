@@ -28,17 +28,17 @@ import pyonmttok
 
 
 def init_logging(del_logs):
-    logfile = 'apply.log'
+    logfile = 'model-to-text.log'
 
     if del_logs and os.path.isfile(logfile):
         os.remove(logfile)
 
-    logging.basicConfig(filename=logfile, level=logging.DEBUG)
-    logger = logging.getLogger('')
-    console = logging.StreamHandler()
-    console.setLevel(logging.INFO)
-    logger.addHandler(console)
+    import logging
+    logger = logging.getLogger()
 
+    hdlr = logging.FileHandler(logfile)
+    logger.addHandler(hdlr)
+    logger.setLevel(logging.WARNING)
 
 def read_parameters():
     parser = OptionParser()
