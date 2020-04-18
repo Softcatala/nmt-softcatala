@@ -76,6 +76,17 @@ docker run -t --rm -p 8501:8501 -p 8500:8500 \
 
 Note: you need to map 8501 ports (gRPC) and 8500 (REST)
 
+# Using Softcatalà English Catalan translation locally
+
+* docker pull jordimash/traductor-eng-cat:XX (where XX is the latest label published here https://hub.docker.com/r/jordimash/traductor-eng-cat/tags)
+
+* Start container using ```docker run -it --rm  -p 8500:8500 -p 8501:8501 -p 8700:8700 jordimash/traductor-eng-cat:v10```
+
+* git clone https://hub.docker.com/r/jordimash/traductor-eng-cat/tags (to have the tools)
+
+* Go to use-models-tools directory and do ```docker cp traductor-eng-cat:/srv/en_m.model .``` and ```docker cp traductor-eng-cat:/srv/ca_m.model .```
+
+* You should be able to use the tools at use-models-tools
 
 # Serving the models in production
 
