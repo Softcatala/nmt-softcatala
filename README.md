@@ -78,15 +78,19 @@ Note: you need to map 8501 ports (gRPC) and 8500 (REST)
 
 # Using Softcatalà English Catalan translation Docker container locally
 
+This is usuful for example if you want to translate large volumes using our prebuild English - Catalan models using the same exact version that we have in production.
+
 * Type ```docker pull jordimash/traductor-eng-cat:XX``` (where XX is the latest label published here https://hub.docker.com/r/jordimash/traductor-eng-cat/tags)
 
 * Start container using ```docker run -it --rm  -p 8500:8500 -p 8501:8501 -p 8700:8700 jordimash/traductor-eng-cat:XXX``` (where XXX is the tag)
 
-* Type ```https://github.com/Softcatala/nmt-softcatala``` (to have the tools to use the models)
+* Type ```git clone https://github.com/Softcatala/nmt-softcatala``` (to have the tools to use the models)
 
-* Go to use-models-tools directory and do ```docker cp traductor-eng-cat:/srv/en_m.model .``` and ```docker cp traductor-eng-cat:/srv/ca_m.model .```
+* Go to use-models-tools directory and type ```docker ps``` and take note of the CONTAINER_ID associated to the traductor-eng-cat container.
 
-* You should be able to use the tools at use-models-tools
+* Type ```docker cp CONTAINER_ID:/srv/en_m.model .``` and ```docker cp CONTAINER_ID:/srv/ca_m.model .```
+
+* Type ```pip -r install requirements.txt``` . You should be able to use the tools at use-models-tools
 
 # Serving the models in production
 

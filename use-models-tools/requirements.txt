@@ -1,0 +1,4 @@
+grpcio
+tensorflow
+tensorflow-serving-api
+pyonmttok
