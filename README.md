@@ -78,7 +78,7 @@ Note: you need to map 8501 ports (gRPC) and 8500 (REST)
 
 # Using Softcatalà English Catalan translation Docker container locally
 
-This is usuful for example if you want to translate large volumes using our prebuild English - Catalan models using the same exact version that we have in production.
+This is useful for example if you want to translate large volumes using our prebuild English - Catalan models using the same exact version that we have in production.
 
 * Type ```docker pull jordimash/traductor-eng-cat:XX``` (where XX is the latest label published here https://hub.docker.com/r/jordimash/traductor-eng-cat/tags)
 
