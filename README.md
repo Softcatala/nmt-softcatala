@@ -76,7 +76,7 @@ docker run -t --rm -p 8501:8501 -p 8500:8500 \
 
 Note: you need to map 8501 ports (gRPC) and 8500 (REST)
 
-# Using Softcatalà English Catalan translation Docker container locally
+# Using Softcatalà English/Catalan translation models locally
 
 This is useful for example if you want to translate large volumes using our prebuild English - Catalan models using the same exact version that we have in production.
 
