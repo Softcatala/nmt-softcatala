@@ -90,7 +90,7 @@ This is usuful for example if you want to translate large volumes using our preb
 
 * Type ```docker cp CONTAINER_ID:/srv/en_m.model .``` and ```docker cp CONTAINER_ID:/srv/ca_m.model .```
 
-* Type ```pip -r install requirements.txt``` . You should be able to use the tools at use-models-tools
+* Type ```pip install -r requirements.txt``` . You should be able to use the tools at use-models-tools
 
 # Serving the models in production
 
