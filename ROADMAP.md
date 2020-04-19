@@ -9,3 +9,4 @@
 - [ ] Usar els scripts de valencianització per vencianitzar els corpus català i poder oferir un model anglès -> valencià
 - [ ] Usar els scripts de valencianització per vencianitzar els corpus català i poder oferir un model anglès -> valencià
 - [ ] Intentar adaptar els models perquè es pugin executar en TensorFlow lite
+- [ ] Fer una avaluació de la possible discriminació de gènere
