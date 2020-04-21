@@ -56,13 +56,13 @@ class TestTextTokenizer(unittest.TestCase):
 
     def test_sample_mr_abbreviation(self):
         tokenizer = TextTokenizer()
-        text = '"Why not, Mr. Wizard?" asked Jellia.\r Not now.'
+        text = '"Why not, Mr. Wizard?" asked Jellia.\rNot now.'
         strings, translate = tokenizer.tokenize(text)
 
         self.assertEquals(3, len(translate))
-        self.assertEquals('Why not, Mr. Wizard?" asked Jellia.', strings[0])
+        self.assertEquals('"Why not, Mr. Wizard?" asked Jellia.', strings[0])
         self.assertEquals(True, translate[0])
-        self.assertEquals("\n", strings[1])
+        self.assertEquals("\r", strings[1])
         self.assertEquals(False, translate[1])
         self.assertEquals("Not now.", strings[2])
         self.assertEquals(True, translate[2])
