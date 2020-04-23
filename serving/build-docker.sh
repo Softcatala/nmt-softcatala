@@ -9,6 +9,6 @@ if [ "$1" = "prod" ];
 fi
 echo "Build type: $buildType"
 pushd ..
-docker build -t traductor-eng-cat-prod . -f serving/DockerfileBuild
+docker build -t traductor-eng-cat . -f serving/DockerfileBuild
 popd
 docker image ls | grep traductor-eng-cat
