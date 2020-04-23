@@ -28,6 +28,7 @@ import pyonmttok
 from threading import Thread
 import re
 from texttokenizer import TextTokenizer
+from usage import Usage
 
 app = Flask(__name__)
 CORS(app)
@@ -99,10 +100,22 @@ def translate_api():
             translated += sentences[i]
 
 #    print("Translated:" + str(translated))
+    time_used = datetime.datetime.now() - start_time
+    words = len(text.split(' '))
+    usage = Usage()
+    usage.log(model_name, words, time_used)
     result = {}
     result['text'] = text
     result['translated'] = translated
-    result['time'] = str(datetime.datetime.now() - start_time)
+    result['time'] = str(time_used)
+    return json_answer(json.dumps(result, indent=4, separators=(',', ': ')))
+
+@app.route('/stats/', methods=['GET'])
+def stats():
+    requested = request.args.get('date')
+    date_requested = datetime.datetime.strptime(requested, '%Y-%m-%d')
+    usage = Usage()
+    result = usage.get_stats(date_requested)
     return json_answer(json.dumps(result, indent=4, separators=(',', ': ')))
 
 
