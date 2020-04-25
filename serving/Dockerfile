@@ -26,6 +26,7 @@ RUN pip3 install --upgrade pip && pip3 install --upgrade setuptools
 EXPOSE 8700
 
 WORKDIR /srv
+RUN mkdir files
 RUN pip3 install -r requirements.txt
 RUN pip3 install --ignore-installed --upgrade tensorflow-2.1.0-cp36-cp36m-linux_x86_64.whl
 RUN rm -f tensorflow-2.1.0-cp36-cp36m-linux_x86_64.whl
