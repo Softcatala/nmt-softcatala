@@ -1,6 +1,6 @@
 
 // https://www.softcatala.org/sc/v2/api/nmt-engcat/
-var URL='http://localhost:8700'
+var URL='http://localhost:5000'
 
 var HttpClient = function() {
     this.get = function(aUrl, aCallback) {
@@ -79,3 +79,25 @@ function translate_text() {
 
 }
 
+
+function sendFile()
+{
+    var elements = document.getElementsByClassName("formVal");
+    var formData = new FormData(); 
+    for(var i=0; i<elements.length; i++)
+    {
+        formData.append(elements[i].name, elements[i].value);
+    }
+    var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function()
+        {
+            if(xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            {
+                alert(xmlHttp.responseText);
+            }
+        }
+
+        url = URL + `/translate_file/`;
+        xmlHttp.open("post", url);
+        xmlHttp.send(formData); 
+}
