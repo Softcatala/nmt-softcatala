@@ -18,8 +18,25 @@
     </form>
     <p>Translation:</p> 
     <textarea readonly id="translated_text" name="translated_text" cols="100" rows="10"></textarea>
-    <p>Time: <span id="time_used"></span></p>
-    <p>Version: <span id="version"></span></p>
+    <p>Temps: <span id="time_used"></span></p>
+    <p>Versió: <span id="version"></span></p>
+
+    <p><b>Traducció de fitxers de text</b></p>
+    <p>També pots enviar-nos un fitxer en format de text pla.</p>
+    <form id="form-id" method=post enctype=multipart/form-data">
+    <p>
+     Traducció: 
+     <select id="model" name="model" class='formVal'>
+      <option value="eng-cat">Anglès - català</option>
+      <option value="cat-eng">Català - Anglès</option>
+    </p>
+    <p>
+    </select> 
+      <input type=file class='formVal' name=file>
+      <input type=submit value="Demanar traducció" onclick="sendFile();alert('Fitxer enviat');return false">
+    </form>
+    </p>
 </body>
 </html>
+
 
