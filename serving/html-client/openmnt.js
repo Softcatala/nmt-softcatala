@@ -82,21 +82,15 @@ function translate_text() {
 
 function sendFile()
 {
-    var elements = document.getElementsByClassName("formVal");
-    var formData = new FormData(); 
-    for(var i=0; i<elements.length; i++)
-    {
-        formData.append(elements[i].name, elements[i].value);
-    }
     var xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function()
         {
             if(xmlHttp.readyState == 4 && xmlHttp.status == 200)
             {
-                alert(xmlHttp.responseText);
             }
         }
 
+        var formData = new FormData(document.getElementById('form-id'));
         url = URL + `/translate_file/`;
         xmlHttp.open("post", url);
         xmlHttp.send(formData); 

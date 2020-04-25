@@ -26,14 +26,14 @@
     <form id="form-id" method=post enctype=multipart/form-data">
     <p>
      Traducció: 
-     <select id="model" name="model" class='formVal'>
+     <select id="model" name="model">
       <option value="eng-cat">Anglès - català</option>
       <option value="cat-eng">Català - Anglès</option>
     </p>
     <p>
     </select> 
-      <input type=file class='formVal' name=file>
-      <input type=submit value="Demanar traducció" onclick="sendFile();alert('Fitxer enviat');return false">
+      <input type=file  name=file>
+      <input type=submit value="Demanar traducció" onclick="sendFile();return false;">
     </form>
     </p>
 </body>
