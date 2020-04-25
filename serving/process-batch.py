@@ -50,9 +50,9 @@ def main():
 
     for batchfile in batchfiles:
         print(batchfile.filename)
-        cmd("")
+        cmd = "python3 model-to-text.py {0} {1}".format(batchfile.filename, batchfile.filename + "-ca.txt")
         os.system(cmd)
-
+        
 
 
 
