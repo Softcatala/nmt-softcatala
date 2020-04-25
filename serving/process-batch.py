@@ -26,6 +26,8 @@ from batchfiles.batchfiles import *
 import time
 import smtplib
 import ssl
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 def init_logging(del_logs):
     logfile = 'process-batch.log'
@@ -41,20 +43,22 @@ def init_logging(del_logs):
 
 def send_email():
     print("Send email start")
-    port = 465  # For SSL
-    context = ssl.create_default_context()
-    
-    sender_email = "jmas@softcatala.org"
-    receiver_email = "jordimash2@gmail.com"
+    try:
+        port = 25
+        sender_email = "jmas@softcatala.org"
+        receiver_email = "jordimash2@gmail.com"
 
-    with smtplib.SMTP_SSL("mail.scnet", port, context=context) as server:
-        message = MIMEMultipart("alternative")
-        message["Subject"] = "multipart test"
-        message["From"] = sender_email
-        message["To"] = receiver_email
-        text = "Prova al fitxer"
-        part1 = MIMEText(text, "plain")
-        server.sendmail(sender_email, receiver_email, message.as_string())
+        with smtplib.SMTP("mail.scnet", port) as server:
+            message = MIMEMultipart("alternative")
+            message["Subject"] = "multipart test"
+            message["From"] = sender_email
+            message["To"] = receiver_email
+            text = "Prova al fitxer"
+            part1 = MIMEText(text, "plain")
+            message.attach(part1)
+            server.sendmail(sender_email, receiver_email, message.as_string())
+    except Exception as e:
+        print(str(e))
 
     print("Send email end")
 
