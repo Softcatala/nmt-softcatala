@@ -49,25 +49,7 @@ def translate_thread(sentence, openNMT, i, model_name, results):
         results[i] = openNMT.translate(model_name, sentence)
 #    print("{0} - {1} -> {2}".format(i, sentence, results[i]))
 
-
-@cross_origin(origin='*',headers=['Content-Type','Authorization'])
-@app.route('/translate/', methods=['POST'])
-def translate_api():
-    start_time = datetime.datetime.now()
-    text = request.json['text']
-    languages = request.json['languages']
-
-    if languages == 'eng-cat':
-        model_name = 'eng-cat'
-        openNMT = openNMT_engcat
-    else:
-        model_name = 'cat-eng'
-        openNMT = openNMT_cateng
-
-#    print("Input:" + text)
-    tokenizer = TextTokenizer()
-    sentences, translate = tokenizer.tokenize(text)
-
+def _launch_translate_threads(openNMT, model_name, text, sentences, translate):
     num_sentences = len(sentences)
     num_threads = 0
     for i in range(0, len(sentences)):
@@ -90,7 +72,30 @@ def translate_api():
     for process in threads:
         process.join()
 
+    return num_sentences, results
+
 #    print("All threads processed")
+
+
+@cross_origin(origin='*',headers=['Content-Type','Authorization'])
+@app.route('/translate/', methods=['POST'])
+def translate_api():
+    start_time = datetime.datetime.now()
+    text = request.json['text']
+    languages = request.json['languages']
+
+    if languages == 'eng-cat':
+        model_name = 'eng-cat'
+        openNMT = openNMT_engcat
+    else:
+        model_name = 'cat-eng'
+        openNMT = openNMT_cateng
+
+#    print("Input:" + text)
+    tokenizer = TextTokenizer()
+    sentences, translate = tokenizer.tokenize(text)
+
+    num_sentences, results = _launch_translate_threads(openNMT, model_name, text, sentences, translate)
 
     translated = ''
     for i in range(0, num_sentences):
