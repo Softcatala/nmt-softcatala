@@ -23,7 +23,7 @@ import logging
 import os
 import datetime
 from batchfiles.batchfiles import *
-
+import time
 
 def init_logging(del_logs):
     logfile = 'process-batch.log'
@@ -40,17 +40,24 @@ def init_logging(del_logs):
 def main():
 
     init_logging(True)    
-    print("Process batch files to translaate")
+    print("Process batch files to translate")
     database.open()
-    batchfiles = BatchFile.select()
 
-    for batchfile in batchfiles:
-        print(batchfile.filename)
-        cmd = "python3 model-to-txt.py -f {0} -t {1} {2}".format(batchfile.filename, 
-              batchfile.filename + "-ca.txt", batchfile.model)
-        logging.debug("Run {0}".format(cmd))
-        os.system(cmd)
-        
+    while True:
+        print("Starting to process")
+        batchfiles = BatchFile.select().where(BatchFile.done == 0)
+        for batchfile in batchfiles:
+            print(batchfile.filename)
+            cmd = "python3 model-to-txt.py -f {0} -t {1} {2}".format(batchfile.filename, 
+                  str(batchfile.filename) + "-ca.txt", batchfile.model)
+            logging.debug("Run {0}".format(cmd))
+            os.system(cmd)
+            batchfile.done = True
+            batchfile.update()
+
+        time.sleep(10*1000)
+
+
 
 
 
