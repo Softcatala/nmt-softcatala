@@ -41,26 +41,25 @@ def init_logging(del_logs):
     logger.addHandler(hdlr)
     logger.setLevel(logging.WARNING)
 
-def send_email():
-    print("Send email start")
+def send_email(translated_file, email):
     try:
         port = 25
-        sender_email = "jmas@softcatala.org"
-        receiver_email = "jordimash2@gmail.com"
+        sender_email = "info@softcatala.org"
+
+        with open(translated_file, 'r') as file:
+            translation = file.read()
 
         with smtplib.SMTP("mail.scnet", port) as server:
             message = MIMEMultipart("alternative")
-            message["Subject"] = "multipart test"
+            message["Subject"] = "Traducció de Softcatalà"
             message["From"] = sender_email
-            message["To"] = receiver_email
-            text = "Prova al fitxer"
-            part1 = MIMEText(text, "plain")
+            message["To"] = email
+            part1 = MIMEText(translation, "plain")
             message.attach(part1)
-            server.sendmail(sender_email, receiver_email, message.as_string())
+            server.sendmail(sender_email, email, message.as_string())
     except Exception as e:
         print(str(e))
-
-    print("Send email end")
+        logging.error("Error '{0}' sending to {1}".format(e, email))
 
 def main():
 
@@ -73,18 +72,16 @@ def main():
         batchfiles = BatchFile.select().where(BatchFile.done == 1)
         for batchfile in batchfiles:
             print(batchfile.filename)
-            cmd = "python3 model-to-txt.py -f {0} -t {1} {2}".format(batchfile.filename, 
-                  str(batchfile.filename) + "-ca.txt", batchfile.model)
+            translated_file = batchfile.filename + "-ca.txt"
+            cmd = "python3 model-to-txt.py -f {0} -t {1} {2}".format(batchfile.filename,
+                   translated_file, batchfile.model)
             logging.debug("Run {0}".format(cmd))
             os.system(cmd)
-            send_email()
-#            batchfile.done = True
+            send_email(translated_file, batchfile.email)
+            batchfile.done = True
             batchfile.update()
 
         time.sleep(10*1000)
-
-
-
 
 
 if __name__ == "__main__":

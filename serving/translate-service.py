@@ -172,11 +172,8 @@ def upload_file():
         return redirect(request.url)
     file = request.files['file']
 
-  #  email = request.json['email']
-    email = 'email'
+    model_name = request.values['email']
     model_name = request.values['model_name']
-   # print(email)
-    print(model_name)
 
     # if user does not select file, browser also
     # submit an empty part without filename
