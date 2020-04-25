@@ -184,12 +184,14 @@ def upload_file():
         print("***No file")
         flash('No selected file')
         return redirect(request.url)
-    print("file:" + file.filename)
+
     if file and allowed_file(file.filename):
         filename = uuid.uuid4().hex;
-        file.save(os.path.join(UPLOAD_FOLDER, filename))
+        fullname = os.path.join(UPLOAD_FOLDER, filename)
+        file.save(fullname)
 
-        save_file_to_process(filename, email, model_name)
+        save_file_to_process(fullname, email, model_name)
+        print("Saved file {0}".format(fullname))
         result = []
         return json_answer(json.dumps(result, indent=4, separators=(',', ': ')))
 

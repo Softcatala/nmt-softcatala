@@ -22,9 +22,6 @@ from __future__ import print_function
 import logging
 import os
 import datetime
-from optparse import OptionParser
-from opennmt import OpenNMT
-import pyonmttok
 from batchfiles.batchfiles import *
 
 
@@ -34,7 +31,6 @@ def init_logging(del_logs):
     if del_logs and os.path.isfile(logfile):
         os.remove(logfile)
 
-    import logging
     logger = logging.getLogger()
 
     hdlr = logging.FileHandler(logfile)
@@ -50,7 +46,9 @@ def main():
 
     for batchfile in batchfiles:
         print(batchfile.filename)
-        cmd = "python3 model-to-text.py {0} {1}".format(batchfile.filename, batchfile.filename + "-ca.txt")
+        cmd = "python3 model-to-txt.py -f {0} -t {1} {2}".format(batchfile.filename, 
+              batchfile.filename + "-ca.txt", batchfile.model)
+        logging.debug("Run {0}".format(cmd))
         os.system(cmd)
         
 
