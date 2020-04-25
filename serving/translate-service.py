@@ -29,8 +29,9 @@ from threading import Thread
 from texttokenizer import TextTokenizer
 from usage import Usage
 from werkzeug.utils import secure_filename
+from batchfiles.batchfiles import *
 import os
-
+import uuid
 
 app = Flask(__name__)
 CORS(app)
@@ -149,6 +150,17 @@ def allowed_file(filename):
 
 UPLOAD_FOLDER = 'files/'
 
+def save_file_to_process(filename, email, model_name):
+    database.open()    
+    db_entry = BatchFile()
+    db_entry.filename = filename
+    db_entry.email = email
+    db_entry.model = model_name
+    db_entry.save()
+    
+    database.close()
+
+
 @cross_origin(origin='*',headers=['Content-Type','Authorization'])
 @app.route('/translate_file/', methods=['POST'])
 def upload_file():
@@ -159,6 +171,13 @@ def upload_file():
         flash('No file part')
         return redirect(request.url)
     file = request.files['file']
+
+  #  email = request.json['email']
+    email = 'email'
+    model_name = request.values['model_name']
+   # print(email)
+    print(model_name)
+
     # if user does not select file, browser also
     # submit an empty part without filename
     if file.filename == '':
@@ -167,9 +186,10 @@ def upload_file():
         return redirect(request.url)
     print("file:" + file.filename)
     if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)
+        filename = uuid.uuid4().hex;
         file.save(os.path.join(UPLOAD_FOLDER, filename))
-        print("***Worked")
+
+        save_file_to_process(filename, email, model_name)
         result = []
         return json_answer(json.dumps(result, indent=4, separators=(',', ': ')))
 
