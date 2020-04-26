@@ -28,7 +28,7 @@ import pyonmttok
 
 
 def init_logging(del_logs):
-    logfile = 'model-to-text.log'
+    logfile = 'model-to-txt.log'
 
     if del_logs and os.path.isfile(logfile):
         os.remove(logfile)
@@ -93,9 +93,11 @@ def main():
     model_name, input_filename, translated_file = read_parameters()
     target_filename_review = "translated-review.txt"
 
-    with open(input_filename, 'r') as tf_en, open(translated_file, 'w') as tf_ca, open(target_filename_review, 'w') as tf_ca_review:
+    with open(input_filename, encoding='utf-8', mode='r') as tf_en,\
+         open(translated_file, encoding='utf-8', mode='w') as tf_ca,\
+         open(target_filename_review, encoding='utf-8', mode='w') as tf_ca_review:
+
         en_strings = tf_en.readlines()
-    
         translated = 0
         errors = 0
 
