@@ -72,8 +72,8 @@ def main():
         batchfiles = BatchFile.select().where(BatchFile.done == 0)
         for batchfile in batchfiles:
             print(batchfile.filename)
-            translated_file = batchfile.filename + "-ca.txt"
-            cmd = "python3 model-to-txt.py -f {0} -t {1} {2}".format(batchfile.filename,
+            translated_file = batchfile.filename + "-translated.txt"
+            cmd = "python3 model-to-txt.py -f {0} -t {1} -m {2}".format(batchfile.filename,
                    translated_file, batchfile.model)
             logging.debug("Run {0}".format(cmd))
             os.system(cmd)
