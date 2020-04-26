@@ -27,8 +27,8 @@ EXPOSE 8700
 
 WORKDIR /srv
 RUN mkdir files
-RUN pip3 install -r requirements.txt
 RUN pip3 install --ignore-installed --upgrade tensorflow-2.1.0-cp36-cp36m-linux_x86_64.whl
+RUN pip3 install -r requirements.txt
 RUN rm -f tensorflow-2.1.0-cp36-cp36m-linux_x86_64.whl
 
 ENTRYPOINT /srv/entry-point.sh
