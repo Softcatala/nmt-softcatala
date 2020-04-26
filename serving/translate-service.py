@@ -19,16 +19,19 @@
 # Boston, MA 02111-1307, USA.
 
 from __future__ import print_function
-from flask import Flask, request, Response
+from flask import Flask, request, Response, flash, redirect, url_for
 from flask_cors import CORS, cross_origin
 import json
 import datetime
 from opennmt import OpenNMT
 import pyonmttok
 from threading import Thread
-import re
 from texttokenizer import TextTokenizer
 from usage import Usage
+from werkzeug.utils import secure_filename
+from batchfiles.batchfiles import *
+import os
+import uuid
 
 app = Flask(__name__)
 CORS(app)
@@ -139,6 +142,55 @@ def version_api():
     result['version'] = lines
     return json_answer(json.dumps(result, indent=4, separators=(',', ': ')))
 
+def allowed_file(filename):
+    ALLOWED_EXTENSIONS = 'txt'
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+UPLOAD_FOLDER = 'files/'
+
+def save_file_to_process(filename, email, model_name):
+    database.open()    
+    db_entry = BatchFile()
+    db_entry.filename = filename
+    db_entry.email = email
+    db_entry.model = model_name
+    db_entry.save()
+    
+    database.close()
+
+
+@cross_origin(origin='*',headers=['Content-Type','Authorization'])
+@app.route('/translate_file/', methods=['POST'])
+def upload_file():
+    print("**Start")
+    # check if the post request has the file part
+    if 'file' not in request.files:
+        print("No file part")
+        flash('No file part')
+        return redirect(request.url)
+    file = request.files['file']
+
+    email = request.values['email']
+    model_name = request.values['model_name']
+    
+    # if user does not select file, browser also
+    # submit an empty part without filename
+    if file.filename == '':
+        print("***No file")
+        flash('No selected file')
+        return redirect(request.url)
+
+    if file and allowed_file(file.filename):
+        filename = uuid.uuid4().hex;
+        fullname = os.path.join(UPLOAD_FOLDER, filename)
+        file.save(fullname)
+
+        save_file_to_process(fullname, email, model_name)
+        print("Saved file {0}".format(fullname))
+        result = []
+        return json_answer(json.dumps(result, indent=4, separators=(',', ': ')))
 
 def json_answer(data):
     resp = Response(data, mimetype='application/json')

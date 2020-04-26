@@ -79,3 +79,19 @@ function translate_text() {
 
 }
 
+
+function sendFile()
+{
+    var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function()
+        {
+            if(xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            {
+            }
+        }
+
+        var formData = new FormData(document.getElementById('form-id'));
+        url = URL + `/translate_file/`;
+        xmlHttp.open("post", url);
+        xmlHttp.send(formData); 
+}

@@ -11,15 +11,33 @@
     <input id="languages" type="hidden" value="eng-cat">
     </form>
 
-
     <form><p>Text</p> 
             <textarea id="source_text" name="source_text" cols="100" rows="10"></textarea>
             <p><input id="send_button" type="submit" onclick="translate_text();show_version();return false;"></p>
     </form>
     <p>Translation:</p> 
     <textarea readonly id="translated_text" name="translated_text" cols="100" rows="10"></textarea>
-    <p>Time: <span id="time_used"></span></p>
-    <p>Version: <span id="version"></span></p>
+    <p>Temps: <span id="time_used"></span></p>
+    <p>Versió: <span id="version"></span></p>
+
+    <p><b>Traducció de fitxers de text</b></p>
+    <p>També pots enviar-nos un fitxer en format de text pla.</p>
+
+    <form id="form-id" method=post enctype=multipart/form-data">
+    <p>Traducció: 
+     <select id="model_name" name="model_name">
+      <option value="eng-cat">Anglès - català</option>
+      <option value="cat-eng">Català - Anglès</option>
+    </select>
+    </p>
+    <p>
+     <label for="email">Correu on voleu que us enviem la traducció:</label>
+     <input type="email" id="email" name="email"> 
+    <p>
+      <input type=file  name=file>
+      <input type=submit value="Demanar traducció" onclick="sendFile();return false;">
+    </form>
 </body>
 </html>
+
 

@@ -8,6 +8,7 @@ COPY models/eng-cat/1/assets/model_description.txt  /srv/model-description-engca
 COPY models/cat-eng/ models/cat-eng/	
 COPY models/cat-eng/1/assets/model_description.txt  /srv/model-description-cateng.txt
 COPY serving/*.py /srv/
+COPY serving/batchfiles/ /srv/batchfiles/
 COPY serving/models.conf /srv/models.conf
 COPY serving/requirements.txt /srv/
 COPY serving/docker/entry-point.sh /srv/
@@ -25,8 +26,9 @@ RUN pip3 install --upgrade pip && pip3 install --upgrade setuptools
 EXPOSE 8700
 
 WORKDIR /srv
-RUN pip3 install -r requirements.txt
+RUN mkdir files
 RUN pip3 install --ignore-installed --upgrade tensorflow-2.1.0-cp36-cp36m-linux_x86_64.whl
+RUN pip3 install -r requirements.txt
 RUN rm -f tensorflow-2.1.0-cp36-cp36m-linux_x86_64.whl
 
 ENTRYPOINT /srv/entry-point.sh
