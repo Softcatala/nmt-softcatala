@@ -61,6 +61,13 @@ def send_email(translated_file, email):
         msg = "Error '{0}' sending to {1}".format(e, email)
         logging.error(msg)
 
+MAX_SIZE = 256 * 1024
+
+def truncate_file(filename):
+    f = open(filename, "a")
+    f.truncate(MAX_SIZE)
+    f.close()
+
 def main():
 
     init_logging(True)    
@@ -73,6 +80,7 @@ def main():
         for batchfile in batchfiles:
             print(batchfile.filename)
             translated_file = batchfile.filename + "-translated.txt"
+            truncate_file(batchfile.filename)
             cmd = "python3 model-to-txt.py -f {0} -t {1} -m {2}".format(batchfile.filename,
                    translated_file, batchfile.model)
             logging.debug("Run {0}".format(cmd))
