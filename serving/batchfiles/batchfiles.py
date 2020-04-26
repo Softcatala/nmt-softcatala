@@ -37,7 +37,6 @@ class BatchFilesDatabase(SqliteDatabase):
     def create_schema(self):
         self.connect()
         self.create_tables([BatchFile])
-        self.begin()
 
     def close(self):
         self.commit()
