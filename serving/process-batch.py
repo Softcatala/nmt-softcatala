@@ -46,7 +46,7 @@ def send_email(translated_file, email):
         port = 25
         sender_email = "info@softcatala.org"
 
-        with open(translated_file, 'r') as file:
+        with open(translated_file, encoding='utf-8', mode='r') as file:
             translation = file.read()
 
         with smtplib.SMTP("mail.scnet", port) as server:
