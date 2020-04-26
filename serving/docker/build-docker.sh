@@ -8,7 +8,7 @@ if [ "$1" = "prod" ];
         grep -v tensorflow-2.1.0 Dockerfile > DockerfileBuild
 fi
 echo "Build type: $buildType"
-pushd ..
-docker build -t traductor-eng-cat . -f serving/DockerfileBuild
+pushd ../..
+docker build -t traductor-eng-cat . -f serving/docker/DockerfileBuild
 popd
 docker image ls | grep traductor-eng-cat
