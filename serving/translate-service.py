@@ -116,7 +116,7 @@ def translate_api():
     result['text'] = text
     result['translated'] = translated
     result['time'] = str(time_used)
-    return json_answer(json.dumps(result, indent=4, separators=(',', ': ')))
+    return json_answer(result)
 
 @app.route('/stats/', methods=['GET'])
 def stats():
@@ -124,7 +124,7 @@ def stats():
     date_requested = datetime.datetime.strptime(requested, '%Y-%m-%d')
     usage = Usage()
     result = usage.get_stats(date_requested)
-    return json_answer(json.dumps(result, indent=4, separators=(',', ': ')))
+    return json_answer(result)
 
 
 @app.route('/version/', methods=['GET'])
@@ -140,9 +140,9 @@ def version_api():
 
     result = {}
     result['version'] = lines
-    return json_answer(json.dumps(result, indent=4, separators=(',', ': ')))
+    return json_answer(result)
 
-def allowed_file(filename):
+def _allowed_file(filename):
     ALLOWED_EXTENSIONS = 'txt'
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -165,24 +165,21 @@ def save_file_to_process(filename, email, model_name):
 @app.route('/translate_file/', methods=['POST'])
 def upload_file():
     print("**Start")
-    # check if the post request has the file part
-    if 'file' not in request.files:
-        print("No file part")
-        flash('No file part')
-        return redirect(request.url)
     file = request.files['file']
-
     email = request.values['email']
     model_name = request.values['model_name']
     
-    # if user does not select file, browser also
-    # submit an empty part without filename
     if file.filename == '':
-        print("***No file")
-        flash('No selected file')
-        return redirect(request.url)
+        result = {}
+        result['error'] = "No s'ha especificat el fitxer"
+        return json_answer(result, 404)
 
-    if file and allowed_file(file.filename):
+    if email == '':
+        result = {}
+        result['error'] = "No s'ha especificat el correu"
+        return json_answer(result, 404)
+
+    if file and _allowed_file(file.filename):
         filename = uuid.uuid4().hex;
         fullname = os.path.join(UPLOAD_FOLDER, filename)
         file.save(fullname)
@@ -190,10 +187,15 @@ def upload_file():
         save_file_to_process(fullname, email, model_name)
         print("Saved file {0}".format(fullname))
         result = []
-        return json_answer(json.dumps(result, indent=4, separators=(',', ': ')))
+        return json_answer(result)
 
-def json_answer(data):
-    resp = Response(data, mimetype='application/json')
+    result['error'] = "Error desconegut"
+    return json_answer(result, 500)
+
+
+def json_answer(data, status = 200):
+    json_data = json.dumps(data, indent=4, separators=(',', ': '))
+    resp = Response(json_data, mimetype='application/json', status = status)
     resp.headers['Access-Control-Allow-Origin'] = '*'
     return resp
 

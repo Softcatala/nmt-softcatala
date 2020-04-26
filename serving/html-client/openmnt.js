@@ -1,5 +1,5 @@
 
-// https://www.softcatala.org/sc/v2/api/nmt-engcat/
+// https://www.softcatala.org/sc/v2/api/nmt-engcat
 var URL='http://localhost:8700'
 
 var HttpClient = function() {
@@ -85,8 +85,19 @@ function sendFile()
     var xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function()
         {
-            if(xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            if(xmlHttp.readyState != 4)
             {
+                return;
+            }
+
+            if (xmlHttp.status == 200)
+            {
+                alert("En una estona rebeu el fitxer traduït per correu electrònic");
+            }
+            else
+            {
+                json = JSON.parse(xmlHttp.responseText);
+                alert(json['error']);
             }
         }
 
