@@ -60,7 +60,7 @@ class Usage(object):
     def _init_stats_dict(self, dictionary):
         dictionary["calls"] = 0
         dictionary["words"] = 0
-        dictionary["time"] = 0
+        dictionary["time_used"] = 0
         return dictionary
 
     def get_stats(self, date_requested):
@@ -81,7 +81,7 @@ class Usage(object):
                     if line_datetime.date() == date_requested.date():
                         stats["calls"] = stats["calls"] + 1
                         stats["words"] = stats["words"] + int(words_component)
-                        stats["time"] = stats["time"] + int(time_component)
+                        stats["time_used"] = stats["time_used"] + int(time_component)
 
         except Exception as exception:
             print("Error:" + str(exception))
