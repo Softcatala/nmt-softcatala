@@ -69,7 +69,7 @@ def main():
 
     while True:
         print("Starting to process")
-        batchfiles = BatchFile.select().where(BatchFile.done == 1)
+        batchfiles = BatchFile.select().where(BatchFile.done == 0)
         for batchfile in batchfiles:
             print(batchfile.filename)
             translated_file = batchfile.filename + "-ca.txt"
