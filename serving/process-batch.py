@@ -59,7 +59,6 @@ def send_email(translated_file, email):
             server.sendmail(sender_email, email, message.as_string())
     except Exception as e:
         msg = "Error '{0}' sending to {1}".format(e, email)
-        print(msg)
         logging.error(msg)
 
 def main():
