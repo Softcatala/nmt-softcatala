@@ -58,8 +58,9 @@ def send_email(translated_file, email):
             message.attach(part1)
             server.sendmail(sender_email, email, message.as_string())
     except Exception as e:
-        print(str(e))
-        logging.error("Error '{0}' sending to {1}".format(e, email))
+        msg = "Error '{0}' sending to {1}".format(e, email)
+        print(msg)
+        logging.error(msg)
 
 def main():
 
@@ -79,9 +80,9 @@ def main():
             os.system(cmd)
             send_email(translated_file, batchfile.email)
             batchfile.done = True
-            batchfile.update()
+            batchfile.save()
 
-        time.sleep(10*1000)
+        time.sleep(10)
 
 
 if __name__ == "__main__":
