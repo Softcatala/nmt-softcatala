@@ -89,7 +89,7 @@ def main():
     openNMT.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path="ca_m.model")
 
     print("Applies an OpenNMT model to translate a TXT file")
-    print("Requieres a TensorFlow server answeering '{0}'".format(openNMT.server))
+    print("Requieres a TensorFlow server answering '{0}'".format(openNMT.server))
     model_name, input_filename, translated_file = read_parameters()
     target_filename_review = "translated-review.txt"
 
