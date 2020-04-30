@@ -118,12 +118,28 @@ def translate_api():
     result['time'] = str(time_used)
     return json_answer(result)
 
+def _get_processed_files(date):
+    try:
+        database.open()
+        cnt = batchfiles = BatchFile.select().where(BatchFile.done ==1 and\
+                (BatchFile.date.year == date.year and\
+                 BatchFile.date.month == date.month and\
+                 BatchFile.date.day == date.day)).count()
+        database.close()
+    except:
+        cnt = 0
+
+    return cnt
+
 @app.route('/stats/', methods=['GET'])
 def stats():
     requested = request.args.get('date')
     date_requested = datetime.datetime.strptime(requested, '%Y-%m-%d')
     usage = Usage()
     result = usage.get_stats(date_requested)
+
+    cnt = _get_processed_files(date_requested)
+    result["files"] = cnt
     return json_answer(result)
 
 
