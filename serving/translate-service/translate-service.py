@@ -36,13 +36,14 @@ import uuid
 app = Flask(__name__)
 CORS(app)
 
+MODELS_PATH = '/srv/data/models'
 openNMT_engcat = OpenNMT()
-openNMT_engcat.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path="en_m.model")
-openNMT_engcat.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path="ca_m.model")
+openNMT_engcat.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{MODELS_PATH}/en_m.model")
+openNMT_engcat.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{MODELS_PATH}/ca_m.model")
 
 openNMT_cateng = OpenNMT()
-openNMT_cateng.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path="ca_m.model")
-openNMT_cateng.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path="en_m.model")
+openNMT_cateng.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{MODELS_PATH}/ca_m.model")
+openNMT_cateng.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{MODELS_PATH}/en_m.model")
 
 
 def translate_thread(sentence, openNMT, i, model_name, results):
