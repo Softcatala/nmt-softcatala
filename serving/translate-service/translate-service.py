@@ -29,7 +29,7 @@ from threading import Thread
 from texttokenizer import TextTokenizer
 from usage import Usage
 from werkzeug.utils import secure_filename
-from batchfiles.batchfiles import *
+from batchfiles import *
 import os
 import uuid
 
