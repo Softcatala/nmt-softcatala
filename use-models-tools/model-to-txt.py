@@ -71,6 +71,16 @@ def read_parameters():
         help='Name of the translated file'
     )
 
+    parser.add_option(
+        '-p',
+        '--tokenizer-models',
+        type='string',
+        action='store',
+        dest='tokenizer_models',
+        default='',
+        help='Path to tokenizer SentencePiece models'
+    )
+
     (options, args) = parser.parse_args()
     if options.txt_file is None:
         parser.error('TXT file not given')
@@ -78,19 +88,24 @@ def read_parameters():
     if options.translated_file is None:
         parser.error('Translate file not given')
 
-    return options.model_name, options.txt_file, options.translated_file
+    return options.model_name, options.txt_file, options.translated_file, tokenizer_models
 
 def main():
 
     start_time = datetime.datetime.now()
     init_logging(True)
     openNMT = OpenNMT()
-    openNMT.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path="en_m.model")
-    openNMT.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path="ca_m.model")
 
     print("Applies an OpenNMT model to translate a TXT file")
-    print("Requieres a TensorFlow server answering '{0}'".format(openNMT.server))
-    model_name, input_filename, translated_file = read_parameters()
+    print("Requires a TensorFlow server answering '{0}'".format(openNMT.server))
+    model_name, input_filename, translated_file, tokenizer_models, = read_parameters()
+
+    model_path = os.path.join(tokenizer_models, "en_m.model")
+    openNMT.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path = model_path)
+    model_path = os.path.join(tokenizer_models, "ca_m.model")
+    openNMT.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path= model_path)
+
+
     target_filename_review = "translated-review.txt"
 
     with open(input_filename, encoding='utf-8', mode='r') as tf_en,\

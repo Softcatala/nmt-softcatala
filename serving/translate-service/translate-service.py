@@ -165,7 +165,7 @@ def _allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-UPLOAD_FOLDER = 'files/'
+UPLOAD_FOLDER = 'data/files/'
 
 def save_file_to_process(filename, email, model_name):
     database.open()    
