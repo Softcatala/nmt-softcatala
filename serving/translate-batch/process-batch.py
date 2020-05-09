@@ -22,7 +22,7 @@ from __future__ import print_function
 import logging
 import os
 import datetime
-from batchfiles.batchfiles import *
+from batchfiles import *
 import time
 import smtplib
 import ssl

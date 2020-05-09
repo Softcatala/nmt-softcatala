@@ -10,5 +10,5 @@ RUN pip3 install --upgrade pip && pip3 install --upgrade setuptools
 WORKDIR /srv
 RUN pip3 install -r requirements.txt
 
-#ENTRYPOINT /srv/entry-point.sh
-ENTRYPOINT bash
+ENTRYPOINT /srv/entry-point.sh
+#ENTRYPOINT bash
