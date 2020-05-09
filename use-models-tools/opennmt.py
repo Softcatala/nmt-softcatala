@@ -32,7 +32,7 @@ class OpenNMT():
         self.model_name = None
         self.channel = None
         self.stub = None
-        self._server = 'localhost:8500'
+        self._server = 'opennmt-tf:8500'
         self.tokenizer_source = None
         self.tokenizer_target = None
 

@@ -147,10 +147,10 @@ def stats():
 @app.route('/version/', methods=['GET'])
 def version_api():
 
-    with open("model-description-engcat.txt", "r") as th_description:
+    with open(f"{MODELS_PATH}/model-description-engcat.txt", "r") as th_description:
         lines = th_description.read().splitlines()
 
-    with open("model-description-cateng.txt", "r") as th_description:
+    with open(f"{MODELS_PATH}/model-description-cateng.txt", "r") as th_description:
         lines_cat_eng = th_description.read().splitlines()
 
     lines += lines_cat_eng

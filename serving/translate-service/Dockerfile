@@ -12,5 +12,5 @@ EXPOSE 8700
 WORKDIR /srv
 RUN pip3 install -r requirements.txt
 
-#ENTRYPOINT /srv/entry-point.sh
-ENTRYPOINT bash
+ENTRYPOINT /srv/entry-point.sh
+#ENTRYPOINT bash
