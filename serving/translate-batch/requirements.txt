@@ -1,0 +1,4 @@
+grpcio
+pyonmttok>=1.14.0
+tensorflow-serving-api
+peewee>=3.0.0
