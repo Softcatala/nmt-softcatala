@@ -40,12 +40,12 @@ MODELS_PATH = '/srv/data/models'
 SERVER = 'opennmt-tf:8500'
 
 openNMT_engcat = OpenNMT()
-openNMT_engcat = server
+openNMT_engcat = SERVER
 openNMT_engcat.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{MODELS_PATH}/en_m.model")
 openNMT_engcat.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{MODELS_PATH}/ca_m.model")
 
 openNMT_cateng = OpenNMT()
-openNMT_cateng = server
+openNMT_cateng = SERVER
 openNMT_cateng.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{MODELS_PATH}/ca_m.model")
 openNMT_cateng.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{MODELS_PATH}/en_m.model")
 
