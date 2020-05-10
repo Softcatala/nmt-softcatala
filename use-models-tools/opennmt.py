@@ -32,13 +32,17 @@ class OpenNMT():
         self.model_name = None
         self.channel = None
         self.stub = None
-        self._server = 'opennmt-tf:8500'
+        self._server = 'localhost:8500'
         self.tokenizer_source = None
         self.tokenizer_target = None
 
     @property
     def server(self):
         return self._server
+
+    @server.setter
+    def server(self, value):
+        self._server = value
 
     def _pad_batch(self, batch_tokens):
         lengths = [len(tokens) for tokens in batch_tokens]

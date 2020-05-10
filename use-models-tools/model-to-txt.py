@@ -81,6 +81,16 @@ def read_parameters():
         help='Path to tokenizer SentencePiece models'
     )
 
+    parser.add_option(
+        '-s',
+        '--server',
+        type='string',
+        action='store',
+        dest='server',
+        default='',
+        help='TensorFlow server address and port'
+    )
+
     (options, args) = parser.parse_args()
     if options.txt_file is None:
         parser.error('TXT file not given')
@@ -88,24 +98,28 @@ def read_parameters():
     if options.translated_file is None:
         parser.error('Translate file not given')
 
-    return options.model_name, options.txt_file, options.translated_file, options.tokenizer_models
+    return options.model_name, options.txt_file, options.translated_file, options.tokenizer_models, options.server
 
 def main():
 
-    start_time = datetime.datetime.now()
-    init_logging(True)
     openNMT = OpenNMT()
 
     print("Applies an OpenNMT model to translate a TXT file")
-    print("Requires a TensorFlow server answering '{0}'".format(openNMT.server))
-    model_name, input_filename, translated_file, tokenizer_models = read_parameters()
+    print("Requires a TensorFlow server answering '{0}' or the designated port".format(openNMT.server))
+
+    start_time = datetime.datetime.now()
+    init_logging(True)
+    model_name, input_filename, translated_file, tokenizer_models, server = read_parameters()
+
+    if len(server) > 0:
+        openNMT.server = server
 
     model_path = os.path.join(tokenizer_models, "en_m.model")
     openNMT.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path = model_path)
     model_path = os.path.join(tokenizer_models, "ca_m.model")
     openNMT.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path= model_path)
-    target_filename_review = "translated-review.txt"
 
+    target_filename_review = "translated-review.txt"
     with open(input_filename, encoding='utf-8', mode='r') as tf_en,\
          open(translated_file, encoding='utf-8', mode='w') as tf_ca,\
          open(target_filename_review, encoding='utf-8', mode='w') as tf_ca_review:

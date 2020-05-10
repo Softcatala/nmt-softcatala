@@ -29,6 +29,9 @@ import ssl
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+MODELS_PATH = 'data/models/'
+SERVER = 'opennmt-tf:8500'
+
 def init_logging(del_logs):
     logfile = 'process-batch.log'
 
@@ -81,8 +84,8 @@ def main():
             print(batchfile.filename)
             translated_file = batchfile.filename + "-translated.txt"
             truncate_file(batchfile.filename)
-            cmd = "python3 model-to-txt.py -f {0} -t {1} -m {2} -p {3}".format(batchfile.filename,
-                   translated_file, batchfile.model, 'data/models/')
+            cmd = "python3 model-to-txt.py -f {0} -t {1} -m {2} -p {3} -s {4}".format(batchfile.filename,
+                   translated_file, batchfile.model, MODELS_PATH, SERVER)
             logging.debug("Run {0}".format(cmd))
             os.system(cmd)
             send_email(translated_file, batchfile.email)
