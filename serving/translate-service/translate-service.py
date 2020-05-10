@@ -29,20 +29,25 @@ from threading import Thread
 from texttokenizer import TextTokenizer
 from usage import Usage
 from werkzeug.utils import secure_filename
-from batchfiles.batchfiles import *
+from batchfiles import *
 import os
 import uuid
 
 app = Flask(__name__)
 CORS(app)
 
+MODELS_PATH = '/srv/data/models'
+SERVER = 'opennmt-tf:8500'
+
 openNMT_engcat = OpenNMT()
-openNMT_engcat.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path="en_m.model")
-openNMT_engcat.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path="ca_m.model")
+openNMT_engcat.server = SERVER
+openNMT_engcat.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{MODELS_PATH}/en_m.model")
+openNMT_engcat.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{MODELS_PATH}/ca_m.model")
 
 openNMT_cateng = OpenNMT()
-openNMT_cateng.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path="ca_m.model")
-openNMT_cateng.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path="en_m.model")
+openNMT_cateng.server = SERVER
+openNMT_cateng.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{MODELS_PATH}/ca_m.model")
+openNMT_cateng.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{MODELS_PATH}/en_m.model")
 
 
 def translate_thread(sentence, openNMT, i, model_name, results):
@@ -146,10 +151,10 @@ def stats():
 @app.route('/version/', methods=['GET'])
 def version_api():
 
-    with open("model-description-engcat.txt", "r") as th_description:
+    with open(f"{MODELS_PATH}/model-description-engcat.txt", "r") as th_description:
         lines = th_description.read().splitlines()
 
-    with open("model-description-cateng.txt", "r") as th_description:
+    with open(f"{MODELS_PATH}/model-description-cateng.txt", "r") as th_description:
         lines_cat_eng = th_description.read().splitlines()
 
     lines += lines_cat_eng
@@ -164,7 +169,7 @@ def _allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-UPLOAD_FOLDER = 'files/'
+UPLOAD_FOLDER = 'data/files/'
 
 def save_file_to_process(filename, email, model_name):
     database.open()    
