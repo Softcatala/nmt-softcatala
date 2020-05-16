@@ -80,7 +80,7 @@ def _launch_translate_threads(openNMT, model_name, text, sentences, translate):
     for process in threads:
         process.join()
 
-    return num_sentences, results
+    return results
 
 #    print("All threads processed")
 
@@ -103,14 +103,8 @@ def translate_api():
     tokenizer = TextTokenizer()
     sentences, translate = tokenizer.tokenize(text)
 
-    num_sentences, results = _launch_translate_threads(openNMT, model_name, text, sentences, translate)
-
-    translated = ''
-    for i in range(0, num_sentences):
-        if translate[i] is True:
-            translated += results[i] + " "
-        else:
-            translated += sentences[i]
+    results = _launch_translate_threads(openNMT, model_name, text, sentences, translate)
+    translated = tokenizer.sentence_from_tokens(sentences, translate, results)
 
 #    print("Translated:" + str(translated))
     time_used = datetime.datetime.now() - start_time

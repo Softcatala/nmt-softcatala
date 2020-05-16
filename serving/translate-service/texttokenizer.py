@@ -78,4 +78,13 @@ class TextTokenizer:
 
         return strings, translate
 
+    def sentence_from_tokens(self, sentences, translate, translated):
+        num_sentences = len(sentences)
+        translation = ''
+        for i in range(0, num_sentences):
+            if translate[i] is True:
+                translation += translated[i] + " "
+            else:
+                translation += sentences[i]
 
+        return translation
