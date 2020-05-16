@@ -29,7 +29,7 @@ from shutil import copyfile
 '''
 class Usage(object):
 
-    FILE = "data/usage.txt"
+    FILE = "/srv/data/usage.txt"
     DAYS_TO_KEEP = 7
 
     def __init__(self):

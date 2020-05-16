@@ -24,17 +24,27 @@ import tensorflow as tf
 from tensorflow_serving.apis import predict_pb2
 from tensorflow_serving.apis import prediction_service_pb2_grpc
 import pyonmttok
-
+import os
 
 class OpenNMT():
+
+    ENV_NAME = 'OPENNMT_SERVER'
 
     def __init__(self):
         self.model_name = None
         self.channel = None
         self.stub = None
-        self._server = 'localhost:8500'
+        self._server = self._get_default_server()
         self.tokenizer_source = None
         self.tokenizer_target = None
+
+    def _get_default_server(self):
+        if self.ENV_NAME in os.environ:
+            server = os.environ[self.ENV_NAME]
+        else:
+            server = 'localhost:8500'
+
+        return server
 
     @property
     def server(self):
