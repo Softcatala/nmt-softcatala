@@ -29,7 +29,7 @@ import ssl
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-MODELS_PATH = 'data/models/'
+MODELS_PATH = '/srv/data/models/'
 SERVER = 'opennmt-tf:8500'
 
 def init_logging(del_logs):
@@ -65,7 +65,6 @@ def send_email(translated_file, email):
         logging.error(msg)
 
 MAX_SIZE = 256 * 1024
-FILES_SUBDIR = "data/"
 
 def truncate_file(filename):
     f = open(filename, "a")
@@ -82,7 +81,7 @@ def main():
         print("Starting to process")
         batchfiles = BatchFile.select().where(BatchFile.done == 0)
         for batchfile in batchfiles:
-            source_file = os.path.join(FILES_SUBDIR, batchfile.filename)
+            source_file = batchfile.filename
             print(source_file)
             translated_file = source_file + "-translated.txt"
             truncate_file(source_file)

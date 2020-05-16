@@ -30,7 +30,7 @@ class BatchFilesDatabase(SqliteDatabase):
         if os.path.exists(database_name) == False:
             self.create_schema()
 
-    def open(self, database_name = 'data/bachfiles.db3'):
+    def open(self, database_name = '/srv/data/bachfiles.db3'):
         self.init(database_name)
         self._create(database_name)
 
