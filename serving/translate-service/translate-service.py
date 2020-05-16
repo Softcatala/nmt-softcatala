@@ -56,14 +56,6 @@ def translate_thread(sentence, openNMT, i, model_name, results):
 
 def _launch_translate_threads(openNMT, model_name, text, sentences, translate):
     num_sentences = len(sentences)
-    num_threads = 0
-    for i in range(0, len(sentences)):
-#        print("Sentence: '{0}': {1}".format(sentences[i], translate[i]))
-        if translate[i] is False:
-            continue
-       
-        num_threads = num_threads + 1
-
     threads = []
     results = ["" for x in range(num_sentences)]
     for i in range(num_sentences):

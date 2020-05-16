@@ -119,7 +119,7 @@ def main():
             src = src.replace('\n', '')
 
             try:
-                tgt = openNMT.translate(model_name, src)
+                tgt = openNMT.translate_splitted(model_name, src)
             except Exception as e:
                 logging.error(str(e))
                 logging.error("Processing: {0}".format(src))
