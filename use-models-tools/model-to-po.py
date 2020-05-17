@@ -47,9 +47,9 @@ def read_parameters():
         '--model_name',
         type='string',
         action='store',
-        dest='model_name',
         default='eng-cat',
-        help='Model name'
+        dest='model_name',
+        help="Tensorflow model name. For example 'eng-cat' or 'cat-eng'"
     )
 
     parser.add_option(
@@ -86,7 +86,7 @@ def main():
         if entry.translated():
             continue
 
-        if 'fuzzy' in entry.flags:
+        if 'fuzzy' in entry.flags or entry.obsolete:
             continue
 
         src = _clean_string(entry.msgid)
@@ -99,7 +99,6 @@ def main():
             if add:
                 translated = translated + 1
                 entry.msgstr = tgt
-                entry.tcomment = "Imported from NMT"
                 entry.flags.append('fuzzy')
 
             if translated % 500 == 0:
