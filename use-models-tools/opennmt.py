@@ -25,6 +25,7 @@ from tensorflow_serving.apis import predict_pb2
 from tensorflow_serving.apis import prediction_service_pb2_grpc
 import pyonmttok
 import os
+from texttokenizer import TextTokenizer
 
 class OpenNMT():
 
@@ -102,3 +103,26 @@ class OpenNMT():
         self.stub = prediction_service_pb2_grpc.PredictionServiceStub(self.channel)
         translated = self._translate_sentence(text)
         return translated
+
+    def _translate_split(self, sentence, i, model_name, results):
+        if sentence.strip() == '':
+            results[i] = ''
+        else:
+            results[i] = self.translate(model_name, sentence)
+
+
+    def translate_splitted(self, model_name, text):
+        tokenizer = TextTokenizer()
+        sentences, translate = tokenizer.tokenize(text)
+
+        num_sentences = len(sentences)
+        threads = []
+        results = ["" for x in range(num_sentences)]
+        for i in range(num_sentences):
+            if translate[i] is False:
+                continue
+            
+            self._translate_split(sentences[i], i, model_name, results)
+
+        return tokenizer.sentence_from_tokens(sentences, translate, results)
+
