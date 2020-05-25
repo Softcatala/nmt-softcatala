@@ -61,22 +61,35 @@ def read_parameters():
         help='PO File to translate'
     )
 
+    parser.add_option(
+        '-p',
+        '--tokenizer-models',
+        type='string',
+        action='store',
+        dest='tokenizer_models',
+        default='',
+        help='Path to tokenizer SentencePiece models'
+    )
+
     (options, args) = parser.parse_args()
     if options.po_file is None:  # if filename is not given
         parser.error('PO file not given')
-    return options.model_name, options.po_file
+
+    return options.model_name, options.po_file, options.tokenizer_models
 
 def main():
 
     print("Applies a OpenNMT model to translate a PO file")
     start_time = datetime.datetime.now()
-    model_name, input_filename = read_parameters()
+    model_name, input_filename, tokenizer_models = read_parameters()
     target_filename = input_filename + "-ca.po"
     copyfile(input_filename, target_filename)
 
     openNMT = OpenNMT()
-    openNMT.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path="en_m.model")
-    openNMT.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path="ca_m.model")
+    model_path = os.path.join(tokenizer_models, "en_m.model")
+    openNMT.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path = model_path)
+    model_path = os.path.join(tokenizer_models, "ca_m.model")
+    openNMT.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path= model_path)
     
     po_file = polib.pofile(target_filename)
     translated = 0
