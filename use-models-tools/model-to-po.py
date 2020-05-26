@@ -27,7 +27,19 @@ import os
 from optparse import OptionParser
 import pyonmttok
 import re
+import logging
 
+
+def init_logging(del_logs):
+    logfile = 'model-to-po.log'
+
+    if del_logs and os.path.isfile(logfile):
+        os.remove(logfile)
+
+    logger = logging.getLogger()
+    hdlr = logging.FileHandler(logfile)
+    logger.addHandler(hdlr)
+    logger.setLevel(logging.WARNING)
 
 def _clean_string(result):
     CHARS = (
@@ -95,6 +107,8 @@ def main():
 
     print("Applies a OpenNMT model to translate a PO file")
     start_time = datetime.datetime.now()
+
+    init_logging(True)
     model_name, input_filename, tokenizer_models, remove_tags = read_parameters()
     target_filename = input_filename + "-ca.po"
     copyfile(input_filename, target_filename)
@@ -125,7 +139,7 @@ def main():
             tgt = openNMT.translate(model_name, src)
 
             add = True
-            
+
             if add:
                 translated = translated + 1
                 entry.msgstr = tgt
@@ -136,6 +150,8 @@ def main():
                 po_file.save(target_filename)
         
         except Exception as e:
+            logging.error(str(e))
+            logging.error("Processing: {0}".format(src))
             errors = errors + 1
 
     po_file.save(target_filename)
