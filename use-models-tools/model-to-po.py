@@ -26,7 +26,20 @@ from shutil import copyfile
 import os
 from optparse import OptionParser
 import pyonmttok
+import re
+import logging
 
+
+def init_logging(del_logs):
+    logfile = 'model-to-po.log'
+
+    if del_logs and os.path.isfile(logfile):
+        os.remove(logfile)
+
+    logger = logging.getLogger()
+    hdlr = logging.FileHandler(logfile)
+    logger.addHandler(hdlr)
+    logger.setLevel(logging.WARNING)
 
 def _clean_string(result):
     CHARS = (
@@ -71,17 +84,32 @@ def read_parameters():
         help='Path to tokenizer SentencePiece models'
     )
 
+    parser.add_option(
+        '-t',
+        '--remove-tags',
+        action='store_true',
+        dest='remove_tags',
+        default=False,
+        help=u'Remove tags from target translation (better output less mess up with tags)'
+    )
+
     (options, args) = parser.parse_args()
     if options.po_file is None:  # if filename is not given
         parser.error('PO file not given')
 
-    return options.model_name, options.po_file, options.tokenizer_models
+    return options.model_name, options.po_file, options.tokenizer_models, options.remove_tags
+
+def remove_tags_string(src):
+    tgt = re.sub("\\<.*?\\>", " ", src)
+    return tgt
 
 def main():
 
     print("Applies a OpenNMT model to translate a PO file")
     start_time = datetime.datetime.now()
-    model_name, input_filename, tokenizer_models = read_parameters()
+
+    init_logging(True)
+    model_name, input_filename, tokenizer_models, remove_tags = read_parameters()
     target_filename = input_filename + "-ca.po"
     copyfile(input_filename, target_filename)
 
@@ -104,11 +132,14 @@ def main():
 
         src = _clean_string(entry.msgid)
 
+        if remove_tags:
+            src = remove_tags_string(src)
+
         try:
             tgt = openNMT.translate(model_name, src)
 
             add = True
-            
+
             if add:
                 translated = translated + 1
                 entry.msgstr = tgt
@@ -119,6 +150,8 @@ def main():
                 po_file.save(target_filename)
         
         except Exception as e:
+            logging.error(str(e))
+            logging.error("Processing: {0}".format(src))
             errors = errors + 1
 
     po_file.save(target_filename)
