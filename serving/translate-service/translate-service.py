@@ -78,14 +78,14 @@ def _launch_translate_threads(openNMT, model_name, text, sentences, translate):
 @app.route('/translate/', methods=['POST'])
 def translate_api():
     start_time = datetime.datetime.now()
-    text = request.json['text']
-    languages = request.json['languages']
+    text = request.json['q']
+    languages = request.json['langpair']
 
-    if languages == 'eng-cat':
+    if languages == 'eng|cat':
         model_name = 'eng-cat'
         openNMT = openNMT_engcat
     else:
-        model_name = 'cat-eng'
+        model_name = 'cat|eng'
         openNMT = openNMT_cateng
 
 #    print("Input:" + text)
@@ -102,7 +102,7 @@ def translate_api():
     usage.log(model_name, words, time_used)
     result = {}
     result['text'] = text
-    result['translated'] = translated
+    result['translatedText'] = translated
     result['time'] = str(time_used)
     return json_answer(result)
 
