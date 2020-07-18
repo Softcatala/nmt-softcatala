@@ -1,5 +1,9 @@
 FROM python:3.7.6-slim-buster
 
+
+COPY models/eng-cat/ctranslate2/ /srv/eng-cat/
+COPY models/cat-eng/ctranslate2/ /srv/cat-eng/
+
 COPY serving/translate-service/*.py /srv/
 COPY serving/translate-service/requirements.txt /srv/
 COPY serving/translate-service/docker/entry-point.sh /srv/
@@ -12,5 +16,5 @@ EXPOSE 8700
 WORKDIR /srv
 RUN pip3 install -r requirements.txt
 
-ENTRYPOINT /srv/entry-point.sh
-#ENTRYPOINT bash
+#ENTRYPOINT /srv/entry-point.sh
+ENTRYPOINT bash

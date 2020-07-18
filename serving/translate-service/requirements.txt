@@ -5,3 +5,4 @@ gunicorn>=20.0.4
 pyonmttok>=1.14.0
 tensorflow-serving-api
 peewee>=3.0.0
+ctranslate2
