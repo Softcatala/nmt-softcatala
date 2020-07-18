@@ -130,9 +130,9 @@ This is assumes that you are already serving the models.
 
 ## Translating a new PO file using the a model
 
-Code is in ApplyToPoFile subdirectory. For example to translate the file 'test.po' with the 'model-sc'
+Code is in ApplyToPoFile subdirectory. For example to translate the file 'test.po':
 
-* Run ```python3 model-to-po.py -f test.po -m model-sc```
+* Run ```python3 model-to-po.py -f test.po```
 
 By default all strings translated by the translation system are marked as 'fuzzy'
 
