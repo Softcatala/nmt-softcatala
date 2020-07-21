@@ -19,51 +19,27 @@
 # Boston, MA 02111-1307, USA.
 
 from __future__ import print_function
-import pyonmttok
 import os
 from texttokenizer import TextTokenizer
 import ctranslate2
+import pyonmttok
 
 class CTranslate():
 
-    ENV_NAME = 'OPENNMT_SERVER'
-
     def __init__(self, model_name):
         self.model_name = model_name
-        self._server = self._get_default_server()
         self.tokenizer_source = None
         self.tokenizer_target = None
-        print(model_name)
         self.translator = ctranslate2.Translator(model_name)
 
-    def _get_default_server(self):
-        if self.ENV_NAME in os.environ:
-            server = os.environ[self.ENV_NAME]
-        else:
-            server = 'localhost:8500'
-
-        return server
-
-    @property
-    def server(self):
-        return self._server
-
-    @server.setter
-    def server(self, value):
-        self._server = value
 
     def _translate_request(self, batch_text, timeout):
         batch_input = [self.tokenizer_source.tokenize(text)[0] for text in batch_text]
 
-        print(batch_input)
-        print(type(self.translator))
-
-
- #        self.translator.translate_batch(batch_input)
-        print("retornat!")
-        print(result)
-
-        batch_output = [self.tokenizer_target.detokenize(prediction) for prediction in result]
+        result = self.translator.translate_batch(batch_input, return_scores = False)
+        tokens = result[0][0]['tokens']
+        tokens = [tokens]
+        batch_output = [self.tokenizer_target.detokenize(prediction) for prediction in tokens]
         return batch_output
 
     def _translate_sentence(self, text):
