@@ -51,14 +51,14 @@ class CTranslate():
         translated = self._translate_sentence(text)
         return translated
 
-    def _translate_split(self, sentence, i, model_name, results):
+    def _translate_split(self, sentence, i, results):
         if sentence.strip() == '':
             results[i] = ''
         else:
-            results[i] = self.translate(model_name, sentence)
+            results[i] = self.translate(sentence)
 
 
-    def translate_splitted(self, model_name, text):
+    def translate_splitted(self, text):
         tokenizer = TextTokenizer()
         sentences, translate = tokenizer.tokenize(text)
 
@@ -69,6 +69,6 @@ class CTranslate():
             if translate[i] is False:
                 continue
             
-            self._translate_split(sentences[i], i, model_name, results)
+            self._translate_split(sentences[i], i, results)
 
         return tokenizer.sentence_from_tokens(sentences, translate, results)
