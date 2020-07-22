@@ -26,11 +26,26 @@ import pyonmttok
 
 class CTranslate():
 
+    INTER_THREADS = 'CTRANSLATE_INTER_THREADS'
+    INTRA_THREADS = 'CTRANSLATE_INTRA_THREADS'
+
     def __init__(self, model_name):
         self.model_name = model_name
         self.tokenizer_source = None
         self.tokenizer_target = None
-        self.translator = ctranslate2.Translator(model_name)
+
+        if self.INTER_THREADS in os.environ:
+            inter_threads = int(os.environ[self.INTER_THREADS])
+        else:
+            inter_threads = 1
+
+        if self.INTRA_THREADS in os.environ:
+            intra_threads = int(os.environ[self.INTRA_THREADS])
+        else:
+            intra_threads = 4
+
+        print(f"inter_threads: {inter_threads}, intra_threads: {intra_threads}")
+        self.translator = ctranslate2.Translator(model_name, inter_threads = inter_threads, intra_threads = intra_threads)
 
 
     def _translate_request(self, batch_text, timeout):
