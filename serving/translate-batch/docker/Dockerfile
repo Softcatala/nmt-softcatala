@@ -4,7 +4,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get install vim -y --no-install-
 RUN apt-get install python3-pip -y --no-install-recommends
 RUN pip3 install --upgrade pip && pip3 install --upgrade setuptools
 
-COPY serving/translate-service/requirements.txt /srv/
+COPY serving/translate-batch/requirements.txt /srv/
 WORKDIR /srv
 RUN pip3 install -r requirements.txt
 
