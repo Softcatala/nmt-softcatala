@@ -25,10 +25,10 @@ import polib
 from shutil import copyfile
 import os
 from optparse import OptionParser
-import pyonmttok
 import re
 import logging
-
+from ctranslate import CTranslate
+import pyonmttok
 
 def init_logging(del_logs):
     logfile = 'model-to-po.log'
@@ -62,7 +62,7 @@ def read_parameters():
         action='store',
         default='eng-cat',
         dest='model_name',
-        help="Tensorflow model name. For example 'eng-cat' or 'cat-eng'"
+        help="Translation model name. For example 'eng-cat' or 'cat-eng'"
     )
 
     parser.add_option(
@@ -93,11 +93,21 @@ def read_parameters():
         help=u'Remove tags from target translation (better output less mess up with tags)'
     )
 
+    parser.add_option(
+        '-x',
+        '--translation-models',
+        type='string',
+        action='store',
+        dest='translation_models',
+        default='',
+        help='Path to translation models'
+    )
+
     (options, args) = parser.parse_args()
     if options.po_file is None:  # if filename is not given
         parser.error('PO file not given')
 
-    return options.model_name, options.po_file, options.tokenizer_models, options.remove_tags
+    return options.model_name, options.po_file, options.tokenizer_models, options.translation_models, options.remove_tags
 
 def remove_tags_string(src):
     tgt = re.sub("\\<.*?\\>", " ", src)
@@ -109,11 +119,13 @@ def main():
     start_time = datetime.datetime.now()
 
     init_logging(True)
-    model_name, input_filename, tokenizer_models, remove_tags = read_parameters()
+    model_name, input_filename, tokenizer_models, translation_models, remove_tags = read_parameters()
     target_filename = input_filename + "-ca.po"
     copyfile(input_filename, target_filename)
 
-    openNMT = OpenNMT()
+    model_path = os.path.join(translation_models, model_name)
+    openNMT = CTranslate(model_path)
+
     model_path = os.path.join(tokenizer_models, "en_m.model")
     openNMT.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path = model_path)
     model_path = os.path.join(tokenizer_models, "ca_m.model")
@@ -136,7 +148,7 @@ def main():
             src = remove_tags_string(src)
 
         try:
-            tgt = openNMT.translate(model_name, src)
+            tgt = openNMT.translate(src)
 
             add = True
 
