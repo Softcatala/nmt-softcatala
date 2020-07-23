@@ -29,7 +29,8 @@ import ssl
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-MODELS_PATH = '/srv/data/models/'
+TOKENIZER_MODELS = '/srv/models/tokenizer/'
+TRANSLATION_MODELS = '/srv/models/'
 
 def init_logging(del_logs):
     logfile = 'process-batch.log'
@@ -84,8 +85,8 @@ def main():
             print(source_file)
             translated_file = source_file + "-translated.txt"
             truncate_file(source_file)
-            cmd = "python3 model-to-txt.py -f {0} -t {1} -m {2} -p {3}".format(source_file,
-                   translated_file, batchfile.model, MODELS_PATH)
+            cmd = "python3 model-to-txt.py -f {0} -t {1} -m {2} -p {3} -x {4}".format(source_file,
+                   translated_file, batchfile.model, TOKENIZER_MODELS, TRANSLATION_MODELS)
             logging.debug("Run {0}".format(cmd))
             os.system(cmd)
             send_email(translated_file, batchfile.email)

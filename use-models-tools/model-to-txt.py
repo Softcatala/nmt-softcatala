@@ -23,7 +23,7 @@ import logging
 import os
 import datetime
 from optparse import OptionParser
-from opennmt import OpenNMT
+from ctranslate import CTranslate
 import pyonmttok
 
 
@@ -50,7 +50,7 @@ def read_parameters():
         action='store',
         default='eng-cat',
         dest='model_name',
-        help="Tensorflow model name. For example 'eng-cat' or 'cat-eng'"
+        help="Translation model name. For example 'eng-cat' or 'cat-eng'"
     )
 
     parser.add_option(
@@ -81,6 +81,16 @@ def read_parameters():
         help='Path to tokenizer SentencePiece models'
     )
 
+    parser.add_option(
+        '-x',
+        '--translation-models',
+        type='string',
+        action='store',
+        dest='translation_models',
+        default='',
+        help='Path to translation models'
+    )
+
     (options, args) = parser.parse_args()
     if options.txt_file is None:
         parser.error('TXT file not given')
@@ -88,18 +98,19 @@ def read_parameters():
     if options.translated_file is None:
         parser.error('Translate file not given')
 
-    return options.model_name, options.txt_file, options.translated_file, options.tokenizer_models
+    return options.model_name, options.txt_file, options.translated_file, options.tokenizer_models, options.translation_models
 
 def main():
 
-    openNMT = OpenNMT()
 
     print("Applies an OpenNMT model to translate a TXT file")
-    print("Requires a TensorFlow server answering '{0}'".format(openNMT.server))
 
     start_time = datetime.datetime.now()
     init_logging(True)
-    model_name, input_filename, translated_file, tokenizer_models = read_parameters()
+    model_name, input_filename, translated_file, tokenizer_models, translation_models = read_parameters()
+
+    model_path = os.path.join(translation_models, model_name)
+    openNMT = CTranslate(model_path)
 
     model_path = os.path.join(tokenizer_models, "en_m.model")
     openNMT.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path = model_path)
@@ -119,7 +130,7 @@ def main():
             src = src.replace('\n', '')
 
             try:
-                tgt = openNMT.translate_splitted(model_name, src)
+                tgt = openNMT.translate_splitted(src)
             except Exception as e:
                 logging.error(str(e))
                 logging.error("Processing: {0}".format(src))
