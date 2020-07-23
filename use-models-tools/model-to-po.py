@@ -19,7 +19,6 @@
 # Boston, MA 02111-1307, USA.
 
 from __future__ import print_function
-from opennmt import OpenNMT
 import datetime
 import polib
 from shutil import copyfile
