@@ -1,4 +1,2 @@
-grpcio
-tensorflow
-tensorflow-serving-api
-pyonmttok
+pyonmttok==1.18.0
+ctranslate2==1.12
