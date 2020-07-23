@@ -20,6 +20,7 @@
 
 from __future__ import print_function
 import logging
+import logging.handlers
 import os
 import datetime
 from batchfiles import *
@@ -32,17 +33,21 @@ from email.mime.text import MIMEText
 TOKENIZER_MODELS = '/srv/models/tokenizer/'
 TRANSLATION_MODELS = '/srv/models/'
 
-def init_logging(del_logs):
+def init_logging():
+
     logfile = 'process-batch.log'
 
-    if del_logs and os.path.isfile(logfile):
-        os.remove(logfile)
-
+    LOGLEVEL = os.environ.get('LOGLEVEL', 'INFO').upper()
     logger = logging.getLogger()
-
-    hdlr = logging.FileHandler(logfile)
+    hdlr = logging.handlers.RotatingFileHandler(logfile, maxBytes=1024*1024, backupCount=1)
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    hdlr.setFormatter(formatter)
     logger.addHandler(hdlr)
-    logger.setLevel(logging.WARNING)
+    logger.setLevel(LOGLEVEL)
+
+    console = logging.StreamHandler()
+    console.setLevel(LOGLEVEL)
+    logger.addHandler(console)
 
 def send_email(translated_file, email):
     try:
@@ -73,12 +78,11 @@ def truncate_file(filename):
 
 def main():
 
-    init_logging(True)    
     print("Process batch files to translate")
+    init_logging()
     database.open()
 
     while True:
-        print("Starting to process")
         batchfiles = BatchFile.select().where(BatchFile.done == 0)
         for batchfile in batchfiles:
             source_file = batchfile.filename
