@@ -66,6 +66,12 @@ To translate PO files:
 
 The translated file will be ```ca.po-ca.po```
 
+To translate a text file from Catalan to English:
+* ```echo "Hola món" > input.txt```
+* ```docker run -it -v "$(pwd)":/srv/files/ --env COMMAND_LINE="-f input.txt -t output.txt -m cat-eng" --rm use-model-tools --name use-model-tools```
+* ```more output.txt```
+
+
 # Serving the models in production
 
 Our tentative approach to run these models in production is:
