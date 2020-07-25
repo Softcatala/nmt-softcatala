@@ -102,7 +102,6 @@ def read_parameters():
 
 def main():
 
-
     print("Applies an OpenNMT model to translate a TXT file")
 
     start_time = datetime.datetime.now()
@@ -112,10 +111,15 @@ def main():
     model_path = os.path.join(translation_models, model_name)
     openNMT = CTranslate(model_path)
 
-    model_path = os.path.join(tokenizer_models, "en_m.model")
-    openNMT.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path = model_path)
-    model_path = os.path.join(tokenizer_models, "ca_m.model")
-    openNMT.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path= model_path)
+    if (model_name == 'eng-cat'):
+        src_model_path = os.path.join(tokenizer_models, "en_m.model")
+        tgt_model_path = os.path.join(tokenizer_models, "ca_m.model")
+    else:
+        src_model_path = os.path.join(tokenizer_models, "ca_m.model")
+        tgt_model_path = os.path.join(tokenizer_models, "en_m.model")
+
+    openNMT.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path = src_model_path)
+    openNMT.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path = tgt_model_path)
 
     target_filename_review = "translated-review.txt"
     with open(input_filename, encoding='utf-8', mode='r') as tf_en,\
