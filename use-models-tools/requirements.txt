@@ -1,4 +1,3 @@
-grpcio
-tensorflow
-tensorflow-serving-api
-pyonmttok
+polib
+pyonmttok==1.18.0
+ctranslate2==1.12

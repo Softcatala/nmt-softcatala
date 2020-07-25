@@ -20,6 +20,7 @@
 
 from __future__ import print_function
 import logging
+import logging.handlers
 import os
 import datetime
 from batchfiles import *
@@ -29,19 +30,24 @@ import ssl
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-MODELS_PATH = '/srv/data/models/'
+TOKENIZER_MODELS = '/srv/models/tokenizer/'
+TRANSLATION_MODELS = '/srv/models/'
 
-def init_logging(del_logs):
+def init_logging():
+
     logfile = 'process-batch.log'
 
-    if del_logs and os.path.isfile(logfile):
-        os.remove(logfile)
-
+    LOGLEVEL = os.environ.get('LOGLEVEL', 'INFO').upper()
     logger = logging.getLogger()
-
-    hdlr = logging.FileHandler(logfile)
+    hdlr = logging.handlers.RotatingFileHandler(logfile, maxBytes=1024*1024, backupCount=1)
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    hdlr.setFormatter(formatter)
     logger.addHandler(hdlr)
-    logger.setLevel(logging.WARNING)
+    logger.setLevel(LOGLEVEL)
+
+    console = logging.StreamHandler()
+    console.setLevel(LOGLEVEL)
+    logger.addHandler(console)
 
 def send_email(translated_file, email):
     try:
@@ -72,20 +78,19 @@ def truncate_file(filename):
 
 def main():
 
-    init_logging(True)    
     print("Process batch files to translate")
+    init_logging()
     database.open()
 
     while True:
-        print("Starting to process")
         batchfiles = BatchFile.select().where(BatchFile.done == 0)
         for batchfile in batchfiles:
             source_file = batchfile.filename
             print(source_file)
             translated_file = source_file + "-translated.txt"
             truncate_file(source_file)
-            cmd = "python3 model-to-txt.py -f {0} -t {1} -m {2} -p {3}".format(source_file,
-                   translated_file, batchfile.model, MODELS_PATH)
+            cmd = "python3 model-to-txt.py -f {0} -t {1} -m {2} -p {3} -x {4}".format(source_file,
+                   translated_file, batchfile.model, TOKENIZER_MODELS, TRANSLATION_MODELS)
             logging.debug("Run {0}".format(cmd))
             os.system(cmd)
             send_email(translated_file, batchfile.email)

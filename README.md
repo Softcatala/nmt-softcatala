@@ -49,54 +49,27 @@ The corpus used to train this model can be obtain from the trainings-sets direct
 
 # Serving the models in local (non-production environments)
 
-## Install TensorFlow Serving
-
-Pull this Docker image:
-
-```
-docker pull opennmt/tensorflow-serving:2.1.0
-```
-
-This is a standard TensorFlow Docker image that also contains Addons>GatherTree addon needed by OpenNMT-tf generated models.
-
-## Running TensorFlow Serving
-
-You can download the model into the Docker host and mapped it inside the container.
-
-For example if you download 'https://gent.softcatala.org/jmas/files/model-sc-2020-03-29-1585459573.zip' at 'nmt-softcatala/models/model-sc'
-
-```
-cd nmt-softcatala
-
-docker run -t --rm -p 8501:8501 -p 8500:8500 \
-    -v "$PWD/models/model-sc:/models/model-sc" \
-    -e MODEL_NAME=model-sc \
-    opennmt/tensorflow-serving:2.1.0  --enable_batching=true
-```
-
-Note: you need to map 8501 ports (gRPC) and 8500 (REST)
-
-# Using Softcatalà English/Catalan translation models locally
-
 This is useful for example if you want to translate large volumes using our prebuild English - Catalan models using the same exact version that we have in production.
 
-* Type ```docker pull jordimash/traductor-eng-cat:XX``` (where XX is the latest label published here https://hub.docker.com/r/jordimash/traductor-eng-cat/tags)
+* You need Docker installed in your system
 
-* Start container using ```docker run -it --rm  -p 8500:8500 -p 8501:8501 -p 8700:8700 jordimash/traductor-eng-cat:XXX``` (where XXX is the tag)
+* Type ```docker pull jordimash/use-models-tools```
 
-* Type ```git clone https://github.com/Softcatala/nmt-softcatala``` (to have the tools to use the models)
+To test quickly that every works:
+* ```echo "Hello World" > input.txt```
+* ```docker run -it -v "$(pwd)":/srv/files/ --env COMMAND_LINE="-f input.txt -t output.txt" --rm use-model-tools --name use-model-tools```
+* ```more output.txt```
 
-* Go to use-models-tools directory and type ```docker ps``` and take note of the CONTAINER_ID associated to the traductor-eng-cat container.
+To translate PO files:
+* File ```ca.po``` is your current directory
+* ```docker run -it -v "$(pwd)":/srv/files/ --env COMMAND_LINE="-f ca.po" --env FILE_TYPE='po' --rm use-model-tools --name use-model-tools```
 
-* Type ```docker cp CONTAINER_ID:/srv/en_m.model .``` and ```docker cp CONTAINER_ID:/srv/ca_m.model .```
+The translated file will be ```ca.po-ca.po```
 
-* Type ```pip install -r requirements.txt``` . You should be able to use the tools at use-models-tools
-
-To test that every works:
-
-* Run ```echo "I am going to the party" > source.txt```
-
-* Run ```python3 model-to-txt.py -f source.txt -t translate.txt && cat translate.txt ```
+To translate a text file from Catalan to English:
+* ```echo "Hola món" > input.txt```
+* ```docker run -it -v "$(pwd)":/srv/files/ --env COMMAND_LINE="-f input.txt -t output.txt -m cat-eng" --rm use-model-tools --name use-model-tools```
+* ```more output.txt```
 
 
 # Serving the models in production

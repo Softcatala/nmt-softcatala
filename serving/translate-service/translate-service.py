@@ -19,16 +19,15 @@
 # Boston, MA 02111-1307, USA.
 
 from __future__ import print_function
-from flask import Flask, request, Response, flash, redirect, url_for
+from flask import Flask, request, Response
 from flask_cors import CORS, cross_origin
 import json
 import datetime
-from opennmt import OpenNMT
+from ctranslate import CTranslate
 import pyonmttok
 from threading import Thread
 from texttokenizer import TextTokenizer
 from usage import Usage
-from werkzeug.utils import secure_filename
 from batchfiles import *
 import os
 import uuid
@@ -36,25 +35,28 @@ import uuid
 app = Flask(__name__)
 CORS(app)
 
-MODELS_PATH = '/srv/data/models'
+TOKENIZER_MODELS = '/srv/models/tokenizer'
+ENG_CAT_MODEL = '/srv/models/eng-cat'
+CAT_ENG_MODEL = '/srv/models/cat-eng'
+UPLOAD_FOLDER = '/srv/data/files/'
 
-openNMT_engcat = OpenNMT()
-openNMT_engcat.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{MODELS_PATH}/en_m.model")
-openNMT_engcat.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{MODELS_PATH}/ca_m.model")
+openNMT_engcat = CTranslate(f"{ENG_CAT_MODEL}")
+openNMT_engcat.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{TOKENIZER_MODELS}/en_m.model")
+openNMT_engcat.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{TOKENIZER_MODELS}/ca_m.model")
 
-openNMT_cateng = OpenNMT()
-openNMT_cateng.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{MODELS_PATH}/ca_m.model")
-openNMT_cateng.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{MODELS_PATH}/en_m.model")
+openNMT_cateng = CTranslate(f"{CAT_ENG_MODEL}")
+openNMT_cateng.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{TOKENIZER_MODELS}/ca_m.model")
+openNMT_cateng.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{TOKENIZER_MODELS}/en_m.model")
 
 
-def translate_thread(sentence, openNMT, i, model_name, results):
+def translate_thread(sentence, openNMT, i, results):
     if sentence.strip() == '':
         results[i] = ''
     else:
-        results[i] = openNMT.translate(model_name, sentence)
+        results[i] = openNMT.translate(sentence)
 #    print("{0} - {1} -> {2}".format(i, sentence, results[i]))
 
-def _launch_translate_threads(openNMT, model_name, text, sentences, translate):
+def _launch_translate_threads(openNMT, text, sentences, translate):
     num_sentences = len(sentences)
     threads = []
     results = ["" for x in range(num_sentences)]
@@ -62,7 +64,7 @@ def _launch_translate_threads(openNMT, model_name, text, sentences, translate):
         if translate[i] is False:
             continue
         
-        process = Thread(target=translate_thread, args=[sentences[i], openNMT, i, model_name, results])
+        process = Thread(target=translate_thread, args=[sentences[i], openNMT, i, results])
         process.start()
         threads.append(process)
 
@@ -82,24 +84,25 @@ def translate_api():
     languages = request.json['languages']
 
     if languages == 'eng-cat':
-        model_name = 'eng-cat'
         openNMT = openNMT_engcat
     else:
-        model_name = 'cat-eng'
         openNMT = openNMT_cateng
 
 #    print("Input:" + text)
     tokenizer = TextTokenizer()
     sentences, translate = tokenizer.tokenize(text)
 
-    results = _launch_translate_threads(openNMT, model_name, text, sentences, translate)
+    results = _launch_translate_threads(openNMT, text, sentences, translate)
     translated = tokenizer.sentence_from_tokens(sentences, translate, results)
+
+    # Single thread
+#    translated = openNMT.translate(text)
 
 #    print("Translated:" + str(translated))
     time_used = datetime.datetime.now() - start_time
     words = len(text.split(' '))
     usage = Usage()
-    usage.log(model_name, words, time_used)
+    usage.log(openNMT.model_name, words, time_used)
     result = {}
     result['text'] = text
     result['translated'] = translated
@@ -134,10 +137,10 @@ def stats():
 @app.route('/version/', methods=['GET'])
 def version_api():
 
-    with open(f"{MODELS_PATH}/model-description-engcat.txt", "r") as th_description:
+    with open(f"{ENG_CAT_MODEL}/model_description.txt", "r") as th_description:
         lines = th_description.read().splitlines()
 
-    with open(f"{MODELS_PATH}/model-description-cateng.txt", "r") as th_description:
+    with open(f"{CAT_ENG_MODEL}/model_description.txt", "r") as th_description:
         lines_cat_eng = th_description.read().splitlines()
 
     lines += lines_cat_eng
@@ -152,10 +155,8 @@ def _allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-UPLOAD_FOLDER = '/srv/data/files/'
-
 def save_file_to_process(filename, email, model_name):
-    database.open()    
+    database.open()
     db_entry = BatchFile()
     db_entry.filename = filename
     db_entry.email = email
