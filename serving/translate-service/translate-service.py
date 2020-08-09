@@ -39,6 +39,7 @@ TOKENIZER_MODELS = '/srv/models/tokenizer'
 ENG_CAT_MODEL = '/srv/models/eng-cat'
 CAT_ENG_MODEL = '/srv/models/cat-eng'
 UPLOAD_FOLDER = '/srv/data/files/'
+SAVED_TEXTS = '/srv/data/saved/'
 
 openNMT_engcat = CTranslate(f"{ENG_CAT_MODEL}")
 openNMT_engcat.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{TOKENIZER_MODELS}/en_m.model")
@@ -82,6 +83,7 @@ def translate_api():
     start_time = datetime.datetime.now()
     text = request.json['text']
     languages = request.json['languages']
+    savetext = 'savetext' in request.json and request.json['savetext'] == True
 
     if languages == 'eng-cat':
         openNMT = openNMT_engcat
@@ -95,10 +97,12 @@ def translate_api():
     results = _launch_translate_threads(openNMT, text, sentences, translate)
     translated = tokenizer.sentence_from_tokens(sentences, translate, results)
 
-    # Single thread
-#    translated = openNMT.translate(text)
+    if savetext:
+        saved_filename = os.path.join(SAVED_TEXTS, "source.txt")
+        with open(saved_filename, "a") as text_file:
+            t = text.replace('\n', '')
+            text_file.write(f'{languages}\t{t}\n')
 
-#    print("Translated:" + str(translated))
     time_used = datetime.datetime.now() - start_time
     words = len(text.split(' '))
     usage = Usage()
