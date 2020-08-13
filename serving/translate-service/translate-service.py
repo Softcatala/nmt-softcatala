@@ -106,7 +106,7 @@ def translate_api():
     time_used = datetime.datetime.now() - start_time
     words = len(text.split(' '))
     usage = Usage()
-    usage.log(openNMT.model_name, words, time_used)
+    usage.log(languages, words, time_used)
     result = {}
     result['text'] = text
     result['translated'] = translated

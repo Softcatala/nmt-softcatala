@@ -45,7 +45,7 @@ class Usage(object):
         try:
             with open(self.FILE, "a+") as file_out:
                 current_time = self._get_time_now().strftime('%Y-%m-%d %H:%M:%S')
-                file_out.write('{0}\t{1}\t{2}\t{3}\n'.format(current_time, model_name, words, time_used.microseconds))
+                file_out.write('{0}\t{1}\t{2}\t{3}\n'.format(current_time, model_name, words, time_used.total_seconds()))
 
             if self.rotate and self._is_old_line(self._read_first_line()):
                 self._rotate_file()
@@ -81,7 +81,7 @@ class Usage(object):
                     if line_datetime.date() == date_requested.date():
                         stats["calls"] = stats["calls"] + 1
                         stats["words"] = stats["words"] + int(words_component)
-                        stats["time_used"] = stats["time_used"] + int(time_component)
+                        stats["time_used"] = stats["time_used"] + float(time_component)
 
         except Exception as exception:
             print("Error:" + str(exception))

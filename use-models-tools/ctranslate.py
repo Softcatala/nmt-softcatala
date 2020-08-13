@@ -31,8 +31,8 @@ class CTranslate():
     BEAM_SIZE = 'CTRANSLATE_BEAM_SIZE'
     USE_VMAP = 'CTRANSLATE_USE_VMAP'
 
-    def __init__(self, model_name):
-        self.model_name = model_name
+    def __init__(self, model_path):
+        self.model_path = model_path
         self.tokenizer_source = None
         self.tokenizer_target = None
 
@@ -57,7 +57,7 @@ class CTranslate():
             self.use_vmap = False
 
         print(f"inter_threads: {inter_threads}, intra_threads: {intra_threads}, beam_size {self.beam_size}, use_vmap {self.use_vmap}")
-        self.translator = ctranslate2.Translator(model_name, inter_threads = inter_threads, intra_threads = intra_threads)
+        self.translator = ctranslate2.Translator(model_path, inter_threads = inter_threads, intra_threads = intra_threads)
 
 
     def _translate_request(self, batch_text, timeout):
