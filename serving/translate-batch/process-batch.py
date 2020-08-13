@@ -97,6 +97,9 @@ def main():
             batchfile.done = True
             batchfile.save()
 
+            os.remove(source_file)
+            os.remove(translated_file)
+
         time.sleep(10)
 
 
