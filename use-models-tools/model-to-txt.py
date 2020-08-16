@@ -122,7 +122,7 @@ def main():
     openNMT.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path = tgt_model_path)
 
     target_filename_review = "translated-review.txt"
-    with open(input_filename, encoding='utf-8', mode='r') as tf_en,\
+    with open(input_filename, encoding='utf-8', mode='r', errors='ignore') as tf_en,\
          open(translated_file, encoding='utf-8', mode='w') as tf_ca,\
          open(target_filename_review, encoding='utf-8', mode='w') as tf_ca_review:
 
