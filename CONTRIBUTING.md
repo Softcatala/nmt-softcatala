@@ -9,7 +9,6 @@
 - [ ] El traductor no processa bé els textos només en majúscules
 - [ ] Provar el model TransformerRelative en comptes de Transformer (+1 punt de BLEU)
 - [ ] Usar els scripts de valencianització per a valencianitzar els corpus català i poder oferir un model anglès -> valencià
-- [ ] Millorar la puntuació. Sovint no utilitza bé les comes.
 
 # Tasques senzilles
 
@@ -17,7 +16,7 @@
 
 Els sistemes neurals depenen molt de corpus bilingues alineats per aprendre és, és a dir, de textos en anglès amb la seva correspondència en anglès.
 
-En el projecte [https://github.com/Softcatala/en-ca-corpus], teniu la informació per a ajudar en els corpus que usem: https://github.com/Softcatala/en-ca-corpus/blob/master/CONTRIBUTING.md
+En el projecte https://github.com/Softcatala/en-ca-corpus, teniu la informació per a ajudar en els corpus que usem: https://github.com/Softcatala/en-ca-corpus/blob/master/CONTRIBUTING.md
 
 **Afegir-hi corpus nous lliures per millorar l'abast del sistema**
 
