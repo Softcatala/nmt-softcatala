@@ -18,7 +18,7 @@ Els sistemes neurals depenen molt de corpus bilingues alineats per aprendre és,
 
 En el projecte https://github.com/Softcatala/en-ca-corpus, teniu la informació per a ajudar en els corpus que usem: https://github.com/Softcatala/en-ca-corpus/blob/master/CONTRIBUTING.md
 
-**Afegir-hi corpus nous lliures per millorar l'abast del sistema**
+**Llista de tasques senzilles**
 
 Teniu tota la llista de tasques senzilles a:
 
