@@ -31,6 +31,7 @@ from usage import Usage
 from batchfiles import *
 import os
 import uuid
+from langdetect import detect
 
 app = Flask(__name__)
 CORS(app)
@@ -77,6 +78,11 @@ def _launch_translate_threads(openNMT, text, sentences, translate):
 #    print("All threads processed")
 
 
+def detect_lang(source):
+    lang = detect(source)
+    return lang
+
+
 @cross_origin(origin='*',headers=['Content-Type','Authorization'])
 @app.route('/translate/', methods=['POST'])
 def translate_api():
@@ -96,6 +102,18 @@ def translate_api():
 
     results = _launch_translate_threads(openNMT, text, sentences, translate)
     translated = tokenizer.sentence_from_tokens(sentences, translate, results)
+
+    if len(text) > 0:
+        detect_start_time = datetime.datetime.now()
+        lang = detect_lang(text)
+        time_used = datetime.datetime.now() - detect_start_time
+        print(lang)
+        print(time_used)
+        if lang == 'ca' and languages == 'eng-cat' or lang == 'en' and languages == 'cat-eng':
+            saved_filename = os.path.join(SAVED_TEXTS, "lang_detect.txt")
+            with open(saved_filename, "a") as text_file:
+                text_file.write(f'{text} - {languages} - {lang} - {time_used}\n')
+#            print(f'{text} - {languages} - {lang} - {time_used}\n')
 
     if savetext:
         saved_filename = os.path.join(SAVED_TEXTS, "source.txt")
