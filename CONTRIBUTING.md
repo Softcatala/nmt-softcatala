@@ -1,9 +1,3 @@
-
-# Idees en marxa
-
-- [ ] Entendre quines frases són les més comunes en la traducció i servir-les des d'una memòria de traducció (Jordi Mas)
-- [ ] Avaluació del sistema actual amb humans respecte a Apertium (Jordi Mas)
-
 # Idees sense desenvolupar
 
 - [ ] El traductor no processa bé els textos només en majúscules
