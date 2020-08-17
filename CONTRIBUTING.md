@@ -19,23 +19,18 @@ Els sistemes neurals depenen molt de corpus bilingues alineats per aprendre és,
 
 En el projecte [https://github.com/Softcatala/en-ca-corpus], teniu la informació per a ajudar en els corpus que usem: https://github.com/Softcatala/en-ca-corpus/blob/master/CONTRIBUTING.md
 
+**Afegir-hi corpus nous lliures per millorar l'abast del sistema**
+
+Teniu tota la llista de tasques senzilles a:
+
+https://github.com/Softcatala/nmt-softcatala/labels/senzill
+
 
 # Tasques complexes
 
 Estem parlant d'una complexitat similar a un projecte de doctorat en tecnologies de la llengua
 
-**Millorar la qualitat de la traducció**
-
-Objectiu: millorar la qualitat del model neural actual
-
-Utilitzant el model neural actual fer una avaluació per a entendre les àrees a millorar amb l'objectiu incrementar la qualitat de les traduccions. Implementar les millores obtenint un increment de qualitat en avaluació humana i avaluació automàtica (p. ex. BLEU)
-
-**Reducció del biaix de gènere**
-
-Objectiu: reduir el biaix de gènere en les traduccions
-
-Crear un corpus d'avaluació del biaix de gènere, i crear una solució basada en xarxes neurals que ajudi a reduir el baix de gènere oferint
-traduccions en dos gèneres quan sigui possible.
+Aquí podeu veure la llista de tasques: https://github.com/Softcatala/nmt-softcatala/labels/complex
 
 
 Per ajudar en qualsevol d'aquestes tasques contacteu uniu-vos a canal de Telegram https://t.me/Softcatala_TecnoLlengua o escriviu a  Jordi Mas: jmas@softcatala.org

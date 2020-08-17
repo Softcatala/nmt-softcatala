@@ -113,6 +113,9 @@ By default all strings translated by the translation system are marked as 'fuzzy
 
 * Run ```python3 model-to-txt.py --help``` for all details
 
+# How to help?
+
+See [here](./CONTRIBUTING.md) (In Catalan)
 
 # Contact
 
