@@ -1,9 +1,3 @@
-# Idees sense desenvolupar
-
-- [ ] El traductor no processa bé els textos només en majúscules
-- [ ] Provar el model TransformerRelative en comptes de Transformer (+1 punt de BLEU)
-- [ ] Usar els scripts de valencianització per a valencianitzar els corpus català i poder oferir un model anglès -> valencià
-
 # Tasques senzilles
 
 **Afegir-hi corpus nous lliures per millorar l'abast del sistema**
@@ -25,5 +19,4 @@ Estem parlant d'una complexitat similar a un projecte de doctorat en tecnologies
 
 Aquí podeu veure la llista de tasques: https://github.com/Softcatala/nmt-softcatala/labels/complex
 
-
-Per ajudar en qualsevol d'aquestes tasques contacteu uniu-vos a canal de Telegram https://t.me/Softcatala_TecnoLlengua o escriviu a  Jordi Mas: jmas@softcatala.org
+Per ajudar en qualsevol d'aquestes tasques contacteu uniu-vos a canal de Telegram https://t.me/Softcatala_TecnoLlengua o escriviu a Jordi Mas: jmas@softcatala.org
