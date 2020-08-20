@@ -29,6 +29,26 @@ def file_len(fname):
             pass
     return i + 1
 
+
+def _clean_localized(result):
+    original = result
+    mapping = {
+                '’' : '\'',
+                'à' : 'à',
+                'í' : 'í',
+                'ó' : 'ó',
+                'è' : 'è',
+                'ò' : 'ò',
+                'ú' : 'ú',
+              }
+
+    for char in mapping.keys():
+        result = result.replace(char, mapping[char])
+
+    cleaned = original != result
+    return result, cleaned
+
+
 def split_in_six_files(src_filename, tgt_filename):
 
     srcs = set()
@@ -68,8 +88,13 @@ def split_in_six_files(src_filename, tgt_filename):
         print("validation_each {0}".format(validation_each))
         print("test_each {0}".format(test_each))
 
+        clean = 0
         while src and trg:
             pairs = pairs + 1
+
+            trg, cleaned = _clean_localized(trg)
+            if cleaned:
+                clean = clean + 1
 
             if cnt % validation_each == 0:
                 source = source_val
@@ -88,8 +113,9 @@ def split_in_six_files(src_filename, tgt_filename):
             trg = read_target.readline()
             cnt = cnt + 1
 
-
-    print("Pairs: " + str(pairs))
+    pclean = clean * 100 / pairs
+    print(f"Pairs: {pairs}")
+    print(f"Cleaned acute accents: {clean} ({pclean:.2f}%)")
 
 def append_lines_from_file(src_filename, trg_file):
     lines = 0
