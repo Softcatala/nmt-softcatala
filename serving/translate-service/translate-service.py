@@ -27,11 +27,11 @@ from ctranslate import CTranslate
 import pyonmttok
 from threading import Thread
 from texttokenizer import TextTokenizer
+from checksourcelanguage import CheckSourceLanguage
 from usage import Usage
 from batchfiles import *
 import os
 import uuid
-import numpy as np
 
 app = Flask(__name__)
 CORS(app)
@@ -40,7 +40,8 @@ TOKENIZER_MODELS = '/srv/models/tokenizer'
 ENG_CAT_MODEL = '/srv/models/eng-cat'
 CAT_ENG_MODEL = '/srv/models/cat-eng'
 UPLOAD_FOLDER = '/srv/data/files/'
-SAVED_TEXTS = '/srv/data/saved/'
+#SAVED_TEXTS = '/srv/data/saved/'
+SAVED_TEXTS = 'saved/'
 
 openNMT_engcat = CTranslate(f"{ENG_CAT_MODEL}")
 openNMT_engcat.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{TOKENIZER_MODELS}/en_m.model")
@@ -75,43 +76,8 @@ def _launch_translate_threads(openNMT, text, sentences, translate):
 
     return results
 
-#    print("All threads processed")
 
-def levenshtein(seq1, seq2):
-    size_x = len(seq1) + 1
-    size_y = len(seq2) + 1
-    matrix = np.zeros ((size_x, size_y))
-    for x in range(size_x):
-        matrix [x, 0] = x
-    for y in range(size_y):
-        matrix [0, y] = y
 
-    for x in range(1, size_x):
-        for y in range(1, size_y):
-            if seq1[x-1] == seq2[y-1]:
-                matrix [x,y] = min(
-                    matrix[x-1, y] + 1,
-                    matrix[x-1, y-1],
-                    matrix[x, y-1] + 1
-                )
-            else:
-                matrix [x,y] = min(
-                    matrix[x-1,y] + 1,
-                    matrix[x-1,y-1] + 1,
-                    matrix[x,y-1] + 1
-                )
-    return (matrix[size_x - 1, size_y - 1])
-
-def wrong_direction(text, translated):
-    if len(text.split()) < 3:
-        return False
-
-    text = text.strip()
-    translated = translated.strip()
-    dist = levenshtein(text, translated)
-    max_len = max(len(text), len(translated))
-    dist = dist / max_len
-    return dist < 0.15, dist
 
 @cross_origin(origin='*',headers=['Content-Type','Authorization'])
 @app.route('/translate/', methods=['POST'])
@@ -132,22 +98,13 @@ def translate_api():
     results = _launch_translate_threads(openNMT, text, sentences, translate)
     translated = tokenizer.sentence_from_tokens(sentences, translate, results)
 
-    wrong, dist = wrong_direction(text, translated)
-
-    if wrong:
-        detect_start_time = datetime.datetime.now()
-        time_used = datetime.datetime.now() - detect_start_time
-        print(text)
-        print(translated)
-        saved_filename = os.path.join(SAVED_TEXTS, "lang_detect.txt")
-        with open(saved_filename, "a") as text_file:
-            text_file.write(f'{languages} {text} - {translated} - {dist} {time_used}\n')
-
     if savetext:
         saved_filename = os.path.join(SAVED_TEXTS, "source.txt")
         with open(saved_filename, "a") as text_file:
             t = text.replace('\n', '')
             text_file.write(f'{languages}\t{t}\n')
+
+    sourcelang = CheckSourceLanguage(SAVED_TEXTS, text, translated, languages)
 
     time_used = datetime.datetime.now() - start_time
     words = len(text.split(' '))
@@ -157,6 +114,10 @@ def translate_api():
     result['text'] = text
     result['translated'] = translated
     result['time'] = str(time_used)
+
+    if sourcelang.is_wrong():
+        result['source_language_wrong'] = True
+
     return json_answer(result)
 
 def _get_processed_files(date):
