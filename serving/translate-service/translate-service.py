@@ -111,7 +111,7 @@ def wrong_direction(text, translated):
     dist = levenshtein(text, translated)
     max_len = max(len(text), len(translated))
     dist = dist / max_len
-    return dist < 0.15
+    return dist < 0.15, dist
 
 @cross_origin(origin='*',headers=['Content-Type','Authorization'])
 @app.route('/translate/', methods=['POST'])
@@ -132,14 +132,16 @@ def translate_api():
     results = _launch_translate_threads(openNMT, text, sentences, translate)
     translated = tokenizer.sentence_from_tokens(sentences, translate, results)
 
-    if wrong_direction(text, translated):
+    wrong, dist = wrong_direction(text, translated)
+
+    if wrong:
         detect_start_time = datetime.datetime.now()
         time_used = datetime.datetime.now() - detect_start_time
         print(text)
         print(translated)
         saved_filename = os.path.join(SAVED_TEXTS, "lang_detect.txt")
         with open(saved_filename, "a") as text_file:
-            text_file.write(f'{text} - {translated} - {time_used}\n')
+            text_file.write(f'{languages} {text} - {translated} - {dist} {time_used}\n')
 
     if savetext:
         saved_filename = os.path.join(SAVED_TEXTS, "source.txt")
