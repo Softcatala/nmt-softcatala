@@ -170,6 +170,13 @@ def _get_processed_files(date):
 
     return cnt
 
+
+@app.route('/savedtexts/', methods=['GET'])
+def savedtexts():
+    saved_filename = os.path.join(SAVED_TEXTS, "source.txt")
+    with open(saved_filename, "r") as text_file:
+        return Response(text_file.read(), mimetype='text/plain')
+
 @app.route('/stats/', methods=['GET'])
 def stats():
     requested = request.args.get('date')
