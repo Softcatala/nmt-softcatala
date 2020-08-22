@@ -40,8 +40,7 @@ TOKENIZER_MODELS = '/srv/models/tokenizer'
 ENG_CAT_MODEL = '/srv/models/eng-cat'
 CAT_ENG_MODEL = '/srv/models/cat-eng'
 UPLOAD_FOLDER = '/srv/data/files/'
-#SAVED_TEXTS = '/srv/data/saved/'
-SAVED_TEXTS = 'saved/'
+SAVED_TEXTS = '/srv/data/saved/'
 
 openNMT_engcat = CTranslate(f"{ENG_CAT_MODEL}")
 openNMT_engcat.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{TOKENIZER_MODELS}/en_m.model")
