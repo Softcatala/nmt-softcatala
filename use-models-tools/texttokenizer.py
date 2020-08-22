@@ -87,4 +87,4 @@ class TextTokenizer:
             else:
                 translation += sentences[i]
 
-        return translation
+        return translation.strip()
