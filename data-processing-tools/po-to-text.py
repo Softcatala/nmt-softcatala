@@ -46,6 +46,9 @@ def _is_invalid(src, trg):
     if '%' in src or '%' in trg:
         return True
 
+    if '@@image' in src or '@@image' in trg:
+        return True
+
     return False
 
 def split_in_six_files(po_file):

@@ -18,8 +18,6 @@
 # Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA 02111-1307, USA.
 
-import polib
-import re
 import yaml
 import os
 
@@ -29,14 +27,34 @@ def file_len(fname):
             pass
     return i + 1
 
+
+def _clean_localized(result):
+    original = result
+    mapping = {
+                '’' : '\'',
+                'à' : 'à',
+                'í' : 'í',
+                'ó' : 'ó',
+                'è' : 'è',
+                'ò' : 'ò',
+                'ú' : 'ú',
+              }
+
+    for char in mapping.keys():
+        result = result.replace(char, mapping[char])
+
+    cleaned = original != result
+    return result, cleaned
+
+
 def split_in_six_files(src_filename, tgt_filename):
 
-    srcs = set()
+    pairs = set()
     number_validation = 3000
     number_test = 3007 # number_test != number_validation
 
-    cnt = 0
-    pairs = 0
+    strings = 0
+    duplicated = 0
 
     print("Split src and tgt files in 6 files for training, text and validation")
 
@@ -48,7 +66,6 @@ def split_in_six_files(src_filename, tgt_filename):
         print("test_each ({0}) and validation_each  ({0}) cannot be equal".format(test_each, validation_each))
         return
         
-
     with open("src-val.txt", "w") as source_val,\
         open("tgt-val.txt", "w") as target_val,\
         open("src-test.txt", "w") as source_test,\
@@ -58,9 +75,6 @@ def split_in_six_files(src_filename, tgt_filename):
         open(src_filename, "r") as read_source,\
         open(tgt_filename, "r") as read_target:
 
-        src = read_source.readline()
-        trg = read_target.readline()
-
 
         print("total_lines {0}".format(total_lines))
         print("number_validation {0}".format(number_validation))
@@ -68,13 +82,31 @@ def split_in_six_files(src_filename, tgt_filename):
         print("validation_each {0}".format(validation_each))
         print("test_each {0}".format(test_each))
 
-        while src and trg:
-            pairs = pairs + 1
+        clean = 0
+        while True:
 
-            if cnt % validation_each == 0:
+            src = read_source.readline()
+            trg = read_target.readline()
+
+            if not (src and trg):
+                break;
+
+            trg, cleaned = _clean_localized(trg)
+
+            pair = src + trg
+            if pair in pairs:
+                duplicated = duplicated + 1
+                continue
+            else:
+                pairs.add(pair)
+
+            if cleaned:
+                clean = clean + 1
+
+            if strings % validation_each == 0:
                 source = source_val
                 target = target_val
-            elif cnt % test_each == 0:
+            elif strings % test_each == 0:
                 source = source_test
                 target = target_test
             else:
@@ -83,13 +115,12 @@ def split_in_six_files(src_filename, tgt_filename):
 
             source.write(src)
             target.write(trg)
+            strings = strings + 1
 
-            src = read_source.readline()
-            trg = read_target.readline()
-            cnt = cnt + 1
-
-
-    print("Pairs: " + str(pairs))
+    pclean = clean * 100 / strings
+    pduplicated = duplicated * 100 / strings
+    print(f"Strings: {strings}, duplicated {duplicated} ({pduplicated:.2f}%)")
+    print(f"Cleaned acute accents: {clean} ({pclean:.2f}%)")
 
 def append_lines_from_file(src_filename, trg_file):
     lines = 0
@@ -127,7 +158,7 @@ def join_multiple_sources_and_target_into_two_files(src_filename, tgt_filename):
 
     print("Join multiple files in two src and tgt files")
     with open(src_filename, "w") as tf_source,\
-        open(tgt_filename, "w") as tf_target:
+         open(tgt_filename, "w") as tf_target:
 
         print("**Sources")
         for source in sources:

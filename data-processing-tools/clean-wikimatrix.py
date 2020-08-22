@@ -19,7 +19,7 @@
 # Boston, MA 02111-1307, USA.
 
 import datetime
-from langdetect import detect
+from langdetect import detect, DetectorFactory
 from optparse import OptionParser
 
 def read_parameters():
@@ -81,6 +81,7 @@ def main():
         print("Files of different lengths {0}, {1}".format(len_source_en_lines, len_source_ca_lines))
         return
 
+    DetectorFactory.seed = 0
     with open(clean_en_file, 'w') as tf_clean_en_file, open(clean_ca_file, 'w') as tf_clean_ca_file,\
          open(log_file, 'w') as tf_log_file:
 
