@@ -31,7 +31,7 @@ from usage import Usage
 from batchfiles import *
 import os
 import uuid
-from langdetect import detect
+import numpy as np
 
 app = Flask(__name__)
 CORS(app)
@@ -77,11 +77,41 @@ def _launch_translate_threads(openNMT, text, sentences, translate):
 
 #    print("All threads processed")
 
+def levenshtein(seq1, seq2):
+    size_x = len(seq1) + 1
+    size_y = len(seq2) + 1
+    matrix = np.zeros ((size_x, size_y))
+    for x in range(size_x):
+        matrix [x, 0] = x
+    for y in range(size_y):
+        matrix [0, y] = y
 
-def detect_lang(source):
-    lang = detect(source)
-    return lang
+    for x in range(1, size_x):
+        for y in range(1, size_y):
+            if seq1[x-1] == seq2[y-1]:
+                matrix [x,y] = min(
+                    matrix[x-1, y] + 1,
+                    matrix[x-1, y-1],
+                    matrix[x, y-1] + 1
+                )
+            else:
+                matrix [x,y] = min(
+                    matrix[x-1,y] + 1,
+                    matrix[x-1,y-1] + 1,
+                    matrix[x,y-1] + 1
+                )
+    return (matrix[size_x - 1, size_y - 1])
 
+def wrong_direction(text, translated):
+    if len(text.split()) < 3:
+        return False
+
+    text = text.strip()
+    translated = translated.strip()
+    dist = levenshtein(text, translated)
+    max_len = max(len(text), len(translated))
+    dist = dist / max_len
+    return dist < 0.15
 
 @cross_origin(origin='*',headers=['Content-Type','Authorization'])
 @app.route('/translate/', methods=['POST'])
@@ -96,24 +126,20 @@ def translate_api():
     else:
         openNMT = openNMT_cateng
 
-#    print("Input:" + text)
     tokenizer = TextTokenizer()
     sentences, translate = tokenizer.tokenize(text)
 
     results = _launch_translate_threads(openNMT, text, sentences, translate)
     translated = tokenizer.sentence_from_tokens(sentences, translate, results)
 
-    if len(text) > 0:
+    if wrong_direction(text, translated):
         detect_start_time = datetime.datetime.now()
-        lang = detect_lang(text)
         time_used = datetime.datetime.now() - detect_start_time
-        print(lang)
-        print(time_used)
-        if lang == 'ca' and languages == 'eng-cat' or lang == 'en' and languages == 'cat-eng':
-            saved_filename = os.path.join(SAVED_TEXTS, "lang_detect.txt")
-            with open(saved_filename, "a") as text_file:
-                text_file.write(f'{text} - {languages} - {lang} - {time_used}\n')
-#            print(f'{text} - {languages} - {lang} - {time_used}\n')
+        print(text)
+        print(translated)
+        saved_filename = os.path.join(SAVED_TEXTS, "lang_detect.txt")
+        with open(saved_filename, "a") as text_file:
+            text_file.write(f'{text} - {translated} - {time_used}\n')
 
     if savetext:
         saved_filename = os.path.join(SAVED_TEXTS, "source.txt")
