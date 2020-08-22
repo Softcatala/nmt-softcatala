@@ -76,15 +76,13 @@ class CheckSourceLanguage(object):
         dist = self._get_levenshtein(text, translated)
         max_len = max(len(text), len(translated))
         self.dist = dist / max_len
-        self.wrong = dist < 0.15
+        self.wrong = self.dist < 0.15
 
         if self.wrong:
             self._log(start_time)
 
     def _log(self, start_time):
         time_used = datetime.datetime.now() - start_time
-        print(self.text)
-        print(self.translated)
         saved_filename = os.path.join(self.path, self.FILE)
         with open(saved_filename, "a") as text_file:
             text_file.write(f'{self.languages} {self.text} - {self.translated} - {self.dist} {time_used}\n')
