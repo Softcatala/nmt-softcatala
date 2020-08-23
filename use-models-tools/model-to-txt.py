@@ -143,6 +143,9 @@ def main():
                 continue
 
             translated = translated + 1
+            if translated % 500 == 0:
+                print(translated)
+
             tf_ca.write("{0}\n".format(tgt))
             tf_ca_review.write("{0}\n{1}\n\n".format(src, tgt))
             logging.debug('Source: ' + str(src))
