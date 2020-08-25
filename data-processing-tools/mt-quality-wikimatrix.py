@@ -142,28 +142,27 @@ def main():
             src_en = source_en_lines[i]
             src_ca = source_ca_lines[i]
             ref_ca = reference_ca_lines[i]
-            i = i + 1
 
             dist = _get_levenshtein(src_ca, ref_ca)
             max_len = max(len(src_ca), len(ref_ca))
             dist = dist / max_len
-            words = len(src_en.split())
-            
-            target_dist = 0.50
 
-            if dist > target_dist:
+            if dist > 0.50:
                 tf_log_file.write("{0}\n".format(src_en.replace('\n', '')))
                 tf_log_file.write("{0}\n".format(src_ca.replace('\n', '')))
                 tf_log_file.write("{0} - {1} - {2}\n\n".format(ref_ca.replace('\n', ''), i, dist))
                 discarded = discarded + 1
-        
                 groups.inc_discarted(i)
                 continue
+            else:
+                strings = strings + 1
 
             if i % 10000 == 0:
                 print("{0} ({1:.2f}%)".format(i, 100 * i / min_lines))
-                
-            strings = strings + 1
+
+            i = i + 1
+
+
         s = "Wrote {0} ({1:.2f}%) total strings discarded {2} ({3:.2f}%)".format(strings,
            100 * strings / len_source_en_lines, discarded, 100 * discarded / min_lines)
         print(s)
