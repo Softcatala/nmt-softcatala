@@ -172,8 +172,6 @@ def main():
             for process in threads:
                 process.join()
 
-            print(i)       
-        
             for t in range(0, num_threads):
                 i = i + 1
                 translated = translated + 1
