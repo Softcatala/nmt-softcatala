@@ -21,6 +21,61 @@
 import datetime
 import numpy as np
 
+class Groups():
+
+    TOTAL_GROUPS = 10
+
+    def __init__(self, min_lines):
+        self.groups = []
+        self.size = 0
+        self._create_groups(min_lines)
+
+    def inc_discarted(self, index):
+        try:
+            group = self._find_group(index)
+            discarted = self.groups[group]['discarded']
+            self.groups[group]['discarded'] = discarted + 1
+        except Exception as e:
+            print(index)
+            print(group)
+            print(e)
+
+    def _create_groups(self, min_lines):
+        self.size = int (min_lines / self.TOTAL_GROUPS)
+
+        group = 0
+        end = 0
+        while group < self.TOTAL_GROUPS:
+            start = end
+            end = start + self.size
+            #print(f"{start} - {end} - {size}")
+
+            data = {}
+            data['start'] = start
+            data['end'] = end
+            data['discarded'] = 0
+            self.groups.append(data)
+
+            start = end + 1
+            group = group + 1
+
+
+    def _find_group(self, index):
+        group = int(index / self.size)
+        return group
+
+    def to_string(self):
+        s = ""
+        for group in self.groups:
+            start = group['start']
+            end = group['end']
+            discarded = group['discarded']
+            p_discarded = 100* discarded / self.size
+            s += f"Range {start} - {end} - discarded {discarded} ({p_discarded:.2f}%)\n"
+
+        return s
+
+
 def _get_levenshtein(seq1, seq2):
     size_x = len(seq1) + 1
     size_y = len(seq2) + 1
@@ -45,10 +100,13 @@ def _get_levenshtein(seq1, seq2):
                     matrix[x,y-1] + 1
                 )
     return matrix[size_x - 1, size_y - 1]
+
+
     
 def main():
 
-    print("Compares two Wikimatrix extracts with different quality level")
+    print("Filtes out wrong Wikimatrix translations by comparing the target corpus (ca) to our own translation (done by mt)")
+    print("If the levenshtein distance between both is high, we discard the string from the corpus")
 
     #source_pattern = 'WikiMatrix.en-ca.txt'
     #reference = 'WikiMatrix_opennt.ca'
@@ -76,22 +134,11 @@ def main():
 
         min_lines = min(len_source_en_lines, len_reference_ca_lines)
 
-        groups = []
-        group = 0
-        total_groups = 10
-        size = int (min_lines / total_groups)
-
-        i = 0
-        last = 0
-        while i < total_groups:
-            start = last
-            last = start + size
-            print(f"{start} - {last}")
-            start = last + 1
-            i = i + 1
+        groups = Groups(min_lines)
 
         i = 0
         while i < min_lines:
+
             src_en = source_en_lines[i]
             src_ca = source_ca_lines[i]
             ref_ca = reference_ca_lines[i]
@@ -101,11 +148,7 @@ def main():
             max_len = max(len(src_ca), len(ref_ca))
             dist = dist / max_len
             words = len(src_en.split())
-            #if words > 15:
-            #    target_dist = 0.50
-            #else:
-            #    target_dist = 0.70
-
+            
             target_dist = 0.50
 
             if dist > target_dist:
@@ -113,15 +156,20 @@ def main():
                 tf_log_file.write("{0}\n".format(src_ca.replace('\n', '')))
                 tf_log_file.write("{0} - {1} - {2}\n\n".format(ref_ca.replace('\n', ''), i, dist))
                 discarded = discarded + 1
+        
+                groups.inc_discarted(i)
                 continue
 
-            if i % 1000 == 0:
+            if i % 10000 == 0:
                 print("{0} ({1:.2f}%)".format(i, 100 * i / min_lines))
                 
             strings = strings + 1
-        s = "Wrote {0} ({1:.2f}%) strings discarded {2} ({3:.2f}%)".format(strings,
+        s = "Wrote {0} ({1:.2f}%) total strings discarded {2} ({3:.2f}%)".format(strings,
            100 * strings / len_source_en_lines, discarded, 100 * discarded / min_lines)
+        print(s)
+        tf_log_file.write("{0}\n".format(s))
 
+        s = groups.to_string()
         print(s)
         tf_log_file.write("{0}\n".format(s))
 
