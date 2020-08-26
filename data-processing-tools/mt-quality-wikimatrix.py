@@ -21,6 +21,10 @@
 import datetime
 import numpy as np
 
+'''
+    Creates groups (e.g. 1 to 5K, 5K to 10K with data of the discards, to understand the distribution of discards
+    across the dataset and the data it's sorted by confidence
+'''
 class Groups():
 
     TOTAL_GROUPS = 10
@@ -31,14 +35,9 @@ class Groups():
         self._create_groups(min_lines)
 
     def inc_discarted(self, index):
-        try:
-            group = self._find_group(index)
-            discarted = self.groups[group]['discarded']
-            self.groups[group]['discarded'] = discarted + 1
-        except Exception as e:
-            print(index)
-            print(group)
-            print(e)
+        group = self._find_group(index)
+        discarted = self.groups[group]['discarded']
+        self.groups[group]['discarded'] = discarted + 1
 
     def _create_groups(self, min_lines):
         self.size = int (min_lines / self.TOTAL_GROUPS)
@@ -48,7 +47,6 @@ class Groups():
         while group < self.TOTAL_GROUPS:
             start = end
             end = start + self.size
-            #print(f"{start} - {end} - {size}")
 
             data = {}
             data['start'] = start
@@ -153,7 +151,6 @@ def main():
                 tf_log_file.write("{0} - {1} - {2}\n\n".format(ref_ca.replace('\n', ''), i, dist))
                 discarded = discarded + 1
                 groups.inc_discarted(i)
-                continue
             else:
                 strings = strings + 1
 
