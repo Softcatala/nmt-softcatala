@@ -106,11 +106,8 @@ def main():
     print("Filtes out wrong Wikimatrix translations by comparing the target corpus (ca) to our own translation (done by mt)")
     print("If the levenshtein distance between both is high, we discard the string from the corpus")
 
-    #source_pattern = 'WikiMatrix.en-ca.txt'
-    #reference = 'WikiMatrix_opennt.ca'
-    source_pattern = '50000'
-#    reference = 'WikiMatrix_opennt.ca'
-    reference = '50000.ref'
+    source_pattern = 'WikiMatrix.en-ca.txt'
+    reference = 'WikiMatrix.en-ca.txt.en.ref'
     target_pattern = source_pattern + "-clean"
 
     source_en_file = source_pattern + '.en'
@@ -135,7 +132,6 @@ def main():
         len_reference_ca_lines = len(reference_ca_lines)
 
         min_lines = min(len_source_en_lines, len_reference_ca_lines)
-
         groups = Groups(min_lines)
 
         i = 0
