@@ -111,15 +111,19 @@ def main():
     source_pattern = '50000'
 #    reference = 'WikiMatrix_opennt.ca'
     reference = '50000.ref'
+    target_pattern = source_pattern + "-clean"
 
     source_en_file = source_pattern + '.en'
     source_ca_file = source_pattern + '.ca'
+    clean_en_file = target_pattern + '.en'
+    clean_ca_file = target_pattern + '.ca'
     log_file = 'qualitymatrix.log'
 
     strings = 0
     discarded = 0
     
     with open(source_en_file, 'r') as tf_source_en_file, open(source_ca_file, 'r') as tf_source_ca_file,\
+         open(clean_en_file, 'w') as tf_clean_en_file, open(clean_ca_file, 'w') as tf_clean_ca_file,\
          open(reference, 'r') as tf_reference_file, open(log_file, 'w') as tf_log_file:
 
         source_en_lines = tf_source_en_file.readlines()
@@ -153,12 +157,13 @@ def main():
                 groups.inc_discarted(i)
             else:
                 strings = strings + 1
+                tf_clean_en_file.write("{0}".format(src_en))
+                tf_clean_ca_file.write("{0}".format(src_ca))
 
             if i % 10000 == 0:
                 print("{0} ({1:.2f}%)".format(i, 100 * i / min_lines))
 
             i = i + 1
-
 
         s = "Wrote {0} ({1:.2f}%) total strings discarded {2} ({3:.2f}%)".format(strings,
            100 * strings / len_source_en_lines, discarded, 100 * discarded / min_lines)
