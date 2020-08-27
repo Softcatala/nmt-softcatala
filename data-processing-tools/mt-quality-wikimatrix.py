@@ -161,12 +161,12 @@ def main():
 
             i = i + 1
 
-        s = "Wrote {0} ({1:.2f}%) total strings discarded {2} ({3:.2f}%)".format(strings,
-           100 * strings / len_source_en_lines, discarded, 100 * discarded / min_lines)
+        s = groups.to_string()
         print(s)
         tf_log_file.write("{0}\n".format(s))
 
-        s = groups.to_string()
+        s = "Wrote {0} ({1:.2f}%) total strings discarded {2} ({3:.2f}%)".format(strings,
+           100 * strings / len_source_en_lines, discarded, 100 * discarded / min_lines)
         print(s)
         tf_log_file.write("{0}\n".format(s))
 
