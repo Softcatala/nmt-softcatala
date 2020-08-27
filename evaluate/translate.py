@@ -82,7 +82,8 @@ def translate_text_yandex(text):
 def translate_text_google(text):
 
     _key = 'XXX'
-    SERVER = "https://www.googleapis.com/language/translate/v2"
+    SERVER = "https://translation.googleapis.com/language/translate/v2"
+
     language_pair = 'en-ca'
     url = "{0}/?key={1}&source=en&target=ca".format(SERVER, _key)
     url += "&q=" + urllib.parse.quote_plus(text.encode('utf-8'))
@@ -140,8 +141,8 @@ def yandex():
 def google():
 
     print("Translating Google")
-    txt_en_file = 'input/globalvoices-en.txt'
-    txt_ca_file = 'translated/globalvoices-google-ca.txt'
+    txt_en_file = 'input/sc-users-en.txt'
+    txt_ca_file = 'translated/sc-users-google-ca.txt'
 
     strings = 0
     with open(txt_en_file, 'r') as tf_en, open(txt_ca_file, 'w') as tf_ca:

@@ -90,7 +90,7 @@ def main():
                  'translated/tatoeba-opennmt-ca.txt'],\
 
             ['SC Users', 'input/sc-users-ca.txt', None,
-                 None, None, \
+                 None, 'translated/sc-users-google-ca.txt', \
                  'translated/sc-users-opennmt-ca.txt'],\
         ]
 
