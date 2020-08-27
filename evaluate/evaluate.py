@@ -88,21 +88,30 @@ def main():
             ['Tatoeba', 'input/tatoeba.en-ca.ca','translated/tatoeba-apertium-ca.txt',
                  'translated/tatoeba-yandex-ca.txt','translated/tatoeba-google-ca.txt', \
                  'translated/tatoeba-opennmt-ca.txt'],\
+
+            ['SC Users', 'input/sc-users-ca.txt', None,
+                 None, None, \
+                 None],\
         ]
 
     for ds in datasets:
-        print(ds[0])
-        print("*** Apertium (Softcatalà)")
-        show_bleu(ds[1], ds[2])
+        print("-- " + ds[0])
 
-        print("Yandex)")
-        show_bleu(ds[1], ds[3])
+        if ds[2] != None:
+            print("*** Apertium (Softcatalà)")
+            show_bleu(ds[1], ds[2])
 
-        print("Google")
-        show_bleu(ds[1], ds[4])
+        if ds[3] != None:
+            print("Yandex)")
+            show_bleu(ds[1], ds[3])
 
-        print("OpenNMT")
-        show_bleu(ds[1], ds[5])
+        if ds[4] != None:
+            print("Google")
+            show_bleu(ds[1], ds[4])
+    
+        if ds[5] != None:
+            print("OpenNMT")
+            show_bleu(ds[1], ds[5])
 
 if __name__ == "__main__":
     main()
