@@ -89,9 +89,9 @@ def main():
                  'translated/tatoeba-yandex-ca.txt','translated/tatoeba-google-ca.txt', \
                  'translated/tatoeba-opennmt-ca.txt'],\
 
-            ['SC Users', 'input/sc-users-ca.txt', None,
+            ['SC Users', 'raw/sc-users-ca.txt', None,
                  None, None, \
-                 None],\
+                 'translated/sc-users-opennmt-ca.txt'],\
         ]
 
     for ds in datasets:
