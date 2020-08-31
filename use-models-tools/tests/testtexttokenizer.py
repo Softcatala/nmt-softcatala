@@ -71,8 +71,6 @@ class TestTextTokenizer(unittest.TestCase):
         tokenizer = TextTokenizer()
         text = '"Why not, Mr. Wizard?" asked Jellia \r Not now.'
         strings, translate = tokenizer.tokenize(text)
-        print(strings)
-        print(translate)
 
         self.assertEquals(31, len(translate))
 
