@@ -9,6 +9,7 @@ WORKDIR /srv
 RUN pip3 install -r requirements.txt
 
 COPY serving/translate-service/*.py /srv/
+COPY serving/translate-service/segment.srx /srv/
 COPY serving/translate-service/docker/entry-point.sh /srv/
 
 COPY models/eng-cat/ctranslate2/ /srv/models/eng-cat/
