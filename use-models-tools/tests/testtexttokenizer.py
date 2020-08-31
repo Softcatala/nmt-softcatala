@@ -67,5 +67,14 @@ class TestTextTokenizer(unittest.TestCase):
         self.assertEquals("Not now.", strings[2])
         self.assertEquals(True, translate[2])
 
+    def test_tokenize_with_abbreviation(self):
+        tokenizer = TextTokenizer()
+        text = '"Why not, Mr. Wizard?" asked Jellia \r Not now.'
+        strings, translate = tokenizer.tokenize(text)
+        print(strings)
+        print(translate)
+
+        self.assertEquals(31, len(translate))
+
 if __name__ == '__main__':
     unittest.main()

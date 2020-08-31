@@ -19,62 +19,30 @@
 # Boston, MA 02111-1307, USA.
 
 from __future__ import print_function
+import srx_segmenter
+import os
+
+srx_filepath = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'segment.srx')
+rules = srx_segmenter.parse(srx_filepath)
 
 class TextTokenizer:
 
-    def __init__(self):
-        self.abbreviations = ['Mr.', 'Mrs.']
-        self.lengths = []
-
-        for i in range(0, len(self.abbreviations)):
-            self.abbreviations[i] = self.abbreviations[i].lower()
-            self.lengths.append(len(self.abbreviations[i]))
-
-    def is_an_abbreviation(self, sentence, pos, length):
-        for i in range(0, len(self.abbreviations)):
-            abbrev_length = self.lengths[i]
-            if self.lengths[i] > pos:
-                continue
-
-            if sentence[pos - abbrev_length + 1: pos + 1].lower() == self.abbreviations[i]:
-                return True
-
-        return False
-
-    def tokenize(self, sentence):
+    def tokenize(self, sentence, language):
         strings = []
         translate = []
-        start = 0
-        pos = 1
 
-        length = len(sentence)
-        for i in range(0, length):
-            pos = i
-            c = sentence[i]
-            if c == '.' and self.is_an_abbreviation(sentence, i, length) is False:
-                string = sentence[start:i+1]
-                strings.append(string)
-                translate.append(True)
-                start = i + 1
+        segmenter = srx_segmenter.SrxSegmenter(rules[language], sentence)
+        segments, whitespaces = segmenter.extract()
 
-            if c == '\n' or c == '\r':
-                if start < i:
-                    string = sentence[start:i+1]
-                    strings.append(string)
-                    translate.append(True)
-
-                string = sentence[i]
-                strings.append(string)
+        for i in range(len(segments)):
+            whitespace = whitespaces[i]
+            if len(whitespace) > 0:
+                strings.append(whitespace)
                 translate.append(False)
-                start = i + 1
-     
-        if start < pos:
-            string = sentence[start:pos+1]
+
+            string = segments[i]
             strings.append(string)
             translate.append(True)
-        
-    #    for i in range(0, len(strings)):
-    #        print("{0}->'{1}':{2}".format(i, strings[i], translate[i]))
 
         return strings, translate
 
