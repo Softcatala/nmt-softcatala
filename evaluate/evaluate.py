@@ -89,7 +89,7 @@ def main():
                  'translated/tatoeba-yandex-ca.txt','translated/tatoeba-google-ca.txt', \
                  'translated/tatoeba-opennmt-ca.txt'],\
 
-            ['SC Users', 'input/sc-users-ca.txt', None,
+            ['SC Users', 'input/sc-users-ca.txt', 'translated/sc-users-apertium-ca.txt',
                  None, 'translated/sc-users-google-ca.txt', \
                  'translated/sc-users-opennmt-ca.txt'],\
         ]

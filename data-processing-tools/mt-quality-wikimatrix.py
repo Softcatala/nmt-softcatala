@@ -35,9 +35,14 @@ class Groups():
         self._create_groups(min_lines)
 
     def inc_discarted(self, index):
-        group = self._find_group(index)
-        discarted = self.groups[group]['discarded']
-        self.groups[group]['discarded'] = discarted + 1
+        try:
+            group = self._find_group(index)
+            discarted = self.groups[group]['discarded']
+            self.groups[group]['discarded'] = discarted + 1
+        except Exception as e:
+            print(index)
+            print(group)
+            print(e)
 
     def _create_groups(self, min_lines):
         self.size = int (min_lines / self.TOTAL_GROUPS)
@@ -115,13 +120,15 @@ def main():
     clean_en_file = target_pattern + '.en'
     clean_ca_file = target_pattern + '.ca'
     log_file = 'qualitymatrix.log'
+    log_file_good = 'qualitymatrix-good.log'
 
     strings = 0
     discarded = 0
+    threshold = 0.50
     
     with open(source_en_file, 'r') as tf_source_en_file, open(source_ca_file, 'r') as tf_source_ca_file,\
          open(clean_en_file, 'w') as tf_clean_en_file, open(clean_ca_file, 'w') as tf_clean_ca_file,\
-         open(reference, 'r') as tf_reference_file, open(log_file, 'w') as tf_log_file:
+         open(reference, 'r') as tf_reference_file, open(log_file, 'w') as tf_log_file, open(log_file_good, 'w') as tf_log_file_good:
 
         source_en_lines = tf_source_en_file.readlines()
         source_ca_lines = tf_source_ca_file.readlines()
@@ -145,7 +152,7 @@ def main():
             max_len = max(len(src_ca), len(ref_ca))
             dist = dist / max_len
 
-            if dist > 0.50:
+            if dist > threshold:
                 tf_log_file.write("{0}\n".format(src_en.replace('\n', '')))
                 tf_log_file.write("{0}\n".format(src_ca.replace('\n', '')))
                 tf_log_file.write("{0} - {1} - {2}\n\n".format(ref_ca.replace('\n', ''), i, dist))
@@ -156,6 +163,11 @@ def main():
                 tf_clean_en_file.write("{0}".format(src_en))
                 tf_clean_ca_file.write("{0}".format(src_ca))
 
+                tf_log_file_good.write("{0}\n".format(src_en.replace('\n', '')))
+                tf_log_file_good.write("{0}\n".format(src_ca.replace('\n', '')))
+                tf_log_file_good.write("{0} - {1} - {2}\n\n".format(ref_ca.replace('\n', ''), i, dist))
+
+
             if i % 10000 == 0:
                 print("{0} ({1:.2f}%)".format(i, 100 * i / min_lines))
 
@@ -165,8 +177,8 @@ def main():
         print(s)
         tf_log_file.write("{0}\n".format(s))
 
-        s = "Wrote {0} ({1:.2f}%) total strings discarded {2} ({3:.2f}%)".format(strings,
-           100 * strings / len_source_en_lines, discarded, 100 * discarded / min_lines)
+        s = "Wrote {0} ({1:.2f}%) total strings discarded {2} ({3:.2f}%), threshold {4}".format(strings,
+           100 * strings / len_source_en_lines, discarded, 100 * discarded / min_lines, threshold)
         print(s)
         tf_log_file.write("{0}\n".format(s))
 
