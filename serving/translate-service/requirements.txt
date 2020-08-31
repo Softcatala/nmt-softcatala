@@ -5,3 +5,5 @@ peewee>=3.0.0
 pyonmttok==1.18.0
 ctranslate2==1.12
 numpy
+lxml
+regex
