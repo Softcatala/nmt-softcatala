@@ -110,9 +110,9 @@ def read_parameters():
 
     return options.model_name, options.txt_file, options.translated_file, options.tokenizer_models, options.translation_models, options.n_threads
 
-def translate_thread(src, openNMT, translations, index, tf_ca):
+def translate_thread(src, language, openNMT, translations, index, tf_ca):
     try:
-        translations[index] = openNMT.translate_splitted(src)
+        translations[index] = openNMT.translate_splitted(src, language)
     except Exception as e:
         translations[index] = "Error"
         logging.error(str(e))
@@ -134,9 +134,11 @@ def main():
     if (model_name == 'eng-cat'):
         src_model_path = os.path.join(tokenizer_models, "en_m.model")
         tgt_model_path = os.path.join(tokenizer_models, "ca_m.model")
+        language = 'English'
     else:
         src_model_path = os.path.join(tokenizer_models, "ca_m.model")
         tgt_model_path = os.path.join(tokenizer_models, "en_m.model")
+        language = 'Catalan'
 
     openNMT.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path = src_model_path)
     openNMT.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path = tgt_model_path)
@@ -165,7 +167,7 @@ def main():
 
             for t in range(0, num_threads):
                 src = sources[t]
-                process = Thread(target=translate_thread, args=[sources[t], openNMT, translations, t, tf_ca])
+                process = Thread(target=translate_thread, args=[sources[t], language, openNMT, translations, t, tf_ca])
                 process.start()
                 threads.append(process)
               

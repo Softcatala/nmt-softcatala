@@ -85,9 +85,9 @@ class CTranslate():
             results[i] = self.translate(sentence)
 
 
-    def translate_splitted(self, text):
+    def translate_splitted(self, text, language):
         tokenizer = TextTokenizer()
-        sentences, translate = tokenizer.tokenize(text)
+        sentences, translate = tokenizer.tokenize(text, language)
 
         num_sentences = len(sentences)
         threads = []

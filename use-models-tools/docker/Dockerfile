@@ -9,6 +9,7 @@ WORKDIR /srv
 RUN pip3 install -r requirements.txt
 
 COPY use-models-tools/*.py /srv/
+COPY use-models-tools/segment.srx /srv/
 COPY use-models-tools/docker/entry-point.sh /srv/
 
 COPY models/eng-cat/ctranslate2/ /srv/models/eng-cat/

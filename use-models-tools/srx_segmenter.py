@@ -44,9 +44,6 @@ class SrxSegmenter:
         non_break_points = self.get_non_break_points()
         candidate_break_points = self.get_break_points()
 
-        print(f"non_break_points: {non_break_points}")
-        print(f"candidate_break_points: {candidate_break_points}")
-
         break_point = sorted(candidate_break_points - non_break_points)
         source_text = self.source_text
 
