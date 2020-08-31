@@ -88,11 +88,13 @@ def translate_api():
 
     if languages == 'eng-cat':
         openNMT = openNMT_engcat
+        language = 'English'
     else:
         openNMT = openNMT_cateng
+        language = 'Catalan'
 
     tokenizer = TextTokenizer()
-    sentences, translate = tokenizer.tokenize(text)
+    sentences, translate = tokenizer.tokenize(text, language)
 
     results = _launch_translate_threads(openNMT, text, sentences, translate)
     translated = tokenizer.sentence_from_tokens(sentences, translate, results)

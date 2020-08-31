@@ -23,28 +23,30 @@ import unittest
 
 class TestTextTokenizer(unittest.TestCase):
 
-    def test_sample1(self):
+    ENGLISH = "English"
+
+    def test_tokenize_single_word(self):
         tokenizer = TextTokenizer()
         text = 'Hello'
-        strings, translate = tokenizer.tokenize(text)
+        strings, translate = tokenizer.tokenize(text, self.ENGLISH)
 
         self.assertEquals(1, len(translate))
         self.assertEquals("Hello", strings[0])
         self.assertEquals(True, translate[0])
 
-    def test_sample2(self):
+    def test_tokenize_single_word_with_dot(self):
         tokenizer = TextTokenizer()
         text = 'Hello.'
-        strings, translate = tokenizer.tokenize(text)
+        strings, translate = tokenizer.tokenize(text, self.ENGLISH)
 
         self.assertEquals(1, len(translate))
         self.assertEquals("Hello.", strings[0])
         self.assertEquals(True, translate[0])
 
-    def test_sample3(self):
+    def test_tokenize_two_sentences_with_newline(self):
         tokenizer = TextTokenizer()
         text = 'Hello.\nHow are you?'
-        strings, translate = tokenizer.tokenize(text)
+        strings, translate = tokenizer.tokenize(text, self.ENGLISH)
 
         self.assertEquals(3, len(translate))
         self.assertEquals("Hello.", strings[0])
@@ -54,10 +56,10 @@ class TestTextTokenizer(unittest.TestCase):
         self.assertEquals("How are you?", strings[2])
         self.assertEquals(True, translate[2])
 
-    def test_sample_mr_abbreviation(self):
+    def test_tokenize_with_abbreviation(self):
         tokenizer = TextTokenizer()
         text = '"Why not, Mr. Wizard?" asked Jellia.\rNot now.'
-        strings, translate = tokenizer.tokenize(text)
+        strings, translate = tokenizer.tokenize(text, self.ENGLISH)
 
         self.assertEquals(3, len(translate))
         self.assertEquals('"Why not, Mr. Wizard?" asked Jellia.', strings[0])
@@ -66,7 +68,6 @@ class TestTextTokenizer(unittest.TestCase):
         self.assertEquals(False, translate[1])
         self.assertEquals("Not now.", strings[2])
         self.assertEquals(True, translate[2])
-
 
 if __name__ == '__main__':
     unittest.main()
