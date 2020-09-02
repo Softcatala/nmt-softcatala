@@ -36,6 +36,14 @@ def _remove_tags(text):
     clean = re.sub("<[^>]*>", "", text)
     return clean
 
+def _is_non_localized_string(src, trg):
+    words_src_len = len(src.split())
+    words_trg_len = len(trg.split())
+    if words_src_len > 2 and words_trg_len > 2:
+        return src == trg
+
+    return False
+
 def _is_invalid(src, trg):
     if len(src) < 2 or len(trg) < 2:
         return True
@@ -47,6 +55,9 @@ def _is_invalid(src, trg):
         return True
 
     if '@@image' in src or '@@image' in trg:
+        return True
+
+    if _is_non_localized_string(src, trg):
         return True
 
     return False
