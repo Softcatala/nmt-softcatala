@@ -1,4 +1,4 @@
 pushd ../..
-docker build -t use-model-tools . -f use-models-tools/docker/Dockerfile
+docker build -t use-models-tools . -f use-models-tools/docker/Dockerfile
 popd
-docker image ls | grep use-model-tools
+docker image ls | grep use-models-tools
