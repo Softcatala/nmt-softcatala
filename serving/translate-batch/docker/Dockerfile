@@ -13,7 +13,7 @@ COPY serving/translate-batch/docker/entry-point.sh /srv/
 
 COPY models/eng-cat/ctranslate2/ /srv/models/eng-cat/
 COPY models/cat-eng/ctranslate2/ /srv/models/cat-eng/
-COPY models/eng-cat/exported/assets/*.model /srv/models/tokenizer/
+COPY models/eng-cat/tokenizer/*.model /srv/models/tokenizer/
 
 ENTRYPOINT /srv/entry-point.sh
 #ENTRYPOINT bash
