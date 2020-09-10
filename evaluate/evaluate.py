@@ -20,10 +20,20 @@
 
 import nltk
 import warnings
+import os
 from nltk.translate import nist_score, bleu_score
 warnings.filterwarnings("ignore")
 
 def show_bleu(reference_file, hypotesis_file):
+
+    if not os.path.exists(reference_file):
+        print(f"File '{reference_file}' not found")
+        return
+
+    if not os.path.exists(hypotesis_file):
+        print(f"File '{hypotesis_file}' not found")
+        return
+
     cumulative_bleu_score = 0
     with open(reference_file, 'r') as tf_ref, open(hypotesis_file, 'r') as tf_hyp:
         lines_ref = tf_ref.read().splitlines()
@@ -53,6 +63,14 @@ def show_bleu(reference_file, hypotesis_file):
 
 
 def show_nist(reference_file, hypotesis_file):
+    if not os.path.exists(reference_file):
+        print(f"File '{reference_file}' not found")
+        return
+
+    if not os.path.exists(hypotesis_file):
+        print(f"File '{hypotesis_file}' not found")
+        return
+
     cumulative_bleu_score = 0
     with open(reference_file, 'r') as tf_ref, open(hypotesis_file, 'r') as tf_hyp:
         lines_ref = tf_ref.read().splitlines()
@@ -80,18 +98,21 @@ def show_nist(reference_file, hypotesis_file):
 
     
 def main():
+
+    language = 'ca'
+
     datasets = \
         [\
-            ['Sleepyhollow', 'input/sleepyhollow.en-ca.ca','translated/sleepyhollow-apertium-ca.txt',\
-                 'translated/sleepyhollow-yandex-ca.txt', 'translated/sleepyhollow-google-ca.txt',\
-                 'translated/sleepyhollow-opennmt-ca.txt' ],\
-            ['Tatoeba', 'input/tatoeba.en-ca.ca','translated/tatoeba-apertium-ca.txt',
-                 'translated/tatoeba-yandex-ca.txt','translated/tatoeba-google-ca.txt', \
-                 'translated/tatoeba-opennmt-ca.txt'],\
+            ['Sleepyhollow', f'input/sleepyhollow.en-ca.{language}', f'translated/sleepyhollow-apertium-{language}.txt',\
+                 f'translated/sleepyhollow-yandex-{language}.txt', f'translated/sleepyhollow-google-{language}.txt',\
+                 f'translated/sleepyhollow-opennmt-{language}.txt' ],\
+            ['Tatoeba', f'input/tatoeba.en-ca.{language}', f'translated/tatoeba-apertium-{language}.txt',
+                 f'translated/tatoeba-yandex-{language}.txt', f'translated/tatoeba-google-{language}.txt', \
+                 f'translated/tatoeba-opennmt-{language}.txt'],\
 
-            ['SC Users', 'input/sc-users-ca.txt', 'translated/sc-users-apertium-ca.txt',
-                 None, 'translated/sc-users-google-ca.txt', \
-                 'translated/sc-users-opennmt-ca.txt'],\
+            ['SC Users', f'input/sc-users-{language}.txt', f'translated/sc-users-apertium-{language}.txt',
+                 None, f'translated/sc-users-google-{language}.txt', \
+                 f'translated/sc-users-opennmt-{language}.txt'],\
         ]
 
     for ds in datasets:
