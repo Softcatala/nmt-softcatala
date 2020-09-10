@@ -17,30 +17,31 @@ This repository contains Neural Machine Translation tools and models built at So
 
 We have created the following models:
 
-* Softcatalà memories model (https://www.softcatala.org/pub/softcatala/opennmt/models/sc-memories-2020-03-29.zip)
-  * This model is build using Softcatalà translations only
-  * Total number of sentences: 195532
+* English - Catalan model (https://www.softcatala.org/pub/softcatala/opennmt/models/eng-cat-2020-09-09.zip)
+  * Total number of sentences: 4602069
   * replace_unknown_target: yes
   * model: Transformer
   * Tokenizer: SentencePiece
-  * BLEU = 43.24
+  * BLEU = 41.93
   * Default if no specified otherwise
 
-* English - Catalan model (https://www.softcatala.org/pub/softcatala/opennmt/models/eng-cat-2020-04-11.zip)
-  * Total number of sentences: 4426107
+* Catalan - English model (https://www.softcatala.org/pub/softcatala/opennmt/models/eng-cat-2020-09-09.zip)
+  * Total number of sentences: 4602069
   * replace_unknown_target: yes
   * model: Transformer
   * Tokenizer: SentencePiece
-  * BLEU = 40.12
+  * BLEU = 41.29
   * Default if no specified otherwise
 
-* Catalan - English model (https://www.softcatala.org/pub/softcatala/opennmt/models/cat-eng-2020-04-12.zip)
-  * Total number of sentences: 4426107
-  * replace_unknown_target: yes
-  * model: Transformer
-  * Tokenizer: SentencePiece
-  * BLEU = 40.36
-  * Default if no specified otherwise
+### Structure of the models
+
+Description of the directories on the contained in the models zip file:
+
+* *tensorflow*: model exported in Tensorflow format
+* *ctranslate2*: model exported in CTranslate2 format (used for inference)
+* *metadata*: description of the model
+* *tokenizer*: SentencePiece models for both languages
+
 
 The corpus used to train this model can be obtain from the trainings-sets directory executing these scripts:
 
