@@ -13,7 +13,10 @@ COPY serving/translate-service/segment.srx /srv/
 COPY serving/translate-service/docker/entry-point.sh /srv/
 
 COPY models/eng-cat/ctranslate2/ /srv/models/eng-cat/
+COPY models/eng-cat/metadata/model_description.txt /srv/models/eng-cat/
 COPY models/cat-eng/ctranslate2/ /srv/models/cat-eng/
+COPY models/cat-eng/metadata/model_description.txt /srv/models/cat-eng/
+
 COPY models/eng-cat/tokenizer/*.model /srv/models/tokenizer/
 
 
