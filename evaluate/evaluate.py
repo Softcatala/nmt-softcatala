@@ -93,8 +93,8 @@ def show_nist(reference_file, hypotesis_file):
         for i in range(0, len(lines_hyp)):
             strings_hyp.append(lines_hyp[i].split())
 
-        bleu_score = nist_score.corpus_nist(strings_ref, strings_hyp)
-        print("** NIST score (corpus): " + str(bleu_score))
+        score = nist_score.corpus_nist(strings_ref, strings_hyp)
+        print("** NIST score (corpus): " + str(score))
 
     
 def main():
