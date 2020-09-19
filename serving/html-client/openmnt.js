@@ -92,7 +92,7 @@ function sendFile()
 
             if (xmlHttp.status == 200)
             {
-                alert("En una estona rebeu el fitxer traduït per correu electrònic");
+                alert("D'aquí a una estona rebreu el fitxer traduït per correu electrònic");
             }
             else
             {
