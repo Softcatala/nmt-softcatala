@@ -75,17 +75,50 @@ def _launch_translate_threads(openNMT, text, sentences, translate):
 
     return results
 
+@cross_origin(origin='*',headers=['Content-Type','Authorization'])
+@app.route('/translate', methods=['GET'])
+def apertium_translate_get():
+    return apertium_translate_process(request.args)
 
-
-
+# This should become /translate once old API is deprecated
 @cross_origin(origin='*',headers=['Content-Type','Authorization'])
 @app.route('/translate/', methods=['POST'])
 def translate_api():
-    start_time = datetime.datetime.now()
-    text = request.json['text']
-    languages = request.json['languages']
-    savetext = 'savetext' in request.json and request.json['savetext'] == True
+#    print(request)   
+#    print("json:" + str(request.json))
+#    print("data:" + str(request.data))
+#    print("form:" + str(request.form))
+#    print("args:" + str(request.args))
 
+    if request.json != None  and 'languages' in request.json.keys():
+        return deprecated_translate_api()
+
+    # POST with key, value
+    if request.form is not None:
+        return apertium_translate_process(request.form)
+
+def apertium_translate_process(values):
+    text = None
+    languages = None
+
+    text = values['q']
+    langpair = values['langpair']
+    if langpair == 'en|cat':
+        languages = 'eng-cat'
+    else:
+        languages = 'cat-eng'
+            
+    translated = translate(languages, text)
+
+    result = {}
+    responseData = {}
+    responseData['translatedText'] = translated
+    result['responseStatus'] = 200
+    result['responseData'] = responseData
+    return json_answer(result)
+
+
+def translate(languages, text):
     if languages == 'eng-cat':
         openNMT = openNMT_engcat
         language = 'English'
@@ -98,6 +131,17 @@ def translate_api():
 
     results = _launch_translate_threads(openNMT, text, sentences, translate)
     translated = tokenizer.sentence_from_tokens(sentences, translate, results)
+    return translated
+    
+
+def deprecated_translate_api():
+
+    start_time = datetime.datetime.now()
+    text = request.json['text']
+    languages = request.json['languages']
+    savetext = 'savetext' in request.json and request.json['savetext'] == True
+
+    translated = translate(languages, text)
 
     if savetext:
         saved_filename = os.path.join(SAVED_TEXTS, "source.txt")
@@ -223,7 +267,40 @@ def json_answer(data, status = 200):
     resp.headers['Access-Control-Allow-Origin'] = '*'
     return resp
 
+@app.route('/listLanguageNames', methods=['GET'])
+def list_language_names():
+    languages = request.args.get('languages')
+    languages = languages.split()
+
+    result = {}
+    for language in languages:
+        if language == 'cat':
+            result['cat'] = 'Catalan'
+        elif language == 'eng':
+            result['eng'] = 'English'
+
+    return json_answer(result, 200)
+
+@app.route('/listPairs', methods=['GET'])
+def list_pairs():
+
+    result = {}
+    responseData = []
+
+    pair = { "sourceLanguage": "eng",
+             "targetLanguage": "cat"}
+    responseData.append(pair)
+
+    pair = { "sourceLanguage": "cat",
+             "targetLanguage": "eng"}
+    responseData.append(pair)
+
+    result['responseStatus'] = 200
+    result['responseData'] = responseData
+    return json_answer(result)
+
 
 if __name__ == '__main__':
-    app.debug = True
+#    app.debug = True
+#    app.url_map.strict_slashes = False
     app.run()
