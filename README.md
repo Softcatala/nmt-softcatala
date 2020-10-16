@@ -105,7 +105,7 @@ One of the use cases of Machine Translation is to use to speed up the work of tr
 
 In order to integrate easily with already existing translation tools we support part of the [Apertium Web API](https://wiki.apertium.org/wiki/Apertium-apy). This means that you can use any tool that has support with Apertium.
 
-*Supported methods**
+**Supported methods**
 
 | Method | Verb  
 |---|---|
