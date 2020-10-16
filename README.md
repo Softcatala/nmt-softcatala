@@ -48,7 +48,9 @@ The corpus used to train this model can be obtain from the trainings-sets direct
 * *get.sh* gets all the raw files
 * *preprocess.sh* that does the necessary preprocessing of the data
 
-# Serving the models in local (non-production environments)
+# Serving
+
+## Serving the models in local (non-production environments)
 
 This is useful for example if you want to translate large volumes using our prebuild English - Catalan models using the same exact version that we have in production.
 
@@ -72,8 +74,7 @@ To translate a text file from Catalan to English:
 * ```docker run -it -v "$(pwd)":/srv/files/ --env COMMAND_LINE="-f input.txt -t output.txt -m cat-eng" --rm jordimash/use-models-tools --name jordimash/use-models-tools```
 * ```more output.txt```
 
-
-# Serving the models in production
+## Serving the models in production
 
 Our tentative approach to run these models in production is:
 
@@ -97,6 +98,20 @@ cd serving
 and to test it:
 
 http://localhost:8700/translate/?text=hello
+
+## Apertium API
+
+One of the use cases of Machine Translation is to use to speed up the work of translators. 
+
+In order to integrate easily with already existing translation tools we support part of the [Apertium Web API](https://wiki.apertium.org/wiki/Apertium-apy). This means that you can use any tool that has support with Apertium.
+
+*Supported methods**
+
+| Method | Verb  
+|---|---|
+|/translate  | GET or POST  
+|/listLanguageNames  | GET
+|/listPairs  | GET
 
 # Using the models
 
