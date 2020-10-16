@@ -10,7 +10,6 @@ This repository contains Neural Machine Translation tools and models built at So
 * *evaluate*: set of tools and corpus to evaluatate diferent translation systems
 * *quality*: set of corpus to evaluate the quality of the 'eng-cat' model only
 
-
 # Models
 
 ## Softcatalà built models
@@ -42,7 +41,6 @@ Description of the directories on the contained in the models zip file:
 * *metadata*: description of the model
 * *tokenizer*: SentencePiece models for both languages
 
-
 The corpus used to train this model can be obtain from the trainings-sets directory executing these scripts:
 
 * *get.sh* gets all the raw files
@@ -50,7 +48,30 @@ The corpus used to train this model can be obtain from the trainings-sets direct
 
 # Serving
 
-## Serving the models in local (non-production environments)
+## Serving the models in production
+
+
+You can download the docker that we use in production
+
+* Type ```docker pull jordimash/translate-service:v18``` (check if there are newer versions of the [tag](https://hub.docker.com/repository/docker/jordimash/translate-service))
+* docker run  -it --rm -p 8700:8700 jordimash/translate-service:v18
+* http://localhost:8700/translate?langpair=en|cat&q=Hello!
+
+## Apertium API
+
+One of the use cases of Machine Translation is to use to speed up the work of translators. 
+
+In order to integrate easily with already existing translation tools we support part of the [Apertium Web API](https://wiki.apertium.org/wiki/Apertium-apy). This means that you can use any tool that has support with Apertium.
+
+**Supported methods**
+
+| Method | Verb  
+|---|---|
+|/translate  | GET or POST  
+|/listLanguageNames  | GET
+|/listPairs  | GET
+
+# Using the models in your machine
 
 This is useful for example if you want to translate large volumes using our prebuild English - Catalan models using the same exact version that we have in production.
 
@@ -73,61 +94,6 @@ To translate a text file from Catalan to English:
 * ```echo "Hola món" > input.txt```
 * ```docker run -it -v "$(pwd)":/srv/files/ --env COMMAND_LINE="-f input.txt -t output.txt -m cat-eng" --rm jordimash/use-models-tools --name jordimash/use-models-tools```
 * ```more output.txt```
-
-## Serving the models in production
-
-Our tentative approach to run these models in production is:
-
-* Leverage on a standard OpenNMT Docker image
-* Include our own model data
-* Include our own microservice (see [/serving](./serving)) to serve translations based on the model
-
-To build the container to be use in production execute:
-
-```
-cd serving
-./build-docker.sh
-```
-To execute it:
-
-```
-cd serving
-./run-docker.sh
-```
-
-and to test it:
-
-http://localhost:8700/translate/?text=hello
-
-## Apertium API
-
-One of the use cases of Machine Translation is to use to speed up the work of translators. 
-
-In order to integrate easily with already existing translation tools we support part of the [Apertium Web API](https://wiki.apertium.org/wiki/Apertium-apy). This means that you can use any tool that has support with Apertium.
-
-**Supported methods**
-
-| Method | Verb  
-|---|---|
-|/translate  | GET or POST  
-|/listLanguageNames  | GET
-|/listPairs  | GET
-
-# Using the models
-
-This is assumes that you are already serving the models.
-
-## Translating a new PO file using the a model
-
-Code is in ApplyToPoFile subdirectory. For example to translate the file 'test.po':
-
-* Run ```python3 model-to-po.py -f test.po```
-
-By default all strings translated by the translation system are marked as 'fuzzy'
-
-## Translating a plain text file
-
-* Run ```python3 model-to-txt.py --help``` for all details
 
 # How to help?
 
