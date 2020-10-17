@@ -50,7 +50,6 @@ The corpus used to train this model can be obtain from the trainings-sets direct
 
 ## Serving the models in production
 
-
 You can download the docker that we use in production
 
 * Type ```docker pull jordimash/translate-service:v18``` (check if there are newer versions of the [tag](https://hub.docker.com/repository/docker/jordimash/translate-service))
@@ -59,9 +58,15 @@ You can download the docker that we use in production
 
 ## Apertium API
 
-One of the use cases of Machine Translation is to use to speed up the work of translators. 
+One of the use cases for Machine Translation is to use it to speed up the work of translators.
 
-In order to integrate easily with already existing translation tools we support part of the [Apertium Web API](https://wiki.apertium.org/wiki/Apertium-apy). This means that you can use any tool that has support with Apertium.
+In order to integrate easily with already existing translation tools we support the [Apertium Web API](https://wiki.apertium.org/wiki/Apertium-apy). This means that you can use any tool that has support for Apertium.
+
+We confirm that the following tools work using Apertium pluggins:
+
+* Okapi Framework
+* OmegaT translation plugin
+* Gedit's Apertium plugin
 
 **Supported methods**
 
