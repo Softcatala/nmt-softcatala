@@ -103,7 +103,7 @@ def apertium_translate_process(values):
 
     text = values['q']
     langpair = values['langpair']
-    if langpair == 'en|cat':
+    if langpair in ['en|cat', 'en|ca', 'eng|ca', 'eng|cat']:
         languages = 'eng-cat'
     else:
         languages = 'cat-eng'
