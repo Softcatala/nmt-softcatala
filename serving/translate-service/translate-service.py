@@ -32,6 +32,8 @@ from usage import Usage
 from batchfiles import *
 import os
 import uuid
+import logging
+import logging.handlers
 
 app = Flask(__name__)
 CORS(app)
@@ -50,16 +52,33 @@ openNMT_cateng = CTranslate(f"{CAT_ENG_MODEL}")
 openNMT_cateng.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{TOKENIZER_MODELS}/ca_m.model")
 openNMT_cateng.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{TOKENIZER_MODELS}/en_m.model")
 
+def init_logging():
+    logfile = 'translate-service.log'
+
+    LOGLEVEL = os.environ.get('LOGLEVEL', 'INFO').upper()
+    logger = logging.getLogger()
+    hdlr = logging.handlers.RotatingFileHandler(logfile, maxBytes=1024*1024, backupCount=1)
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    hdlr.setFormatter(formatter)
+    logger.addHandler(hdlr)
+    logger.setLevel(LOGLEVEL)
+
+    console = logging.StreamHandler()
+    console.setLevel(LOGLEVEL)
+    logger.addHandler(console)
+
 
 def translate_thread(sentence, openNMT, i, results):
     if sentence.strip() == '':
         results[i] = ''
     else:
         results[i] = openNMT.translate(sentence)
-#    print("{0} - {1} -> {2}".format(i, sentence, results[i]))
+
+    logging.debug(f"translate_thread {i} - {sentence} - {results[i]}")
 
 def _launch_translate_threads(openNMT, text, sentences, translate):
     num_sentences = len(sentences)
+    logging.debug(f"_launch_translate_threads {num_sentences}")
     threads = []
     results = ["" for x in range(num_sentences)]
     for i in range(num_sentences):
@@ -73,6 +92,7 @@ def _launch_translate_threads(openNMT, text, sentences, translate):
     for process in threads:
         process.join()
 
+    logging.debug(f"_launch_translate_threads completed. Results: {len(results)}")
     return results
 
 @cross_origin(origin='*',headers=['Content-Type','Authorization'])
@@ -303,4 +323,8 @@ def list_pairs():
 if __name__ == '__main__':
 #    app.debug = True
 #    app.url_map.strict_slashes = False
+    init_logging()
     app.run()
+
+if __name__ != '__main__':
+    init_logging()
