@@ -27,7 +27,6 @@ from ctranslate import CTranslate
 import pyonmttok
 from threading import Thread
 from texttokenizer import TextTokenizer
-from checksourcelanguage import CheckSourceLanguage
 from usage import Usage
 from batchfiles import *
 import os
@@ -169,8 +168,6 @@ def deprecated_translate_api():
             t = text.replace('\n', '')
             text_file.write(f'{languages}\t{t}\n')
 
-    sourcelang = CheckSourceLanguage(SAVED_TEXTS, text, translated, languages)
-
     time_used = datetime.datetime.now() - start_time
     words = len(text.split(' '))
     usage = Usage()
@@ -179,9 +176,6 @@ def deprecated_translate_api():
     result['text'] = text
     result['translated'] = translated
     result['time'] = str(time_used)
-
-    if sourcelang.is_wrong():
-        result['source_language_wrong'] = True
 
     return json_answer(result)
 
