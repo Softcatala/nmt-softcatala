@@ -6,9 +6,9 @@ This document explains our experiences training models using OpenNMT.
 
 ## Neurals models are not reproducible
 
-Every time that you train a model will have a complete different network. When you evaluate its quality, overall may be better
-but may be specific translations that were done in previous models. This basically can introduce confusion to the users because
-new models can translate differently. The only thing that is sure is that the model is better globally or worse than previous.
+Every time that you train a model will have a complete different neural network. When you evaluate its quality, overall may be better
+but may be specific translations that were done better in previous models. This can introduce confusion to the users because
+new models will translate differently. The only thing that is sure is that the model is better globally or worse than previous models.
 
 ## Vocabulary size
 
@@ -21,7 +21,7 @@ model is much bigger.
 
 We believe that there are 3 ways:
 
-1. Improvements or new algorims used (attention, transformers, tokenizers)
+1. Improvements on new algorims used (attention, transformers, tokenizers)
 2. Configuration of the model training
 3. Improvements in the corpus
 
@@ -31,7 +31,7 @@ Our current hypothesis is that better to focus on 3).
 
 Basically we belive is makes sense to retrain the models on these scenario:
 
-1. Improvements or new algorithms used (attention, transformers, tokenizers)
+1. Improvements on new algorithms used (attention, transformers, tokenizers)
 2. Configuration of the model training
 3. Better corpus
 
@@ -39,9 +39,7 @@ Basically we belive is makes sense to retrain the models on these scenario:
 
 The corpus is divided in training (the majority of it) to train the model and evaluation to evaluate the performance of the model.
 
-When we make improvements in the corpus, then we made these improvements to the evaluation of the corpus. As result the evaluation
-corpus is improved also and you cannot compare with previous trainings with old models. In trainings with better corpus, you can get
-the same BLEU because your evaluation is also more demanding.
+When we make improvements in the corpus, then we made these improvements to the corpus that we use for evaluation too. As result the evaluation corpus is improved also and you cannot compare with previous trainings with old models. In trainings with better corpus, you can get the same BLEU because your evaluation is also more demanding.
 
 To prevent this, we evaluate also the models against corpus (SleppyHollow and Tatoeba) that have not seen during training and never change. 
 
