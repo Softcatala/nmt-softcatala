@@ -1,0 +1,1 @@
+../../gender-bias-detection/gender-bias-terms.txt

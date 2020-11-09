@@ -11,6 +11,7 @@ RUN pip3 install -r requirements.txt
 COPY serving/translate-service/*.py /srv/
 COPY serving/translate-service/segment.srx /srv/
 COPY serving/translate-service/docker/entry-point.sh /srv/
+COPY serving/translate-service/gender-bias-terms.txt /srv/
 
 COPY models/eng-cat/ctranslate2/ /srv/models/eng-cat/
 COPY models/eng-cat/metadata/model_description.txt /srv/models/eng-cat/

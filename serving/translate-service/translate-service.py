@@ -33,6 +33,7 @@ import os
 import uuid
 import logging
 import logging.handlers
+from genderbiasdetection import GenderBiasDetection
 
 app = Flask(__name__)
 CORS(app)
@@ -172,11 +173,21 @@ def deprecated_translate_api():
     words = len(text.split(' '))
     usage = Usage()
     usage.log(languages, words, time_used)
+
+    check_bias = languages == 'eng-cat'
     result = {}
+
+    if check_bias:
+        bias = GenderBiasDetection(text)
+        if bias.has_bias():
+            words = ', '.join(bias.get_words())
+            msg = f'Atenció: tingueu present que el text original en anglès conté professions sense marca de gènere, '
+            msg += f'com ara «{words}». Adapteu-ne la traducció si és necessari.'
+            result['message'] = msg
+
     result['text'] = text
     result['translated'] = translated
     result['time'] = str(time_used)
-
     return json_answer(result)
 
 def _get_processed_files(date):
