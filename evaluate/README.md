@@ -14,7 +14,7 @@ performance against others.
 
 Run  ```python evaluate.py```
 
-# Benchamark
+# Benchmark
 
 <pre>
 Transalion engine	BLEU	NIST
