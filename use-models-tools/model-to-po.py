@@ -146,20 +146,30 @@ def main():
         if 'fuzzy' in entry.flags or entry.obsolete:
             continue
 
-        src = _clean_string(entry.msgid)
-
-        if remove_tags:
-            src = remove_tags_string(src)
-
         try:
-            tgt = openNMT.translate(src)
+            if len(entry.msgid_plural) > 0:
+                src = _clean_string(entry.msgid)
+                src_plural = _clean_string(entry.msgid_plural)
 
-            add = True
+                if remove_tags:
+                    src = remove_tags_string(src)
+                    src_plural = remove_tags_string(src_plural)
 
-            if add:
-                translated = translated + 1
+                tgt = openNMT.translate(src)
+                tgt_plural = openNMT.translate(src_plural)
+                entry.msgstr_plural[0] = tgt
+                entry.msgstr_plural[1] = tgt_plural
+            else:
+                src = _clean_string(entry.msgid)
+
+                if remove_tags:
+                    src = remove_tags_string(src)
+
+                tgt = openNMT.translate(src)
                 entry.msgstr = tgt
-                entry.flags.append('fuzzy')
+
+            translated = translated + 1
+            entry.flags.append('fuzzy')
 
             if translated % 500 == 0:
                 print(translated)
