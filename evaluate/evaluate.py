@@ -24,28 +24,26 @@ import os
 from nltk.translate import nist_score, bleu_score
 warnings.filterwarnings("ignore")
 
-def show_bleu(reference_file, hypotesis_file):
+def get_bleu(reference_file, hypotesis_file):
 
     if not os.path.exists(reference_file):
         print(f"File '{reference_file}' not found")
-        return
+        return 0
 
     if not os.path.exists(hypotesis_file):
         print(f"File '{hypotesis_file}' not found")
-        return
+        return 0
 
     cumulative_bleu_score = 0
     with open(reference_file, 'r') as tf_ref, open(hypotesis_file, 'r') as tf_hyp:
         lines_ref = tf_ref.read().splitlines()
         lines_hyp = tf_hyp.read().splitlines()
-#        lines_ref = lines_ref[0:500]
-#        lines_hyp = lines_hyp[0:500]
 
         len_ref = len(lines_ref)
         len_hyp = len(lines_hyp)
         if len_ref != len_hyp:
             print("Different number of lines in files: {0} (reference), {1} (hypotesis)".format(len_ref, len_hyp))
-            return
+            return 0
 
         # Str -> to tokens
         strings_ref = []
@@ -56,33 +54,33 @@ def show_bleu(reference_file, hypotesis_file):
         for i in range(0, len(lines_hyp)):
             strings_hyp.append(lines_hyp[i].split())
 
-        bleu_score = nltk.translate.bleu_score.corpus_bleu(strings_ref, strings_hyp)
-        print("** Bleu score (corpus): " + str(bleu_score))
+        bleu = nltk.translate.bleu_score.corpus_bleu(strings_ref, strings_hyp)
+        return bleu
+ #       print("** Bleu score (corpus): " + str(bleu_score))
+        
 
-        show_nist(reference_file, hypotesis_file)
+#        show_nist(reference_file, hypotesis_file)
 
 
-def show_nist(reference_file, hypotesis_file):
+def get_nist(reference_file, hypotesis_file):
     if not os.path.exists(reference_file):
         print(f"File '{reference_file}' not found")
-        return
+        return 0
 
     if not os.path.exists(hypotesis_file):
         print(f"File '{hypotesis_file}' not found")
-        return
+        return 0
 
     cumulative_bleu_score = 0
     with open(reference_file, 'r') as tf_ref, open(hypotesis_file, 'r') as tf_hyp:
         lines_ref = tf_ref.read().splitlines()
         lines_hyp = tf_hyp.read().splitlines()
-#        lines_ref = lines_ref[0:500]
-#        lines_hyp = lines_hyp[0:500]
 
         len_ref = len(lines_ref)
         len_hyp = len(lines_hyp)
         if len_ref != len_hyp:
             print("Different number of lines in files: {0} (reference), {1} (hypotesis)".format(len_ref, len_hyp))
-            return
+            return 0
 
         # Str -> to tokens
         strings_ref = []
@@ -94,9 +92,17 @@ def show_nist(reference_file, hypotesis_file):
             strings_hyp.append(lines_hyp[i].split())
 
         score = nist_score.corpus_nist(strings_ref, strings_hyp)
-        print("** NIST score (corpus): " + str(score))
+        return score
 
-    
+def show_score_line(engine, reference_file, hypotesis_file):
+    bleu = get_bleu(reference_file, hypotesis_file)
+    nist = get_nist(reference_file, hypotesis_file)
+
+    if len(engine) >= 8:
+        print(f"{engine}\t\t{bleu:.2f}\t{nist:.2f}")
+    else:
+        print(f"{engine}\t\t\t{bleu:.2f}\t{nist:.2f}")
+
 def main():
 
     language = 'ca'
@@ -113,26 +119,27 @@ def main():
             ['SC Users', f'input/sc-users-{language}.txt', f'translated/sc-users-apertium-{language}.txt',
                  None, f'translated/sc-users-google-{language}.txt', \
                  f'translated/sc-users-opennmt-{language}.txt'],\
+
+            ['Fedalist', f'input/federalist.en-{language}.ca', None,
+                 'translated/federalist-yandex-ca.txt', f'translated/federalist-google-{language}.txt', \
+                 f'translated/federalist-opennmt-ca.txt'],\
         ]
 
+    print("Transalion engine\tBLEU\tNIST")
     for ds in datasets:
         print("-- " + ds[0])
 
         if ds[2] != None:
-            print("*** Apertium (Softcatalà)")
-            show_bleu(ds[1], ds[2])
+            show_score_line("Apertium", ds[1], ds[2])
 
         if ds[3] != None:
-            print("Yandex)")
-            show_bleu(ds[1], ds[3])
+            show_score_line("Yandex", ds[1], ds[3])
 
         if ds[4] != None:
-            print("Google")
-            show_bleu(ds[1], ds[4])
-    
+            show_score_line("Google", ds[1], ds[4])
+
         if ds[5] != None:
-            print("OpenNMT")
-            show_bleu(ds[1], ds[5])
+            show_score_line("nmt-softcatala", ds[1], ds[5])
 
 if __name__ == "__main__":
     main()
