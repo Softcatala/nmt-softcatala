@@ -69,9 +69,9 @@ We confirm that the following tools work using Apertium pluggins:
 
 **Supported methods**
 
-| Method | Verb  
+| Method | Verb
 |---|---|
-|/translate  | GET or POST  
+|/translate  | GET or POST
 |/listLanguageNames  | GET
 |/listPairs  | GET
 
@@ -98,6 +98,10 @@ To translate a text file from Catalan to English:
 * ```echo "Hola món" > input.txt```
 * ```docker run -it -v "$(pwd)":/srv/files/ --env COMMAND_LINE="-f input.txt -t output.txt -m cat-eng" --rm jordimash/use-models-tools --name jordimash/use-models-tools```
 * ```more output.txt```
+
+# License
+
+See [lincense](./LICENSE.md)
 
 # How to help?
 
