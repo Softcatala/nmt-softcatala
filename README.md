@@ -101,7 +101,7 @@ To translate a text file from Catalan to English:
 
 # License
 
-See [lincense](./LICENSE.md)
+See [license](./LICENSE.md)
 
 # How to help?
 
