@@ -8,6 +8,7 @@ This repository contains Neural Machine Translation tools and models built at So
 * *serving*: contains a microservice that provides a basic transtion API calling TensorFlow serving.
 * *use-models-tools*: contains tools to use the models to translate text files or PO files
 * *evaluate*: set of tools and corpus to evaluatate diferent translation systems
+* *training*: scrips and configurations to train the models
 
 # Models
 
@@ -39,11 +40,6 @@ Description of the directories on the contained in the models zip file:
 * *ctranslate2*: model exported in CTranslate2 format (used for inference)
 * *metadata*: description of the model
 * *tokenizer*: SentencePiece models for both languages
-
-The corpus used to train this model can be obtain from the trainings-sets directory executing these scripts:
-
-* *get.sh* gets all the raw files
-* *preprocess.sh* that does the necessary preprocessing of the data
 
 # Serving
 
