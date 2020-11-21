@@ -16,20 +16,20 @@ This repository contains Neural Machine Translation tools and models built at So
 
 We have created the following models:
 
-* English - Catalan model (https://www.softcatala.org/pub/softcatala/opennmt/models/eng-cat-2020-09-09.zip)
+* English - Catalan model (https://www.softcatala.org/pub/softcatala/opennmt/models/eng-cat-2020-11-20.zip)
   * Total number of sentences: 4602069
   * replace_unknown_target: yes
-  * model: Transformer
+  * model: TransformerRelative
   * Tokenizer: SentencePiece
-  * BLEU = 41.93
+  * BLEU = 41.96
   * Default if no specified otherwise
 
-* Catalan - English model (https://www.softcatala.org/pub/softcatala/opennmt/models/eng-cat-2020-09-09.zip)
+* Catalan - English model (https://www.softcatala.org/pub/softcatala/opennmt/models/cat-eng-2020-11-21.zip)
   * Total number of sentences: 4602069
   * replace_unknown_target: yes
-  * model: Transformer
+  * model: TransformerRelative
   * Tokenizer: SentencePiece
-  * BLEU = 41.29
+  * BLEU = 41.41
   * Default if no specified otherwise
 
 ### Structure of the models
