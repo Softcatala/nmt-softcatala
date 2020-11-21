@@ -1,7 +1,7 @@
 # Required hardware
 
-We use a instance AWS EC2 <em>p3.2xlarge</em> instance with the following
-that has a Tesla V100-SXM2-16GB. We use the following image:
+We use an AWS EC2 <em>p3.2xlarge</em> instance with a Tesla
+V100-SXM2-16GB. We use the following Linux image:
 
 Deep Learning AMI (Ubuntu 18.04) Version 36.0 - ami-096a6497745975f89
 
