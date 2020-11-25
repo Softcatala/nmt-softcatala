@@ -3,3 +3,7 @@ resident # As adjective (resident abroad)
 cook # cook, can be also be a verb
 driver # software driver
 manager # software manager
+witness # to witness
+visitor # Does not have gender version
+mover # Uncommon
+guard # Does not have gender version
