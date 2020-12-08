@@ -23,6 +23,7 @@ import os
 from texttokenizer import TextTokenizer
 import ctranslate2
 import pyonmttok
+from preservemarkup import PreserveMarkup
 
 class CTranslate():
 
@@ -71,8 +72,18 @@ class CTranslate():
 
     def _translate_sentence(self, text):
         _default = 60.0
+
+        preserve_markup = PreserveMarkup()
+        markers, text = preserve_markup.create_markers_in_string(text)
+
+#        print(f"input: '{text}'")
         output = self._translate_request([text], timeout=_default)
-        return output[0]
+        translated = output[0]
+#        print(f"pre-translated: '{translated}'")
+        translated = preserve_markup.get_back_markup(translated, markers)
+#        print(f"translated: '{translated}'")
+        return translated
+
 
     def translate(self, text):
         translated = self._translate_sentence(text)

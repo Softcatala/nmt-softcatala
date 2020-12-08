@@ -37,9 +37,49 @@ def read_parameters():
     (options, args) = parser.parse_args()
     return options.vocabulary_size
 
+def _get_file_len(fname):
+    with open(fname) as f:
+        for i, l in enumerate(f):
+            pass
+    return i + 1
+
+def ingest_file(learner, ingest_file):
+    MAX_LINES = 1000000
+
+    file_len = _get_file_len(ingest_file)
+
+    if file_len < MAX_LINES:
+        return learner.ingest_file(ingest_file)
+
+    percentage = MAX_LINES / file_len * 100
+    print(f"Ingesting only {percentage:.2f}% of {ingest_file}")
+
+    cnt = 0
+    reduced_file = ingest_file + "-reduced.txt"
+    with open(ingest_file, "r") as source,\
+         open(reduced_file, "w") as target:
+
+        while True:
+            src = source.readline()
+            if not src:
+                break
+
+            cnt = cnt + 1
+
+            if cnt > 100:
+                cnt = 0
+
+            if cnt > percentage:
+                continue
+
+            target.write(src)
+
+    return learner.ingest_file(reduced_file)
+
 def src(vocabulary_size):
     learner = pyonmttok.SentencePieceLearner(vocab_size=vocabulary_size)
-    learner.ingest_file("src-train.txt")
+    ingest_file(learner, "src-train.txt")
+
     tokenizer = learner.learn("en_m.model", verbose=True)
     tokens = tokenizer.tokenize_file("src-train.txt", "src-train.txt.token")
     tokens = tokenizer.tokenize_file("src-test.txt", "src-test.txt.token")
@@ -47,7 +87,8 @@ def src(vocabulary_size):
 
 def tgt(vocabulary_size):
     learner = pyonmttok.SentencePieceLearner(vocab_size=vocabulary_size)
-    learner.ingest_file("tgt-train.txt")
+    ingest_file(learner, "tgt-train.txt")
+
     tokenizer = learner.learn("ca_m.model", verbose=True)
     tokens = tokenizer.tokenize_file("tgt-train.txt", "tgt-train.txt.token")
     tokens = tokenizer.tokenize_file("tgt-test.txt", "tgt-test.txt.token")
