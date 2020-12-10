@@ -1,36 +1,36 @@
 "Ah!" és una interjecció.
-"Ets suec?"  "No, Suïssa".
-"Vinga i mira", va dir Philip.
+"Ets suec?"  No, suís.
+"Vine i mira", va dir Philip.
 "Five!" diu l'Alex.
 "Hola, qui és això?"
-"Honey, vine al llit".  "No, encara no.  Encara he de traduir algunes frases a Tatoeba."
+"Honey, vine al llit."  "No, encara no.  Encara he de traduir algunes frases a Tatoeba."
 "Com et sents aquest matí?"  Molt bé, gràcies.
-"Quans anys tens?"  Tinc 16 anys.
-"Quans anys tens?"  Tinc setze anys.
-"Està llegint un llibre?"  "Sí, ho és".
-"Està llegint un llibre?"  "Sí, ho és".
+"Quants anys tens?"  Tinc 16 anys.
+"Quants anys tens?"  "Sóc setze".
+Està llegint un llibre?  "Sí, ho està."
+Està llegint un llibre?  "Sí, ho està."
 "Okonatta" és la paraula correcta.
 "Tatoeba" significa "per exemple" en japonès.
-"Gràcies molt", va dir amb un somriure.
-"Això és correcte", va dir John.
+"Gràcies", va dir amb un somriure.
+"Això és cert", va dir John.
 "Això sembla força interessant", diu Hiroshi.
-"Què vols?"  Vull un gos.
-"Què vols de la pizza?"  "Qualsevol llevat anxoves".
-"Qui és aquesta noia?"  "Aquest és Keiko."
-"Qui és aquesta persona?"  "Aquest és Tom".
+"Què vols?"  "Vull un gos".
+"Quin toppings vols a la pizza?"  "Qualsevol menys anxoves".
+"Qui és aquesta noia?"  "És Keiko."
+"Qui és aquesta persona?"  "És en Tom".
 "Qui és aquesta cadira?"  "És meu".
-"Per què estàs llançant llibres al foc?"  "Perquè estic fred".
+"Per què llances llibres al foc?"  Perquè estic fred.
 "Per què els esquirols neden a l'esquena?"  "Per mantenir la fruita seca."
-"Per què prens aquest medicament?"  "Per dormir".
+"Per què prens aquesta medicina?"  "A dormir".
 5 és inferior a 8.
-Un bebè és incapaç de cuidar-se.
+Un nadó és incapaç de cuidar-se de si mateix.
 El pelatge d'un castor és molt suau.
 Un ocell pot volar.
 Un llibre té pàgines.
 Un toro en pantalons curts ha escapat.
-Un bou amb pantalons curts s'ha escapat acusat de robar.
-Un bou amb pantalons curts ha escapat.
-Una pastanaga és un snack sa.
+Un toro amb pantalons curts ha escapat acusat de robar.
+Un toro amb pantalons curts ha escapat.
+Una pastanaga és un aperitiu sa.
 Un gat té dues orelles.
 Un nombre considerable d'estudiants volen anar a la universitat.
 El nas d'un gos és molt sensible.
@@ -40,92 +40,92 @@ Un bon apetit és una bona salsa.
 Una lluna de mel al Canadà costa molts diners.
 Una ferradura i un trèvol de quatre fulles porten bona sort.
 Una llengua és un dialecte amb un exèrcit i una armada.
-Una llengua és un dialecte amb un exèrcit i una armada.
-Els ordinadors fan molts treballs.
+Una llengua és un dialecte amb exèrcit i armada.
+Els ordinadors fan moltes feines.
 Molta gent et dirà que no hauries d'haver fet això.
 Molta gent està intentant vendre les seves cases.
-Moltes persones esperen veure què passarà.
+Molta gent espera veure el que passarà.
 Molts soldats van morir aquí.
 Molts soldats van morir aquí.
 Un home anomenat Slim va morir en l'accident.
-Un home és responsable dels seus actes.
+Un home és responsable dels seus fets.
 Un home que mai comet errors és un home que no fa res.
-Un cor de baies fa bé com un medicament.
-Un nebot és fill del seu germà o germana.
+Un cor alegre fa bé com una medicina.
+Un nebot és fill de germà o germana.
 S'està estudiant un nou tractament per a l'hepatitis.
 Una pintura és un poema sense paraules.
 Un lloro pot imitar la veu d'una persona.
 Un passaport és una cosa sense la qual no es pot prescindir quan es va a un país estranger.
-L'arc de Sant Martí és un dels fenòmens naturals més bells.
+L'arc de Sant Martí és un dels fenòmens més bells de la natura.
 Una aranya teixeix una teranyina.
 Un fitxer TXT és un fitxer de text.
-Un vent de l'oest bufa pels camps.
-Un cotxe blanc m'ha estat tirant la cua durant les dues últimes milles.
-Cristòfor Colom, un cop va fer una cavalcada vermella i va entrar al bosc.  Sense cap dubte, va atreure el Big Bad Wolf, el va agafar i va arrossegar el llop cridant de tornada al seu vaixell.
+Un vent de ponent bufa pels camps.
+Un cotxe blanc m'ha estat vigilant durant les últimes dues milles.
+Cristòfor Colom va fer una cavalcada vermella i va entrar al bosc.  Sense cap dubte, va atreure el Gran Llop Mal, el va agafar i va arrossegar el llop cridant de tornada al seu vaixell.
 Un fill savi fa de pare feliç: però un fill ximple és la cura de la seva mare.
-Una paraula és suficient per a un home savi.
-Ja n'hi ha prou amb dir alguna cosa a la saviesa.
+Una paraula basta per a un savi.
+Ja n'hi ha prou amb dir-ho.
 Un any té dotze mesos.
-L'Aaron porta roba estranya; la gent sovint riu de la manera que vesteix.
-Al voltant de tres quartes parts de la superfície de la terra són d'aigua.
-Per sobre de tot, aneu amb compte amb els carteristes.
+Aaron porta roba estranya; la gent sovint riu de la manera com es vesteix.
+Al voltant de tres quartes parts de la superfície de la terra estan formades per aigua.
+Sobretot, compte amb els carteristes.
 Sobretot, cuido la meva salut.
-En aquest món succeeixen coses absolutament absurdes.
+En aquest món ocorren coses absolutament absurdes.
 Segons la seva opinió, sí.
 La pluja àcida no és un fenomen natural.
-De fet, això és el que pensava.
+De fet, això és el que vaig pensar.
 Després d'una tempesta arriba una calma.
 Després de ploure, bon temps.
 Després d'adonar-se de la còpula, resar mantis normalment devora el mascle.
 L'agricultura es va desenvolupar fa més de 10.000 anys.
-Quan es tornaran a trobar?
-L'aire és per als homes l'aigua és per pescar.
+Ah, quan es tornaran a trobar?
+L'aire és per als homes l'aigua que cal pescar.
 Tot d'una, vaig sentir un crit.
 Tots els vols han estat cancel·lats a causa de la tempesta.
-Totes les coses bones vénen en tres.
+Totes les coses bones venen en tres.
 Totes les seves fotos tenen marques d'aigua.
-Tots els éssers humans neixen lliures i iguals en dignitat i drets.  Estan dotades de raó i consciència i haurien d'actuar en pro de la fraternitat.
+Tots els éssers humans neixen lliures i iguals en dignitat i drets.  Estan dotades de raó i consciència i haurien d'actuar junts en un esperit de germanor.
 Tot és il·lusió.
 Tots els homes són mortals.
 A tots els meus amics els agrada jugar a videojocs.
 De sobte, vaig recordar que no podia pagar tants llibres.
 Tots els meus fills poden parlar francès.
 Tots els nens estan asseguts.
-Tots ells provenen d'Islàndia.
-Tots vam anar excepte ell.
+Tots ells són d'Islàndia.
+Tots hem anat excepte ell.
 Tot o res.
 Tots els nostres intents van ser en va.
 Tot el món desitja la pau.
 Tot el que agafa l'espasa morirà amb l'espasa.
-Tot va ser fet per ell; i sense ell no es va fer res.
+Ell va fer totes les coses, i sense ell no va fer res que es fes.
 Tots estaven tranquils a l'habitació.
 Tot el que has de fer és escriure el teu nom i adreça aquí.
 Permeteu-me presentar-vos Mayuko.
 Gairebé tothom va arribar a temps.
 Gairebé ningú la va creure.
 Gairebé ningú el creia.
-Encara que no m'agradaven les matemàtiques, havia d'estudiar logaritmes.
-Encara que estava cansat, vaig fer el que vaig poder fer.
+Encara que no m'agradaven les matemàtiques, vaig haver d'estudiar logaritmes.
+Encara que estava cansada, vaig fer el que vaig poder fer.
 Les dones americanes no tenien dret a votar.
 Un ull per un ull, una dent per una dent.
 Es fa un orador, però neix un poeta.
-Era orfe als tres anys i va ser criat per un parent llunyà.
-L'Ana no té una germana.
+Un orfe de tres anys, va ser criat per un parent llunyà.
+L'Ana no té germana.
 I demano al president de la Comissió d'Educació que doni suport a la proposta.
-I ara aquest és el meu secret, un secret molt simple: només amb el cor es pot veure correctament; el que és essencial és invisible als ulls.
+I ara aquest és el meu secret, un secret molt senzill: només amb el cor que es pot veure correctament; el que és essencial és invisible per als ulls.
 I el Senyor Déu va construir la costella que va portar d'Adam a una dona.
-I mentre ella ja no està amb nosaltres, sé que la meva àvia està observant, juntament amb la família que em va fer qui sóc.  Els trobo a faltar aquesta nit.  Sé que el meu deute amb ells està fora de lloc.  A la meva germana Maya, la meva germana Alma, tots els meus altres germans i germanes, moltes gràcies per tot el suport que m'has donat.  Els estic agraït.
+I mentre ella ja no està amb nosaltres, sé que la meva àvia està mirant, juntament amb la família que em va fer qui sóc.  Els trobo a faltar aquesta nit.  Sé que el meu deute amb ells no és suficient.  Per a la meva germana Maya, la meva germana Alma, tots els meus altres germans i germanes, moltes gràcies per tot el suport que m'has donat.  Els estic agraït.
 I amb mi, encara som un més.
-I sabeu la veritat, i la veritat et farà lliure.
+I tu sabràs la veritat, i la veritat et farà lliure.
 I jo sóc el teu entrenador.
 <unk> és un petit principat situat entre Espanya i França.
 Angela Merkel va néixer a Alemanya Oriental.
-Ann no té una germana.
-Ann no té germanes.
+Ann no té germana.
+Ann no té cap germana.
 L'Ann no té germana.
 L'Ann sembla estar malalta.
-Contesta en anglès.
-Algun ferit?
+Respon en anglès.
+Algú ha fet mal?
 De totes maneres, t'equivoques.
 De totes maneres, t'equivoques.
 L'aparença és enganyosa.
@@ -139,11 +139,11 @@ Estem parlant del mateix Tom?
 Estem parlant del mateix Tom?
 Ets metge?
 Pots nedar?
-Has tornat a casa?
-Esteu raspallant bé les dents?
+Has tornat ara?
+Esteu fregant les dents correctament?
 Portes molts diners?
-Estàs boig?
-Estàs sord?
+Estàs boja?
+Estàs sorda?
 Estàs bevent te verd?
 Està vostè a favor o en contra de la pena de mort?
 Ets dels Estats Units?
@@ -153,132 +153,132 @@ Tens gana ara?
 Tens gana?
 Estàs ferit?
 Ets a París?
-Estàs boig?
+Estàs boja?
 T'interessen les flors?
 M'estàs escoltant?
-Estàs boig?
-Estàs boig?
+Estàs boja?
+Estàs boja?
 No estàs cansat?
-Estàs planejant romandre molt temps a Berlín?
-Estàs planejant romandre molt temps a Berlín?
+Estàs planejant quedar-te molt a Berlín?
+Estàs planejant quedar-te molt a Berlín?
 Ets positiu?
 Ets positiu?
-Estàs preparat per anar-te'n?
-Parles amb mi?
+Estàs preparat per anar?
+Estàs parlant amb mi?
 Encara ets a Escòcia?
 Encara dorms?
 N'estàs segur?
 N'estàs segur?
-Parles amb mi?
+Estàs parlant amb mi?
 Tens deu anys?
-Ets Tim Norton de cap manera?
-Estàs cansat?
-Vols matar-me?
+Ets en Tim Norton de cap manera?
+Estàs cansada?
+Estàs intentant matar-me?
 Estàs ferit?
 No ets metge?
-No ets una mica jove per aquest lloc?
-Com estic malalt, no aniré amb tu.
-Com que estic malalt, no aniré amb tu.
-Com que estic malalt, no aniré amb tu.
-Mentre hi hagi vida, hi ha esperança.
-Com es pot esperar d'un expert, està ben versat en el camp.
+No ets una mica jove per aquesta posició?
+Com estic malalta, no aniré amb tu.
+Com estic malalta, no aniré amb tu.
+Com estic malalta, no aniré amb tu.
+Mentre hi hagi vida, hi haurà esperança.
+Com s'espera d'un expert, està ben versat en el camp.
 Tan aviat com va sonar la campana, el professor va entrar a l'aula.
 Tan aviat com vam arribar, va començar a ploure.
 Com el lliri entre espines, també ho és el meu amor entre les filles.
-Mentre pugem més amunt, l'aire es torna més fred.
-Com tenim oportunitat, fem-ho bé.
+A mesura que pugem més amunt, l'aire es refreda.
+Atès que tenim oportunitat, fem bé.
 Àsia és molt més gran que Austràlia.
-Els asiàtics generalment tenen els cabells negres.
+Els asiàtics generalment tenen cabell negre.
 Pregunta si algú vol parlar de l'accident.
-Demana'm una cosa més fàcil.
-Pregunta, i t'ho donaran; busca, i si ho trobes, truca, i t'obrirà.
-Per fi, el seu somni de ser metge es va fer realitat.
-Per fi he acabat la meva feina.
-Almenys dos terroristes coneguts són odiats per tots excepte per ells mateixos.
-En un moment donat, Nigèria era una colònia britànica.
+Pregunta'm una cosa més fàcil.
+Pregunta-ho, i t'ho donaran; busca, i tu trobaràs; truca, i t'obrirà.
+Finalment, el seu somni de ser metge es va fer realitat.
+Finalment, vaig completar la meva feina.
+Almenys dos terroristes coneguts són odiats per tots menys per ells mateixos.
+En algun moment Nigèria era una colònia britànica.
 En aquell moment, encara estava despert.
 En aquell moment, Mèxic encara no era independent d'Espanya.
 A la festa, tothom estava ben vestit.
-De vegades anem a fer un viatge.
-En quin moment se'n va anar?
-A quin hostal has passat la nit?
+De vegades anem a fer una volta.
+En quin moment va marxar?
+En quin hostal vas passar la nit?
 Auldey és una marca xinesa.
 Austràlia no és Àustria.
 Austràlia no és Àustria.
-Azerbaijan s'anomena "Azərbaycan" en àzeri.
-Els nadons no són capaços de cuidar-se a si mateixos.
+Azerbaidjan es diu "Azərbaycan" en àzeri.
+Els nadons no són capaços de cuidar ells mateixos.
 Bangkok és la capital de Tailàndia.
-Vés amb compte de tornar a casa.
+Vés amb compte quan tornis a casa.
 Aneu amb compte: capitalitzem les nacionalitats, els dies de la setmana i les llengües en anglès.
 Sigues amable amb la gent gran.
 Sigues amable amb l'Ann.
 Sigues amable amb ella.
 Assegura't de apagar el foc abans de marxar.
-Sigui com sigui, està equivocat.
-Sigui com sigui, està equivocat.
-Espera fins que vingui.
-Un ocell preciós!
+Sigui com sigui, s'equivoca.
+Sigui com sigui, s'equivoca.
+Espera aquí fins que vingui.
+Au bonic!
 Perquè parlo xinès.
 Els beduïns viuen al desert.
-Les ampolles de cervesa són de vidre.
+Les ampolles de cervesa estan fetes de vidre.
 Abans de morir, va passar més d'un mes a l'hospital.
 Abans de morir, va passar més d'un mes a l'hospital.
 Abans de morir, era gairebé cec.
 Abans de donar ordres, has d'aprendre a obeir.
-Mireu, mireu la vostra fira d'art!
+Mireu-vos la fira de l'art, amor meu, feu-vos la fira de l'art!
 Ser a temps és un símptoma d'una vida avorrida.
 Creu-ho o no, Tom té 70 anys.
-Més val sol que dolent.
-Més val ser cec que veure-ho.
-Més val ser sord que sentir això.
-Betty és professora de dansa.
-Betty és professora de dansa.
+Més val estar sol que en mala companyia.
+Més val ser cec que veure això.
+Més val que sentir això.
+La Betty és professora de dansa.
+La Betty és professora de ball.
 La Betty la va matar.
 La Betty el va matar.
 La Betty el va assassinar.
-Betty va ser la primera noia que va venir a la festa.
-Bill odia George només si Pat odia Bill.
-Bill va poder passar l'examen.
-Bill era al Japó.
+La Betty va ser la primera noia que va venir a la festa.
+En Bill odia en George només si en Pat odia en Bill.
+Bill va poder aprovar l'examen.
+En Bill era al Japó.
 Els ocells volen al cel.
-Beneïts són els pobres en esperit: perquè ells són el regne del cel.
+Beneïts són els pobres en esperit: per ells és el regne del cel.
 Beneït és el cor pur, perquè veuran Déu.
 Bob és l'únic de la classe que coneix l'espanyol.
-Bon profit!
-Els llibres són per a persones que desitgen estar en un altre lloc.
+Bon appetit!
+Els llibres són per a persones que volen ser a un altre lloc.
 Els llibres són les abelles que porten pol·len d'una ment a una altra.
 Tant el francès com l'anglès es parlen al Canadà.
-Tots dos pares són morts.
-Tots dos són imprevisibles i impacients.
-Trenca per banyar i menjar, d'aquí a 40 minuts!
-Trenca per banyar i menjar, d'aquí a 40 minuts!
+Els meus pares són morts.
+Tots dos són impredictibles i impacients.
+Trenca per a banys i menjar, en uns 40 minuts!
+Trenca per a banys i menjar, en uns 40 minuts!
 L'esmorzar és el menjar més important del dia.
 Porta'm aquest got de llet.
-Porta les claus al teu germà.
-Premeu les dents dues vegades al dia com a mínim.
+Porteu les claus al vostre germà.
+Pinzella les dents dues vegades al dia com a mínim.
 Burj Khalifa és actualment el gratacel més alt del món.
 Burj Khalifa és actualment el gratacel més alt del món.
-Però els terratrèmols continuen sent tan aterridors com sempre.
-Però els nois van passar totes les vacances a la granja del senyor Wood.
+Però els terratrèmols continuen sent tan terribles com sempre.
+Però els nois van passar totes les seves vacances a la granja del senyor Wood.
 Però la persona encarregada és aquí precisament per a assumir la responsabilitat.
 Però què té a veure això amb els ocells!
-Als 25 anys havia viscut en cinc països diferents.
-Per cert, creus que hi ha res després de la mort?
+Als 25 anys, havia viscut en cinc països diferents.
+Per cert, creus que hi ha alguna cosa després de la mort?
 Per cert, has fet els deures?
 Per cert, quants anys tens?
 Per cert, d'on ets?
-Nois, aquesta és una festa, així que deixeu-vos baixar els cabells i relaxeu-vos una mica.
+Nois, aquesta és una festa així que deixeu-vos baixar el cabell i relaxar-vos una mica.
 Vinga, anem!
 Les obres de Calderón són molt interessants.
-Truca a les coses pel seu nom.
-Truca a les coses pel seu nom.
-Truca.
+Truca al pa, al vi, al vi.
+Truca al pa, al vi, al vi.
+Torna a trucar.
 Truca'm a dos quarts de sis, si us plau.
 Acampar és impossible quan no hi ha aigua.
 Pot parlar anglès?
 Puc començar?
 Puc comprar un bitllet per al concert aquí?
-Puc trucar-te Tom?
+Et puc dir Tom?
 Puc entrar?
 Puc venir a la teva oficina ara?
 Puc menjar això?
@@ -295,63 +295,63 @@ Puc utilitzar el telèfon?
 El dentista em pot veure avui?
 Em pot veure el metge aquesta setmana?
 Podem parlar en privat?
-Pots respondre això?
+Pot respondre a això?
 Pots venir el diumenge al vespre?
-Pots comptar en italià?
-Pots entregar-lo a casa meva?
-Em pots ajudar, si us plau?
+Pot comptar en italià?
+Pots entregar-la a casa meva?
+Pots ajudar-me, si us plau?
 Em pots amagar de la policia?
 T'ho pots imaginar?
 T'ho pots imaginar?
-Em pots passar la sal, si us plau?
+Pots passar-me la sal, si us plau?
 Pots recordar la primera vegada que vas veure en Tom?
 Pots recordar que l'estiu en Tom li va afaitar el cap?
-Pots veure aquella casa petita?
-Veus la diferència?
+Pots veure aquesta petita casa?
+Pots veure la diferència?
 Pots parlar alemany?
 Pots deixar de parlar, si us plau?
 Pots nedar?
 Pots dir-li a una persona xinesa del japonès?
-Em pots dir com arribar al centre de la ciutat?
-Pots distingir la plata i l'estany?
+Pots dir-me com anar al centre de la ciutat?
+Pots distingir plata i estany?
 La teva mare pot conduir un cotxe?
 La teva mare pot conduir un cotxe?
 La teva mare pot conduir un cotxe?
 La teva mare pot conduir un cotxe?
-No podeu treballar coses a través del diàleg?
+No podeu treballar les coses a través del diàleg?
 Compte!
 Compte!
-Carlos va marxar i va tornar amb el llibre.
-La Carol s'aixeca molt aviat cada matí.
+Carlos se'n va anar i va tornar amb el llibre.
+La Carol s'aixeca cada matí.
 Cartago va ser destruïda pels romans.
 Atrapa't després.
-Els gats són intel·ligents.
-Charlotte, quina és aquesta llengua?
+Els gats són llestos.
+Charlotte, quin és aquest llenguatge?
 Escac i mat!
 Els nens no sempre escolten els seus pares.
 Els nens odien als professors molestos.
 El desert de la Xina dóna suport a més gent que al Japó.
-Els caràcters xinesos són molt bells.
-La xocolata té gust dolç.
+Els caràcters xinesos són molt bonics.
+La xocolata té dolç sabor.
 Tria entre els dos.
 Tria entre aquests dos.
 Cristòfor Colom no va trobar fama.  Va ser fama el que va trobar Cristòfor Colom.
 Les circumstàncies ens van obligar a posposar la reunió.
-Netegeu les mans.
+Neteja les mans.
 Neteja la teva habitació.
-Feu clic a la paraula per cercar frases exemplees al corpus de la llengua amazigh.
+Feu clic a la paraula per cercar frases exemples al corpus de la llengua amazic.
 Tanca la caixa.
-Tanca la porta després de tu.
+Tanca la porta darrere teu.
 Tanca la finestra abans de marxar.
-Coca-Cola va inventar el Fanta, a mitjans de la Segona Guerra Mundial, per al mercat alemany.
+Coca-Cola va inventar el Fanta, enmig de la Segona Guerra Mundial, per al mercat alemany.
 Coffee i Pu-erh te són elixirs de la vida.
 Coffee es va introduir a Europa des d'Aràbia.
-Les idees verdes sense color dormen furiosament.
+Les idees verdes incolores dormen furiosament.
 Columbus va descobrir Amèrica.
-Torna a venir?
+Torno a venir?
 Vine amb mi.
 Vine a veure'm a les onze.
-Vine aquí cada dilluns.
+Vine aquí tots els dilluns.
 Vine aquí!
 Vine aquí!
 Vine aquí, John.
@@ -366,42 +366,42 @@ Vine quan vulguis.
 Vine quan vulguis.
 Vine quan vulguis.
 Vine amb nosaltres.
-Anem, estimada, anem al camp; anem a allotjar-nos als pobles.
+Vine, estimada, entrem al camp; entrem als pobles.
 El comandant Joki té una família.
-Compara aquesta joia genuïna amb aquesta imitació.
-En comparació amb Tòquio, Londres és petit.
+Compareu aquesta veritable joia amb aquesta imitació.
+En comparació amb Tòquio, Londres és petita.
 Conchita va decidir dir-li la veritat a Mary.
 Felicitats!
 Felicitats!
-Posa't en contacte amb ella si tens preguntes.
+Contacteu amb ella si teniu preguntes.
 La mare de Cookie va morir de càncer.
-Copieu aquesta pàgina al vostre quadern.
+Copia aquesta pàgina al llibre de notes.
 Em pots deixar un llapis?
-Podria tenir la teva autògrafa en aquest llibre?
+Podria tenir el teu autògraf en aquest llibre?
 Em podries portar aigua?
 Pots trucar en Tom?
-Em podries ajudar?
+Podria ajudar-me, si us plau?
 Podries reduir una mica el preu?
-Em pots dir com ajustar el volum?
-Podries apagar la ràdio?
+Pots dir-me com ajustar el volum?
+Pots desactivar la ràdio?
 La creativitat és un aspecte important per al desenvolupament humà.
 Cusco és un dels llocs més interessants del món.
 El pare em va comprar una càmera.
 El pare va mirar la mare tímidament.
-Daniel va venir a la seva festa d'aniversari vestit de pallasso.
-El desembre és l'últim mes de l'any.
-Deliri d'una persona s'anomena bogeria.  Delirium de milers de persones s'anomena religió.
-En Dennis estava a terra.
+Daniel va anar a la seva festa d'aniversari vestit de pallasso.
+El mes de desembre és l'últim de l'any.
+Deliri d'una persona es diu bogeria.  Delirium de milers de persones es diu religió.
+El Dennis estava a terra.
 Malgrat el fet que tots eren neerlandesos, parlaven alemany entre ells.
-Malgrat el fet que van posar el seu cor a convèncer-lo, va mantenir la seva oposició al projecte.
+Malgrat el fet que van posar el seu cor en convèncer-lo, va mantenir la seva oposició al projecte.
 Tot i que els temps van canviar, manté les seves idees revolucionàries.
-El diable pren el darrere.
+El diable pren el més enllà.
 Dick tocava el piano i Lucy cantava.
 Algú ha fet mal?
-L'has comprat al mercat negre?
-Has trucat el teu amic al Canadà?
-Has trucat el teu amic al Canadà?
-Has menjat l'esmorzar avui?
+El vas comprar al mercat negre?
+Has trucat al teu amic al Canadà?
+Has trucat al teu amic al Canadà?
+Has desdejunat avui?
 Li agradava anar a exposicions a Romania?
 Has tingut un bon moment?
 També ho has sentit?
@@ -412,55 +412,55 @@ Has rebut la carta?
 Ho has vist?
 Et vas quedar a casa per estudiar la prova?
 Vas estudiar ahir?
-Ha parlat amb el seu advocat sobre aquest problema?
+Has parlat amb el teu advocat sobre aquest problema?
 No ho sabies?
 No ho sabies?
 El sopar està gairebé llest.
-El sopar està bastant preparat.
-El sopar està preparat, així que podem menjar quan vulguem.
+El sopar està llest.
+Sopar està preparat, així que podem menjar sempre que vulguem.
 El sopar està gairebé llest.
 Fes el que et dic, no facis el que faig.
 Fes-ho una segona vegada.
 Fes-ho de nou.
 Fes-ho per tots els mitjans.
 Fes-ho per tots els mitjans.
-No beveu l'aigua en el vidre brut!
+No beguin l'aigua en el got brut!
 No jutgis, o vostè també serà jutjat.
-Aquestes pintures et fan una crida?
-Tenen alguna bona notícia?
+Aquestes pintures us fan una crida?
+Tenen bones notícies?
 Parlen francès al Canadà?
-Tenim una mainadera aquesta nit?
+Tenim mainadera per aquesta nit?
 Necessitem més inflació?
-Acceptes Visa?
-També ho teniu en altres colors?
+Acceptes el visat?
+També teniu això en altres colors?
 Creus en l'existència de Déu?
 Véns aquí cada dia?
 Véns aquí cada dia?
 Ho fas cada dia?
 Beu te verd?
-Menja a casa o menja a fora?
-Existeix?
+Menjar a casa o menjar?
+Existeix vostè?
 T'acompanyes del teu cap?
 És que coneixes el seu nom?
 Tens una càmera?
-Tens un telèfon mòbil?
-Tens telèfon mòbil?
+Tens un mòbil?
+Tens mòbil?
 Tens un gos?
 Tens una revista japonesa?
 Tens un mapa?
 Tens un telèfon mòbil?
-Tens un telèfon intel·ligent?
+Teniu un telèfon intel·ligent?
 Tens una taula?
 Teniu un compte de Twitter?
-Teniu elefants africans?
+Tens elefants africans?
 Tens segells estrangers?
-Té vostè més preguntes?
+Tens més preguntes?
 Tens alguna cervesa importada?
 Tens alguna cervesa importada?
 Tenen millors de qualitat?
 Tens canvi per un dòlar?
-Tens dificultats per entendre què et diuen les dones o els nens petits?
-Tens dificultats per entendre què et diuen les dones o els nens petits?
+Tens dificultats per entendre el que et diuen les dones o els nens petits?
+Tens dificultats per entendre el que et diuen les dones o els nens petits?
 Tens assegurança mèdica?
 Tens agulla i fil?
 En tens un?
@@ -475,21 +475,21 @@ Saps res de la seva família?
 Saps res de la seva família?
 Coneixes el seu lloc de naixement?
 Saps nedar?
-Saps si hi ha una farmàcia a prop d'aquí?
+Saps si hi ha una farmàcia a prop?
 Coneixes al Sr. Brown?
 Coneixes el meu germà Masao?
-Saps aquell noi que plora?
-Saps aquell noi plorant?
-Saps la diferència entre un microscopi i un telescopi?
+Coneixes aquest noi que plora?
+Coneixes aquest noi plorant?
+Coneixes la diferència entre un microscopi i un telescopi?
 Coneixes el valor de la por?
 Saps què va dir?
 Saps què vol dir?
 Saps què vol dir això?
-Saps què significa això?
+Saps què vol dir això?
 Saps quan arribaran?
 Saps on ha anat?
 Saps on és la Torre de Tòquio?
-Saps a quina deïtat està dedicada aquest temple?
+Saps a quina deïtat es dedica aquest temple?
 Saps qui és?
 Saps qui és?
 Saps qui va escriure aquesta novel·la?
@@ -514,93 +514,93 @@ Parles alemany?
 Estudies cada dia?
 Està vostè a favor o en contra de la pena de mort?
 Creus que és el paio que va trencar la finestra?
-Creus que a en Tom li agrada realment la Mary?
+Creus que en Tom li agrada la Mary?
 Vols una cervesa?
 Vols suc de fruites?
 Vols sucre?
 Vols ballar?
-Vols fer això ara?
-Vols anar-te'n?
+Voleu fer-ho ara?
+Vols marxar?
 Vols matar-me?
-Vols saber el meu secret?  És molt simple...
+Vols saber el meu secret?  És molt senzill...
 Vols jugar a tennis amb nosaltres?
 Et preguntes per què ningú confia en ell?
 Parla anglès?
 Parla anglès?
 Parla anglès?
-Reacciona el ferro amb sodi?
+El ferro reacciona amb el sodi?
 La Nancy ha de fer els seus deures ara?
 Existeix una història objectiva?
-Vols venir aquí i refer el que acabo de fer?
+Algú de vosaltres vol venir aquí i refer el que acabo de fer?
 Parla anglès?
 Parla francès?
 L'autobús s'atura aquí?
-Et pertany aquest barret?
+Aquest barret et pertany?
 La teva mare ho sap?
-El gos és el millor amic de l'home.
-Els gossos no poden parlar, però semblava que els ulls del gos deien: "No, no tinc una llar".
+Dog és el millor amic de l'home.
+Els gossos no poden parlar, però semblava que els ulls del gos deien: "No, no tinc una llar."
 Els dofins i les balenes no són peixos.
-No tingueu por de cometre errors.
-No triguis a l'escola.
-No siguis tan agut amb els nens.
-No et mossega la mà que t'alimenta.
+No tinguis por de cometre errors.
+No tardis a l'escola.
+No siguis tan afilada amb els nens.
+No mossegaràs la mà que t'alimenta.
 No trenquis les branques.
-No el cridis ara per telèfon.
+No el truquis ara per telèfon.
 No em tornis a trucar.
 No em comparis amb una estrella de cinema.
 No retardis el treball d'avui fins demà.
-No em distreguis mentre estudio.
+No em distreu mentre estic estudiant.
 No em molestis mentre estudio.
 No ho tornis a fer mai més.
 No oblidis que tenim deures.
 No t'oblidis de recollir-me demà al matí.
-No oblideu agafar el paraigua quan sortiu.
+No t'oblidis de prendre el paraigua quan surtis.
 No oblideu agafar el paraigua quan marxeu.
 No t'oblidis d'aiguar les plantes!
-No vagis a dormir amb la llum encesa.
-No te'n vagis, estimats.
-No em manegis els llibres amb mans brutes.
+No vagis a dormir amb la llum activada.
+No hi vagis, estimats.
+No manegis els meus llibres amb mans brutes.
 No dubteu a demanar consell.
-No em facis esperar aquí així.
+No em mantinguis esperant aquí així.
 No els deixis sols.
 No deixis les teves coses enrere.
 No deixis que ningú entri a l'habitació.
 No miris un cavall regalat a la boca.
 No miris a la gent pobra.
 No pinteu el diable a la paret.
-No em pressionis la teva opinió.
-No t'apaguis fins demà el que pots fer avui.
+No em facis sentir.
+No poses per demà el que pots fer avui.
 No parlis malament d'ell en públic.
-No parlis amb ell mentre condueix.
+No li parlis mentre condueix.
 No gastis més del que guanyes.
 No estudiis.
 No toquis les meves coses!
 No tradueixis l'anglès al japonès paraula per paraula.
 No caminis tan ràpid.
-No et preocupis!
+No et preocupis per això!
 No et preocupis per mi.
 No et preocupis, sigues feliç!
 No et preocupis, sigues feliç.
 No et preocupis, la teva mare vindrà aviat.
 No t'avorriràs quan estàs sol?
 No t'agrada el menjar xinès?
-Doraemon sol somriure.
+Doraemon sovint somriu.
 Doraemon somriu sovint.
-Beu una mica de cafè.  Crec que té molt bon gust.
-Beure molta aigua és bona per a tu, segur, però no es pot beure tanta aigua a la vegada.
+Beu una mica de cafè.  Crec que té molt bon sabor.
+Beure molta aigua és bo per a tu, segur, però no es pot beure tanta aigua alhora.
 Beure massa és dolent per a la salut.
-Dumbass!
+Merda!
 Dunno.
 Durant les vacances d'estiu vaig conèixer una dona preciosa.
-La pols s'havia acumulat a la taula.
+La pols s'havia acumulat a l'escriptori.
 Truca a casa.
-Cadascuna de les tres noies va rebre un premi.
-Els terratrèmols freqüentment colpejaven el Japó.
+Cada una de les tres noies va rebre un premi.
+Els terratrèmols freqüentment colpejaven Japó.
 Menjar ràpid, morir ràpid.
 Edison va inventar moltes coses útils.
 L'educació en aquest món em decep.
 Planta d'ous, pastanaga, tomàquet.
-Qualsevol paraula es pot utilitzar d'acord amb la lliure elecció dels usuaris.
+Qualsevol paraula es pot utilitzar segons la lliure elecció dels usuaris.
 L'Emily m'ha abraçat.
 L'Emily m'ha abraçat.
 L'anglès és una llengua molt important en el món actual.
@@ -609,26 +609,26 @@ L'anglès és difícil, no?
 L'anglès és la meva llengua materna.
 L'anglès no és fàcil, però és interessant.
 Gaudeix del programa.
-Gaudeix del menjar.
-Gaudeix del teu menjar!
+Gaudeix del teu menjar.
+Gaudiu del vostre menjar!
 Gaudeix del teu menjar.
 Gaudeix del teu viatge.
 Gaudeix!
-L'esperanto és una llengua fàcil i internacional!
-Esperanto, una llengua oficial de la Unió Europea, ara!
+L'esperanto és una llengua internacional i fàcil!
+Esperanto, llengua oficial de la Unió Europea, ara!
 Europa està en crisi.
-Els aliments xinesos d'Europa no són com els xinesos de la Xina.
+L'alimentació xinesa d'Europa no és com l'aliment xinès de la Xina.
 Fins i tot un professor pot cometre errors.
-Fins i tot si plou, demà aniré a nedar.
+Encara que plogui, demà aniré nedant.
 Fins i tot si aquest restaurant feia menjar molt saborós, no m'agradaria menjar allà.
 Fins i tot en pluja i neu gaudeixo de la muntanya.
 Fins i tot els japonesos cometen errors utilitzant els prefixos "o" i "go".
-Fins i tot quan els fets van demostrar el contrari, va mantenir que no l'havia robat.
-Des que m'he hipnotitzat, sento que el temps passa lentament.
-Tots els núvols tenen un revestiment de plata.
-Tots els núvols tenen un revestiment de plata.
+Fins i tot quan els fets van demostrar el contrari, va sostenir que no l'havia robat.
+Des que em van hipnotitzar, sento que el temps passa lentament.
+Tots els núvols tenen una bona cara.
+Tots els núvols tenen una bona cara.
 Cada país té el Govern que mereix.
-Cada dia m'aixequo a les sis.
+Cada dia m'aixequo a les sis en punt.
 Cada vaixell necessita un capità.
 Tothom en el món desitja la pau.
 Tothom és l'arquitecte de la seva pròpia fortuna.
@@ -638,10 +638,10 @@ Tothom l'estima.
 Tothom parla del temps, però ningú fa res sobre aquest tema.
 Tothom vol protegir-te.
 Tothom vol seure al seu costat.
-Tothom treu primer el vi triat i després el vi més barat després que els convidats hagin tingut massa.
-Tothom té dret a formar i unir-se als sindicats per a protegir els seus interessos.
-Tothom té dret a reconèixer a tot arreu com a persona davant la llei.
-Tothom té dret a la protecció dels interessos morals i materials derivats de qualsevol producció científica, literària o artística de la qual sigui autor.
+Tothom treu primer el vi triat i després el vi més barat després que els hostes hagin tingut massa.
+Tots tenen dret a formar-se i a unir-se als sindicats per a protegir els seus interessos.
+Tothom té dret al reconeixement a tot arreu com a persona davant la llei.
+Tothom té dret a la protecció dels interessos morals i materials resultants de qualsevol producció científica, literària o artística de la qual sigui autor.
 Tothom esperava que guanyés.
 Tothom té por de fer coses noves.
 Tothom ho sap.
@@ -654,12 +654,12 @@ Tot té fi.
 Tot té fi.
 Tot el que diu és cert.
 Tot és perfecte.
-Perdoni, he d'anar a Barcelona.  Hi ha vols avui?
-Perdoni, quina hora és?
+Perdona, he d'anar a Barcelona.  Hi ha vols avui?
+Perdona, a quina hora és?
 Expliquin exactament les raons.
-Explica-ho amb paraules clares.
-Explica-ho amb paraules clares.
-Explica el que vols en breu.
+Expliquin-ho amb paraules senzilles.
+Expliquin-ho amb paraules senzilles.
+Explica el que vols aviat.
 Lluny dels ulls, lluny del cor.
 Lluny dels ulls, lluny del cor.
 Lluny dels ulls, lluny del cor.
@@ -667,7 +667,7 @@ El pare em va comprar una càmera.
 El pare ha perdut la feina, i el que és pitjor, la mare ha caigut malalta.
 El pare és una bona persona.
 El pare no és a casa.
-Pocs estudiants podrien entendre el que va dir.
+Pocs estudiants podien entendre el que va dir.
 Filth cria malalties.
 Acaba-ho abans d'anar al llit.
 El foc sempre és perillós.
@@ -683,12 +683,12 @@ El futbol és un joc antic.
 Per tots els diners que té, no és feliç.
 Per viure la bona vida, els alemanys diuen: "viure com Déu a França".
 Per a mi, la història és un tema fascinant.
-Per descomptat.
-Per primera vegada en més de 6 anys, la taxa de desocupació està per sota del 6%.
+Segur.
+Per primera vegada en més de 6 anys, la taxa de desocupació és inferior al 6%.
 Per als altres 600 milions de persones, l'anglès és una segona llengua o una llengua estrangera.
-Perquè quan una dona queda massa sola, tard o d'hora comença a pensar; i cap home sap què pot descobrir.
-Per sempre canviarem, sempre aprendrem.
-Oblida-ho.
+Perquè quan una dona està massa sola, tard o d'hora comença a pensar; i cap home sap què pot descobrir.
+Per sempre canviarem, per sempre aprendrem.
+Oblida't d'ell.
 Oblida-ho.
 Les bases mantenen l'estructura de l'edifici.
 Es preveu una inflació del 4% per a enguany.
@@ -696,33 +696,33 @@ Quatre soldats i dotze civils van morir.
 França és un país de l'Europa occidental.
 França és un país d'Europa Occidental.
 França es troba a Europa occidental.
-França està a Europa Occidental.
+França es troba a Europa Occidental.
 França es troba a Europa occidental.
 La democràcia lliure ara!
 La llibertat no és lliure.
 Pinta fresca.
-Des d'un punt de vista estrictament científic, la història no pot denominar-se ciència.
+Des d'un punt de vista estrictament científic, la història no pot dir-se ciència.
 Des del punt de vista de Kate, treballa massa.
-Collons de puta.
-George, tinc alguna cosa a dir-te.  Tens mare, no?
+Puta de merda.
+George, tinc una cosa a dir-te.  Tens mare, no?
 L'alemany és la millor llengua del món.
 Entra aquí.
 Surt de l'aula.
-Vés-te'n.
-Vés-te'n!
+Fora.
+Fot el camp!
 Aixeca't aviat.
 Aixeca't aviat.
 Aixeca't!
-Va regatejar amb vergonya, va mantenir el preservatiu.
+Va regatejar amb vergonya, va sostenir el preservatiu.
 Dóna-li aquest missatge quan arribi.
 Truca'm si necessites ajuda.
 Dóna'm el llibre.
 Dóna'm la revista, si us plau.
-Dóna'm la sal, si us plau.
+Saleu-me, si us plau.
 Dóna'm tres peces de guix.
-Endavant.  Atraparé amb tu en deu minuts.
+Endavant.  T'atraparé en deu minuts.
 Passa pel mercat.
-Vés pel carrer.
+Puja pel carrer.
 Déu ha estat molt amable amb el tauró.
 Déu és un Esperit: i ells que l'adoren han d'adorar-lo en esperit i en veritat.
 Bona tarda!
@@ -742,60 +742,60 @@ Bona nit!
 L'àvia cuida els nens durant el dia.
 Grècia és un país antic.
 Salut, si la veus!
-Hanako va cridar el seu greix.
-Hanako va cridar el seu greix.
-Feliç aniversari per a tu!
-Feliç aniversari!
-Feliç aniversari!
-Feliç aniversari, estimat amic!
+Hanako va anomenar el seu ruc.
+Hanako va anomenar el seu ruc.
+Bon aniversari!
+Bon aniversari!
+Bon aniversari!
+Bon aniversari, estimat amic!
 Feliç Pasqua!
 Feliç Pasqua!
 Feliç Dia Internacional de la Dona!
-Feliç dia de la mare!
-Feliç Any Nou!
-Feliç Any Nou!
-Feliç Any Nou, Louise!
-Hatred agitant lluites: però l'amor tapa tots els pecats.
+Feliç dia de la Mare!
+Feliç any nou!
+Feliç any nou!
+Bon any nou, Louise!
+Hatred va provocar conflictes: però l'amor va tapar tots els pecats.
 Menja't bé!
 Bon cap de setmana!
 Menja't bé!
-Que tinguis un bon moment.
-Diverti's.
-Ja has esmorzar?
+Bon dia.
+Divertiu-vos.
+Ja has desdejunat?
 Ja has llegit aquest llibre?
 Ja has llegit aquest llibre?
-Has menjat l'esmorzar?
+Ja has desdejunat?
 Ja has menjat sopar?
 Ja has menjat el sopar?
 Ja has menjat el sopar?
-Has muntat mai en un globus d'aire calent?
+Heu cavalcat mai en un globus d'aire calent?
 Ja tens barba?
 Tens un vestit blanc?
 Tens agulla i fil?
 Has sentit el meu fill tocar el violí?
-Has après el poema de cor?
+Has après el poema de memòria?
 M'has trobat a faltar?
-Has llegit cap llibre interessant últimament?
+Has llegit algun llibre interessant últimament?
 Has llegit el document d'avui?
 Els has vist?
-Ho has vist?
-Ho has vist?
+Has vist això?
+Has vist això?
 Li has dit a algú quin és el teu nom real?
-Has viatjat a algun lloc recentment?
+Has viatjat fa poc?
 Després d'arribar a l'estació, immediatament va trucar a un taxi.
-Després d'haver viscut a Tòquio, conec bé la ciutat.
+Havent viscut a Tòquio, conec bé la ciutat.
 Va abusar de la meva confiança.
 Va abusar de la meva confiança.
 Adora anar al teatre.
-Sempre se'n va a casa a les set.
+Sempre marxa a casa a les set.
 Sempre llegeix una revista.
 Sempre diu el mateix.
 Sempre em crida quan està enfadat.
 Ell i les seves germanes viuen actualment a Tòquio.
 Ell i només ell coneix tota la veritat.
 Em molesta amb preguntes.
-Va arribar després que m'hagués anat.
-Ha arribat aquí just ara.
+Va arribar després que jo marxés.
+Ha arribat aquí ara mateix.
 Va arribar massa aviat.
 Ell atribueix la seva pobresa a la mala sort.
 Em va preguntar si m'agradava el menjar xinès.
@@ -804,24 +804,24 @@ Em va preguntar si era feliç.
 Em va preguntar si era feliç.
 Em va demanar que l'ajudés.
 Va atribuir el seu fracàs a mala sort.
-Atribueix la seva pobresa a la mala sort.
-Es va tornar pobre i es va quedar amb una mà trencada: però la mà de la mà diligent i rica.
+Atribueix la seva pobresa a mala sort.
+Es va tornar pobre aquell dia amb una mà esquerda: però la mà de la mà diligent i rica.
 Es comporta bé a l'escola, però a casa causa problemes.
-Ell creu en allò sobrenatural.
+Creu en allò sobrenatural.
 Va comprar un barret.
 Es raspalla les dents.
 Va tornar abans de les vuit.
 Va tornar a casa tres hores després.
 Va arribar a ser conegut com un gran novel·lista.
 Va venir a Tòquio fa cinc anys, és a dir, quan tenia dotze anys.
-No pot veure res sense les seves ulleres.
+No pot veure res sense les ulleres.
 Pot parlar i escriure francès.
-Pot parlar cinc idiomes.
+Pot parlar cinc llengües.
 Pot nedar.
 No es pot permetre casar-se.
 No em pot aturar.
 No es pot permetre casar-se.
-No pot veure res sense les seves ulleres.
+No pot veure res sense les ulleres.
 No em pot aturar.
 Ve i em veu de tant en tant.
 Ve aquí cada cinc dies.
@@ -830,61 +830,61 @@ Es va suïcidar.
 Es va suïcidar.
 Podria fer-ho.
 Podria haver-ho fet.
-Va atapeir els llibres a les prestatgeries.
+Va omplir els llibres als prestatges.
 Va declarar que la terra gira al voltant del sol.
 Va descriure la seva pròpia experiència.
 Va fer el que va prometre fer.
 No va respondre la meva pregunta.
 No li agradava ser pobre.
 No va respondre a la meva pregunta.
-No va dir ni una paraula.
-No ha vist ningú.
+No ha dit ni una paraula.
+No va veure ningú.
 No semblava sospitós.
-No va entendre el concepte d'equacions diferencials.
+No entenia el concepte d'equacions diferencials.
 Va morir lluitant a la Guerra del Vietnam.
 Va morir de càncer.
 Va morir fa tres anys.
 Va morir ahir.
 Va descobrir una nova estrella.
-No mira als seus pares.
+No busca als seus pares.
 No fuma.
 No sap res de la seva família.
 No ho sap tot sobre el pla.
 No sap què és ser pobre.
 No li agraden els peixos.
 No necessita treballar.
-Beu un got d'aigua cada matí.
-Beu un got d'aigua cada matí.
-Condueix un cotxe, oi?
+Cada matí beu un got d'aigua.
+Cada matí beu un got d'aigua.
+Porta un cotxe, oi?
 Guanya vint dòlars al dia.
 Va explicar el significat literal de la frase.
 Va explicar el significat literal de la frase.
-No va poder veure el senyal d'aturada a la intersecció i va colpejar un cotxe que s'acostava.
+No va poder veure el senyal d'aturada a la intersecció i va colpejar un cotxe que venia.
 Va caure i li va fer mal a la cama.
 Finalment va arribar!
 Finalment va arribar!
 Va acomiadar la majoria dels seus homes.
 Va seguir el meu consell.
 Va lluitar contra la discriminació racial.
-Li va donar un gran badawn!
-Va deixar la seva càmera al seu amic.
-Em va donar un exemple.
-Em va donar no només consells, sinó també diners.
-Té un sou alt.
-Es posa bé amb el senyor Brown.
+Li va donar un gran badall!
+Va deixar la càmera al seu amic.
+Em va posar un exemple.
+No només em va donar consells, sinó també diners.
+Té un salari alt.
+Va bé amb el Sr. Brown.
 Va a una escola per a sords.
 Va a l'oficina amb cotxe.
-Va baixar el llibre de la prestatgeria.
-Va baixar el llibre de la prestatgeria.
+Va baixar el llibre del prestatge.
+Va baixar el llibre del prestatge.
 Es va graduar a Cambridge amb honors.
-Tenia una ferma creença en el seu Déu.
+Ell creia fermament en el seu Déu.
 Tenia una mirada famolenca.
 Tenia una mirada famolenca.
 Tenia un somni estrany.
 Tenia ambició.
 Havia de portar la bossa.
-Havia de treballar fins i tot el diumenge.
-Va endurir l'argila posant-la en un foc.
+Va haver de treballar fins i tot el diumenge.
+Va endurir argila posant-la en foc.
 Té una gran família.
 Té una àmplia comprensió del món.
 Té un gos i sis gats.
@@ -895,17 +895,17 @@ Té una mica de diners.
 Té una notable aptitud per a la música.
 Té un desig secret de jugar.
 Té un bitllet.
-Ha estat treballant tot el dia.
+Ha treballat tot el dia.
 Ha estat treballant durant tot el dia.
 Ha començat a aprendre esperanto.
 Ha vingut!
 Té confiança en la seva capacitat.
 Té confiança en la seva capacitat.
 Ha fet moltes coses pels pobres.
-Ha anat sol a l'estranger.
+Ha marxat sol a l'estranger.
 Ja ha marxat.
 Té molts llibres d'història.
-Mai ha jugat al golf.
+No ha jugat mai al golf.
 Té un gos i sis gats.
 Té set fills.
 Ha començat a aprendre esperanto.
@@ -918,13 +918,13 @@ Té dos germans, un viu a Osaka i l'altre a Kobe.
 Té dues classes al matí i una a la tarda.
 Ha treballat tot el dia.
 Ha escrit tres llibres.
-Encara no ha tingut èxit.
+Encara no ho ha aconseguit.
 Va ajudar la gent pobra tota la seva vida.
 Va amagar les seves emocions i va fingir entusiasme.
-Va colpejar el cap a la prestatgeria.
+Va colpejar el cap al prestatge.
 És biòleg.
-És un noi intel·ligent.
-És un noi intel·ligent.
+És un noi llest.
+És un noi llest.
 És un daydreamer.
 És dentista de professió.
 És un corredor ràpid.
@@ -942,7 +942,7 @@ Després d'una feina.
 Gairebé sempre és a casa.
 Gairebé sempre és a casa.
 També és molt famós al Japó.
-Sempre fa diner.
+Sempre està somiant.
 Sempre fa broma.
 És tan alt com jo.
 És a casa en la literatura anglesa moderna.
@@ -951,13 +951,13 @@ Està ocupat escrivint una carta.
 Està boig pel jazz.
 Està tallant arbres en una muntanya.
 Està somiant.
-És entusiasta del tennis.
-Cada cop és millor.
-Cada cop és millor.
+Està entusiasmat amb el tennis.
+Cada cop va millor.
+Cada cop va millor.
 Necessita diners.
 És intel·ligent.
-És considerat per tots com el seu líder.
-És considerat per tots com el seu líder.
+Tots el miren com el seu líder.
+Tots el miren com el seu líder.
 Està buscant feina.
 És el meu pare.
 És amic meu.
@@ -970,8 +970,8 @@ Sovint arriba tard a l'escola.
 És un dels millors cantants del dia.
 És un dels candidats que es presenta com a alcalde.
 Té més de quaranta anys.
-Juga al golf.
-Està satisfet amb el seu nou cotxe.
+Juga a golf.
+Està content amb el seu nou cotxe.
 Està orgullós de ser músic.
 Està orgullós de ser músic.
 Es diu que va morir aquí.
@@ -979,17 +979,17 @@ Es diu que va morir aquí.
 Està buscant feina.
 És intel·ligent.
 És fort, valent i, sobretot, amable.
-Va néixer a Suïssa.
+És suís.
 Està parlant per telèfon.
 És el cap del nostre departament.
-És el director d'un hotel.
-És la persona adequada per a la feina.
+És el gerent d'un hotel.
+És la persona adequada per al treball.
 És el més alt dels dos nois.
 És tres anys més jove que el pare.
 Està massa cansat per estudiar.
 Li agrada molt la música.
 És molt honest.
-Treballa en recerca sobre la SIDA.
+Està treballant en la recerca sobre la sida.
 Ja no està sol.
 Ja no està sol.
 Acaba d'arribar.
@@ -1000,11 +1000,11 @@ Sabia que estava malament.
 Sabia que estava malament.
 Ho sap tot sobre Alemanya.
 Sap nedar.
-Ell riu el millor que riu l'últim.
-Ell riu el millor que riu l'últim.
-Ell riu el millor que riu l'últim.
+Ell riu millor que l'últim.
+Ell riu millor que l'últim.
+Ell riu millor que l'últim.
 Va deixar el llibre sobre la taula.
-Va deixar l'oficina sense dir ni una paraula a ningú.
+Va deixar el càrrec sense dir ni una paraula a ningú.
 Li agrada molt l'anglès.
 Li agrada molt la música.
 Li agrada molt la música.
@@ -1016,79 +1016,79 @@ Va romandre a l'aula després d'acabar l'escola.
 Viu a Osaka.
 Viu amb els seus pares.
 Semblava molt feliç.
-Sembla pàl·lid.
+Sembla una mica pàl·lid.
 Sembla el seu pare.
 Va perdre tots els diners que tenia.
 Va perdre el seu estimat fill.
-Va perdre la memòria.
+Va perdre la seva memòria.
 Va perdre el seu drap.
 Va fer saber als seus amics que no estava disposat a presentar-se a les eleccions.
-Potser va a córrer al voltant del parc.
+Pot ser que corri pel parc.
 Pot ser que torni a dir una cosa ambigua.
 Es va perdre l'últim tren.
 Ha de tenir gairebé quaranta anys.
 Deu haver anat a veure el seu vell amic.
-Ha d'haver arribat a l'estació.
+Deu haver arribat a l'estació.
 Necessita diners.
-Mai no fracassa a escriure a la seva mare cada setmana.
-Mai no fracassa a escriure als seus pares un cop al mes.
+No deixa mai d'escriure a la seva mare cada setmana.
+No deixa d'escriure als seus pares una vegada al mes.
 Mai no pren nota del que diu el seu pare.
-No sols parla anglès, sinó també francès.
+No només parla anglès, sinó també francès.
 Es va adonar immediatament.
 Va notificar a la policia l'accident de trànsit.
 Sovint arriba tard a l'escola.
 Va superar moltes dificultats.
 Va pintar la porta blava.
 Juga a beisbol cada dia.
-Juga al golf cada diumenge.
-Ell toca el piano molt bé.
-Em va prometre el càrrec de president de la companyia.
+Juga al golf tots els diumenges.
+Toca el piano molt bé.
+Em va prometre el càrrec de president de companyia.
 Va prometre casar-se amb ella.
 Va prometre casar-se amb ella.
 Va deixar de fumar.
 Va llegir molt.
-Rep un sou alt.
+Rep un salari alt.
 Va tornar al Japó.
-Va dir "Adéu per a tothom" i es va aixecar.
-Va dir que els ajudaria.
+Va dir "Adéu a tothom" i es va aixecar.
+Va dir que els tiraria una mà.
 Va dir la veritat.
 Va cantar una cançó.
-Es va asseure al front per poder sentir-ho.
+Es va asseure al davant per poder sentir-ho.
 Em va salvar la vida.
 Va salvar el nen moribund donant-li sang.
 Diu que és innocent, però el van posar a la presó.
 Sembla molt agradable.
 Va enviar una carta a Mary.
-Va enviar el paquet abans d'ahir.
-Va sacsejar les mans amb el seu amic.
+Abans d'ahir va enviar el paquet.
+Va donar la mà al seu amic.
 Hauria d'haver vingut.
-dorm com un ós a l'hivern.
-Va resoldre el problema per si sol.
+Ell dorm com un ós a l'hivern.
+Ell mateix va resoldre el problema.
 Parla anglès molt bé.
-Parla anglès amb un accent alemany.
-Parla cinc idiomes.
-Parla cinc idiomes.
+Parla anglès amb accent alemany.
+Parla cinc llengües.
+Parla cinc llengües.
 Parla amb fluïdesa.
 Parla molt bé.
-Parlava cada vegada més fort.
+Parlava més i més alt.
 Es va quedar allà tot el temps.
 Es va quedar allà tot el temps.
 Va deixar de fumar.
-Va deixar de fumar.
-Es va escapolir del cigar al cendrer i es va aixecar per marxar.
-Va estudiar durament i va superar la prova.
+Es va aturar per fumar.
+Es va fregar el cigar al cendrer i es va aixecar per marxar.
+Va estudiar durament i va passar la prova.
 Va sobreviure a l'accident aeri.
 Parla molt.
-Ell que no té pecat entre tu, que primer la tiri una pedra.
-Qui mentirà, robarà.
-Em va explicar una història interessant.
+Ell que no té pecat entre tu, que primer li tiri una pedra.
+Qui menteixi, robarà.
+M'ha explicat una història interessant.
 Em va dir que no li digués mentides.
-Em va dir que la seva casa estava obsessionada.
+Em va dir que la seva casa estava embruixada.
 Em va dir que ho fes, així que ho vaig fer.
 Va dir la veritat.
-Va agafar un llibre de la prestatgeria.
-Em va agafar el paraigua sense demanar res.
-Es va prendre la molèstia de mostrar-me el camí cap a l'estació.
+Va agafar un llibre del prestatge.
+Va agafar el meu paraigua sense demanar res.
+Es va prendre la molèstia d'ensenyar-me el camí a l'estació.
 Va intentar ampliar la seva esfera d'influència.
 Va apagar la llum.
 Va resultar ser innocent.
@@ -1097,13 +1097,13 @@ Volia comprar el llibre.
 Volia ampliar la seva esfera d'influència.
 Vol un rellotge com el teu.
 Va ser pioner en aquest camp.
-Era gairebé cec just abans de morir.
+Estava gairebé cec just abans de morir.
 Era ambiciós.
 Era un home indolent, que només vivia per menjar, beure i jugar a cartes.
 Va néixer a Grècia.
-Va ser escollit membre de l'equip.
-M'estava demanant diners constantment.
-Estava boig per mi perquè m'he trencat amb ell.
+Va ser escollit per ser membre de l'equip.
+Sempre em manllevava diners.
+Estava enfadat amb mi perquè vaig trencar amb ell.
 El van obligar a fer-ho en contra de la seva voluntat.
 Es va curar ràpidament del seu fred.
 Estava llegint un diari.
@@ -1113,39 +1113,39 @@ Estava fortament en contra de tota violència.
 El van portar inconscient a l'hospital.
 Es creu que va morir a la Segona Guerra Mundial.
 Estava disposat a treballar per a altres.
-Va rentar els pantalons.
+Ell renta els pantalons.
 Va tornar a casa.
 Va tornar al Japó.
-Va anar lluny.
-Va anar a casa a peu.
+Va marxar lluny.
+Va tornar a casa a peu.
 Va viatjar a Amèrica.
 Va viatjar a Amèrica.
 Va anar a esquiar durant l'hivern.
 Hi va anar en bicicleta.
-Hi va anar en bicicleta.
+Va anar amb bicicleta.
 Primer va anar a una botiga de fruita.
 Qui lluita pot perdre, però qui no ha perdut.
-Qui riu per última vegada, riu millor.
-Qui riu el darrer, riu el millor.
-Qui viu amb l'espasa mor per l'espasa.
+Qui riu l'últim riu millor.
+Qui riu darrera, riu millor.
+Qui viu amb l'espasa mor amb l'espasa.
 Qui no s'equivoca, no fa res.
 Qui no comet errors no fa res.
 Sempre estarà amb tu.
 Demà serà lliure.
-Es farà càrrec del negoci quan el seu pare es jubili.
+Es farà càrrec del negoci quan el seu pare es retiri.
 Ho va guanyar tot.
 Ho va guanyar tot.
-Va treballar molt per comprar un cotxe estranger.
+Va treballar molt per al propòsit de comprar un cotxe estranger.
 Treballa en un banc.
 Treballa al banc.
-Treballa ràpid i és molt articulat, però la seva falta de sinceritat és el seu defecte més gran.
+Treballa ràpid i està molt articulat, però la seva falta de sinceritat és el seu major defecte.
 Treballa per a un banc.
 Treballa en un banc.
 Treballa en un gran hospital de la ciutat.
 Treballa al laboratori.
 Escriu articles per al diari local.
-Va escriure el número perquè no l'oblidés.
-Aviat estarà aquí.
+Va escriure el número per no haver d'oblidar-lo.
+Aviat serà aquí.
 Coneixerà el secret tard o d'hora.
 Tornarà a les sis.
 És biòleg.
@@ -1153,14 +1153,14 @@ Tornarà a les sis.
 És una mica pàl·lid.
 És una mica més alt que tu.
 És un home que no parla amb ningú.
-Pot parlar japonès.
+És capaç de parlar japonès.
 És adorable.
 Té por del mar.
 Sempre ha estat vivint a Tòquio.
 Sempre fa broma.
 Ara mateix és a l'església.
 Ha estat dient les mateixes coses des que el vaig conèixer.
-Ha estat vivint en aquell hotel durant els últims cinc dies.
+Durant els últims cinc dies s'ha quedat en aquell hotel.
 Ha estat treballant tot el dia.
 Ha canviat molt de aspecte.
 Té una gran família.
@@ -1171,16 +1171,16 @@ Està buscant feina.
 És el meu veí.
 No és al nostre grup.
 No és un escriptor tan gran i crec que ho sap.
-Ara està al telèfon.
+Ara és al telèfon.
 Sovint és tard per treballar.
 Sovint és tard per treballar.
 Té més de quaranta anys.
-Probablement dorm.
+Probablement està dormint.
 Està dormint com un nadó.
 És intel·ligent.
-És tan estúpid, et juro que no el puc suportar.
-És el fill més gran.
-És qui m'ha tocat.
+És tan estúpid, et juro que no puc suportar-lo.
+És el fill gran.
+És ell qui m'ha tocat.
 És tres anys més gran que ella.
 És tres anys més gran que jo.
 És tres anys més gran que jo.
@@ -1189,7 +1189,7 @@ Intenta suïcidar-se.
 És dos anys més gran que jo.
 És molt bo tocant la guitarra.
 És molt intel·ligent.
-És molt intel·ligent.
+És molt llest.
 Moltes gràcies!
 Helen Keller era sorda i cega.
 Hola a tots.
@@ -1197,14 +1197,14 @@ Hola a tothom!
 Hola!
 Hola!
 Hola!
-Hola!  Famós de conèixer-te aquí!  És un món petit, no?
+Hola!  No m'agrada trobar-te aquí!  És un món petit, no?
 Hola, com estàs?
 Hola, com estàs?
 Hola, com estàs?
-Hola, com va?
-Hola, com va?
+Hola, com va el negoci?
+Hola, com va el negoci?
 Hola, és el senyor Freeman?
-Hola, està el senyor Freeman?
+Hola, hi és el senyor Freeman?
 Hola, Tom.
 Hola.
 Hola.
@@ -1217,14 +1217,14 @@ La seva explicació del problema no tenia sentit.
 Els seus ulls estaven plens de tristesa.
 El seu pare és japonès.
 El seu pare és japonès.
-El seu cor estava ple d'emoció.
+El seu cor corejava amb emoció.
 El seu marit ara viu a Tòquio.
 La seva idea és millor que la teva.
-El seu cabell llarg era completament humit.
-La seva nova novel·la és realment interessant en lloc de l'última.
+El seu cabell llarg estava completament humit.
+La seva nova novel·la és realment interessant en lloc de la seva última.
 El seu desig era tornar a veure el seu fill.
 Els seus alumnes eren tan negres i profunds com un abisme.
-El seu pes va augmentar a 50 quilos.
+El seu pes va augmentar a 50 quilograms.
 Aquí hi ha dos gossos; un és blanc i l'altre és negre.
 Aquí està la meva bicicleta.
 Aquest és el meu cor.
@@ -1232,15 +1232,15 @@ Aquí tens la bossa.
 Aquí tens la bossa.
 Aquí tens la bossa.
 Aquí tens el teu llibre.
-Ei, calla!
+Calla!
 Ei!
-Sóc en Mike.
+Hola, sóc en Mike.
 Ei.
 Hola!
 Hola!  Com estàs?
 Hola a tothom.
 Hola, com estàs?
-Hola, com estàs?
+Hola, com vas?
 Hola, com va?
 Hola, em dic Ken Saitou.
 Hola.
@@ -1250,15 +1250,15 @@ Els seus assoliments acadèmics són impressionants.
 Les seves accions em confonen.
 El seu avió es va estavellar a les muntanyes.
 La seva arrogància ja no és tolerable.
-L'esquena estava coberta per una capa blava.
-La seva panxa com d'ivori, ambientada amb safirs.
-El seu ventre és tan brillant vori cobert amb safirs.
+La seva esquena estava coberta per una capa blava.
+La seva panxa d'ivori, ambientada amb safirs.
+La seva panxa és tan brillant d'ivori cobert de safirs.
 El seu llibre és vermell.
 El seu llibre va vendre milions de còpies.
-El seu cervell es fa amb noves idees.
+El seu cervell fa bombolles amb noves idees.
 El seu germà és un treballador dur.
-El seu germà era dolent per a mi.
-El seu valor mereix un gran elogi.
+El seu germà era desagradable per a mi.
+El seu valor mereix ser elogiat.
 La seva filla i el meu fill són bons amics.
 El seu somni es va fer realitat.
 El seu vestit és el de cavaller, però el seu discurs i comportament són els d'un pallasso.
@@ -1270,9 +1270,9 @@ El seu pare és japonès.
 La seva casa és a l'altre costat del carrer.
 La seva casa està lluny de l'estació.
 La seva casa estava en flames.
-La seva idea és superior a la teva.
-És una gran família.
-Les seves potes són com a pilars de marbre, col·locats en sòcols d'or fi.
+La seva idea és superior a la seva.
+La seva és una gran família.
+Les seves cames són com a pilars de marbre, col·locats en sòcols d'or fi.
 El seu significat és bastant clar.
 El seu nom és conegut per tothom en aquesta zona.
 Es diu Tomoyuki Ogura.
@@ -1286,53 +1286,53 @@ El seu jersei és blau.
 La seva temperatura és normal.
 La seva dona és la nostra professora italiana.
 Les seves paraules van ser sinceres.
-Mantingui la línia, si us plau.
+Mantingueu la línia, si us plau.
 Sincerament, mentiria si digués que mai lamento les meves decisions sobtades.
-L'honestedat és una virtut capital.
-L'honestedat és una virtut.
-La mel i la llet estan sota la teva llengua.
+L'honradesa és una virtut capital.
+L'honradesa és una virtut.
+La mel i la llet estan sota la llengua.
 Què tal córrer?
 Com van les coses a l'escola?
 Com estàs avui?
 Com estàs, Mike?
 Com estàs?
 Com estàs?
-Com de gran és l'empresa?
+Com n'és de gran la companyia?
 Que avorrit és aquest joc!
 Com puc desfer-me d'ell?
-Com és que no em vas trucar ahir a la nit?
+Per què no em vas trucar ahir a la nit?
 Com va pagar en Tom el lloguer?
 Com ho has trobat?
 Com has entrat a casa meva?
 Com ha anat la teva entrevista?
 Com cuina aquest peix a França?
 Com saps que és seu?
-Com es pronuncia el signe «@» en el vostre idioma?
+Com pronuncieu el signe "@" en la vostra llengua?
 Com pronuncia aquesta paraula?
-Com et dius "pretty"?
-Com els vols?
+Com lletges "pretty"?
+Com els voleu?
 Com escrius "pretty"?
 M'alegro de veure't!
 Com has vingut?
 Com està l'escola?
 Quant de temps faràs?
 Quant de temps vas trigar a traduir aquest llibre?
-Quant de temps et vas quedar?
-Quant de temps et vas quedar?
-Quant de temps et vas quedar?
+Quant de temps et vas quedar allà?
+Quant de temps t'has quedat?
+Quant de temps t'has quedat?
 Quant fa que el teu cap fa mal?
 Quant fa que el teu cap fa mal?
 Quant fa que ets aquí?
-Quant fa que has estat vivint a Kobe?
-Quant de temps puc mantenir això?
-Quants nens tens?
-Quants amics més propers tens?
+Quant fa que vius a Kobe?
+Quant de temps puc guardar això?
+Quants fills teniu?
+Quants amics més propers teniu?
 Quanta gent hi ha a la teva família?
-Quantes germanes tens?
+Quantes germanes teniu?
 Quantes vegades al mes escrius una carta a la teva mare?
 Quantes vegades al mes escrius la teva mare?
 Quantes vegades t'ho he de dir?
-Quantes vegades has anat?
+Quantes vegades has marxat?
 Quant et dec?
 Quant guanya al mes?
 Quant costa aquest rellotge?
@@ -1344,9 +1344,9 @@ Quants diners té?
 Quants diners fa un mes?
 Quants diners té?
 Quant de temps passes a Facebook?
-Quant de temps passes afaitar cada dia?
-Quant de temps passes amb el teu cònjuge?
-Quant de temps veu la televisió cada dia?
+Quant de temps passa afaitar cada dia?
+Quant temps passes amb el teu cònjuge?
+Quant de temps mira la televisió cada dia?
 Quants anys té el teu pare?
 Que trist és aquesta cara.
 Com està tothom a l'oficina de Hong Kong?
@@ -1357,9 +1357,9 @@ La fam és el millor cuiner.
 La fam és el millor cuiner.
 La fam és la millor salsa.
 La fam és la millor salsa.
-Hungry?
+Famós?
 Afanya't.
-Vaig acceptar la invitació.
+Vaig acceptar la seva invitació.
 Estic d'acord.
 També parlo francès.
 Sempre tinc gana.
@@ -1371,37 +1371,37 @@ Sóc un nen.
 Sóc estudiant universitari.
 Sóc un gran admirador de la cultura americana.
 Sóc membre de l'empresa.
-Sóc un cap vermell.
+Sóc un pèl-roig.
 Sóc un noi tímid.
 Sóc una persona prima, però de moment estic gras.
 Sóc una persona prima, però de moment estic gras.
 Em temo que plourà.
 Sóc ateu.
-Em preocupa la seva salut.
+Estic ansiós per la seva salut.
 Sóc tan fort com tu.
 M'avergonyeixo.
 M'avergonyeixo.
 Em preocupa la seva seguretat.
 Estic consternat.
-Estic convençut de la seva innocència.
+Estic convençuda de la seva innocència.
 Estic fart de parlar amb tu!
 Sóc finlandès, però parlo també suec.
 Estic embarassada de quatre mesos.
 Sóc francès.
 Sóc d'Egipte.
-Et dono un petit regal.
+T'estic donant un petit regal.
 Ho faré si estan d'acord o no.
-Estudiaré anglès aquesta tarda.
-Escriuré una carta demà.
-Estic contenta amb la meva xicota.
+Aquesta tarda estudiaré anglès.
+Demà escriuré una carta.
+Estic content amb la meva xicota.
 Tinc gana.
 Tinc pressa.
 Sóc inferior a ell en matemàtiques.
 Sóc Jesús, a qui persegueixes.
 Estic escoltant la ràdio.
-Estic casada.
-Sóc la meva estimada, i el seu desig és cap a mi.
-Mai estic a casa els diumenges.
+Estic casat.
+Sóc de la meva estimada, i el seu desig és cap a mi.
+Els diumenges no sóc a casa.
 Tinc 19 anys.
 Ara estic de servei.
 Estic de vacances aquesta setmana.
@@ -1412,34 +1412,34 @@ Estic cridant perquè he vist un ratolí!
 Estic venent un cotxe nou.
 Estic tan cansada que no puc estudiar.
 Estic tan cansada que no puc estudiar.
-Ho sento si les meves paraules et fan mal.
-Ho sento.
+Em sap greu si les meves paraules et fan mal.
+Lamento sentir això.
 Estic segur que va guanyar el partit de tennis.
 Estic pensant a anar a l'estranger l'any que ve.
 Sóc en Tom.
 Estic massa ocupat per anar-me'n.
-Sóc massa curt.
-Li agraeixo molt la seva ajuda.
-Li agraeixo molt la seva ajuda.
-Estic molt satisfet amb la meva nova casa.
+Sóc massa breu.
+Estic molt agraït per la seva ajuda.
+Estic molt agraït per la seva ajuda.
+Estic molt contenta amb la meva nova casa.
 Ho sento molt.
 Estic molt cansada.
 Ho estic!
 Li vaig fer moltes preguntes sobre l'ecologia.
 Li vaig fer moltes preguntes sobre l'ecologia.
 Li vaig preguntar on podia aparcar el meu cotxe.
-Li he preguntat al senyor Smith.
+He preguntat al Sr. Smith.
 Vaig demanar al meu pare que comprés aquesta joguina.
-He menjat fideus per primera vegada avui.
+Avui he menjat fideus per primera vegada.
 Vaig menjar el formatge.
 Vaig assistir al seu funeral.
-Començaré aquesta tarda.
-Començaré aquesta tarda.
+Començo aquesta tarda.
+Començo aquesta tarda.
 Crec que és un bon noi.
 Crec que necessito dormir una bona nit.
 Crec que l'elecció és clara.
-Vaig ennegrir.
-He comprat un llibre.
+Vaig perdre el temps.
+Vaig comprar un llibre.
 He comprat alguns segells.
 Li vaig comprar un cotxe nou.
 Li vaig comprar una revista.
@@ -1451,68 +1451,68 @@ He vingut per tu.
 He vingut amb un amic meu.
 Puc demanar-li ajuda.
 Puc demanar-li ajuda.
-Puc testimoniar la seva innocència.
+Puc ser testimoni de la seva innocència.
 Puc fer-ho ara.
 Puc fer-ho.
 Puc fer-ho.
 Puc contractar-te a la meva empresa.
 Puc ajudar-lo si ho necessita.
-No puc evitar riure'm de veure'l ballar.
-No puc evitar riure'm de veure'l ballar.
+No puc evitar riure de veure'l ballar.
+No puc evitar riure de veure'l ballar.
 Probablement et puc donar set minuts.
-Puc suportar que una casa estigui desordenada, però no m'agrada que sigui bruta.
+Puc suportar que una casa estigui desordenada, però no m'agrada que estigui bruta.
 Puc repetir-ho una vegada i una altra.
 Puc veure la llum.
-Puc parlar esperanto com a nadiu.
+Puc parlar esperanto com un natiu.
 Puc parlar japonès.
 No puc parlar ni francès ni alemany.
 Puc parlar de qualsevol cosa amb el meu millor amic.
 No puc acceptar la invitació perquè tinc un altre compromís.
-No puc creure que fossis el noi més intel·ligent de la teva classe.
+No puc creure que fossis el noi més llest de la teva classe.
 No puc respirar pel meu nas.
-No puc fer el que m'ha dit.
+No puc fer el que em va dir.
 No puc fer la meva feina sense un ordinador.
 No puc menjar més.
-No sé què vol dir.
+No puc esbrinar què vol dir.
 Ja no puc seguir amb els veïns.
 No puc treure aquesta cançó del meu cap.
 No puc donar-te la resposta avui.
-Ja no puc suportar-ho.
-Ja no puc suportar el soroll.
-No recordo com dir "gràcies" en alemany.
-No recordo el significat de la paraula que vaig mirar ahir.
-No recordo on l'he comprat.
-No recordo on l'he comprat.
-No recordo on l'he comprat.
-No recordo on l'he comprat.
-No recordo on l'he comprat.
-No recordo on l'he comprat.
-No recordo quina és la meva raqueta.
+No puc suportar-ho més.
+No puc suportar més el soroll.
+No recordo com dir "Gràcies" en alemany.
+No puc recordar el significat de la paraula que vaig buscar ahir.
+No puc recordar on ho vaig comprar.
+No puc recordar on ho vaig comprar.
+No puc recordar on ho vaig comprar.
+No puc recordar on ho vaig comprar.
+No puc recordar on ho vaig comprar.
+No puc recordar on ho vaig comprar.
+No puc recordar quina és la meva raqueta.
 No puc parlar francès.
 No puc suportar que els nens plorin.
 No puc suportar aquest soroll.
 Ja no puc suportar el dolor.
 No puc aturar el meu problema.
-No puc donar-li les gràcies prou.
-No puc agrair-te prou pel que has fet per mi.
+No puc agrair-li prou.
+No puc agrair-te prou el que vas fer per mi.
 No puc estar d'acord amb vostè sobre aquest tema.
 No puc menjar més.
 No puc fer una migdiada a l'oficina.
-No sento res.  Sóc sord.
-No puc sentir una història així sense plorar.
+No sento res.  Estic sorda.
+No puc sentir aquesta història sense plorar.
 No puc contractar un conductor.  No tinc diners per això.
-No puc interrompre el director.  Em dispararà!
-No puc planxar la meva roba.  No tinc ferro.
+No puc interrompre el gerent.  M'acomiadarà!
+No puc aplanar la meva roba.  No tinc ferro.
 No puc saltar a la mar.  No sé nedar.
 No puc marxar.  És massa aviat.
 No puc deixar aquest diccionari.  Sempre ho necessito.
 No puc encendre aquesta espelma.  És humit.
 No puc tancar la porta.  He perdut la clau.
-No puc fer el llit.  No tinc temps per això!
+No puc fer el meu llit.  No tinc temps per això!
 No puc cometre aquest error.  El rus és la meva llengua materna.
-No puc fer riure a Taninna.  No li agraden els meus acudits.
+No puc fer riure la Taninna.  No li agraden les meves bromes.
 No puc donar-li les gràcies prou.
-Ahir vaig agafar un gran peix.
+Ahir vaig agafar un peix gran.
 He pescat un peix.
 Vaig agafar la pilota amb una mà.
 Vinc de Saitama.
@@ -1521,38 +1521,38 @@ El felicito pel seu èxit.
 Podria fer-ho.
 Podria fer-ho.
 Podria haver-ho fet.
-No podia evitar sentir-me trist per ell.
-No podia dormir a causa del soroll.
-No vaig poder renunciar al desig de riure.
+No podia evitar sentir pena per ell.
+No podia dormir pel soroll.
+No vaig poder sotmetre el desig de riure.
 Podria haver-ho fet sense la teva ajuda.
 Podria haver-ho fet sense la teva ajuda.
 Podria haver marxat, però no volia.
 No he pogut respondre cap pregunta sobre la prova.
 No podia trucar-te; el telèfon estava fora de servei.
 No podia evitar enamorar-me de tu.
-No vaig poder evitar riure quan vaig sentir aquesta història.
+No podia evitar riure quan vaig sentir aquesta història.
 Vaig decidir dir-li que l'estimo.
 Dedico aquest llibre a la meva filla.
-Vaig demanar que pagués la factura immediatament.
+Li vaig demanar que pagués la factura immediatament.
 Bàsicament vaig fer el mateix que en Tom.
 Ho he fet avui per primera vegada.
 No he comprat aquest llibre.
 Aquest matí no m'he desdejunat.
 Ni tan sols sabia que aquests sentiments encara existien.
 No esperava cap regal.
-No ho he oblidat.
+No ho vaig oblidar.
 No ho he oblidat.
 No sabia res.
 No sabia que hi era.
-No sabia que en Tom era canadenc.
-No sabia que en Tom era canadenc.
+No sabia que en Tom fos canadenc.
+No sabia que en Tom fos canadenc.
 No sabia què fer.
 No sabia que tenies una setmana lliure el mes passat.
-No sabia que eres un bon cuiner.
-No sabia que eres una persona d'aquest tipus.
+No sabia que eres un cuiner tan bo.
+No sabia que eres una persona així.
 No ho he dit.
-L'any passat no vaig veure cap metge.
-L'any passat no vaig veure cap metge.
+L'any passat no vaig veure un metge.
+L'any passat no vaig veure un metge.
 No m'agraden les grans ciutats.
 M'agrada la música clàssica!
 No crec en l'existència de Déu.
@@ -1561,15 +1561,15 @@ No m'agraden els rics.
 No viu per a menjar, sinó per a viure.
 No t'entenc.
 No t'entenc.
-No vull que sigui descurat.
+No vull que sigui negligent.
 No crec ni una paraula del que la gent ha dit sobre ella.
 No m'ho crec!
-No ho crec!
-No m'importa qui triïs.
+No crec!
+No m'importa el que triïs.
 No ploro.
-No em sento com exercint.
-No em sembla que vagi a fer una passejada aquest matí.
-No sento com sortir.
+No em fa l'efecte.
+No em sembla que vagi a passejar aquest matí.
+No em sento com sortir.
 No et segueixo.
 No t'entenc.
 No tinc cotxe.
@@ -1578,50 +1578,50 @@ No tinc res a dir a cap de vosaltres.
 No tinc la força per continuar intentant-ho.
 No tinc temps.
 No tinc temps per a tu.
-Ara no tinc temps.
+No tinc temps ara.
 No tinc temps d'explicar-ho detalladament.
 No tinc temps.
 No sé exactament quan tornaré.
 No sé amb certesa quan vindrà.
 No conec la seva adreça.
 No conec el seu nom real.
-No sé el seu nom real.
+No conec el seu nom real.
 No sé si ho sap.
 No sé si ho hauria fet per mi.
 No sé si tindré temps.
-No sé si hi ha una diferència entre les dues samarretes.  Són idèntiques per a mi.
+No sé si hi ha diferència entre les dues camises.  Són idèntics per a mi.
 No conec la llengua llatina.
 No sé per què hi va anar.
 No sé què li ha passat.
-No sé què està fent, però no ho està fent amb ella.
+No sé què fa ell/ella, però no ho fa amb ella.
 No sé quan vindrà.
 No sé on va anar.
-No sé si és veritat o no.
+No sé si és cert o no.
 No sé qui va pintar aquesta foto.
 No sé per què en Tom no li agrada Boston.
-No sé el teu nom real.
+No conec el teu nom real.
 No ho sé.
 No m'agraden les grans ciutats.
 No m'agrada gaire, de fet l'odio.
-No m'agrada quan ho jures.
-No m'agrada quan ho jures.
-No m'agrada quan ho jures.
+No m'agrada quan jures.
+No m'agrada quan jures.
+No m'agrada quan jures.
 No m'agrada escoltar nens plorant.
 No m'agraden les unitats llargues.
 No m'agraden els viatges llargs.
-No m'agrada la pinya.  Té un gust molt amarg.
+No m'agrada la pinya.  Té un sabor molt amarg.
 No m'agraden els pobres, només pensen en diners.
 No m'agrada aquest rellotge.
 No m'agrada nedar en piscines.
-Ja no t'estimo més.
+Ja no t'estimo.
 No necessito res.
 No necessito res.
 No necessito la teva ajuda.
-No entenc el que diu.
+No entenc bé el que diu.
 No recordo l'última vegada que vaig pujar a un arbre.
 No parlo hongarès.
 No parlo japonès.
-No parlo castellà.
+No parlo espanyol.
 No crec que vingui.
 No crec que plogui aquesta tarda.
 No crec que funcioni.
@@ -1638,19 +1638,19 @@ No crec que puguem córrer aquest risc.
 No crec que puguem córrer aquest risc.
 No confio en els polítics.
 No entenc aquesta pregunta.
-No entenc el que intentes dir.
+No entenc el que estàs intentant dir.
 No t'entenc.
 No vull tornar.
 No vull sucre.
 No vull tornar.
 No vull anar a l'escola.
 No vull sentir més d'aquesta història, si us plau.
-No vull viure sol.
-No vull viure sol.
+No vull viure sola.
+No vull viure sola.
 No vull llegir més.
 No vull llegir aquest llibre.
 No vull disparar-te, però ho faré si cal.
-No vull fer un passeig ara.
+No vull caminar ara.
 No vull treballar.
 Dubto que sigui advocat.
 Dubto que sigui advocat.
@@ -1658,63 +1658,63 @@ Dubto que sigui advocat.
 Dubto que sigui advocat.
 Bec te sense sucre.
 Bec aigua perquè tinc set.
-Menjo un ou bullit per esmorzar cada dia.
-Menja perquè tinc gana.
-Emmordasto abans de treballar.
+Cada dia menjo un ou bullit per esmorzar.
+Menjo perquè tinc gana.
+Emmordasso abans de treballar.
 L'envejo.
 Estima que el treball costarà més de 10.000 dòlars.
-Espero que tothom sàpiga què significa això.
+Espero que tothom sàpiga el que això significa.
 Espero que vingui.
-M'he desmaiat.
-Sento un dolor a l'esquena.
-Sento un dolor a l'esquena.
+Em vaig desmaiar.
+Sento dolor a l'esquena.
+Sento dolor al darrere.
 Em sento culpable.
 Em sento honrat.
-Sento com dir-li el que penso d'ell.
-Em sento com tirar-me.
+Em fa l'efecte de dir-li el que penso d'ell.
+Em sento com tirar.
 Em vaig sentir malament.
-Em sentia com si m'hagués mort.
-Em vaig sentir igual.
+Vaig sentir que moriria.
+Vaig sentir el mateix.
 Suposo que tindrà èxit en el seu negoci.
-Finalment vaig aconseguir aquest llibre que volia.
-Finalment vaig veure l'oceà després de sortir al balcó.  Haig de dir que aquesta sala té una vista oceànica?
+Per fi tinc el llibre que volia.
+Finalment vaig veure l'oceà després de sortir al balcó.  Hauria de dir que aquesta sala té una vista oceànica?
 El vaig conèixer fa tres anys.
 Et perdono.
 He oblidat el seu número de telèfon.
-He oblidat el llibre.
-He oblidat portar-me el paraigua.
+Vaig oblidar el llibre.
+Vaig oblidar portar el meu paraigua amb mi.
 He oblidat trucar-lo avui.
-He oblidat trucar-lo avui.
-He oblidat com es deia.
-L'he trobat.
-M'ha resultat difícil utilitzar la màquina.
+Avui m'he oblidat de trucar-lo.
+Vaig oblidar quin era el seu nom.
+El vaig trobar.
+Em va resultar difícil utilitzar la màquina.
 L'he trobat.
 He trobat diners!
 Li vaig donar un regal a canvi del seu favor.
-Vaig donar al meu pare una corbata de seda.
+Li vaig donar al meu pare una corbata de seda.
 Vaig deixar de fumar fa sis mesos.
 Generalment vaig a l'escola.
-Torno a casa a les 4.30 hores i faig els deures.
-Vaig a fer un passeig cada dia, excepte quan plou.
-Vaig a la botiga i qui veig?  Un amic nord-americà, que immediatament comença a dir-me què ha estat passant amb ell des de l'última vegada que ens vam conèixer.
+Torno a casa a les 4.30 i faig els deures.
+Vaig a passejar cada dia, excepte quan plou.
+Vaig a la botiga i qui veig?  Un amic americà, que immediatament comença a dir-me què ha estat passant amb ell des de l'última vegada que ens vam conèixer.
 Vaig a l'escola perquè vull aprendre.
 Vaig conèixer-lo fa tres anys.
 Em vaig perdre quan et vaig visitar per primera vegada.
-M'han robat el quadern.
-Vaig baixar a l'estació equivocada.
+Em van robar la llibreta.
+Vaig sortir a l'estació equivocada.
 Vaig sortir del taxi.
 Tinc alguna cosa als ulls.
-M'he cansat de ficar-me al llit tot el dia.
-M'he aixecat d'hora al matí.
+Em vaig cansar de ficar-me al llit tot el dia.
+Em vaig aixecar d'hora al matí.
 Avui he tingut una experiència terrible, així que vaig a prendre una cervesa i vaig directament al llit.
 Havia estat estudiant música a Boston abans de tornar al Japó.
 Em van robar la bossa a l'autobús.
 No vaig tenir més remei que acceptar l'oferta.
-No tenia més opció que quedar-me.
+No tenia més remei que quedar-me.
 Havia reparat el rellotge.
-Havia de caminar perquè no hi havia taxis.
-Tenia problemes per aconseguir un taxi.
-L'odio quan hi ha molta gent.
+Vaig haver de caminar perquè no hi havia taxis.
+Vaig tenir problemes per aconseguir un taxi.
+Ho odio quan hi ha molta gent.
 Odio aquestes paraules.
 Odio aquesta escola.
 Odio aquestes paraules.
@@ -1724,8 +1724,8 @@ Tinc un xicot que m'estima.
 Tinc un cotxe.
 Tinc un gat i un gos.  El gat és negre i el gos blanc.
 Tinc un gat i un gos.  El gat és negre i el gos blanc.
-Tinc un dolor al pit.
-Tinc un abric, però sense barret.
+Tinc dolor al pit.
+Tinc un abric, però no barret.
 Tinc un amic que alimenta les maduixes del seu gos.
 Tinc un amic que és pilot.
 Tinc un amic que els coneix.
@@ -1736,25 +1736,25 @@ Tinc un amic que és pilot.
 Tinc un amic el pare del qual és un famós pianista.
 Tinc un bon record.
 Tinc un camió.
-Tinc moltes flors.  Alguns són vermells i altres són grocs.
+Tinc moltes flors.  Alguns són vermells i altres grocs.
 Tinc molts amics.
 Tinc molts diners en el meu compte d'estalvi.
 Tinc un problema.
 Tinc un problema.
-Tinc una dutxa cada nit.
+Tinc dutxa cada nit.
 Tinc una gola negra.
-Tinc mal de dents.
+Tinc mal dent.
 Tinc un camió.
 Tinc accés a la seva biblioteca.
-Tinc un mal d'orella.
-He estat aficionat a l'aventura des que era petit.
-He estat estudiant francès quatre anys.
+Tinc mal de orella.
+M'ha agradat l'aventura des que era petita.
+He estat estudiant francès durant quatre anys.
 Fins ara he estat en més de deu països estrangers.
 He estat a la biblioteca.
 Tinc ulls negres.
-Tinc un esmorzar cada matí.
+Tinc esmorzar cada matí.
 Tinc galetes per esmorzar cada dia.
-He fet tots els deures i m'agradaria fer un descans curt.
+He fet tots els meus deures i m'agradaria fer un breu descans.
 No he menjat res durant els últims tres dies.
 Tinc prou diners per comprar un cotxe.
 Tinc cinc gats.
@@ -1770,90 +1770,90 @@ Mai t'he estimat.
 Mai ho he dit.
 No tinc cotxe.
 No tinc família.
-No tinc interès en la seva vida privada.
+No tinc gens d'interès en la seva vida privada.
 No tinc diners.
 No tinc cap objecció al seu pla.
-No tinc cap problema amb una casa desordenada, però no puc acceptar que sigui bruta.
+No tinc cap problema amb una casa desordenada, però no puc acceptar que pugui estar bruta.
 No tinc temps per anar a Amèrica.
-No tinc temps de veure't.
+No tinc temps per veure't.
 No tinc temps.
-No tinc tolerància cap als covards.
+No tinc tolerància cap a covards.
 No tinc paraules per a expressar la meva gratitud.
-Fins ara no he estat capaç de trobar un treball.
+Fins ara no he pogut trobar una feina.
 No he menjat res durant els últims tres dies.
 No ho he oblidat.
 Des de llavors no l'he vist.
 No tinc res en comú amb ella.
-No tinc res a dir a cap de vostès.
+No tinc res a dir a cap de vosaltres.
 Tinc un gat i un gos.  El gat és negre i el gos blanc.
 Tinc molts amics.
 He llegit tres obres de Shakspeare fins ara.
 Fins ara he llegit tres obres de Shakespeare.
 He vist "Star Wars" dues vegades.
 He vist un gos.
-Tinc alguna cosa als ulls.
-T'he de dir una cosa.
-T'he de dir una cosa.
-T'he de dir una cosa.
-He de raspallar-me les dents.
-He de comprar-ne un demà.
+Tinc alguna cosa al meu ull.
+Tinc una cosa a dir-te.
+Tinc una cosa a dir-te.
+Tinc una cosa a dir-te.
+He de rentar-me les dents.
+Demà n'he de comprar un.
 He de recuperar el temps perdut.
 He de tornar el llibre abans de dissabte.
 He d'anar a dormir.
 He d'anar a dormir.
-He d'afanyar-me.  El meu vol surt d'aquí a una hora.
+He d'afanyar-me.  El meu vol surt en una hora.
 He de dormir.
-He de fer una fuita.
+He de prendre una filtració.
 Tinc dos gats.
 Tinc dues filles.
 Tinc dos gossos.  Una és blanca i l'altra negra.
 Tinc dos nebots.
 He escrit una carta.
 Fins ara no he pogut trobar feina.
-Encara no he menjat res.
+Avui no he menjat res.
 No ho he oblidat.
 Encara no he trobat cap metge.
 No tinc el coratge de demanar-te un préstec.
-No he menjat.
+No he sopar.
 No he llegit aquesta nova novel·la, i la meva germana tampoc.
 Avui no he menjat res.
 He sentit el que dius.
-Ahir vaig sentir una cançó preciosa.
+Ahir vaig sentir una bonica cançó.
 He sentit un soroll al dormitori.
 El vaig sentir cantar al concert.
 He sentit que el senyor Inoue s'ha quedat en aquell hotel.
-Vaig ajudar una vella a creuar.
-Espero que tothom sàpiga què significa això.
-Espero poder veure't a Nadal.
+Vaig ajudar una vella a creuar-la.
+Espero que tothom sàpiga el que això significa.
+Espero poder veure't per Nadal.
 Espero que surti bé.
-Jo també ho espero.
+També ho espero.
 Espero que sí.
 Espero poder fer-ho.
 Espero que estiguis bé.
 Espero que no hi hagi hagut massa errors.
 Espero que triïn un bon govern.
 Espero visitar Nara la pròxima vegada.
-Espero que no pensis que és culpa meva.
+Espero que no pensi que és culpa meva.
 Espero que ho facis bé.
 Espero que no t'importi.
 Espero que estiguis bé.
-Li vaig fer mal de propòsit.
-Acabo de rendir-me.
+Li vaig fer mal als seus sentiments a propòsit.
+Acabo de renunciar.
 Només espero poder sobreviure a això.
 Acabo de dutxar-me.
 Acabo de banyar-me.
 Acabo de dutxar-me.
 Només vull estar a prop teu.
-Només vull dir que has fet una bona feina.
+Només vull dir que vas fer una bona feina.
 Tinc un gran diccionari a prop quan llegeixo revistes angleses.
 Sabia que mentia.
-Sabia que la Layla deia la veritat.
+Sabia que layla deia la veritat.
 Conec un bon restaurant italià.
-Conec un professor anglès que ve del Canadà.
+Conec a un professor anglès que ve del Canadà.
 Sé que li agrada la música jazz.
 Conec un bon restaurant italià.
 Sé que hi havia una gran església aquí.
-Sé que és estrany.
+Sé que això és estrany.
 Conec la noia.
 Conec aquests estudiants.
 Sé el que estàs pensant.
@@ -1861,11 +1861,11 @@ Sé el que estàs pensant.
 Sé que tens raó.
 Vaig deixar la meva raqueta de tennis al tren.
 Li vaig deixar una revista.
-Vaig deixar entrar el gat.
+Vaig deixar entrar al gat.
 M'agrada molt el beisbol.
 M'agraden les dues.
 M'agraden els gats.
-M'agraden els pollastres.
+M'agrada el pollastre.
 M'agrada més el cafè.
 M'agrada el cafè.
 M'agrada la llet freda, però no la llet calenta.  La membrana blanca i l'olor que em molesta.
@@ -1883,25 +1883,25 @@ M'agrada el futbol.
 M'agrada el tennis.
 M'agrada l'ambient d'aquest restaurant.
 M'agrada el repte de traduir l'intranslatable.
-M'agrada la llengua occitana.
+M'agrada l'occità.
 M'agrada la pluja i la neu.
-M'agrada aquesta copa.
-M'agrada aquesta imatge, no sols perquè és famosa, sinó perquè realment és una obra mestra.
-M'agrada decorar el meu apartament per adaptar-me al meu gust.
+M'agrada aquesta tassa.
+M'agrada aquesta foto, no sols perquè és famosa, sinó perquè realment és una obra mestra.
+M'agrada decorar el meu apartament per satisfer el meu gust.
 M'agrada escoltar música.
 M'agrada tocar el piano.
 M'agrada caminar.
 M'agrada caminar.
 M'agraden les roses blanques millor que les vermelles.
 Escolto música.
-Escolto la ràdio cada nit.
+Cada nit escolto la ràdio.
 He escoltat la seva història.
-L'any passat vaig viure a Nova York.
-M'he mirat al mirall i no m'ha agradat el que he vist.
+Vaig viure a Nova York l'any passat.
+Em vaig mirar al mirall i no em va agradar el que vaig veure.
 Vaig mirar la foto.
 He perdut la consciència.
-Avui he perdut el meu quadern.
-Vaig perdre la sabata al foc.
+Avui he perdut la llibreta.
+Vaig perdre la meva sabata al foc.
 M'encanta ser sociable.
 M'encanta el futbol.
 M'encanten les pel·lícules franceses.
@@ -1915,7 +1915,7 @@ M'encanta el menjar aquí.
 M'encanta aquesta foto.
 M'encanten els caps de setmana de tres dies.
 M'encanta veure els ocells.
-M'encanta veure els partits de futbol.
+M'encanta veure partits de futbol.
 T'estimo millor que ell.
 T'estimo més que ningú.
 Jo també t'estimo.
@@ -1924,25 +1924,25 @@ T'estimo.
 Vaig cometre un error descurat.
 He fet un escriptori de fusta.
 Ho vaig fer per primera vegada.
-Vaig fer un vestit nou al meu fill.
+Vaig fer que el meu fill fos un vestit nou.
 Puc anar-hi, però això depèn.
 Ahir vaig conèixer en Ben a l'hotel.
 La vaig conèixer durant la meva estada a Mèxic.
 La vaig conèixer de camí a l'escola.
 El vaig conèixer a Tòquio per casualitat.
 El vaig conèixer a Tòquio per casualitat.
-El vaig conèixer just quan sortia de l'escola.
-El vaig conèixer fora de la Greengrocer's.
-El vaig conèixer abans-d'ahir.
+El vaig conèixer just quan estava sortint de l'escola.
+El vaig conèixer fora de la Greengrocer.
+El vaig conèixer abans d'ahir.
 El vaig conèixer fa tres anys.
-Vaig conèixer el teu amic.
+He conegut el teu amic.
 Et trobo a faltar.
-M'he perdut el meu autobús aquest matí.
-T'he trobat a faltar tant!
+He perdut el meu autobús aquest matí.
+T'he trobat a faltar!
 El vaig confondre amb el seu germà.
 Ho he d'haver oblidat.
-He de tenir un número incorrecte.
-Haig de fer avançar el rellotge dos minuts.
+He de tenir el número incorrecte.
+Haig d'avançar dos minuts.
 He de parlar amb tu.
 Necessito un metge!
 Necessito un metge.
@@ -1954,14 +1954,14 @@ Necessito una foto de passaport.
 Necessito un segell.
 Necessito un traductor.
 Necessito molts llibres.
-Necessito algú que m'ajudi.
+Necessito que algú m'ajudi.
 Necessito algú que m'ajudi.
 Necessito alguna cosa per vomitar.
-He de ser allà abans de les set.
+Necessito estar allà abans de les set.
 Necessito comprar segells.
 He d'anar a aquesta reunió ara.
-He de pegar.
-He de dutxar-me.
+Necessito pee.
+Necessito dutxar-me.
 He de parlar amb tu.
 Mai em canso de parlar.
 He notat que s'asseia a primera fila.
@@ -1970,31 +1970,31 @@ Només tinc ulls per a tu.
 Vaig obrir la caixa.  Estava buit.
 Li dec el que sóc als meus pares.
 Tinc un cotxe.
-Vaig pagar el doble de la suma.
+He pagat el doble de la suma.
 La setmana passada li vaig pagar els diners.
-Vaig pagar una quantitat a tant alçat quan vaig comprar un televisor.
+Vaig pagar amb una suma global quan vaig comprar un televisor.
 Vaig plantar una poma al meu jardí.
-Jugo a rugbi una hora al dia
+Jugo a rugbi durant una hora al dia
 Jugo a tennis després de l'escola.
 Prefereixo un hotel de l'aeroport.
 Prefereixo el cafè.
 Prefereixo els grans magatzems: els preus són més baixos.
 Prefereixo llegir a escriure.
-Prefereixo nedar que esquiar.
+Prefereixo nedar a esquiar.
 Prefereixo la recepta tradicional.
 Prefereixo veure pel·lícules en l'original.
 Et prometo que t'ajudaré.
 Vaig deixar de fumar fa mig any.
 Vaig deixar de fumar fa sis mesos.
-T'he aixecat sota la pomera.
-Vaig sortir i vaig agafar un taxi.
+Et vaig criar sota la pomera.
+Vaig sortir corrent i vaig agafar un taxi.
 He llegit sobre l'accident al diari.
 La setmana passada vaig llegir diversos llibres.
 Realment no entenc el pla que van presentar.
-De veritat que he de reparar el rellotge.
-He de fer-me càrrec d'alguna cosa.
+He de reparar el rellotge.
+He de fer-me càrrec de negocis.
 He rebut la teva carta.
 El vaig reconèixer a primera vista.
-El vaig reconèixer de seguida.
+El vaig reconèixer immediatament.
 Em vaig redimir com un tomàquet.
 Em vaig negar a menjar fins que els meus pares van tornar a casa.
