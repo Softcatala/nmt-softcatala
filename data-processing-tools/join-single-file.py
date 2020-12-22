@@ -20,6 +20,7 @@
 
 import yaml
 import os
+from preservemarkup import PreserveMarkup
 
 def file_len(fname):
     with open(fname) as f:
@@ -45,6 +46,10 @@ def _clean_localized(result):
 
     cleaned = original != result
     return result, cleaned
+
+def _replace_tags(result):
+    markers, new_text = PreserveMarkup().create_markers_in_string(result)
+    return new_text
 
 
 def split_in_six_files(src_filename, tgt_filename):
@@ -92,6 +97,9 @@ def split_in_six_files(src_filename, tgt_filename):
                 break;
 
             trg, cleaned = _clean_localized(trg)
+
+            src = _replace_tags(src)
+            trg = _replace_tags(trg)
 
             pair = src + trg
             if pair in pairs:
