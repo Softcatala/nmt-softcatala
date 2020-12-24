@@ -38,19 +38,19 @@ def check_translation(src_filename, tgt_filename):
             tgt = read_target.readline().lower()
 
             if not src or not tgt:
-                break;
+                break
 
             if tgt.find("<unk>") >= 0:
                 unk = unk + 1
 
             if src.find("%s") >= 0:
                 formatters = formatters + 1
-                if tgt.find("%s") == 0:
+                if tgt.find("%s") == -1:
                     error_formatters = error_formatters + 1
 
             if src.find("%d") >= 0:
                 formatters = formatters + 1
-                if tgt.find("%d") == 0:
+                if tgt.find("%d") == -1:
                     error_formatters = error_formatters + 1
 
             tags = re.findall("<[^>]*>", src)
@@ -60,7 +60,7 @@ def check_translation(src_filename, tgt_filename):
             for tag in tags:
                 if tgt.find(tag) == - 1:
                     html_tags_error = html_tags_error + 1
-                    print(f"Tag error: {src} | {tgt}")
+                    #print(f"Tag error: {src} | {tgt}")
 
             strings = strings + 1
 
@@ -71,16 +71,13 @@ def check_translation(src_filename, tgt_filename):
     print(f"Html tags with error: {html_tags_error} ({phtml_tags_error:.2f}%)")
 
     perror_formatters = error_formatters * 100 / formatters
-    print(error_formatters)
-#    print(f"Html tags with error: {error_formatters} ({perror_formatters:.2f}%)")
+    print(f"String formatters with error: {error_formatters} ({perror_formatters:.2f}%)")
 
 
 def main():
 
     print("Checks translation")
-    check_translation('../training/eng-cat/src-test-tags.txt',
-                      'tgt-test-tags.txt')
-#                      '/home/jordi/sc/OpenNMT/nmt-softcatala/use-models-tools/tgt-test1.txt')
+    check_translation('src-test-tags.txt', 'tgt-test-tags.txt')
 
 if __name__ == "__main__":
     main()
