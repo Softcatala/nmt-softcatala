@@ -26,8 +26,11 @@ def check_translation(src_filename, tgt_filename):
 
     unk = 0
     strings = 0
-    error_tag = 0
+    html_tags = 0
+    html_tags_error = 0
+    formatters = 0
     error_formatters = 0
+
     with open(src_filename, "r") as read_source, open(tgt_filename, "r") as read_target:
         while True:
 
@@ -40,28 +43,43 @@ def check_translation(src_filename, tgt_filename):
             if tgt.find("<unk>") >= 0:
                 unk = unk + 1
 
-            if src.find("%s") >= 0 and tgt.find("%s") == 0:
-                error_formatters = error_formatters + 1
+            if src.find("%s") >= 0:
+                formatters = formatters + 1
+                if tgt.find("%s") == 0:
+                    error_formatters = error_formatters + 1
+
+            if src.find("%d") >= 0:
+                formatters = formatters + 1
+                if tgt.find("%d") == 0:
+                    error_formatters = error_formatters + 1
 
             tags = re.findall("<[^>]*>", src)
+            if len(tags) > 0:
+                html_tags = html_tags + 1
+
             for tag in tags:
                 if tgt.find(tag) == - 1:
-                    error_tag = error_tag + 1
+                    html_tags_error = html_tags_error + 1
                     print(f"Tag error: {src} | {tgt}")
 
             strings = strings + 1
 
-    print(f"Strings: {strings}, unk {unk}, error tags {error_tag}, errors formatters {error_formatters}")
+    punk = unk * 100 / strings
+    print(f"Strings: {strings}, unknowns: {unk} ({punk:.2f}%)")
 
-#    pclean = clean * 100 / strings
-    #pduplicated = duplicated * 100 / strings
-#    print(f"Cleaned acute accents: {clean} ({pclean:.2f}%)")
+    phtml_tags_error = html_tags_error * 100 / html_tags
+    print(f"Html tags with error: {html_tags_error} ({phtml_tags_error:.2f}%)")
+
+    perror_formatters = error_formatters * 100 / formatters
+    print(error_formatters)
+#    print(f"Html tags with error: {error_formatters} ({perror_formatters:.2f}%)")
+
 
 def main():
 
     print("Checks translation")
-    check_translation('/home/jordi/sc/OpenNMT/nmt-softcatala/use-models-tools/src-test1.txt', 
-                      'predictions.txt')
+    check_translation('../training/eng-cat/src-test-tags.txt',
+                      'tgt-test-tags.txt')
 #                      '/home/jordi/sc/OpenNMT/nmt-softcatala/use-models-tools/tgt-test1.txt')
 
 if __name__ == "__main__":
