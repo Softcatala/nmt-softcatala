@@ -1726,9 +1726,6 @@ OCT2HEX
 OCT2HEX(Number [; Places])
 <item type="input">=OCT2HEX(144;4)</item> returns 0064.
 <bookmarkvalue>CONVERT function</bookmarkvalue>
-CONVERT
-<ahelp hid="HIDAAIFUNCCONVERT">Converts a value from one unit of measure to the corresponding value in another unit of measure.</ahelp> Enter the units of measures directly as text in quotation marks or as a reference. If you enter the units of measure in cells, they must correspond exactly with the following list which is case sensitive: For example, in order to enter a lower case l (for liter) in a cell, enter the apostrophe ' immediately followed by l.
-
 
 Enable address formatting
 Whether addresses should be formatted according to standard in their destination country
@@ -1763,30 +1760,325 @@ Whether to show Miscellaneous information in the editor
 Whether to show notes in the editor
 Whether to show Certificates tab in the editor
 Where to open contact locations
-Currently supported values are “openstreetmap” and “google”; if unknown set uses “openstreetmap”
+Currently supported values are “openstreetmap” and “google”; if unknown set, uses “openstreetmap”
 Convert mail messages to Unicode
 Convert message text to Unicode UTF-8 to unify spam/ham tokens coming from different character sets.
 Full path command to run Bogofilter
-Full path to a Bogofilter command. If not set then a compile-time path is used usually /usr/bin/bogofilter. The command should not contain any other arguments.
+Full path to a Bogofilter command. If not set, then a compile-time path is used, usually /usr/bin/bogofilter. The command should not contain any other arguments.
 Save directory for reminder audio
 Directory for saving reminder audio files
 Birthday and anniversary reminder value
 Number of units for determining a birthday or anniversary reminder
 Birthday and anniversary reminder units
-Units for a birthday or anniversary reminder “minutes” “hours” or “days”
+Units for a birthday or anniversary reminder, “minutes”, “hours” or “days”
 Compress weekends in month view
-Whether to compress weekends in the month view which puts Saturday and Sunday in the space of one weekday
+Whether to compress weekends in the month view, which puts Saturday and Sunday in the space of one weekday
 Ask for confirmation when deleting items
 Whether to ask for confirmation when deleting an appointment or task
 Confirm expunge
 Whether to ask for confirmation when expunging appointments and tasks
 Month view vertical pane position
-Position of the vertical pane between the calendar lists and the date navigator calendar
+Position of the vertical pane, between the calendar lists and the date navigator calendar
 Workday end hour
-Hour the workday ends on in twenty four hour format 0 to 23
+Hour the workday ends on, in twenty four hour format, 0 to 23
 Workday end minute
-Minute the workday ends on 0 to 59.
+Minute the workday ends on, 0 to 59.
 Workday start hour
+Hour the workday starts on, in twenty four hour format, 0 to 23.
+Workday start minute
+Minute the workday starts on, 0 to 59.
+Workday start time for Monday
+Time the workday starts on, in twenty four hour format HHMM, 0000 to 2359, or -1 to use day-start-hour and day-start-minute
+Workday end time for Monday
+Time the workday ends on, in twenty four hour format HHMM, 0000 to 2359, or -1 to use day-end-hour and day-end-minute
+Workday start time for Tuesday
+Time the workday ends on, in twenty four hour format HHMM, 0000 to 2359, or -1 to use day-start-hour and day-start-minute
+Workday end time for Tuesday
+Workday start time for Wednesday
+Workday end time for Wednesday
+Workday start time for Thursday
+Workday end time for Thursday
+Workday start time for Friday
+Workday end time for Friday
+Workday start time for Saturday
+Workday end time for Saturday
+Workday start time for Sunday
+Workday end time for Sunday
+The second timezone for a Day View
+Shows the second time zone in a Day View, if set. Value is similar to one used in a “timezone” key
+Recently used second time zones in a Day View
+List of recently used second time zones in a Day View
+Maximum number of recently used timezones to remember
+Maximum number of recently used timezones to remember in a “day-second-zones” list
+Default reminder value
+Number of units for determining a default reminder
+Default reminder units
+Units for a default reminder, “minutes”, “hours” or “days”
+Show categories field in the event/meeting/task editor
+Whether to show categories field in the event/meeting editor
+Show Role field in the event/task/meeting editor
+Whether to show role field in the event/task/meeting editor
+Show RSVP field in the event/task/meeting editor
+Whether to show RSVP field in the event/task/meeting editor
+Show status field in the event/task/meeting editor
+Whether to show status field in the event/task/meeting editor
+Show timezone field in the event/meeting editor
+Whether to show timezone field in the event/meeting editor
+Show type field in the event/task/meeting editor
+Whether to show type field in the event/task/meeting editor
+Hide completed tasks
+Whether to hide completed tasks in the tasks view
+Hide task units
+Units for determining when to hide tasks, “minutes”, “hours” or “days”
+Hide task value
+Number of units for determining when to hide tasks
+Hide cancelled events
+Whether to hide cancelled events in the calendar view
+Hide cancelled tasks
+Whether to hide cancelled tasks in the tasks view
+Horizontal pane position
+Position of the horizontal pane, between the date navigator calendar and the task list when not in the month view, in pixels
+Last reminder time
+Time the last reminder ran, in timet
+Marcus Bains Line Color — Day View
+Color to draw the Marcus Bains line in the Day View
+Marcus Bains Line Color — Time bar
+Color to draw the Marcus Bains Line in the Time bar (empty for default)
+Marcus Bains Line
+Whether to draw the Marcus Bains Line (line at current time) in the calendar
+Memo preview pane position (horizontal)
+Position of the task preview pane when oriented horizontally
+Memo layout style
+The layout style determines where to place the preview pane in relation to the memo list. “0” (Classic View) places the preview pane below the memo list. “1” (Vertical View) places the preview pane next to the memo list
+Memo preview pane position (vertical)
+Position of the memo preview pane when oriented vertically
+Month view horizontal pane position
+Position of the horizontal pane, between the view and the date navigator calendar and task list in the month view, in pixels
+Scroll Month View by a week, not by a month
+Whether to scroll a Month View by a week, not by a month
+Let the Month View start with the current week
+Whether the month view should show weeks starting with the current week instead of the first week of the month.
+Preferred New button item
+Name of the preferred New toolbar button item
+Primary calendar
+The UID of the selected (or “primary”) calendar in the sidebar of the “Calendar” view
+Primary memo list
+The UID of the selected (or “primary”) memo list in the sidebar of the “Memos” view
+Primary task list
+The UID of the selected (or “primary”) task list in the sidebar of the “Tasks” view
+Free/busy template URL
+The URL template to use as a free/busy data fallback, %u is replaced by the user part of the mail address and %d is replaced by the domain
+Recurrent Events in Italic
+Show days with recurrent events in italic font in bottom left calendar
+Search range for time-based searching in years
+How many years can the time-based search go forward or backward from currently selected day when searching for another occurrence; default is ten years
+Show appointment end times in week and month views
+Whether to display the end time of events in the week and month views
+Show appointment icons in the month view
+Whether to show icons of events in the month view
+Show the memo preview pane
+If “true”, show the memo preview pane in the main window
+Show the task preview pane
+If “true”, show the task preview pane in the main window
+Show week numbers in Day View, Work Week View, and Date Navigator
+Whether to show week numbers in various places in the Calendar
+Vertical position for the tag pane
+Highlight tasks due today
+Whether highlight tasks due today with a special color (task-due-today-color)
+Tasks due today color
+Background color of tasks that are due today, in “#rrggbb” format. Used together with task-due-today-highlight
+Task preview pane position (horizontal)
+Task layout style
+The layout style determines where to place the preview pane in relation to the task list. “0” (Classic View) places the preview pane below the task list. “1” (Vertical View) places the preview pane next to the task list
+Task preview pane position (vertical)
+Position of the task preview pane when oriented vertically
+Highlight overdue tasks
+Whether highlight overdue tasks with a special color (task-overdue-color)
+Overdue tasks color
+Background color of tasks that are overdue, in “#rrggbb” format. Used together with task-overdue-highlight.
+Time divisions
+Intervals shown in Day and Work Week views, in minutes
+Timezone
+The default timezone to use for dates and times in the calendar, as an untranslated Olson timezone database location like “America/New York”
+Twenty four hour time format
+Whether to show times in twenty four hour format instead of using am/pm
+Birthday and anniversary reminder
+Whether to set a reminder for birthdays and anniversaries
+Default appointment reminder
+Whether to set a default reminder for appointments
+Use system timezone
+Use the system timezone instead of the timezone selected in Evolution
+First day of the week
+Monday is a work day
+Tuesday is a work day
+Wednesday is a work day
+Thursday is a work day
+Friday is a work day
+Saturday is a work day
+Sunday is a work day
+Create events, memos and tasks as Private by default
+Draw events as flat, not shaded.
+Whether to order days in the Week View from left to right, rather than from top to bottom.
+Allow direct edit of event Summary when clicking on it in the Day, Work Week, Week or Month view.
+User-defined reminder times, in minutes
+(Deprecated) First day of the week, from Sunday (0) to Saturday (6)
+This key was deprecated in version 3.10 and should no longer be used. Use “week-start-day-name” instead.
+(Deprecated) Work days
+Days on which the start and end of work hours should be indicated. (This key was deprecated in version 3.10 and should no longer be used. Use the “work-day-monday”, “work-day-tuesday”, etc. keys instead.)
+Previous Evolution version
+The most recently used version of Evolution, expressed as “major.minor.micro”. This is used for data and settings migration from older to newer versions.
+List of disabled plugins
+The list of disabled plugins in Evolution
+The window’s X coordinate
+The window’s Y coordinate
+The window’s width in pixels
+The window’s height in pixels
+Whether the window is maximized
+GNOME Calendar’s calendar import done
+Whether calendar from GNOME Calendar has been imported or not
+GNOME Calendar’s tasks import done
+Whether tasks from GNOME Calendar have been imported or not
+Check whether Evolution is the default mailer
+Every time Evolution starts, check whether or not it is the default mailer.
+Default charset in which to compose messages
+Default charset in which to compose messages. Uses UTF-8, if not set.
+Name of the editor to prefer in the message composer
+If the name doesn’t correspond to any known editor, then the built-in WebKit editor is used.
+Path where picture gallery should search for its content
+This value can be an empty string, which means it’ll use the system Picture folder, usually set to /Pictures. This folder will be also used when the set path is not pointing to the existent folder
+Spell check inline
+Draw spelling error indicators on words as you type.
+Automatic link recognition
+Recognize links in text and replace them.
+Automatic emoticon recognition
+Recognize emoticons in text and replace them with images or Unicode characters.
+Unicode emoticons
+Use Unicode characters for emoticons.
+Attribute message
+The text that is inserted when replying to a message, attributing the message to the original author
+Forward message
+The text that is inserted when forwarding a message, saying that the forwarded message follows
+Original message
+The text that is inserted when replying to a message (top posting), saying that the original message follows
+Group Reply replies to list
+Instead of the normal “Reply to All” behaviour, this option will make the “Group Reply” toolbar button try to reply only to the mailing list through which you happened to receive the copy of the message to which you’re replying.
+Put the cursor at the bottom of replies
+Users get all up in arms over where the cursor should go when replying to a message. This determines whether the cursor is placed at the top of the message or the bottom.
+Always request read receipt
+Whether a read receipt request gets added to every message by default.
+Send HTML mail by default
+Send HTML mail by default.
+Spell checking languages
+List of dictionary language codes used for spell checking.
+List of recently used spell checking languages
+List of dictionary language codes used for spell checking, which had been used recently.
+How many recently used spell checking languages to remember
+Show “Bcc” field when sending a mail message
+Show the “Bcc” field when sending a mail message. This is controlled from the View menu when a mail account is chosen.
+Show “Cc” field when sending a mail message
+Show the “Cc” field when sending a mail message. This is controlled from the View menu when a mail account is chosen.
+Show “From” override field when sending a mail message
+Show the “From” override field when sending a mail message. This is controlled from the View menu when a mail account is chosen.
+Show “Reply To” field when sending a mail message
+Show the “Reply To” field when sending a mail message. This is controlled from the View menu when a mail account is chosen.
+Show “From” field when posting to a newsgroup
+Show the “From” field when posting to a newsgroup. This is controlled from the View menu when a news account is chosen.
+Show “Reply To” field when posting to a newsgroup
+Show the “Reply To” field when posting to a newsgroup. This is controlled from the View menu when a news account is chosen.
+Digitally sign replies when the original message is signed
+Automatically enable PGP or S/MIME signatures when replying to a message which is also PGP or S/MIME signed.
+Encode filenames in an Outlook/GMail way
+Encode filenames in the mail headers same as Outlook or GMail do, to let them display correctly filenames with UTF-8 letters sent by Evolution, because they do not follow the RFC 2231, but use the incorrect RFC 2047 standard.
+Send messages through Outbox folder
+Always save messages to Outbox folder when sending, to let a user choose when the messages should be sent.
+Include signature in new messages only
+Include selected signature only for new messages, but have no signature added for Replies or Forwards.
+Put personalized signatures at the top of replies
+Users get all up in arms over where their signature should go when replying to a message. This determines whether the signature is placed at the top of the message or the bottom.
+Do not add signature delimiter
+Set to TRUE in case you do not want to add signature delimiter before your signature when composing a mail.
+Keep original message signature in replies
+When set to TRUE, keep original message signature in replies, otherwise strip the signature and everything below it when replying to the message.
+Ignore list Reply-To:
+Some mailing lists set a Reply-To: header to trick users into sending replies to the list, even when they ask Evolution to make a private reply. Setting this option to TRUE will attempt to ignore such Reply-To: headers, so that Evolution will do as you ask it. If you use the private reply action, it will reply privately, while if you use the “Reply to List” action it will do that. It works by comparing the Reply-To: header with a List-Post: header, if there is one.
+List of localized “Re”
+Comma-separated list of localized “Re” abbreviations to skip in a subject text when replying to a message, as an addition to the standard “Re” prefix. An example is “SV,AV”.
+List of localized “Re” separators
+A list of localized “Re” separators, used to skip in a subject text when replying to a message, as an addition to the standard “:” and the Unicode “︰” separators.
+Use localized “Fwd”/“Re” in message Subject
+When set to true, uses localized “Fwd”/“Re” in message Subject on reply and forward as provided by current locale translation, otherwise uses unlocalized version.
+Number of characters for wrapping
+Will autowrap lines after given number of characters.
+Number of To and CC recipients to ask “prompt-on-many-to-cc-recips” from
+When to ask, when the number of To and CC recipients reaches this value.
+Whether to always show Sign and Encrypt buttons on the toolbar
+If set to “true”, the Sign and Encrypt buttons for either PGP or S/MIME are always shown in the composer’s toolbar. Otherwise they are shown only when being used.
+Wrap quoted text in replies
+If set to “true” quoted text in replies will be wrapped.
+Convert UTC time in reply credits to local time
+Whether the time in reply credits should be converted to local time when it’s in UTC in the message.
+Mark replied to messages as read
+When replying to a message and marking it as being replied to, then whether also mark it as read.
+Whether start Plain Text composer with Preformatted paragraph mode
+When set to true, new Plain Text messages will have preselected Preformatted paragraph mode. The Normal paragraph mode will be used when set to false.
+Whether to obey Content-Disposition:inline message header hint
+Set to “false” to block automatic display of attachments with Content-Disposition: inline.
+Save file format for drag-and-drop operation
+Can be either “mbox” or “pdf”.
+Show image animations
+Enable animated images in HTML mail. Many users find animated images annoying and prefer to see a static image instead.
+Enable or disable type ahead search feature
+Enable the side bar search feature to allow interactive searching of folder names.
+Enable or disable magic space bar
+Enable this to use Space bar key to scroll in message preview, message list and folders.
+Enable to use a similar message list view settings for all folders
+Enable to use a similar message list view settings for all folders.
+Mark citations in the message “Preview”
+Mark citations in the message “Preview”.
+Citation highlight color
+Citation highlight color.
+Enable/disable caret mode
+Enable caret mode, so that you can see a cursor when reading mail.
+Default charset in which to display messages
+Default charset in which to display messages.
+Automatically load images for HTML messages over HTTP
+Show notification about missing remote content
+When the message preview shows a message which requires to download remote content, while the download is not allowed for the user or the site, then show a notification about it on top of the preview panel.
+Show Animations
+Show animated images as animations.
+Show all message headers
+Show all the headers when viewing a messages.
+List of headers to show when viewing a message.
+Each header is represented as a pair: the header name, and a boolean indicating whether the header is enabled. Disabled headers are not shown when viewing a message, but are still listed in Preferences.
+Show photo of the sender
+Show the photo of the sender in the message reading pane.
+Search libravatar.org for photo of the sender
+Allow searching also at libravatar.org for photo of the sender.
+Mark as Seen after specified timeout
+Mark as Seen after specified timeout.
+Mark as Seen always after specified timeout
+If set to true, the selected message will be set as unread after the timeout also after the folder change.
+Timeout for marking messages as seen
+Timeout in milliseconds for marking messages as seen.
+Show Attachment Bar
+Show Attachment Bar below the message preview pane when the message has attachments.
+Sender email-address column in the message list
+Show the email-address of the sender in a separate column in the message list.
+Show deleted messages in the message-list
+Show deleted messages (with a strike-through) in the message-list.
+Show junk messages in the message-list
+Show junk messages (with a red strike-through) in the message-list.
+Enable Unmatched search folder
+Enable Unmatched search folder within Search Folders. It does nothing if Search Folders are disabled.
+Hides the per-folder preview and removes the selection
+This key is read only once and reset to “false” after read. This unselects the mail in the list and removes the preview for that folder.
+Height of the message-list pane
+Height of the message-list pane.
+Whether message headers are collapsed in the user interface
+Width of the message-list pane
+Width of the message-list pane.
+Layout style
+The layout style determines where to place the preview pane in relation to the message list. “0” (Classic View) places the preview pane below the message list. “1” (Vertical View) places the preview pane next to the message list.
 Variable width font
 The variable width font for mail display.
 Terminal font
@@ -1796,30 +2088,30 @@ Use custom fonts for displaying mail.
 Compress display of addresses in TO/CC/BCC
 Compress display of addresses in TO/CC/BCC to the number specified in addresscount.
 Number of addresses to display in TO/CC/BCC
-This sets the number of addresses to show in default message list view beyond which a “” is shown.
+This sets the number of addresses to show in default message list view, beyond which a “...” is shown.
 Show mails in headers part of the message preview when name is available
-When set to false the mail addresses which contain both the name and the email parts in headers like To/Cc/Bcc will be shown only with the name part without the actual email with the name made clickable.
+When set to false, the mail addresses which contain both the name and the email parts in headers like To/Cc/Bcc will be shown only with the name part, without the actual email, with the name made clickable.
 Thread the message-list based on Subject
 Whether or not to fall back on threading by subjects when the messages do not contain In-Reply-To or References headers.
 Default value for thread expand state
 This setting specifies whether the threads should be in expanded or collapsed state by default. Evolution requires a restart.
 Whether sort threads based on latest message in that thread
-This setting specifies whether the threads should be sorted based on latest message in each thread rather than by message’s date. Evolution requires a restart.
+This setting specifies whether the threads should be sorted based on latest message in each thread, rather than by message’s date. Evolution requires a restart.
 Whether sort thread children always ascending
-This setting specifies whether the thread children should be sorted always ascending rather than using the same sort order as in the thread root level.
+This setting specifies whether the thread children should be sorted always ascending, rather than using the same sort order as in the thread root level.
 Whether to compress thread level
-Set to true to compress thread levels for flat conversations to make the level not so deep.
+Set to true to compress thread levels for flat conversations, to make the level not so deep.
 Sort accounts alphabetically in a folder tree
-Tells how to sort accounts in a folder tree used in a Mail view. When set to true accounts are sorted alphabetically with an exception of On This Computer and Search folders otherwise accounts are sorted based on an order given by a user
+Tells how to sort accounts in a folder tree used in a Mail view. When set to true accounts are sorted alphabetically, with an exception of On This Computer and Search folders, otherwise accounts are sorted based on an order given by a user
 Log filter actions
 Log filter actions to the specified log file.
 Logfile to log filter actions
-If not set or being “stdout” then the logging is done to stdout instead to a file.
+If not set, or being “stdout”, then the logging is done to stdout, instead to a file.
 Flush Outbox after filtering
 Whether to flush Outbox after filtering is done. Outbox flush will happen only when there was used any “Forward to” filter action and approximately one minute after the last action invocation.
 Default forward style
 Default reply style
-Forward and reply attribution language tag like enUS. Empty string means to use the same language as the user interface.
+Forward and reply attribution language tag, like enUS. Empty string means to use the same language as the user interface.
 Prompt on send when using key accelerator (Ctrl+Enter)
 Prompt the user when he or she tries to send a message with a key accelerator.
 Prompt on empty subject
@@ -1837,19 +2129,19 @@ Prompt when user tries to send a message with no To or Cc recipients.
 Prompt when user tries to send unwanted HTML
 Prompt when user tries to send HTML mail to recipients that may not want to receive HTML mail.
 Prompt when user tries to open 10 or more messages at once
-If a user tries to open 10 or more messages at one time ask the user if they really want to do it.
+If a user tries to open 10 or more messages at one time, ask the user if they really want to do it.
 Prompt while marking multiple messages
 Enable or disable the prompt whilst marking multiple messages.
 Prompt when deleting messages in search folder
-It disables/enables the repeated prompts to warn that deleting messages from a search folder permanently deletes the message not simply removing it from the search results.
+It disables/enables the repeated prompts to warn that deleting messages from a search folder permanently deletes the message, not simply removing it from the search results.
 Asks whether to copy a folder by drag amp; drop in the folder tree
-Possible values are “never” — do not allow copy with drag amp; drop of folders in folder tree “always” — allow copy with drag amp; drop of folders in folder tree without asking or “ask” — (or any other value) will ask user.
+Possible values are: “never” — do not allow copy with drag amp; drop of folders in folder tree, “always” — allow copy with drag amp; drop of folders in folder tree without asking, or “ask” — (or any other value) will ask user.
 Asks whether to move a folder by drag amp; drop in the folder tree
-Possible values are “never” — do not allow move with drag amp; drop of folders in folder tree “always” — allow move with drag amp; drop of folders in folder tree without asking or “ask” — (or any other value) will ask user.
+Possible values are: “never” — do not allow move with drag amp; drop of folders in folder tree, “always” — allow move with drag amp; drop of folders in folder tree without asking, or “ask” — (or any other value) will ask user.
 Prompt when replying privately to list messages
 It disables/enables the repeated prompts to warn that you are sending a private reply to a message which arrived via a mailing list.
 Prompt when mailing list hijacks private replies
-It disables/enables the repeated prompts to warn that you are trying sending a private reply to a message which arrived via a mailing list but the list sets a Reply-To header which redirects your reply back to the list
+It disables/enables the repeated prompts to warn that you are trying sending a private reply to a message which arrived via a mailing list, but the list sets a Reply-To: header which redirects your reply back to the list
 Prompt when replying to many recipients
 It disables/enables the repeated prompts to warn that you are sending a reply to many people.
 Prompt when switching composer format and the content needs to lose its formatting
@@ -1860,32 +2152,32 @@ Policy for automatically closing the message browser window when forwarding or r
 Empty Trash folders on exit
 Empty all Trash folders when exiting Evolution.
 Minimum days between emptying the trash on exit
-Minimum time between emptying the trash on exit in days.
+Minimum time between emptying the trash on exit, in days.
 Last time Empty Trash was run
-The last time Empty Trash was run in days since January 1st 1970 (Epoch).
+The last time Empty Trash was run, in days since January 1st, 1970 (Epoch).
 Amount of time in seconds the error should be shown on the status bar.
 Level beyond which the message should be logged.
 This can have three possible values. “0” for errors. “1” for warnings. “2” for debug messages.
 Show original “Date” header value.
 Show the original “Date” header (with a local time only if the time zone differs). Otherwise always show “Date” header value in a user preferred format and local time zone.
 List of Labels and their associated colors
-List of labels known to the mail component of Evolution. The list contains strings containing namecolor where color uses the HTML hex encoding.
+List of labels known to the mail component of Evolution. The list contains strings containing name:color where color uses the HTML hex encoding.
 Check incoming mail being junk
 Run junk test on incoming mail.
 Empty Junk folders on exit
 Empty all Junk folders when exiting Evolution.
 Minimum days between emptying the junk on exit
-Minimum time between emptying the junk on exit in days.
+Minimum time between emptying the junk on exit, in days.
 Last time Empty Junk was run
-The last time Empty Junk was run in days since January 1st 1970 (Epoch).
+The last time Empty Junk was run, in days since January 1st, 1970 (Epoch).
 The default plugin for Junk hook
-This is the default junk plugin even though there are multiple plugins enabled. If the default listed plugin is disabled then it won’t fall back to the other available plugins.
+This is the default junk plugin, even though there are multiple plugins enabled. If the default listed plugin is disabled, then it won’t fall back to the other available plugins.
 Determines whether to lookup in address book for sender email
-Determines whether to lookup the sender email in address book. If found it shouldn’t be a spam. It looks up in the books marked for autocompletion. It can be slow if remote address books (like LDAP) are marked for autocompletion.
+Determines whether to lookup the sender email in address book. If found, it shouldn’t be a spam. It looks up in the books marked for autocompletion. It can be slow, if remote address books (like LDAP) are marked for autocompletion.
 Determines whether to look up addresses for junk filtering in local address book only
 This option is related to the key lookupaddressbook and is used to determine whether to look up addresses in local address book only to exclude mail sent by known contacts from junk filtering.
 Determines whether to use custom headers to check for junk
-Determines whether to use custom headers to check for junk. If this option is enabled and the headers are mentioned it will be improve the junk checking speed.
+Determines whether to use custom headers to check for junk. If this option is enabled and the headers are mentioned, it will be improve the junk checking speed.
 Custom headers to use while checking for junk.
 Custom headers to use while checking for junk. The list elements are string in the format “headername=value”.
 UID string of the default account.
@@ -1900,11 +2192,11 @@ Whether to check for new messages in all active accounts regardless of the accou
 Server synchronization interval
 Controls how frequently local changes are synchronized with the remote mail server. The interval must be at least 30 seconds.
 Allow expunge in virtual folders
-Enables Expunge in virtual folders which means that the Folder→Expunge will be callable in virtual folders while the expunge itself will be done in all folders for all deleted messages within the virtual folder not only for deleted messages belonging to the virtual folder.
+Enables Expunge in virtual folders, which means that the Folder→Expunge will be callable in virtual folders, while the expunge itself will be done in all folders for all deleted messages within the virtual folder, not only for deleted messages belonging to the virtual folder.
 Inherit theme colors in HTML format
-When enabled the theme colors for background text and links are sent in resulting HTML formatted message.
+When enabled the theme colors for background, text and links are sent in resulting HTML formatted message.
 An Archive folder for On This Computer folders.
-An Archive folder to use for Messages|Archive feature when in an On This Computer folder.
+An Archive folder to use for Messages|Archive... feature when in an On This Computer folder.
 Whether the To Do bar is visible in the main window
 Stores whether the To Do bar is visible in the main window.
 Width of the To Do bar in the main window
@@ -1920,9 +2212,9 @@ Stores whether the To Do bar should show also tasks without Due date.
 Show start up wizard
 Whether show start up wizard when there is no mail account configured.
 Whether go to the previous message after message deletion
-If set to true goes to the previous message when the selected is deleted; or to the next message when it’s set to false.
+If set to true, goes to the previous message when the selected is deleted; or to the next message, when it’s set to false.
 Show Subject above Sender in Messages column
-Whether to show Subject above Sender (From/To) in the Messages column usually shown in the Vertical/Wide view of the message list
+Whether to show Subject above Sender (From/To) in the Messages column, usually shown in the Vertical/Wide view of the message list
 Visually wrap long lines in composer
 Whether to visually wrap long lines of text to avoid horizontal scrolling
 Alternative reply style
@@ -1935,17 +2227,17 @@ Apply chosen template when using Alternative Reply
 Last chosen template’s folder URI for Alternative Reply
 Last chosen template’s message UID for Alternative Reply
 Whether preserve original message subject when applying template for Alternative Reply
-Whether set “body” in mailto URI as Preformatted paragraph style. If set to “false” then Normal paragraph style will be used.
+Whether set “body” in mailto: URI as Preformatted paragraph style. If set to “false”, then Normal paragraph style will be used.
 Close the message browser window when the selected message is deleted or marked as Junk.
 Collapse archive folders in Move/Copy message to Folder and Go to Folder selectors.
 Where to lookup recipient S/MIME certificates or PGP keys when encrypting messages.
 The “off” value completely disables certificate lookup; the “autocompleted” value provides certificates only for auto-completed contacts; the “books” value uses certificates from auto-completed contacts and searches in books marked for auto-completion.
 Whether Send/Receive should also download of messages for offline.
-If enabled whenever Send/Receive is run it also runs synchronization of messages for offline use. The option is disabled by default.
+If enabled, whenever Send/Receive is run it also runs synchronization of messages for offline use. The option is disabled by default.
 Whether display delivery notification parts inline.
-If enabled the message/delivery-status and message/disposition-notification parts are shown automatically inline.
+If enabled, the message/delivery-status and message/disposition-notification parts are shown automatically inline.
 Whether unset colors provided in HTML mails.
-If enabled unset colors in HTML messages forcing use of desktop theme colors instead.
+If enabled, unset colors in HTML messages, forcing use of desktop theme colors instead.
 (Deprecated) Default forward style
 This key was deprecated in version 3.10 and should no longer be used. Use “forward-style-name” instead.
 (Deprecated) Default reply style
@@ -1956,7 +2248,7 @@ This key was deprecated in version 3.10 and should no longer be used. Use “sho
 This key was deprecated in version 3.10 and should no longer be used. Use “image-loading-policy” instead.
 (Deprecated) Asks whether to close the message window when the user forwards or replies to the message shown in the window
 This key was deprecated in version 3.10 and should no longer be used. Use “browser-close-on-reply-policy” instead.
-['attachment''attaching''attached''enclosed']
+['attachment','attaching','attached','enclosed']
 List of clues for the attachment reminder plugin to look for in a message body
 List of clues for the attachment reminder plugin to look for in a message body.
 Address book source
@@ -1966,7 +2258,7 @@ Whether Pidgin contacts should be automatically synced.
 Enable autocontacts
 Whether contacts should be automatically added to the user’s address book.
 Whether to set “File under” field as “First Last”
-Set File under as “First Last” instead of “Last First”.
+Set File under as “First Last”, instead of “Last, First”.
 Pidgin address book source
 Address book to use for storing automatically synced contacts from Pidgin.
 Pidgin check interval
@@ -1976,13 +2268,13 @@ Pidgin last sync MD5.
 Pidgin last sync time
 Pidgin last sync time.
 List of Custom Headers
-The key specifies the list of custom headers that you can add to an outgoing message. The format for specifying a Header and Header value is Name of the custom header followed by “=” and the values separated by “;”
+The key specifies the list of custom headers that you can add to an outgoing message. The format for specifying a Header and Header value is: Name of the custom header followed by “=” and the values separated by “;”
 Default External Editor
 The default command that must be used as the editor.
 Automatically launch when a new mail is edited
 Automatically launch editor when key is pressed in the mail composer.
 Insert Face picture by default
-Whether insert Face picture to outgoing messages by default. The picture should be set before checking this otherwise nothing happens.
+Whether insert Face picture to outgoing messages by default. The picture should be set before checking this, otherwise nothing happens.
 Delete processed
 Whether to delete processed iTip objects
 Preserve existing reminder by default
@@ -1996,30 +2288,30 @@ Show new mail icon in notification area when new messages arrive.
 Popup message together with the icon.
 Whether show message over the icon when new messages arrive.
 Enable audible notifications when new messages arrive.
-Whether to make a sound of any kind when new messages arrive. If “false” the “notify-sound-beep” “notify-sound-file” “notify-sound-play-file” and “notify-sound-use-theme” keys are disregarded.
+Whether to make a sound of any kind when new messages arrive. If “false”, the “notify-sound-beep”, “notify-sound-file”, “notify-sound-play-file” and “notify-sound-use-theme” keys are disregarded.
 Whether to emit a beep.
 Whether to emit a beep when new messages arrive.
 Sound filename to be played.
-Sound file to be played when new messages arrive if “notify-sound-play-file” is “true”.
+Sound file to be played when new messages arrive, if “notify-sound-play-file” is “true”.
 Whether to play a sound file.
 Whether to play a sound file when new messages arrive. The name of the sound file is given by the “notify-sound-file” key.
 Use sound theme
-Play themed sound when new messages arrive if not in beep mode.
+Play themed sound when new messages arrive, if not in beep mode.
 Do not notify for these accounts
 Contains UIDs of accounts for which the notifications should be avoided.
 Mode to use when displaying mails
-The mode to use for displaying mails. “normal” makes Evolution choose the best part to show “preferplain” makes it use the text part if present “prefersource” makes it use the text part if present otherwise shows HTML source and “onlyplain” forces Evolution to only show plain text
+The mode to use for displaying mails. “normal” makes Evolution choose the best part to show, “preferplain” makes it use the text part, if present, “prefersource” makes it use the text part, if present, otherwise shows HTML source, and “onlyplain” forces Evolution to only show plain text
 Whether to show suppressed HTML output
 List of Destinations for publishing
 The key specifies the list of destinations to where publish calendars. Each values specifies an XML with setup for publishing to one destination.
 []
 List of assignments for recipient and the address to be used with it
-The list is of format 'recipientlt;tabgt;sender' where the recipient can be part of the address only and the sender is a full email address which should match the From address precisely.
+The list is of format 'recipientlt;tabgt;sender', where the recipient can be part of the address only and the sender is a full email address, which should match the From address precisely.
 List of keyword/value pairs for the Templates plugin to substitute in a message body.
 Skip development warning dialog
 Whether the warning dialog in development versions of Evolution is skipped.
 Initial attachment view
-Initial view for attachment bar widgets. “0” is Icon View “1” is List View.
+Initial view for attachment bar widgets. “0” is Icon View, “1” is List View.
 Initial file chooser folder
 Initial folder for GtkFileChooser dialogs.
 Compression format used by autoar
@@ -2033,11 +2325,11 @@ List of paths for the folders to be synchronized to disk for offline usage.
 Enable express mode
 Flag that enables a much simplified user interface.
 List of button names to hide in the window switcher
-Valid values are “mail” “addressbook” “calendar” “tasks” and “memos”. Change of this requires restart of the application.
+Valid values are “mail”, “addressbook”, “calendar”, “tasks” and “memos”. Change of this requires restart of the application.
 Window buttons are visible
 Whether the window buttons should be visible.
 Window button style
-The style of the window buttons. Can be “text” “icons” “both” “toolbar”. If “toolbar” is set the style of the buttons is determined by the GNOME toolbar setting.
+The style of the window buttons. Can be “text”, “icons”, “both”, “toolbar”. If “toolbar” is set, the style of the buttons is determined by the GNOME toolbar setting.
 Menubar is visible
 Whether the menubar should be visible.
 Toolbar is visible
@@ -2048,13 +2340,13 @@ Statusbar is visible
 Whether the status bar should be visible.
 ID or alias of the component to be shown by default at start-up.
 Default sidebar width
-The default width for the sidebar in pixels.
+The default width for the sidebar, in pixels.
 Enable special WebKit developer features
 Any change of this option requires restart of Evolution.
 The last extension being used when backing up Evolution data.
 It can be either “.gz” or “.xz” and it influences what extension will be preselected in the file chooser.
 Prefix of the URI to use to search the web with selected text.
-The prefix of a URL to be used for searches on the web. The actual text selection is escaped and appended to this string. The URI should start with https//.
+The prefix of a URL to be used for searches on the web. The actual text selection is escaped and appended to this string. The URI should start with https://.
 Minimum font size to be used by WebKitGTK
 The minimum font size in pixels used to display text in WebKitGTK. This setting controls the absolute smallest size. Values other than 0 can potentially break page layouts. Negative values are treated as 0.
 Set of additional illegal characters in the filename
@@ -2062,16 +2354,16 @@ When generating file names from custom strings some non-printable or reserved ch
 Use only local spam tests.
 Use only the local spam tests (no DNS).
 Full path command to run spamassassin
-Full path to a spamassassin command. If not set then a compile-time path is used usually /usr/bin/spamassassin. The command should not contain any other arguments.
+Full path to a spamassassin command. If not set, then a compile-time path is used, usually /usr/bin/spamassassin. The command should not contain any other arguments.
 Full path command to run sa-learn
-Full path to a sa-learn command. If not set then a compile-time path is used usually /usr/bin/sa-learn. The command should not contain any other arguments.
+Full path to a sa-learn command. If not set, then a compile-time path is used, usually /usr/bin/sa-learn. The command should not contain any other arguments.
 Whether the text-highlight module is enabled
-Theme name to use defaults to “bclear”
-Use “highlight --list-scripts=themes” to get the list of installed themes and then the value to one of them. The change requires only re-format of the message part to take into effect like using right-click→Format As→.
+Theme name to use, defaults to “bclear”
+Use “highlight --list-scripts=themes” to get the list of installed themes and then the value to one of them. The change requires only re-format of the message part to take into effect, like using right-click→Format As→....
 Evolution
-Manage your email contacts and schedule
-Evolution is a personal information management application that provides integrated mail calendaring and address book functionality.
-Evolution supports a wide range of industry standard data formats and network protocols for information exchange with an emphasis on standards compliance and security. Evolution can also integrate smoothly with Microsoft Exchange by way of the “Exchange Web Services” (EWS) extension.
+Manage your email, contacts and schedule
+Evolution is a personal information management application that provides integrated mail, calendaring and address book functionality.
+Evolution supports a wide range of industry standard data formats and network protocols for information exchange, with an emphasis on standards compliance and security. Evolution can also integrate smoothly with Microsoft Exchange by way of the “Exchange Web Services” (EWS) extension.
 The Evolution Team
 Groupware Suite
 Evolution Mail and Calendar
@@ -2168,7 +2460,7 @@ Resize
 Use as it is
 Do not save
 Unable to save {0}.
-Error saving {0} to {1} {2}
+Error saving {0} to {1}: {2}
 Address “{0}” already exists.
 A contact already exists with this address. Would you like to add a new card with the same address anyway?
 Add
@@ -2182,12 +2474,160 @@ Failed to delete contact
 You do not have permission to delete contacts in this address book.
 Cannot add new contact
 “{0}” is a read-only address book and cannot be modified. Please select a different address book from the side bar in the Contacts view.
+Cannot save a contact, address book is still opening
+Cannot save a contact to the address book “{0}”, because it is still opening. Either wait till it’s opened, or select a different address book.
+Something has gone wrong when displaying the contact
+A WebKitWebProcess crashed when displaying the contact. You can try again by moving to another contact and back. If the issue persists, please file a bug report in GNOME Gitlab.
+Failed to refresh list of account address books
+Do you want to unset contact image?
+Do Not Unset
+Unset
+Show Telephone
+Show SIP Address
+Show Instant Messaging
+Show Web Addresses
+Show Job section
+Show Miscellaneous
+Show Home Mailing Address
+Show Work Mailing Address
+Show Other Mailing Address
+Show Notes
+Show Certificates
+Contact Editor
+Options
+Cancel
+Save
+Help
+Image
+Nickname:
+File under:
+Where:
+Categories...
+Full Name...
+Email
+Wants to receive HTML mail
+Telephone
+SIP Address
+Instant Messaging
+Contact
+Home Page:
+Calendar:
+Free/Busy:
+Video Chat:
+Blog:
+Web Addresses
+Profession:
+Title:
+Company:
+Department:
+Office:
+Manager:
+Assistant:
+Job
+Spouse:
+Birthday:
+Anniversary:
+Anniversary
+Birthday
+Miscellaneous
+Personal Information
+City:
+Zip/Postal Code:
+State/Province:
+Country:
+PO Box:
+Address:
+Home
+Work
+Other
+Mailing Address
+Notes
+Add PGP
+Add X.509
+Remove
+Load PGP
+Load X.509
+Certificates
+Undo
+Redo
+Error adding contact
+Error modifying contact
+Error removing contact
+Contact Editor — %s
+X.509 certificates
+PGP keys
+All files
+Open PGP key
+Open X.509 certificate
+Open
+Chosen file is not a local file.
+Failed to load certificate: %s
+X.509
+PGP
+Save PGP key
+Save X.509 certificate
+Failed to save certificate: %s
+Please select an image for this contact
+No image
+The contact data is invalid:
+“%s” has an invalid format
+“%s” cannot be a future date
+%s“%s” has an invalid format
+%s“%s” is empty
+Invalid contact.
+OK
+Contact Quick-Add
+Edit Full
+Full name
+Select Address Book
+Mr.
+Mrs.
+Ms.
+Miss
+Dr.
+Sr.
+Jr.
+II
+III
+Esq.
+Full Name
+First:
+Middle:
+Last:
+Suffix:
+Contact List Editor
+List name:
+Members
+Type an email address or drag a contact into the list below:
+Hide addresses when sending mail to this list
+Add an email to the List
+Remove an email address from the List
+Select...
+Insert email addresses from Address Book
+Top
+Up
+Down
+Bottom
+Contact List Members
+Error adding list
+Error modifying list
+Error removing list
+Name contains
+Email begins with
+Any field contains
+evolution address book
+Copy Email Address
+Copy the email address to the clipboard
+Send New Message To…
 Send a mail message to this address
+Click to mail %s
+Click to open map for %s
 Open map
 SIP
-List Members
+List Members:
 Fax
 Phone
+Nickname
 AIM
 GroupWise
 ICQ
@@ -2197,24 +2637,41 @@ Yahoo
 Gadu-Gadu
 Skype
 Twitter
+Company
+Department
+Office
+Profession
 Position
+Manager
+Assistant
+Video Chat
+Free/Busy
+Address
+Home Page
 Web Log
+Spouse
 Personal
 Note
+List Members
 Job Title
 Home page
+Blog
 Cancelled
 Merge Contact
 Merge
 Duplicate Contact Detected
-Changed Contact
-New Contact
-Conflicting Contact
-Old Contact
+Changed Contact:
+New Contact:
+Conflicting Contact:
+Old Contact:
 This address book cannot be opened. This either means this book is not marked for offline usage or not yet downloaded for offline usage. Please load the address book once in online mode to download its contents.
+This address book cannot be opened.  Please check that the path %s exists and that permissions are set to access it.
 This version of Evolution does not have LDAP support compiled in to it.  To use LDAP in Evolution an LDAP-enabled Evolution package must be installed.
-This address book cannot be opened.  This either means that an incorrect URI was entered or the server is unreachable.
-Detailed error message
+This address book cannot be opened.  This either means that an incorrect URI was entered, or the server is unreachable.
+Detailed error message:
+The backend for this address book was unable to parse this query. %s
+The backend for this address book refused to perform this query. %s
+This query did not complete successfully. %s
 card.vcf
 list
 Move contact to
@@ -2232,8 +2689,10 @@ Delete selected contacts
 Select all visible contacts
 Are you sure you want to delete these contact lists?
 Are you sure you want to delete this contact list?
+Are you sure you want to delete this contact list (%s)?
 Are you sure you want to delete these contacts?
 Are you sure you want to delete this contact?
+Are you sure you want to delete this contact (%s)?
 Delete
 Don’t Display
 Display All Contacts
@@ -2262,31 +2721,36 @@ Radio
 Telex
 TTYTDD
 Unit
+Title
 Role
 Web Site
 Journal
-Contact List
+Categories
+Contact List:
+Contact:
 evolution minicard
+New Contact
 New Contact List
 Contacts Map
 Zoom In
 Zoom Out
 Find
-Searching for the Contacts
+Searching for the Contacts…
 Search for the Contact.
 There are no items to show in this view.
-Importing
+Importing…
 Can’t open .csv file
-Outlook Contacts CSV or Tab (.csv .tab)
+Outlook Contacts CSV or Tab (.csv, .tab)
 Outlook Contacts CSV and Tab Importer
-Mozilla Contacts CSV or Tab (.csv .tab)
+Mozilla Contacts CSV or Tab (.csv, .tab)
 Mozilla Contacts CSV and Tab Importer
-Evolution Contacts CSV or Tab (.csv .tab)
+Evolution Contacts CSV or Tab (.csv, .tab)
 Evolution Contacts CSV and Tab Importer
 Can’t open .ldif file
 LDAP Data Interchange Format (.ldif)
 Evolution LDIF importer
 Evolution vCard Importer
+Page %d
 Work Email
 Home Email
 Other Email
@@ -2296,16 +2760,16 @@ Other SIP
 Google Talk
 IM
 Would you like to send all the participants a cancellation notice?
-If you do not send a cancellation notice the other participants may not know the meeting is canceled.
+If you do not send a cancellation notice, the other participants may not know the meeting is canceled.
 Do not Send
 Send Notice
 Are you sure you want to delete this meeting?
 All information on this meeting will be deleted and can not be restored.
-If you do not send a cancellation notice the other participants may not know the task has been deleted.
+If you do not send a cancellation notice, the other participants may not know the task has been deleted.
 Are you sure you want to delete this task?
 All information on this task will be deleted and can not be restored.
 Would you like to send a cancellation notice for this memo?
-If you do not send a cancellation notice the other participants may not know the memo has been deleted.
+If you do not send a cancellation notice, the other participants may not know the memo has been deleted.
 Are you sure you want to delete this memo?
 All information on this memo will be deleted and can not be restored.
 Are you sure you want to delete the meeting titled “{0}”?
@@ -2322,15 +2786,15 @@ All information on these tasks will be deleted and can not be restored.
 Are you sure you want to delete these {0} memos?
 All information in these memos will be deleted and can not be restored.
 Would you like to save your changes to this meeting?
-You have changed this meeting but not yet saved it.
+You have changed this meeting, but not yet saved it.
 Save Changes
 Discard Changes
 Would you like to save your changes to this appointment?
-You have changed this appointment but not yet saved it.
+You have changed this appointment, but not yet saved it.
 Would you like to save your changes to this task?
-You have changed this task but not yet saved it.
+You have changed this task, but not yet saved it.
 Would you like to save your changes to this memo?
-You have made changes to this memo but not yet saved them.
+You have made changes to this memo, but not yet saved them.
 Would you like to send meeting invitations to participants?
 Email invitations will be sent to all participants and allow them to reply.
 Send
@@ -2371,7 +2835,7 @@ The calendar is not marked for offline usage.
 Cannot save event
 “{0}” is a read-only calendar and cannot be modified. Please select a different calendar that can accept appointments.
 Cannot save task
-“{0}” does not support assigned tasks please select a different task list.
+“{0}” does not support assigned tasks, please select a different task list.
 Error loading task list “{0}”
 The task list is not marked for offline usage.
 Error loading memo list “{0}”
@@ -2419,11 +2883,11 @@ Failed to refresh task list “{0}”
 Failed to refresh memo list “{0}”
 Failed to make an occurrence movable
 Something has gone wrong when displaying the event
-A WebKitWebProcess crashed when displaying the event. You can try again by moving to another event and back. If the issue persists please file a bug report in GNOME Gitlab.
+A WebKitWebProcess crashed when displaying the event. You can try again by moving to another event and back. If the issue persists, please file a bug report in GNOME Gitlab.
 Something has gone wrong when displaying the memo
-A WebKitWebProcess crashed when displaying the memo. You can try again by moving to another memo and back. If the issue persists please file a bug report in GNOME Gitlab.
+A WebKitWebProcess crashed when displaying the memo. You can try again by moving to another memo and back. If the issue persists, please file a bug report in GNOME Gitlab.
 Something has gone wrong when displaying the task
-A WebKitWebProcess crashed when displaying the task. You can try again by moving to another task and back. If the issue persists please file a bug report in GNOME Gitlab.
+A WebKitWebProcess crashed when displaying the task. You can try again by moving to another task and back. If the issue persists, please file a bug report in GNOME Gitlab.
 Summary
 contains
 does not contain
@@ -2450,6 +2914,7 @@ More Than
 Expression
 Summary Contains
 Description Contains
+Comments: %s
 None
 Tentative
 Confirmed
@@ -2467,35 +2932,58 @@ Go to Date
 It has reminders.
 It has recurrences.
 It is a meeting.
-Calendar Event It has no summary.
+Calendar Event: Summary is %s.
+Calendar Event: It has no summary.
 calendar view event
 Grab Focus
 It has no events.
+Work Week View: %s. %s
+Day View: %s. %s
 calendar view for a work week
 calendar view for one or more days
 a table to view and select the current time range
 Jump button
-Click here you can find more events.
+Click here, you can find more events.
 Play a sound
 Pop up an alert
 Send an email
 Run a program
 Unknown action to be performed
+%s %s before the start
+%s %s after the start
+%s at the start
+%s %s before the end
+%s %s after the end
+%s at the end
+%s at %s
+%s for an unknown trigger type
+Month View: %s. %s
+Week View: %s. %s
 calendar view for a month
 calendar view for one or more weeks
 Untitled
-Start Date
-End Date
-Due Date
-Recurs
-Status
+Categories:
+Location:
+Start Date:
+End Date:
+Due Date:
+Recurs:
+Status:
 High
 Normal
 Low
-Priority
-Attendees
-Web Page
+Priority:
+Organizer:
+Attendees:
+Description:
+Web Page:
+Creating view for calendar “%s”
+Creating view for task list “%s”
+Creating view for memo list “%s”
 Destination is read only
+Copying events to the calendar “%s”
+Copying memos to the memo list “%s”
+Copying tasks to the task list “%s”
 Delete this item from all other recipient’s mailboxes?
 Retract comment
 Select Date
@@ -2532,11 +3020,26 @@ Default memo list not found
 Default task list not found
 No suitable component found
 Pasting iCalendar data
+%d %b %Y
+%d %b
+%A %d %b %Y
+%a %d %b
+%a %d %b %Y
+Organizer: %s <%s>
+Organizer: %s
+Location: %s
+Time: %s %s
+%s (%d)
+%d selected
+Start Date
+End Date
 Created
 Last modified
 Source
+Status
 Type
 Unknown
+Source with UID “%s” not found
 Creating an event
 Creating a memo
 Creating a task
@@ -2559,14 +3062,22 @@ Removing a task
 Updating an event
 Updating a memo
 Updating a task
+Getting events to purge in the calendar “%s”
+Getting memos to purge in the memo list “%s”
+Getting tasks to purge in the task list “%s”
+Purging events in the calendar “%s”
+Purging memos in the memo list “%s”
+Purging tasks in the task list “%s”
 Purging events
 Purging memos
 Purging tasks
 Expunging completed tasks
+%a %m/%d/%Y %H:%M:%S
+%a %m/%d/%Y %I:%M:%S %p
 Event’s time is in the past
-Event cannot be edited because the selected calendar could not be opened
-Event cannot be edited because the selected calendar is read only
-Event cannot be fully edited because you are not the organizer
+Event cannot be edited, because the selected calendar could not be opened
+Event cannot be edited, because the selected calendar is read only
+Event cannot be fully edited, because you are not the organizer
 Start date is not a valid date
 Start time is not a valid time
 Unknown error
@@ -2582,24 +3093,34 @@ Toggles whether to show time as busy
 Classify as public
 Classify as private
 Classify as confidential
-Start time
-End time
+Start time:
+End time:
 All day event
 Reminders
 Schedule
+Meeting — %s
+Appointment — %s
 New note
-Memo cannot be edited because the selected memo list could not be opened
-Memo cannot be edited because the selected memo list is read only
-Memo cannot be fully edited because you are not the organizer
-List
-Start date
+Memo cannot be edited, because the selected memo list could not be opened
+Memo cannot be edited, because the selected memo list is read only
+Memo cannot be fully edited, because you are not the organizer
+List:
+Start date:
+Assigned Memo — %s
+Memo — %s
+Could not load “%s”
 Could not load the attachment
 Some attachments are still being downloaded. Please wait until the download is finished.
-Attachment
+Attachment “%s” cannot be found, remove it from the list, please
+Attachment “%s” doesn’t have valid URI, remove it from the list, please
+Attachment…
 Attach a file
 Show attachments
 Icon View
+Cannot find attendee “%s” in the list of attendees
+Not enough rights to delete attendee “%s”
 Organizer address is not a valid user mail address
+Attendees
 Toggles whether the Attendees are displayed
 Role Field
 Toggles whether the Role field is displayed
@@ -2611,9 +3132,10 @@ Type Field
 Toggles whether the Attendee Type is displayed
 An organizer is required.
 At least one attendee is required.
-Override color of the event. If not set then color of the calendar is used.
-Override color of the memo. If not set then color of the memo list is used.
-Override color of the task. If not set then color of the task list is used.
+Override color of the event. If not set, then color of the calendar is used.
+Override color of the memo. If not set, then color of the memo list is used.
+Override color of the task. If not set, then color of the task list is used.
+Attendees…
 Edit
 Add exception
 Modify exception
@@ -2658,6 +3180,7 @@ Exceptions
 Preview
 Send To
 Set or unset reminders
+%s before
 at the start
 Custom
 Set a custom predefined time to
@@ -2679,33 +3202,39 @@ extra times every
 Custom message
 Custom reminder sound
 Select a sound file
-Program
-Arguments
+Program:
+Arguments:
+Send To:
 Query free / busy information for the attendees
+Summary:
+Categories…
 Edit as text
 View as text
 View as HTML
-Web page
-Due date
-Date completed
+Web page:
+Due date:
+Date completed:
+Classification:
 Undefined
-Percent complete
-Time zone
+Percent complete:
+Time zone:
 Show time as busy
 Task’s start date is in the past
 Task’s due date is in the past
-Task cannot be edited because the selected task list could not be opened
-Task cannot be edited because the selected task list is read only
-Task cannot be fully edited because you are not the organizer
+Task cannot be edited, because the selected task list could not be opened
+Task cannot be edited, because the selected task list is read only
+Task cannot be fully edited, because you are not the organizer
 Start date is required for recurring tasks
 Due date is not a valid date
 Completed date is not a valid date
 Completed date cannot be in the future
 All Day Task
 Toggles whether to have All Day Task
+Assigned Task — %s
+Task — %s
 attachment
-Sending notifications to attendees
-Saving changes
+Sending notifications to attendees…
+Saving changes…
 No Summary
 Close
 Close the current window
@@ -2717,7 +3246,8 @@ Delete the selection
 View help
 Paste
 Paste the clipboard
-Print
+Print…
+Preview…
 Select All
 Select all text
 File
@@ -2728,7 +3258,11 @@ Save and Close
 Save current changes and close editor
 am
 pm
+%A %d %B
+Week %d
+%02i minute divisions
 Show the second time zone
+Select…
 Chair Persons
 Required Participants
 Optional Participants
@@ -2742,6 +3276,8 @@ Required Participant
 Optional Participant
 Non-Participant
 In Process
+Enter password to access free/busy information on server %s as user %s
+Failure reason: %s
 Enter password
 Out of Office
 No Information
@@ -2755,6 +3291,7 @@ All people and resources
 All people and one resource
 Required people
 Required people and one resource
+Summary: %s
 Click here to add an attendee
 Member
 Delegated To
@@ -2762,32 +3299,46 @@ Delegated From
 Common Name
 Language
 * No Summary *
-Start
-Due
+Start:
+Due:
 Cut selected memos to the clipboard
 Copy selected memos to the clipboard
 Paste memos from the clipboard
 Delete selected memos
 Select all visible memos
 Click to add a memo
+%d%%
 Cut selected tasks to the clipboard
 Copy selected tasks to the clipboard
 Paste tasks from the clipboard
 Delete selected tasks
 Select all visible tasks
 Click to add a task
+Start date
 Completion date
 Complete
+Due date
+% Complete
+Priority
 Select Timezone
+Start: %s
+Due: %s
+Completed: %s
 Today
 Tomorrow
 Tasks without Due date
-New Task
-New Assigned Task
-Delete This Instance
-Delete All Instances
+New Appointment…
+New Meeting…
+New Task…
+New Assigned Task…
+Open…
+Delete This Instance…
+Delete All Instances…
+Delete…
 Show Tasks without Due date
 To Do
+%s (%s)
+%d %B
 An organizer must be set.
 At least one attendee is necessary
 Event information
@@ -2799,9 +3350,10 @@ Tentatively Accepted
 Updated
 Refresh
 Counter-proposal
+Free/Busy information (%s to %s)
 iCalendar information
-Unable to book a resource the new event collides with some other.
-Unable to book a resource error
+Unable to book a resource, the new event collides with some other.
+Unable to book a resource, error:
 You must be an attendee of the event.
 Sending an event
 Sending a memo
@@ -2816,10 +3368,18 @@ Sa
 Su
 (Completed
 (Due
+Due
 Appointment
 Task
 Memo
+Status: %s
+Priority: %s
+Percent Complete: %i
+URL: %s
+Categories: %s
+Contacts:
 In progress
+% Completed
 is greater than
 is less than
 Current State
@@ -2849,6 +3409,7 @@ is an instance
 has recurrences
 has reminders
 has attachments
+Start
 End
 URL
 Africa/Abidjan
@@ -3232,13 +3793,13 @@ Pacific/Truk
 Pacific/Wake
 Pacific/Wallis
 Pacific/Yap
-Save as
+Save as…
 Close the current file
 New Message
 Open New Message window
 Configure Evolution
 Save the current file
-Save As
+Save As…
 Save the current file with a different name
 Character Encoding
 Print Preview
@@ -3270,25 +3831,25 @@ Toggles whether the Reply-To field is displayed
 Visually Wrap Long Lines
 Attach
 Save Draft
-Name
+Name:
 Enter the recipients of the message
 Enter the addresses that will receive a carbon copy of the message
 Enter the addresses that will receive a carbon copy of the message without appearing in the recipient list of the message
-From
-Reply-To
-To
-Cc
-Bcc
-Post To
-Subject
-Signature
+From:
+Reply-To:
+To:
+Cc:
+Bcc:
+Post To:
+Subject:
+Signature:
 Click here for the address book
 Click here to select folders to post to
-Cannot sign outgoing message No signing certificate set for this account
-Cannot encrypt outgoing message No encryption certificate set for this account
+Cannot sign outgoing message: No signing certificate set for this account
+Cannot encrypt outgoing message: No encryption certificate set for this account
 Compose Message
-Reading text content
-The composer contains a non-text message body which cannot be edited.
+Reading text content…
+The composer contains a non-text message body, which cannot be edited.
 You cannot attach the file “{0}” to this message.
 The file “{0}” is not a regular file and cannot be sent in a message.
 Could not retrieve messages to attach from {0}.
@@ -3301,8 +3862,8 @@ Do you want to recover last saved version of the message?
 Recovering the message will allow you to continue where it had been saved the last time.
 Could not save to autosave file “{0}”.
 Error saving to autosave because “{1}”.
-Are you sure you want to discard the message titled “{0}” you are composing?
-Closing this composer window will discard the message permanently unless you choose to save the message in your Drafts folder. This will allow you to continue the message at a later date.
+Are you sure you want to discard the message, titled “{0}”, you are composing?
+Closing this composer window will discard the message permanently, unless you choose to save the message in your Drafts folder. This will allow you to continue the message at a later date.
 Continue Editing
 Are you sure you want to discard the message you are composing?
 Could not create message.
@@ -3317,11 +3878,11 @@ An error occurred while sending. How do you want to proceed?
 The reported error was “{0}”.
 Save to Outbox
 Try Again
-Your message was sent but an error occurred during post-processing.
+Your message was sent, but an error occurred during post-processing.
 Saving message to Outbox.
-The message will be saved to your local Outbox folder because the destination service is currently unavailable. You can send the message by clicking the Send/Receive button in Evolution’s toolbar.
+The message will be saved to your local Outbox folder, because the destination service is currently unavailable. You can send the message by clicking the Send/Receive button in Evolution’s toolbar.
 Are you sure you want to send the message?
-A keyboard accelerator to send the message has been pressed. Either cancel sending the message if it was done by an accident or send the message.
+A keyboard accelerator to send the message has been pressed. Either cancel sending the message, if it was done by an accident, or send the message.
 Are you sure you want to change the composer format?
 Switching to Plain Text format will cause the text to lose all the HTML formatting. Do you want to continue?
 Don’t lose formatting
@@ -3338,20 +3899,24 @@ By converting the memo into the message the editing window will be closed and th
 Are you sure you want to convert the task into a message?
 By converting the task into the message the editing window will be closed and the changes being done discarded.
 Something has gone wrong when editing the message
-A WebKitWebProcess crashed when editing the message. You can try again by closing the composer window and opening a new one. If the issue persists please file a bug report in GNOME Gitlab.
+A WebKitWebProcess crashed when editing the message. You can try again by closing the composer window and opening a new one. If the issue persists, please file a bug report in GNOME Gitlab.
 An error occurred while creating message composer.
 Toggle View Inline
 Open in default application
 Display as attachment
 Audio Player
 Play the attachment in embedded audio player
+From
 (no subject)
 Remote content download had been blocked for this message.
+This message was sent by %s on behalf of %s
 Regular Image
 Display part as an image
 RFC822 message
 Format part as an RFC822 message
+Name
 Size
+Subject
 Mailer
 Richtext
 Display part as enriched text
@@ -3362,29 +3927,32 @@ Format part as plain text
 Unsigned
 This message is not signed. There is no guarantee that this message is authentic.
 Valid signature
-Valid signature but sender address and signer address do not match
+Valid signature, but sender address and signer address do not match
 This message is signed and is valid meaning that it is very likely that this message is authentic.
 Invalid signature
-The signature of this message cannot be verified it may have been altered in transit.
-Valid signature but cannot verify sender
-This message is signed with a valid signature but the sender of the message cannot be verified.
-This message is signed but the public key is not in your keyring
-This message was digitally signed but the corresponding public key is not present in your keyring. If you want to be able to verify the authenticity of messages from this person you should obtain the public key through a trusted method and add it to your keyring. Until then there is no guarantee that this message truly came from that person and that it arrived unaltered.
+The signature of this message cannot be verified, it may have been altered in transit.
+Valid signature, but cannot verify sender
+This message is signed with a valid signature, but the sender of the message cannot be verified.
+This message is signed, but the public key is not in your keyring
+This message was digitally signed, but the corresponding public key is not present in your keyring. If you want to be able to verify the authenticity of messages from this person, you should obtain the public key through a trusted method and add it to your keyring. Until then, there is no guarantee that this message truly came from that person and that it arrived unaltered.
 Unencrypted
 This message is not encrypted. Its content may be viewed in transit across the Internet.
-Encrypted weak
-This message is encrypted but with a weak encryption algorithm. It would be difficult but not impossible for an outsider to view the content of this message in a practical amount of time.
+Encrypted, weak
+This message is encrypted, but with a weak encryption algorithm. It would be difficult, but not impossible for an outsider to view the content of this message in a practical amount of time.
 Encrypted
 This message is encrypted.  It would be difficult for an outsider to view the content of this message.
-Encrypted strong
-This message is encrypted with a strong encryption algorithm. It would be very difficult for an outsider to view the content of this message in a practical amount of time.
+Encrypted, strong
+This message is encrypted, with a strong encryption algorithm. It would be very difficult for an outsider to view the content of this message in a practical amount of time.
 View Certificate
 Import Certificate
 Details
 Digital Signature
 Encryption
-Encrypted by
+Encrypted by:
 Display source of a MIME part
+To
+Cc
+Bcc
 GPG signed
 partially GPG signed
 GPG encrypted
@@ -3394,13 +3962,28 @@ partially S/MIME signed
 S/MIME encrypted
 partially S/MIME encrypted
 Security
+Error parsing MBOX part: %s
+Could not parse S/MIME message: %s
+Could not parse PGP message: %s
+Error verifying signature: %s
 Malformed external-body part
+Pointer to FTP site (%s)
+Pointer to local file (%s) valid at site “%s”
+Pointer to local file (%s)
+Pointer to remote data (%s)
+Pointer to unknown external data (“%s” type)
 Could not parse MIME message. Displaying as source.
 Unsupported encryption type for multipart/encrypted
+Could not parse PGP/MIME message: %s
 Unsupported signature format
+Reply-To
 Date
 Newsgroups
 Face
+Failed to import certificate: %s
+%s attachment
+%d %B %Y
+Calendar: from %s to %s
 evolution calendar item
 Mail Accounts
 Address Books
@@ -3416,20 +3999,28 @@ Memo List
 Task List
 Evolution Accounts
 Initiates refresh of account sources
+%s (cancelled)
+%s (completed)
+%s (waiting)
+%s (cancelling)
+%s
+%s (%d%% complete)
 Close this message (Escape)
 Dismiss
-Failed to create a thread
+Failed to create a thread:
 Attached message
 Operation was cancelled
 attachment.dat
 A load operation is already in progress
 A save operation is already in progress
+Could not open “%s”
 Could not open the attachment
 Attachment contents not loaded
+Could not save “%s”
 Could not save the attachment
 Attachment Properties
-Filename
-MIME Type
+Filename:
+MIME Type:
 Suggest automatic display of attachment
 Could not set as background
 Set as Background
@@ -3437,13 +4028,17 @@ Loading
 Saving
 Hide Attachment Bar
 Add Attachment
-Archive selected directories using this format
+Archive selected directories using this format:
 Do not extract files from the attachment
 Save extracted files only
 Save extracted files and the original archive
-Open With Other Application
+Open With Other Application…
 Save All
+Save As
+Add Attachment…
 Properties
+Open With “%s”
+Open this attachment in %s
 Open With Default Application
 Open this attachment in default application
 Mark as default address book
@@ -3454,25 +4049,31 @@ Next month
 Previous year
 Next year
 Month Calendar
+%B
+%Y
+%B %Y
 Mark as default calendar
 Mark as default task list
 Mark as default memo list
-Color
+Color:
 Copy calendar contents locally for offline operation
 Copy task list contents locally for offline operation
 Copy memo list contents locally for offline operation
-Currently used categories
-Available Categories
+Currently used categories:
+Available Categories:
 New
 Icon
+Create category “%s”
 Category Icon
 No Image
 Category Name
 Unset icon
 Category Properties
+There is already a category “%s” in the configuration. Please use another name
 popup list
 Now
-The percent value must be between 0 and 100 inclusive
+The time must be in the format: %s
+The percent value must be between 0 and 100, inclusive
 Arabic
 Baltic
 Central European
@@ -3486,12 +4087,14 @@ Thai
 Turkish
 Unicode
 Western European
-Western European New
+Western European, New
 Traditional
 Simplified
 Ukrainian
 Visual
 Enter the character set to use
+Other…
+Cannot create a client object from extension name “%s”
 Offline
 Online
 Unreachable
@@ -3501,25 +4104,26 @@ Look Up
 Next
 New Collection Account
 Previous
-Looking up details please wait
+Looking up details, please wait…
+Requires password to continue. %s.
 View certificate
 Found no candidates. It can also mean that the server doesn’t provide any information about its configuration using the selected lookup methods. Enter the account manually instead or change above settings.
-Username
-Password
+Username:
+Password:
 Remember password
 Collection
 Mail Receive
 Mail Send
-Looking up LDAP server’s search base
-Failed to store password
-Failed to create sources
-Saving account settings please wait
+Looking up LDAP server’s search base…
+Failed to store password:
+Failed to create sources:
+Saving account settings, please wait…
 User details
-Email Address or User name
+Email Address or User name:
 Advanced Options
-Server
-Semicolon (“;”) separated list of servers to look up information for in addition to the domain of the e-mail address.
-Select which parts should be configured
+Server:
+Semicolon (“;”) separated list of servers to look up information for, in addition to the domain of the e-mail address.
+Select which parts should be configured:
 Account Information
 Choose custom color
 Default
@@ -3563,7 +4167,7 @@ light cyan
 light blue
 light purple
 white
-Running
+Running…
 Date and Time
 Text entry to input date
 Click this button to show a calendar
@@ -3572,12 +4176,20 @@ Time
 Invalid Date Value
 Invalid Time Value
 Yesterday
+Next Mon
+Next Tue
+Next Wed
+Next Thu
+Next Fri
+Next Sat
+Next Sun
 Use locale default
-Format
+Format:
 weeks
 months
 years
 Do not synchronize locally mails older than
+Mark messages as read after %s seconds
 Smile
 Sad
 Wink
@@ -3600,19 +4212,23 @@ Tired
 Devilish
 Monkey
 (Unknown Filename)
+Writing “%s”
+Writing “%s” to %s
+<click here to select a date>
 now
+%d-%b-%Y
 Select a time to compare against
 Choose a File
-Rule name
+Rule name:
 all the following conditions
 any of the following conditions
-Find items which match
+Find items which match:
 Find items that meet the following conditions
 All related
 Replies
 Replies and parents
 No reply or parent
-Include threads
+Include threads:
 Add Condition
 Incoming
 Outgoing
@@ -3641,20 +4257,22 @@ Cut selected text to the clipboard
 Paste text from the clipboard
 Redo the last undone action
 Undo the last action
+Format
 Paragraph Style
 Alignment
 Current Languages
 Increase Indent
 Emoji
 Insert Emoji
-HTML File
-Text File
+HTML File…
+Text File…
 Paste Quotation
+Find…
 Search for text
 Find Again
-Replace
+Replace…
 Search for and replace text
-Check Spelling
+Check Spelling…
 Decrease Indent
 Wrap Lines
 Center
@@ -3678,14 +4296,15 @@ Bulleted List
 Roman Numeral List
 Numbered List
 Alphabetical List
-Link
+Image…
+Link…
 Insert Link
-Rule
+Rule…
 Insert Rule
-Table
+Table…
 Insert Table
-Cell
-Page
+Cell…
+Page…
 Font Size
 Font Style
 Paste As Text
@@ -3705,54 +4324,70 @@ Underline
 Cell Contents
 Column
 Row
+Table
 Table Delete
 Table Insert
 Column After
 Column Before
 Row Above
 Row Below
-Paragraph
-Text
+Paragraph…
+Text…
 Remove Link
 Add Word to Dictionary
 Ignore Misspelled Word
 Add Word To
 More Suggestions
+%s Dictionary
 Emoticon
 Insert Emoticon
+Replace
+Link
+Rule
 Editing Mode
 Font Color
 Background Color
 Font Name
 Failed to obtain content of editor
-Scope
-Alignment amp; Behavior
-Horizontal
-Vertical
+<b>Scope</b>
+Cell
+<b>Alignment amp; Behavior</b>
+Horizontal:
+Middle
+Vertical:
 Wrap Text
 Header Style
-Layout
+<b>Layout</b>
 Width
-Row Span
-Column Span
-Background
+Row Span:
+Column Span:
+<b>Background</b>
 Transparent
 Images
 Choose Background Image
+Image:
 Remove image
 Cell Properties
 No match found
 Search backwards
 Case Sensitive
 Wrap Search
-Style
+<b>Size</b>
+Width:
+Size:
+<b>Style</b>
+Alignment:
 Shaded
 Rule properties
-Height
-X-Padding
-Y-Padding
-Border
-Test URL
+<b>General</b>
+Source:
+Height:
+X-Padding:
+Y-Padding:
+Border:
+<b>Link</b>
+URL:
+Test URL…
 Image Properties
 Link Properties
 Perforated Paper
@@ -3762,37 +4397,49 @@ Ribbon
 Midnight
 Graph Paper
 Colors
-Visited Link
+Text:
+Link:
+Visited Link:
+Background:
+Text
+Font Name:
 Background Image
-Template
+Template:
 Select a file
+Custom:
 Page Properties
+Style:
+<b>Alignment</b>
 Paragraph Properties
-With
+Replace:
+With:
 Case sensitive
 Wrap search
 Skip
 Replace All
-Suggestions
+<b>Suggestions for “%s”</b>
+<b>Suggestions</b>
 Ignore
 Back
-Dictionary
+<b>Dictionary</b>
 Add word
 Spell Checking
-Rows
-Columns
-Spacing
-Padding
+Rows:
+Columns:
+Spacing:
+Padding:
 Table Properties
 Text Properties
-Choose the file that you want to import into Evolution and select what type of file it is from the list.
-File type
+Choose the file that you want to import into Evolution, and select what type of file it is from the list.
+File type:
+Preview:
 Choose the destination for this import
-Choose the type of importer to run
+Choose the type of importer to run:
 Import data and settings from older programs
 Import a single file
-Please select the information that you would like to import
-Evolution checked for settings to import from the following applications Pine Netscape Elm iCalendar KMail. No importable settings found. If you would like to try again please click the “Back” button.
+Please select the information that you would like to import:
+Evolution checked for settings to import from the following applications: Pine, Netscape, Elm, iCalendar, KMail. No importable settings found. If you would like to try again, please click the “Back” button.
+From %s:
 Cancel Import
 Preview data to be imported
 Import Data
@@ -3805,31 +4452,49 @@ Select a File
 Click “Apply” to begin importing the file into Evolution.
 Autogenerated
 Edit Signature
-Signature Name
+Signature Name:
 Unnamed
 Add Script
 Add Signature Script
 Edit Signature Script
-Script
+Script:
 Script file must be executable.
 World Map
 Mouse-based interactive map widget for selecting timezone. Keyboard users should instead select the timezone from the drop-down combination box below.
 Could not open the link.
 Could not display help for Evolution.
+Opening calendar “%s”
+Opening memo list “%s”
+Opening task list “%s”
+Opening address book “%s”
 Do not show this message again
 This address book server might be unreachable or the server name may be misspelled or your network connection could be down.
-This LDAP server may use an older version of LDAP which does not support this functionality or it may be misconfigured. Ask your administrator for supported search bases.
+Failed to set protocol version to LDAPv3 (%d): %s
+Failed to authenticate with LDAP server (%d): %s
+This LDAP server may use an older version of LDAP, which does not support this functionality or it may be misconfigured. Ask your administrator for supported search bases.
 Evolution had not been compiled with LDAP support
+Unknown (%s)
+Click to call %s
 Click to hide/unhide addresses
+Go to the section %s of the message
 Go to the beginning of the message
+Click to open %s
 Show Contacts
-Search
+Address Book:
+Category:
+Search:
 Any Category
+Search
 Select Contacts from Address Book
+Expand %s Inline
+Copy %s
+Cut %s
+Edit %s
+Delete %s
 Evolution is currently online.  Click this button to work offline.
 Evolution is currently offline.  Click this button to work online.
 Evolution is currently offline because the network is unavailable.
-Keyring key is unusable no user or host name
+Keyring key is unusable: no user or host name
 You have the Caps Lock key on.
 Remember this passphrase
 Remember this passphrase for the remainder of this session
@@ -3837,37 +4502,39 @@ Remember this password
 Remember this password for the remainder of this session
 Evolution Preferences
 An error occurred while printing
-The printing system reported the following details about the error
+The printing system reported the following details about the error:
 The printing system did not report any additional details about the error.
-Method
+Method:
 Defer to Desktop Settings
 Open Desktop Settings
 Manual
-HTTP Proxy
-HTTPS Proxy
-Socks Proxy
-Ignore Hosts
+HTTP Proxy:
+HTTPS Proxy:
+Socks Proxy:
+Ignore Hosts:
 Automatic
-Configuration URL
+Configuration URL:
 No proxy
-Use a direct connection no proxying required.
+Use a direct connection, no proxying required.
 Switch to Basic Proxy Preferences
 Switch to Advanced Proxy Preferences
-Apply custom proxy settings to these accounts
-Advanced Proxy Preferences lets you define alternate network proxies and apply them to specific accounts
+Apply custom proxy settings to these accounts:
+<b>Advanced Proxy Preferences</b> lets you define alternate network proxies and apply them to specific accounts
 Custom Proxy
 Create a new proxy profile
 Delete the selected proxy profile
 Add Rule
 Edit Rule
+Matches: %u
 Close the find bar
+Find:
 Clear the search
 Find the previous occurrence of the phrase
 Find the next occurrence of the phrase
 Match case
-Reached bottom of page continued from top
-Reached top of page continued from bottom
-When deleted
+Reached bottom of page, continued from top
+Reached top of page, continued from bottom
+When deleted:
 Standard
 Proprietary
 Secret
@@ -3890,24 +4557,26 @@ Delivered and opened
 All information
 Auto-delete sent item
 Status Tracking
-When opened
-When declined
-When completed
-When accepted
+When opened:
+When declined:
+When completed:
+When accepted:
 Return Notification
+Type:
 Name cannot be empty
 Refresh every
 Use a secure connection
 Unset trust for SSL/TLS certificate
-User
+User:
 Show
 Group name
 Hide
 Manage Groups
-Available Groups
+Available Groups:
 Select destination
 (no suggestions)
-More
+More…
+Add “%s” to Dictionary
 Ignore All
 Spelling Suggestions
 A file named “{0}” already exists. Do you want to replace it?
@@ -3931,7 +4600,7 @@ The calendar backend servicing “{0}” encountered an error.
 The memo list backend servicing “{0}” encountered an error.
 The task list backend servicing “{0}” encountered an error.
 Something has gone wrong
-A WebKitWebProcess crashed when displaying the content. You can try again by reopening the window. If the issue persists please file a bug report in GNOME Gitlab.
+A WebKitWebProcess crashed when displaying the content. You can try again by reopening the window. If the issue persists, please file a bug report in GNOME Gitlab.
 Are you sure you want to delete remote collection “{0}”?
 This will permanently remove the collection “{0}” from the server. Are you sure you want to proceed?
 Failed to refresh list of account sources
@@ -3956,9 +4625,87 @@ Then By
 Sort
 Sort Items By
 Apply
-Group By
-Fields Shown
-
+Sort...
+Group By...
+Fields Shown...
+Add a Column
+Customize Current View
+Sort Ascending
+Sort Descending
+Reset sort
+Group By This Field
+Group By Box
+Remove This Column
+Add a Column…
+Best Fit
+Format Columns…
+Customize Current View…
+Sort By
+Input Methods
+UTC
+Select a Time Zone
+Time Zones
+Selection
+Timezone drop-down combination box
+Click here to open the URL
+Enter a URL here
+Evolution Source Viewer
+Display Name
+Identity
+Address book
+Events
+Loading…
+Searching collection children…
+Failed to search for collection children
+Searching for user home, please wait…
+Failed to search for user home
+At least one component type should be set
+Failed to get selected collection HREF
+Failed to save changes
+Creating new book…
+Failed to create new book
+Creating new calendar…
+Failed to create new calendar
+Creating new collection…
+Failed to create new collection
+It is not allowed to create book under another book or calendar
+It is not allowed to create calendar under another book or calendar
+Deleting book…
+Failed to delete book
+Deleting calendar…
+Failed to delete calendar
+Deleting collection…
+Failed to delete collection
+For Components:
+WebDAV server:
+Create Book
+Create Calendar
+Create Collection
+Copy Link Location
+Copy the link to the clipboard
+Open Link in Browser
+Open the link in a web browser
+Copy Raw Email Address
+Copy the raw email address to the clipboard
+Copy Image
+Copy the image to the clipboard
+Save Image…
+Save the image to a file
+Search Web…
+Search the Web with the selected text
+Select all text and images
+Copying image to clipboard
+Save Image
+Saving image to “%s”
+Cannot get URI “%s”, do not know how to download it.
+Undo “Insert text”
+Redo “Insert text”
+Undo “Delete text”
+Redo “Delete text”
+Missing date.
+You must choose a date.
+Missing filename.
+You must specify a filename.
 File “{0}” does not exist or is not a regular file.
 Bad regular expression “{0}”.
 Could not compile regular expression “{1}”.
@@ -3975,4 +4722,565 @@ Keep
 the current time
 the time you specify
 a time relative to the current time
-
+seconds
+ago
+in the future
+Compare against
+Show filters for mail:
+Filter Rules
+Rule Name
+Table Cell
+popup a child
+begin editing this cell
+toggle the cell
+expands the row in the ETree containing this cell
+collapses the row in the ETree containing this cell
+click
+sort
+Save Current View
+Create new view
+Replace existing view
+Do you wish to save your changes?
+This signature has been changed, but has not been saved.
+Discard changes
+Blank Signature
+Please provide an unique name to identify this signature.
+Unable to copy image to clipboard.
+Unable to save image.
+Could not load signature.
+Could not save signature.
+Could not get selected text.
+Saving message to folder “%s”
+Forwarded messages
+Scanning messages for duplicates
+Removing folder “%s”
+File “%s” has been removed.
+File has been removed.
+Removing attachments
+Invalid folder URI “%s”
+Inbox
+Drafts
+Outbox
+Sent
+Templates
+User cancelled operation
+No destination address provided, forwarding of the message has been cancelled.
+No identity found to use, forwarding of the message has been cancelled.
+Corresponding source for service with UID “%s” not found
+Looking up recipient S/MIME certificates in address books…
+Looking up recipient PGP keys in address books…
+Waiting for “%s”
+No mail transport service available
+Posting message to “%s”
+Failed to apply outgoing filters: %s
+Storing sent message to “%s”
+Failed to append to local “Sent” folder: %s
+Sending message
+Disconnecting from “%s”
+Reconnecting to “%s”
+Preparing account “%s” for offline
+Filtering Selected Messages
+Fetching mail from “%s”
+Sending message %d of %d
+Cancelled.
+Complete.
+Moving messages to “%s”
+Copying messages to “%s”
+Storing folder “%s”
+Expunging and storing account “%s”
+Storing account “%s”
+Emptying trash in “%s”
+Processing folder changes in “%s”
+Could not create spool directory “%s”: %s
+Trying to movemail a non-mbox source “%s”
+Fwd: %s
+No Subject
+Forwarded message — %s
+Forwarded message
+Setting up Search Folder: %s
+Updating Search Folders for “%s : %s”
+Open Online Accounts
+This account was created through the Online Accounts service.
+Reset Order
+You can drag and drop account names to reorder them.
+Invalid URI: “%s”
+Host: %s:%d
+User: %s
+Security method: %s
+TLS
+STARTTLS
+Authentication mechanism: %s
+No email address provided
+Missing domain in email address
+IMAP server
+POP3 server
+SMTP server
+Close this window
+(No Subject)
+Go Back
+Skip Lookup
+Evolution Account Assistant
+Revise Details
+Querying authentication types…
+Check for Supported Types
+Use global setting
+Attachment
+Inline (Outlook style)
+Quoted
+Do Not Quote
+Composing Messages
+Always carbon-copy (cc) to:
+Always blind carbon-copy (bcc) to:
+Reply style:
+Language:
+Language for Reply and Forward attribution text
+Start typing at the bottom
+Keep signature above the original message
+Message Receipts
+Send message receipts:
+Never
+Always
+Ask for each message
+Done
+Checking server settings…
+Special Folders
+Draft Messages Folder:
+Choose a folder for saving draft messages.
+Sent Messages Folder:
+Choose a folder for saving sent messages.
+Save replies in the folder of the message being replied to
+Archive Folder:
+Choose a folder to archive messages to.
+Templates Folder:
+Choose a folder to use for template messages.
+Restore Defaults
+Lookup Folders
+Use a Real Folder for Trash:
+Choose a folder for deleted messages.
+Use a Real Folder for Junk:
+Choose a folder for junk messages.
+Defaults
+Please enter your name and email address below. The “optional” fields below do not need to be filled in, unless you wish to include this information in email you send.
+Required Information
+Full Name:
+Email Address:
+Optional Information
+Organization:
+Add New Signature…
+Aliases:
+Look up mail server details based on the entered e-mail address
+Full Name should not be empty
+Email Address cannot be empty
+Email Address is not a valid email
+Reply To is not a valid email
+Account Name cannot be empty
+Looking up account details…
+Checking for New Mail
+Check for new messages every
+Receiving Options
+Receiving Email
+Do not sign meeting requests (for Outlook compatibility)
+Pretty Good Privacy (OpenPGP)
+OpenPGP Key ID:
+Signing algorithm:
+SHA1
+SHA256
+SHA384
+SHA512
+Always sign outgoing messages when using this account
+Always encrypt outgoing messages when using this account
+Always encrypt to myself when sending encrypted messages
+Always trust keys in my keyring when encrypting
+Prefer inline sign/encrypt for plain text messages
+Secure MIME (S/MIME)
+Signing certificate:
+Select
+Clear
+Encryption certificate:
+Sending Email
+Server Type:
+This is a summary of the settings which will be used to access your mail.
+Personal Details
+Receiving
+Sending
+Security:
+Cannot have both receiving and sending parts set to None
+Account Summary
+Welcome
+Account Editor
+Add to Address Book…
+To This Address
+From This Address
+Send Reply To…
+Send a reply message to this address
+Create Search Folder
+Hide All
+View Inline
+View All Inline
+Zoom to 100%
+Zoom the image to its natural size
+Zoom to window
+Zoom large images to not be wider than the window width
+Create Folder
+Specify where to create the folder:
+Create
+Folder name:
+Folder Sort Order
+Reset current level
+Reset sort order in the current level to the defaults
+Reset all levels
+Reset sort order in all levels to their defaults
+Answered
+Deleted
+Flagged
+Seen
+no
+not
+false
+Junk filtering software:
+Label name:
+Important
+Later
+Add Label
+Edit Label
+Color
+Message Note
+Cannot find message in its folder summary
+Failed to convert text to message
+Storing changes…
+Edit Message Note
+Retrieving message…
+Move selected headers to top
+Move selected headers up one row
+Move selected headers down one row
+Move selected headers to bottom
+Select all headers
+Header Name
+Header Value
+Headers
+Page %d of %d
+Move to Folder
+Copy to Folder
+Move
+Deleting message note…
+Do not ask me again.
+Always ignore Reply-To: for mailing lists.
+Failed to retrieve message:
+Retrieving message “%s”
+Add Sender to Address Book
+Add sender to address book
+Archive…
+Move selected messages to the Archive folder for the account
+Check for Junk
+Filter the selected messages for junk status
+Assign Color…
+Assign color for the selected messages
+Unset Color
+Unset color for the selected messages
+Copy to Folder…
+Copy selected messages to another folder
+Delete Message
+Mark the selected messages for deletion
+Add note…
+Add a note for the selected message
+Delete note
+Delete the note for the selected message
+Edit note…
+Edit a note for the selected message
+Create a Filter Rule for Mailing List…
+Create a rule to filter messages to this mailing list
+Create a Filter Rule for Recipients…
+Create a rule to filter messages to these recipients
+Create a Filter Rule for Sender…
+Create a rule to filter messages from this sender
+Create a Filter Rule for Subject…
+Create a rule to filter messages with this subject
+Apply Filters
+Apply filter rules to the selected messages
+Find in Message…
+Search for text in the body of the displayed message
+Clear Flag
+Remove the follow-up flag from the selected messages
+Flag Completed
+Set the follow-up flag to completed on the selected messages
+Follow Up…
+Flag the selected messages for follow-up
+Attached
+Forward the selected message to someone as an attachment
+Forward As Attached
+Inline
+Forward the selected message in the body of a new message
+Forward As Inline
+Forward the selected message quoted like a reply
+Forward As Quoted
+New Label
+Load Images
+Force images in HTML mail to be loaded
+Ignore Subthread
+Mark new mails in a subthread as read automatically
+Ignore Thread
+Mark new mails in this thread as read automatically
+Mark the selected messages as important
+Junk
+Mark the selected messages as junk
+Not Junk
+Mark the selected messages as not being junk
+Read
+Mark the selected messages as having been read
+Do not Ignore Subthread
+Do not mark new mails in a subthread as read automatically
+Do not Ignore Thread
+Do not mark new mails in this thread as read automatically
+Unimportant
+Mark the selected messages as unimportant
+Unread
+Mark the selected messages as not having been read
+Edit as New Message…
+Open the selected messages in the composer for editing
+Compose New Message
+Open a window for composing a mail message
+Open in New Window
+Open the selected messages in a new window
+Move to Folder…
+Move selected messages to another folder
+Next Message
+Display the next message
+Next Important Message
+Display the next important message
+Next Thread
+Display the next thread
+Next Unread Message
+Display the next unread message
+Previous Message
+Display the previous message
+Previous Important Message
+Display the previous important message
+Previous Thread
+Display the previous thread
+Previous Unread Message
+Display the previous unread message
+Print this message
+Preview the message to be printed
+Redirect
+Redirect (bounce) the selected message to someone
+Remove Attachments
+Remove attachments
+Remove Duplicate Messages
+Checks selected messages for duplicates
+Reply to All
+Compose a reply to all the recipients of the selected message
+Alternative Reply…
+Choose reply options for the selected message
+Reply to List
+Compose a reply to the mailing list of the selected message
+Reply to Sender
+Compose a reply to the sender of the selected message
+Reply with Template
+Save as mbox…
+Save selected messages as an mbox file
+Message Source
+Show the raw email source of the message
+Undelete Message
+Undelete the selected messages
+Normal Size
+Reset the text to its original size
+Increase the text size
+Decrease the text size
+Forward As
+Label
+Group Reply
+Go To
+Mark As
+Message
+Zoom
+Create a Search Folder from Mailing List…
+Create a search folder for this mailing list
+Create a Search Folder from Recipients…
+Create a search folder for these recipients
+Create a Search Folder from Sender…
+Create a search folder for this sender
+Create a Search Folder from Subject…
+Create a search folder for this subject
+Mark for Follow Up…
+Mark as Important
+Mark as Junk
+Mark as Not Junk
+Mark as Read
+Mark as Unimportant
+Mark as Unread
+Caret Mode
+Show a blinking cursor in the body of displayed messages
+All Message Headers
+Show messages with all email headers
+Retrieving message
+Forward
+Forward the selected message to someone
+Reply to the mailing list, or to all recipients
+Reply
+Do not warn me again
+Deleting messages in Junk folder “%s”…
+Refreshing folder “%s”
+Marking thread to be ignored
+Unmarking thread from being ignored
+Marking subthread to be ignored
+Unmarking subthread from being ignored
+Printing
+Parsing message
+Allow remote content for anyone from %s
+Allow remote content for %s
+Allow remote content from %s
+Load remote content
+You can download remote content manually, or set to remember to download remote content for this sender or used sites.
+The message has no text content.
+Flag to Follow Up
+No Title
+%s authentication failed
+No data source found for UID “%s”
+Waiting for attachments to load…
+On ${AbbrevWeekdayName}, ${Year}-${Month}-${Day} at ${24Hour}:${Minute} ${TimeZone}, ${Sender} wrote:
+-------- Forwarded Message --------
+-----Original Message-----
+Re: %s
+an unknown sender
+Alternative Reply
+Recipients:
+Quote
+Apply template
+Preserve original message Subject
+Posting destination
+Choose folders to post the message to.
+Description of Filters
+%s (%s, for account %s)
+enabled
+disabled
+%s (%s, for any account)
+If all the following conditions are met
+If any of the following conditions are met
+Then
+Describe Filters…
+Select Folder
+Any
+Rule type:
+For Account:
+Add Action
+Select Custom Icon
+Use custom icon
+Use text color
+Path:
+Quota usage (%s):
+Quota usage
+Send Account Override:
+Archive this folder using these settings:
+Auto-cleanup messages older than
+Move messages to the default archive folder
+Move messages to:
+Archive folder
+Select folder to use for Archive
+Delete messages
+Server Tag
+Appearance
+Archive
+Labels
+Folder Properties
+Gathering folder properties
+<click here to select a folder>
+Create a new folder
+Folder names cannot contain “/”
+%s (%u%s)
+Mail Folder Tree
+Moving folder %s
+Copying folder %s
+Moving messages into folder %s
+Copying messages into folder %s
+Cannot drop message(s) into toplevel store
+UNMATCHED
+Trash
+Moving folder “%s”
+Copying folder “%s”
+Moving folder “%s” (%d/%d)
+Copying folder “%s” (%d/%d)
+Move Folder To
+Copy Folder To
+Subscribe
+Subscribe To Shown
+Subscribe To All
+Unsubscribe
+Unsubscribe From Hidden
+Unsubscribe From All
+Folder Subscriptions
+Account:
+Clear Search
+Show items that contain:
+Subscribe to the selected folder
+Unsubscribe from the selected folder
+Collapse all folders
+Collapse All
+Expand all folders
+Expand All
+Refresh the folder list
+Stop the current operation
+Stop
+Message Filters
+Messages from %s
+Re
+Deleting old messages
+Search Folders
+Add Folder
+Search Folder Sources
+Automatically update on any source folder change
+All local folders
+All active remote folders
+All local and active remote folders
+Specific folders
+include subfolders
+Sender
+starts with
+does not start with
+ends with
+does not end with
+sounds like
+does not sound like
+Recipients
+CC
+BCC
+Sender or Recipients
+has words
+does not have words
+Specific header
+exists
+does not exist
+Message Body
+Free Form Expression
+Date sent
+is before
+is after
+Date received
+Score
+Size (kB)
+is greater than or equal to
+is less than or equal to
+Replied to
+Follow Up
+is Flagged
+is not Flagged
+is Completed
+is not Completed
+Mailing list
+Regex Match
+Message Header
+Source Account
+Contacts...
+The event could not be deleted due to a dbus error: %s
+The task could not be deleted due to a dbus error: %s
+The memo could not be deleted due to a dbus error: %s
+The item could not be deleted due to a dbus error: %s
+The event could not be deleted because permission was denied
+The task could not be deleted because permission was denied
+The memo could not be deleted because permission was denied
+The item could not be deleted because permission was denied
+The event could not be deleted due to an error: %s
+The task could not be deleted due to an error: %s
+The memo could not be deleted due to an error: %s
+The item could not be deleted due to an error: %s
+Customize
+Custom Reminder:
