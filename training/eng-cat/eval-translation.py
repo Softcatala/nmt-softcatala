@@ -27,6 +27,7 @@ def check_translation(src_filename, tgt_filename):
     unk = 0
     strings = 0
     error_tag = 0
+    error_formatters = 0
     with open(src_filename, "r") as read_source, open(tgt_filename, "r") as read_target:
         while True:
 
@@ -39,6 +40,9 @@ def check_translation(src_filename, tgt_filename):
             if tgt.find("<unk>") >= 0:
                 unk = unk + 1
 
+            if src.find("%s") >= 0 and tgt.find("%s") == 0:
+                error_formatters = error_formatters + 1
+
             tags = re.findall("<[^>]*>", src)
             for tag in tags:
                 if tgt.find(tag) == - 1:
@@ -47,7 +51,7 @@ def check_translation(src_filename, tgt_filename):
 
             strings = strings + 1
 
-    print(f"Strings: {strings}, unk {unk}, error tags {error_tag}")
+    print(f"Strings: {strings}, unk {unk}, error tags {error_tag}, errors formatters {error_formatters}")
 
 #    pclean = clean * 100 / strings
     #pduplicated = duplicated * 100 / strings
@@ -56,7 +60,9 @@ def check_translation(src_filename, tgt_filename):
 def main():
 
     print("Checks translation")
-    check_translation('src-test.txt', 'predictions.txt')
+    check_translation('/home/jordi/sc/OpenNMT/nmt-softcatala/use-models-tools/src-test1.txt', 
+                      'predictions.txt')
+#                      '/home/jordi/sc/OpenNMT/nmt-softcatala/use-models-tools/tgt-test1.txt')
 
 if __name__ == "__main__":
     main()
