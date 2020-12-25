@@ -22,11 +22,11 @@ import re
 
 class PreserveMarkup():
 
-    TAG = "{87719"
+    TAG = "｟ tag_place_holder_{0} ｠"
     REGEX = re.compile(r"\<(.*?)\>", re.VERBOSE)
 
     def _get_marker(self, pos):
-        return self.TAG + str(pos)
+        return self.TAG.format(pos)
 
 
     def create_markers_in_string(self, text):
