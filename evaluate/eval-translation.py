@@ -47,11 +47,13 @@ def check_translation(src_filename, tgt_filename):
                 formatters = formatters + 1
                 if tgt.find("%s") == -1:
                     error_formatters = error_formatters + 1
+                    #print(f"Tag error: {src} | {tgt}")
 
             if src.find("%d") >= 0:
                 formatters = formatters + 1
                 if tgt.find("%d") == -1:
                     error_formatters = error_formatters + 1
+                   # print(f"Tag error: {src} | {tgt}")
 
             tags = re.findall("<[^>]*>", src)
             if len(tags) > 0:
@@ -60,7 +62,7 @@ def check_translation(src_filename, tgt_filename):
             for tag in tags:
                 if tgt.find(tag) == - 1:
                     html_tags_error = html_tags_error + 1
-                    #print(f"Tag error: {src} | {tgt}")
+                    print(f"Tag error: {src} | {tgt}")
 
             strings = strings + 1
 
