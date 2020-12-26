@@ -57,7 +57,7 @@ def check_translation(src_filename, tgt_filename):
 
             tags = re.findall("<[^>]*>", src)
             if len(tags) > 0:
-                html_tags = html_tags + 1
+                html_tags = html_tags + len(tags)
 
             for tag in tags:
                 if tgt.find(tag) == - 1:
