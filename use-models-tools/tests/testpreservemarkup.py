@@ -32,8 +32,6 @@ class TestPreserveMarkup(unittest.TestCase):
         preserve_markup = PreserveMarkup()
         text = '<b>Hello</b>'
         markers, text = preserve_markup.create_markers_in_string(text)
-        print(markers)
-        print(text)
         keys = list(markers.keys())
         self.assertEquals(f"{self.TAG_0} Hello {self.TAG_1}", text)
         self.assertEquals(f"{self.TAG_0} ", keys[0])
