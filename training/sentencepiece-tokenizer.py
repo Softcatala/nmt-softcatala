@@ -80,10 +80,10 @@ def _get_simbols():
     symbols = []
     for symbol in range(0, 50):
         s = "tag_place_holder_{0}".format(symbol)
-#        print(s)
         symbols.append(s)
 
     print("Added {0} symbols".format(len(symbols)))
+    return '.'.join(symbols)
     
 
 def src(vocabulary_size):
