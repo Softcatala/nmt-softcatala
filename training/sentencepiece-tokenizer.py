@@ -83,7 +83,7 @@ def _get_simbols():
         symbols.append(s)
 
     print("Added {0} symbols".format(len(symbols)))
-    return '.'.join(symbols)
+    return ','.join(symbols)
     
 
 def src(vocabulary_size):
