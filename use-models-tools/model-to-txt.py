@@ -129,6 +129,7 @@ def main():
     print(f'Client threads: {n_threads}')
 
     model_path = translation_models
+    print(f"Model_path: {model_path}")
 #    model_path = os.path.join(translation_models, model_name)
 
     openNMT = CTranslate(model_path)

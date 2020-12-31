@@ -76,8 +76,21 @@ def ingest_file(learner, ingest_file):
 
     return learner.ingest_file(reduced_file)
 
+def _get_simbols():
+    symbols = []
+    for symbol in range(0, 50):
+        s = "tag_place_holder_{0}".format(symbol)
+#        print(s)
+        symbols.append(s)
+
+    print("Added {0} symbols".format(len(symbols)))
+    
+
 def src(vocabulary_size):
-    learner = pyonmttok.SentencePieceLearner(vocab_size=vocabulary_size)
+
+        
+    learner = pyonmttok.SentencePieceLearner(vocab_size=vocabulary_size,
+                                             user_defined_symbols=_get_simbols())
     ingest_file(learner, "src-train.txt")
 
     tokenizer = learner.learn("en_m.model", verbose=True)
@@ -86,7 +99,8 @@ def src(vocabulary_size):
     tokens = tokenizer.tokenize_file("src-val.txt", "src-val.txt.token")
 
 def tgt(vocabulary_size):
-    learner = pyonmttok.SentencePieceLearner(vocab_size=vocabulary_size)
+    learner = pyonmttok.SentencePieceLearner(vocab_size=vocabulary_size,
+                                             user_defined_symbols=_get_simbols())
     ingest_file(learner, "tgt-train.txt")
 
     tokenizer = learner.learn("ca_m.model", verbose=True)
