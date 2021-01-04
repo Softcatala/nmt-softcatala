@@ -31,6 +31,10 @@ def _remove_accelerators(result):
 
     return result.strip()
 
+def _remove_tags(text):
+    clean = re.sub("<[^>]*>", "", text)
+    return clean
+
 def _is_non_localized_string(src, trg):
     words_src_len = len(src.split())
     words_trg_len = len(trg.split())
@@ -74,6 +78,9 @@ def split_in_six_files(po_file):
             src = _remove_accelerators(entry.msgid)
             trg = _remove_accelerators(entry.msgstr)
 
+            src = _remove_tags(src)
+            trg = _remove_tags(trg)
+
             if _is_invalid(src, trg):
                 continue
 
@@ -115,6 +122,9 @@ def split_in_two_files(po_file):
         for entry in input_po:
             src = _remove_accelerators(entry.msgid)
             trg = _remove_accelerators(entry.msgstr)
+
+            src = _remove_tags(src)
+            trg = _remove_tags(trg)
 
             if _is_invalid(src, trg):
                 continue
