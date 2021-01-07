@@ -23,10 +23,10 @@ import unittest
 
 class TestPreserveMarkup(unittest.TestCase):
 
-    TAG_0 = PreserveMarkup.TAG.format(0)
-    TAG_1 = PreserveMarkup.TAG.format(1)
-    TAG_2 = PreserveMarkup.TAG.format(2)
-    TAG_3 = PreserveMarkup.TAG.format(3)
+    TAG_0 = PreserveMarkup.TAG + "0"
+    TAG_1 = PreserveMarkup.TAG + "1"
+    TAG_2 = PreserveMarkup.TAG + "2"
+    TAG_3 = PreserveMarkup.TAG + "3"
 
     def test_create_markers_in_string(self):
         preserve_markup = PreserveMarkup()
