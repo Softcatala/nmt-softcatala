@@ -24,8 +24,7 @@ from optparse import OptionParser
 
 def _remove_accelerators(result):
     CHARS = (
-        '_', '&', '~',  # Accelerators.
-        ':', ',', '...', u'…'  # Punctuations.
+        '_', '&', '~'  # Accelerators.
     )
     for c in CHARS:
         result = result.replace(c, '')
@@ -49,9 +48,6 @@ def _is_invalid(src, trg):
         return True
 
     if '\n' in src or '\n' in trg:
-        return True
-
-    if '%' in src or '%' in trg:
         return True
 
     if '@@image' in src or '@@image' in trg:
