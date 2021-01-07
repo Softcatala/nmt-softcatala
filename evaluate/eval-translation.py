@@ -77,13 +77,13 @@ def check_translation(src_filename, tgt_filename):
     punk = unk * 100 / strings
     print(f"Strings: {strings}, unknowns: {unk} ({punk:.2f}%)")
 
-    phtml_tags_error = html_tags_error * 100 / html_tags
+    phtml_tags_error = html_tags_error * 100 / html_tags if html_tags > 0 else 0
     print(f"Html tags with error: {html_tags_error} ({phtml_tags_error:.2f}%)")
 
-    perror_formatters = error_formatters * 100 / formatters
+    perror_formatters = error_formatters * 100 / formatters if formatters > 0 else 0
     print(f"String formatters with error: {error_formatters} ({perror_formatters:.2f}%)")
 
-    perror_comma = error_comma * 100 / comma
+    perror_comma = error_comma * 100 / comma if comma > 0 else 0
     print(f"Missing commas (,): {error_comma} ({perror_comma:.2f}%)")
 
 def main():
