@@ -30,6 +30,9 @@ def check_translation(src_filename, tgt_filename):
     html_tags_error = 0
     formatters = 0
     error_formatters = 0
+    comma = 0
+    error_comma = 0
+
 
     with open(src_filename, "r") as read_source, open(tgt_filename, "r") as read_target:
         while True:
@@ -48,6 +51,11 @@ def check_translation(src_filename, tgt_filename):
                 if tgt.find("%s") == -1:
                     error_formatters = error_formatters + 1
                     #print(f"Tag error: {src} | {tgt}")
+
+            if src.find(",") >= 0:
+                comma = comma + 1
+                if tgt.find(",") == -1:
+                    error_comma = error_comma + 1
 
             if src.find("%d") >= 0:
                 formatters = formatters + 1
@@ -75,6 +83,8 @@ def check_translation(src_filename, tgt_filename):
     perror_formatters = error_formatters * 100 / formatters
     print(f"String formatters with error: {error_formatters} ({perror_formatters:.2f}%)")
 
+    perror_comma = error_formatters * 100 / formatters
+    print(f"Missing commas (,): {error_comma} ({perror_comma:.2f}%)")
 
 def main():
 
