@@ -23,17 +23,19 @@ import unittest
 
 class TestPreserveMarkup(unittest.TestCase):
 
+    TAG_0 = PreserveMarkup.TAG + "0"
+    TAG_1 = PreserveMarkup.TAG + "1"
+    TAG_2 = PreserveMarkup.TAG + "2"
+    TAG_3 = PreserveMarkup.TAG + "3"
 
     def test_create_markers_in_string(self):
         preserve_markup = PreserveMarkup()
         text = '<b>Hello</b>'
         markers, text = preserve_markup.create_markers_in_string(text)
-        print(markers)
-        print(text)
         keys = list(markers.keys())
-        self.assertEquals("{877190 Hello {877191", text)
-        self.assertEquals("{877190 ", keys[0])
-        self.assertEquals(" {877191", keys[1])
+        self.assertEquals(f"{self.TAG_0} Hello {self.TAG_1}", text)
+        self.assertEquals(f"{self.TAG_0} ", keys[0])
+        self.assertEquals(f" {self.TAG_1}", keys[1])
 
     def test_create_markers_in_string_two_words(self):
         preserve_markup = PreserveMarkup()
@@ -42,11 +44,11 @@ class TestPreserveMarkup(unittest.TestCase):
         print(markers)
         print(text)
         keys = list(markers.keys())
-        self.assertEquals("{877190 Hello {877191  {877192 World {877193", text)
-        self.assertEquals("{877190 ", keys[0])
-        self.assertEquals(" {877191 ", keys[1])
-        self.assertEquals(" {877192 ", keys[2])
-        self.assertEquals(" {877193", keys[3])
+        self.assertEquals(f"{self.TAG_0} Hello {self.TAG_1}  {self.TAG_2} World {self.TAG_3}", text)
+        self.assertEquals(f"{self.TAG_0} ", keys[0])
+        self.assertEquals(f" {self.TAG_1} ", keys[1])
+        self.assertEquals(f" {self.TAG_2} ", keys[2])
+        self.assertEquals(f" {self.TAG_3}", keys[3])
 
     def test_create_markers_in_string_self_close(self):
         preserve_markup = PreserveMarkup()
@@ -55,8 +57,8 @@ class TestPreserveMarkup(unittest.TestCase):
         print(markers)
         print(text)
         keys = list(markers.keys())
-        self.assertEquals("Hello {877190 my friends", text)
-        self.assertEquals(" {877190 ", keys[0])
+        self.assertEquals(f"Hello {self.TAG_0} my friends", text)
+        self.assertEquals(f" {self.TAG_0} ", keys[0])
         
     def test_get_back_markup(self):
         preserve_markup = PreserveMarkup()
