@@ -83,7 +83,7 @@ def check_translation(src_filename, tgt_filename):
     perror_formatters = error_formatters * 100 / formatters
     print(f"String formatters with error: {error_formatters} ({perror_formatters:.2f}%)")
 
-    perror_comma = error_formatters * 100 / formatters
+    perror_comma = error_comma * 100 / comma
     print(f"Missing commas (,): {error_comma} ({perror_comma:.2f}%)")
 
 def main():
