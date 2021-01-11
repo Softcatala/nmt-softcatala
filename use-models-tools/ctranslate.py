@@ -24,7 +24,6 @@ from texttokenizer import TextTokenizer
 import ctranslate2
 import pyonmttok
 from preservemarkup import PreserveMarkup
-from unknown import Unknown
 
 class CTranslate():
 
@@ -65,10 +64,9 @@ class CTranslate():
         batch_input = [self.tokenizer_source.tokenize(text)[0] for text in batch_text]
 
 #        print("Input:" + str(batch_input))
-        result = self.translator.translate_batch(batch_input, return_attention = True,
-                                                 return_scores = False, beam_size = self.beam_size, use_vmap = self.use_vmap)
-#        tokens = result[0][0]['tokens']
-        tokens = Unknown().replace_with_source(batch_input, result)
+        result = self.translator.translate_batch(batch_input, replace_unknowns = True, return_scores = False,
+                                                 beam_size = self.beam_size, use_vmap = self.use_vmap)
+        tokens = result[0][0]['tokens']
 #        print(tokens)
         tokens = [tokens]        
         batch_output = [self.tokenizer_target.detokenize(prediction) for prediction in tokens]

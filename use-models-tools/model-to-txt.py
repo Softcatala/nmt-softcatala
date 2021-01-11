@@ -128,10 +128,10 @@ def main():
     model_name, input_filename, translated_file, tokenizer_models, translation_models, n_threads = read_parameters()
     print(f'Client threads: {n_threads}')
 
-    model_path = translation_models
-    print(f"Model_path: {model_path}")
-#    model_path = os.path.join(translation_models, model_name)
-
+    model_path = os.path.join(translation_models, model_name)
+#    model_path = translation_models
+#    print(f"Model_path: {model_path}")
+ 
     openNMT = CTranslate(model_path)
 
     if (model_name == 'eng-cat'):
