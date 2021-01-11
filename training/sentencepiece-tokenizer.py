@@ -77,19 +77,21 @@ def ingest_file(learner, ingest_file):
     return learner.ingest_file(reduced_file)
 
 def src(vocabulary_size):
-    learner = pyonmttok.SentencePieceLearner(vocab_size=vocabulary_size)
+    learner = pyonmttok.SentencePieceLearner(vocab_size=vocabulary_size,
+                                            keep_vocab = True)
     ingest_file(learner, "src-train.txt")
 
-    tokenizer = learner.learn("en_m.model", verbose=True)
+    tokenizer = learner.learn("en_m", verbose=True)
     tokens = tokenizer.tokenize_file("src-train.txt", "src-train.txt.token")
     tokens = tokenizer.tokenize_file("src-test.txt", "src-test.txt.token")
     tokens = tokenizer.tokenize_file("src-val.txt", "src-val.txt.token")
 
 def tgt(vocabulary_size):
-    learner = pyonmttok.SentencePieceLearner(vocab_size=vocabulary_size)
+    learner = pyonmttok.SentencePieceLearner(vocab_size=vocabulary_size,
+                                            keep_vocab = True)
     ingest_file(learner, "tgt-train.txt")
 
-    tokenizer = learner.learn("ca_m.model", verbose=True)
+    tokenizer = learner.learn("ca_m", verbose=True)
     tokens = tokenizer.tokenize_file("tgt-train.txt", "tgt-train.txt.token")
     tokens = tokenizer.tokenize_file("tgt-test.txt", "tgt-test.txt.token")
     tokens = tokenizer.tokenize_file("tgt-val.txt", "tgt-val.txt.token")
