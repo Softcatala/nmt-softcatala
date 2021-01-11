@@ -65,7 +65,7 @@ class CTranslate():
         batch_input = [self.tokenizer_source.tokenize(text)[0] for text in batch_text]
 
 #        print("Input:" + str(batch_input))
-        result = self.translator.translate_batch(batch_input, return_attention = True, replace_unknowns = True,
+        result = self.translator.translate_batch(batch_input, return_attention = True,
                                                  return_scores = False, beam_size = self.beam_size, use_vmap = self.use_vmap)
 #        tokens = result[0][0]['tokens']
         tokens = Unknown().replace_with_source(batch_input, result)
