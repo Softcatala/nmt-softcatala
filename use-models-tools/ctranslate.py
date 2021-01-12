@@ -58,19 +58,16 @@ class CTranslate():
             self.use_vmap = False
 
         print(f"inter_threads: {inter_threads}, intra_threads: {intra_threads}, beam_size {self.beam_size}, use_vmap {self.use_vmap}")
-        self.translator = ctranslate2.Translator(model_path, inter_threads = inter_threads, intra_threads = intra_threads)    
+        self.translator = ctranslate2.Translator(model_path, inter_threads = inter_threads, intra_threads = intra_threads)
 
     def _translate_request(self, batch_text, timeout):
         batch_input = [self.tokenizer_source.tokenize(text)[0] for text in batch_text]
 
-#        print("Input:" + str(batch_input))
         result = self.translator.translate_batch(batch_input, replace_unknowns = True, return_scores = False,
                                                  beam_size = self.beam_size, use_vmap = self.use_vmap)
         tokens = result[0][0]['tokens']
-#        print(tokens)
         tokens = [tokens]        
         batch_output = [self.tokenizer_target.detokenize(prediction) for prediction in tokens]
-#        print(f"Batch output: {batch_output}")
         return batch_output
 
     def _translate_sentence(self, text):
