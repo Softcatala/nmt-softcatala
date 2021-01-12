@@ -64,7 +64,8 @@ class CTranslate():
     def _translate_request(self, batch_text, timeout):
         batch_input = [self.tokenizer_source.tokenize(text)[0] for text in batch_text]
 
-        result = self.translator.translate_batch(batch_input, return_scores = False, beam_size = self.beam_size, use_vmap = self.use_vmap)
+        result = self.translator.translate_batch(batch_input, return_scores=False, replace_unknowns=True,
+                                                 beam_size=self.beam_size, use_vmap=self.use_vmap)
         tokens = result[0][0]['tokens']
         tokens = [tokens]
         batch_output = [self.tokenizer_target.detokenize(prediction) for prediction in tokens]
