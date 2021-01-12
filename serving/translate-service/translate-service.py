@@ -100,37 +100,51 @@ def _launch_translate_threads(openNMT, text, sentences, translate):
 def apertium_translate_get():
     return apertium_translate_process(request.args)
 
-# This should become /translate once old API is deprecated
+# This should become /translate once front calls the right API endpoint
 @cross_origin(origin='*',headers=['Content-Type','Authorization'])
 @app.route('/translate/', methods=['POST'])
 def translate_api():
-#    print(request)   
-#    print("json:" + str(request.json))
-#    print("data:" + str(request.data))
-#    print("form:" + str(request.form))
-#    print("args:" + str(request.args))
-
-    if request.json != None  and 'languages' in request.json.keys():
-        return deprecated_translate_api()
-
-    # POST with key, value
-    if request.form is not None:
-        return apertium_translate_process(request.form)
+    return apertium_translate_process(request.form)
 
 def apertium_translate_process(values):
+    start_time = datetime.datetime.now()
+
     text = None
     languages = None
 
     text = values['q']
     langpair = values['langpair']
+    savetext = 'savetext' in values and values['savetext'] == True
+
     if langpair in ['en|cat', 'en|ca', 'eng|ca', 'eng|cat']:
         languages = 'eng-cat'
     else:
         languages = 'cat-eng'
-            
+
+    if savetext:
+        saved_filename = os.path.join(SAVED_TEXTS, "source.txt")
+        with open(saved_filename, "a") as text_file:
+            t = text.replace('\n', '')
+            text_file.write(f'{languages}\t{t}\n')
+
     translated = translate(languages, text)
 
+    check_bias = languages == 'eng-cat'
     result = {}
+
+    time_used = datetime.datetime.now() - start_time
+    words = len(text.split(' '))
+    usage = Usage()
+    usage.log(languages, words, time_used)
+
+    if check_bias:
+        bias = GenderBiasDetection(text)
+        if bias.has_bias():
+            words = ', '.join(bias.get_words())
+            msg = f'Atenció: tingueu present que el text original en anglès conté professions sense marca de gènere, '
+            msg += f'com ara «{words}». Adapteu-ne la traducció si és necessari.'
+            result['message'] = msg
+
     responseData = {}
     responseData['translatedText'] = translated
     result['responseStatus'] = 200
@@ -154,41 +168,6 @@ def translate(languages, text):
     return translated
     
 
-def deprecated_translate_api():
-
-    start_time = datetime.datetime.now()
-    text = request.json['text']
-    languages = request.json['languages']
-    savetext = 'savetext' in request.json and request.json['savetext'] == True
-
-    translated = translate(languages, text)
-
-    if savetext:
-        saved_filename = os.path.join(SAVED_TEXTS, "source.txt")
-        with open(saved_filename, "a") as text_file:
-            t = text.replace('\n', '')
-            text_file.write(f'{languages}\t{t}\n')
-
-    time_used = datetime.datetime.now() - start_time
-    words = len(text.split(' '))
-    usage = Usage()
-    usage.log(languages, words, time_used)
-
-    check_bias = languages == 'eng-cat'
-    result = {}
-
-    if check_bias:
-        bias = GenderBiasDetection(text)
-        if bias.has_bias():
-            words = ', '.join(bias.get_words())
-            msg = f'Atenció: tingueu present que el text original en anglès conté professions sense marca de gènere, '
-            msg += f'com ara «{words}». Adapteu-ne la traducció si és necessari.'
-            result['message'] = msg
-
-    result['text'] = text
-    result['translated'] = translated
-    result['time'] = str(time_used)
-    return json_answer(result)
 
 def _get_processed_files(date):
     try:
@@ -327,7 +306,6 @@ def list_pairs():
 
 if __name__ == '__main__':
 #    app.debug = True
-#    app.url_map.strict_slashes = False
     init_logging()
     app.run()
 
