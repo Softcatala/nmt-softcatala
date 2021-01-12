@@ -1,4 +1,4 @@
-VOCSIZE=32000
+VOCSIZE=50000
 python3 ../sentencepiece-tokenizer.py -v $VOCSIZE
-onmt-build-vocab --size $VOCSIZE --save_vocab src-vocab.txt.token src-train.txt.token
-onmt-build-vocab --size $VOCSIZE --save_vocab tgt-vocab.txt.token tgt-train.txt.token
+onmt-build-vocab --from_vocab en_m.vocab --from_format sentencepiece --save_vocab src-vocab.txt.token
+onmt-build-vocab --from_vocab ca_m.vocab --from_format sentencepiece --save_vocab tgt-vocab.txt.token
