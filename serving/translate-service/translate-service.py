@@ -149,6 +149,7 @@ def apertium_translate_process(values):
     responseData['translatedText'] = translated
     result['responseStatus'] = 200
     result['responseData'] = responseData
+    result['time'] = str(time_used)
     return json_answer(result)
 
 
