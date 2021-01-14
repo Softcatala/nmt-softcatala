@@ -107,7 +107,10 @@ class Usage(object):
 
     def _rotate_file(self):
         TEMP = "usage.bak"
-        copyfile(self.FILE, TEMP)
+        directory = os.path.dirname(os.path.abspath(self.FILE))
+        temp_file = os.path.join(directory, TEMP)
+
+        copyfile(self.FILE, temp_file)
 
         with open(TEMP, "r") as temp:
             with open(self.FILE, "w") as new:
