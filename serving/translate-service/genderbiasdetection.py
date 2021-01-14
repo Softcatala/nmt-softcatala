@@ -39,7 +39,7 @@ load_data()
 class GenderBiasDetection(object):
 
     def __init__(self, sentence):
-        self.words = []
+        self.words = set()
         self._compute(sentence)
 
     def _compute(self, sentence):
@@ -49,8 +49,9 @@ class GenderBiasDetection(object):
             for char in chars_to_remove:
                 word = word.replace(char, '')
 
-            if word.lower() in terms:
-                self.words.append(word)
+            word = word.lower()
+            if word in terms and word not in self.words:
+                self.words.add(word)
 
     def has_bias(self):
         return len(self.words) > 0
