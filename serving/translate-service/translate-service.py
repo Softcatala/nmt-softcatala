@@ -25,7 +25,6 @@ import json
 import datetime
 from ctranslate import CTranslate
 import pyonmttok
-from threading import Thread
 from texttokenizer import TextTokenizer
 from usage import Usage
 from batchfiles import *
@@ -79,18 +78,20 @@ def translate_thread(sentence, openNMT, i, results):
 def _launch_translate_threads(openNMT, text, sentences, translate):
     num_sentences = len(sentences)
     logging.debug(f"_launch_translate_threads {num_sentences}")
-    threads = []
+    sentences_batch = []
+    indexes = []
     results = ["" for x in range(num_sentences)]
     for i in range(num_sentences):
         if translate[i] is False:
             continue
-        
-        process = Thread(target=translate_thread, args=[sentences[i], openNMT, i, results])
-        process.start()
-        threads.append(process)
 
-    for process in threads:
-        process.join()
+        sentences_batch.append(sentences[i])
+        indexes.append(i)
+
+    translated_batch = openNMT.translate_batch(sentences_batch)
+    for pos in range(0, len(translated_batch)):
+        i = indexes[pos]
+        results[i] = translated_batch[pos] 
 
     logging.debug(f"_launch_translate_threads completed. Results: {len(results)}")
     return results
