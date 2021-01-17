@@ -56,6 +56,16 @@ class TestApertium(TestCase):
         self.assertEquals(self.OK, status)
         self.assertEquals("Com ", translation[:4])
 
+    def test_translate_post_additional_slash(self):
+
+        payload = {"langpair" : "en|cat", "q" : self.SOURCE, "key": "NmQ3NmMyNThmM2JjNWQxMjkxN2N"}
+        response = requests.post(self.URL + self.TRANSLATE + "/", data = payload)
+        status = response.json()['responseStatus']
+        translation = response.json()['responseData']['translatedText']
+
+        self.assertEquals(self.OK, status)
+        self.assertEquals("Com ", translation[:4])
+
     def test_translate_get(self):
 
         text = urllib.parse.quote_plus(self.SOURCE.encode('utf-8'))
