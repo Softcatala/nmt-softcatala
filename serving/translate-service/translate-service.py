@@ -263,6 +263,7 @@ def upload_file():
         result = []
         return json_answer(result)
 
+    result = {}
     result['error'] = "Error desconegut"
     return json_answer(result, 500)
 
