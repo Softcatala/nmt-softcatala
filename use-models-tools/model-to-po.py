@@ -43,7 +43,6 @@ def init_logging(del_logs):
 def _clean_string(result):
     CHARS = (
         '_', '&', '~',  # Accelerators.
-        ':', ',', '...', u'…'  # Punctuations.
     )
     for c in CHARS:
         result = result.replace(c, '')

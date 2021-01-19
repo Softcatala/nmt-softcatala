@@ -14,7 +14,7 @@ train:
 
 
 params:
-    replace_unknown_target: yes
+    replace_unknown_target: True
 
     #eval:
         #    early_stopping:

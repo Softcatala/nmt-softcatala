@@ -115,6 +115,11 @@ def split_in_six_files(src_filename, tgt_filename):
 
             source.write(src)
             target.write(trg)
+
+            # Duplicate corpus in upper case to translate properly uppercase text
+            source.write(src.upper())
+            target.write(trg.upper())
+
             strings = strings + 1
 
     pclean = clean * 100 / strings

@@ -34,12 +34,12 @@ function change_direction() {
     element_action = document.getElementById('change_language');
     languages = element.value;
     
-    if (languages == 'eng-cat') {
-        languages = 'cat-eng';
+    if (languages == 'eng|cat') {
+        languages = 'cat|eng';
         action_text = 'Direcció català - anglès';
     }
     else {
-        languages = 'eng-cat';
+        languages = 'eng|cat';
         action_text = 'Direcció actual anglès - català';
     }
 
@@ -55,28 +55,30 @@ function translate_text() {
     var xhr = new XMLHttpRequest();
     url = URL + `/translate/`;
     xhr.open('POST', url);
-    xhr.setRequestHeader('Content-Type', 'application/json');
 
     xhr.onreadystatechange = function() {
         if (xhr.readyState == XMLHttpRequest.DONE) {
             json = JSON.parse(xhr.responseText);
             element = document.getElementById('translated_text');
-            text = json["translated"];
+            text = json["responseData"]["translatedText"];
             element.value = text;
 
             element = document.getElementById('time_used');
             text = json["time"];
             element.innerText = text;
 
+            element = document.getElementById('message');
+            text = json["message"];
+            if (typeof text == 'undefined') text = ""
+            element.innerText = text;
+
         }
     }
-    payload = JSON.stringify({
-        "languages": languages,
-        "text": text,
-    });
 
+    var payload = new FormData();
+    payload.append('langpair', languages);
+    payload.append('q', text);
     xhr.send(payload);
-
 }
 
 

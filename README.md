@@ -16,20 +16,20 @@ This repository contains Neural Machine Translation tools and models built at So
 
 We have created the following models:
 
-* English - Catalan model (https://www.softcatala.org/pub/softcatala/opennmt/models/eng-cat-2020-11-20.zip)
+* English - Catalan model (https://www.softcatala.org/pub/softcatala/opennmt/models/eng-cat-2020-12-07.zip)
   * Total number of sentences: 4602069
   * replace_unknown_target: yes
   * model: TransformerRelative
   * Tokenizer: SentencePiece
-  * BLEU = 41.96
+  * BLEU = 42.49
   * Default if no specified otherwise
 
-* Catalan - English model (https://www.softcatala.org/pub/softcatala/opennmt/models/cat-eng-2020-11-21.zip)
+* Catalan - English model (https://www.softcatala.org/pub/softcatala/opennmt/models/cat-eng-2020-12-08.zip)
   * Total number of sentences: 4602069
   * replace_unknown_target: yes
   * model: TransformerRelative
   * Tokenizer: SentencePiece
-  * BLEU = 41.41
+  * BLEU = 41.59
   * Default if no specified otherwise
 
 ### Structure of the models
@@ -47,8 +47,8 @@ Description of the directories on the contained in the models zip file:
 
 You can download the docker that we use in production
 
-* Type ```docker pull jordimash/translate-service:v18``` (check if there are newer versions of the [tag](https://hub.docker.com/repository/docker/jordimash/translate-service))
-* docker run  -it --rm -p 8700:8700 jordimash/translate-service:v18
+* Type ```docker pull jordimash/translate-service:v22``` (check if there are newer versions of the [tag](https://hub.docker.com/repository/docker/jordimash/translate-service))
+* docker run  -it --rm -p 8700:8700 jordimash/translate-service:v22
 * http://localhost:8700/translate?langpair=en|cat&q=Hello!
 
 ## Apertium API

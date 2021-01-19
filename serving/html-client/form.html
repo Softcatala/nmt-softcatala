@@ -8,7 +8,7 @@
 
     <form><p><input id="change_language" type="submit" value="Direcció actual anglès - català" 
                     onclick="change_direction(); return false;"></p>
-    <input id="languages" type="hidden" value="eng-cat">
+    <input id="languages" type="hidden" value="eng|cat">
     </form>
 
     <form><p>Text</p> 
@@ -18,6 +18,7 @@
     <p>Translation:</p> 
     <textarea readonly id="translated_text" name="translated_text" cols="100" rows="10"></textarea>
     <p>Temps: <span id="time_used"></span></p>
+    <p>Missatge: <span id="message"></span></p>
     <p>Versió: <span id="version"></span></p>
 
     <p><b>Traducció de fitxers de text</b></p>

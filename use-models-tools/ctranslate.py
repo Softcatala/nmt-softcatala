@@ -23,6 +23,7 @@ import os
 from texttokenizer import TextTokenizer
 import ctranslate2
 import pyonmttok
+from preservemarkup import PreserveMarkup
 
 class CTranslate():
 
@@ -63,16 +64,47 @@ class CTranslate():
     def _translate_request(self, batch_text, timeout):
         batch_input = [self.tokenizer_source.tokenize(text)[0] for text in batch_text]
 
-        result = self.translator.translate_batch(batch_input, return_scores = False, beam_size = self.beam_size, use_vmap = self.use_vmap)
+        result = self.translator.translate_batch(batch_input, return_scores=False, replace_unknowns=True,
+                                                 beam_size=self.beam_size, use_vmap=self.use_vmap)
         tokens = result[0][0]['tokens']
         tokens = [tokens]
         batch_output = [self.tokenizer_target.detokenize(prediction) for prediction in tokens]
         return batch_output
 
+    def translate_batch(self, input_batch):
+
+        batch_input_tokenized = []
+
+        num_sentences = len(input_batch)
+        for pos in range(0, num_sentences):
+            tokenized = self.tokenizer_source.tokenize(input_batch[pos])[0]
+            batch_input_tokenized.append(tokenized)
+
+        result = self.translator.translate_batch(batch_input_tokenized, return_scores=False, replace_unknowns=True,
+                                                 beam_size=self.beam_size, use_vmap=self.use_vmap)
+
+        batch_output = []
+        for pos in range(0, num_sentences):
+            tokenized = result[pos][0]['tokens']
+            translated = self.tokenizer_target.detokenize(tokenized)
+            batch_output.append(translated)
+
+        return batch_output
+
     def _translate_sentence(self, text):
         _default = 60.0
+
+        preserve_markup = PreserveMarkup()
+        markers, text = preserve_markup.create_markers_in_string(text)
+
+#        print(f"input: '{text}'")
         output = self._translate_request([text], timeout=_default)
-        return output[0]
+        translated = output[0]
+#        print(f"pre-translated: '{translated}'")
+        translated = preserve_markup.get_back_markup(translated, markers)
+#        print(f"translated: '{translated}'")
+        return translated
+
 
     def translate(self, text):
         translated = self._translate_sentence(text)
