@@ -67,17 +67,9 @@ def init_logging():
     logger.addHandler(console)
 
 
-def translate_thread(sentence, openNMT, i, results):
-    if sentence.strip() == '':
-        results[i] = ''
-    else:
-        results[i] = openNMT.translate(sentence)
-
-    logging.debug(f"translate_thread {i} - {sentence} - {results[i]}")
-
-def _launch_translate_threads(openNMT, text, sentences, translate):
+def _request_translation(openNMT, text, sentences, translate):
     num_sentences = len(sentences)
-    logging.debug(f"_launch_translate_threads {num_sentences}")
+    logging.debug(f"_request_translation {num_sentences}")
     sentences_batch = []
     indexes = []
     results = ["" for x in range(num_sentences)]
@@ -93,7 +85,7 @@ def _launch_translate_threads(openNMT, text, sentences, translate):
         i = indexes[pos]
         results[i] = translated_batch[pos] 
 
-    logging.debug(f"_launch_translate_threads completed. Results: {len(results)}")
+    logging.debug(f"_request_translation completed. Results: {len(results)}")
     return results
 
 @cross_origin(origin='*',headers=['Content-Type','Authorization'])
@@ -165,7 +157,7 @@ def translate(languages, text):
     tokenizer = TextTokenizer()
     sentences, translate = tokenizer.tokenize(text, language)
 
-    results = _launch_translate_threads(openNMT, text, sentences, translate)
+    results = _request_translation(openNMT, text, sentences, translate)
     translated = tokenizer.sentence_from_tokens(sentences, translate, results)
     return translated
     
@@ -263,6 +255,7 @@ def upload_file():
         result = []
         return json_answer(result)
 
+    result = {}
     result['error'] = "Error desconegut"
     return json_answer(result, 500)
 
