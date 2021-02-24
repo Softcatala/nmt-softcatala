@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2018-2020 Jordi Mas i Hernandez <jmas@softcatala.org>
+# Copyright (c) 2018-2021 Jordi Mas i Hernandez <jmas@softcatala.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -73,6 +73,16 @@ def read_parameters():
     )
 
     parser.add_option(
+        '-t',
+        '--translated-file',
+        type='string',
+        action='store',
+        dest='translated_file',
+        default='',
+        help='Name of the translated file'
+    )
+
+    parser.add_option(
         '-p',
         '--tokenizer-models',
         type='string',
@@ -83,7 +93,7 @@ def read_parameters():
     )
 
     parser.add_option(
-        '-t',
+        '-r',
         '--remove-tags',
         action='store_true',
         dest='remove_tags',
@@ -105,7 +115,8 @@ def read_parameters():
     if options.po_file is None:  # if filename is not given
         parser.error('PO file not given')
 
-    return options.model_name, options.po_file, options.tokenizer_models, options.translation_models, options.remove_tags
+    return options.model_name, options.po_file, options.translated_file,\
+           options.tokenizer_models, options.translation_models, options.remove_tags
 
 def remove_tags_string(src):
     tgt = re.sub("\\<.*?\\>", " ", src)
@@ -117,8 +128,11 @@ def main():
     start_time = datetime.datetime.now()
 
     init_logging(True)
-    model_name, input_filename, tokenizer_models, translation_models, remove_tags = read_parameters()
-    target_filename = input_filename + "-ca.po"
+    model_name, input_filename, target_filename, tokenizer_models, translation_models, remove_tags = read_parameters()
+
+    if len(target_filename) == 0:
+        target_filename = input_filename + "-ca.po"
+
     copyfile(input_filename, target_filename)
 
     model_path = os.path.join(translation_models, model_name)
