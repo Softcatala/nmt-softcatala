@@ -211,7 +211,7 @@ def version_api():
     return json_answer(result)
 
 def _allowed_file(filename):
-    ALLOWED_EXTENSIONS = 'txt'
+    ALLOWED_EXTENSIONS = ['txt', 'po']
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 

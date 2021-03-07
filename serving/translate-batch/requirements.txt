@@ -4,3 +4,4 @@ ctranslate2==1.17
 numpy
 lxml
 regex
+polib

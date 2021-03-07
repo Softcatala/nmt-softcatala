@@ -22,12 +22,11 @@ from __future__ import print_function
 import logging
 import logging.handlers
 import os
-import datetime
 from batchfiles import *
 import time
 import smtplib
-import ssl
 from email.mime.multipart import MIMEMultipart
+from email.mime.application import MIMEApplication
 from email.mime.text import MIMEText
 
 TOKENIZER_MODELS = '/srv/models/tokenizer/'
@@ -49,32 +48,75 @@ def init_logging():
     console.setLevel(LOGLEVEL)
     logger.addHandler(console)
 
-def send_email(translated_file, email):
+def send_email(translated_file, email, attachment):
     try:
         port = 25
         sender_email = "info@softcatala.org"
-
-        with open(translated_file, encoding='utf-8', mode='r') as file:
-            translation = file.read()
 
         with smtplib.SMTP("mail.scnet", port) as server:
             message = MIMEMultipart("alternative")
             message["Subject"] = "Traducció de Softcatalà"
             message["From"] = sender_email
             message["To"] = email
-            part1 = MIMEText(translation, "plain")
-            message.attach(part1)
+
+            if attachment:
+
+                with open(translated_file, mode='rb') as file:
+                    translation = file.read()
+
+                attachment_name = 'ca.po'
+                part1 = MIMEText("Aquí teniu la traducció que heu demanat", "plain")
+                message.attach(part1)
+
+                part = MIMEApplication(translation, Name="ca.po")
+                part['Content-Disposition'] = f'attachment; filename={attachment_name}'
+                message.attach(part)
+
+            else:
+                with open(translated_file, encoding='utf-8', mode='r') as file:
+                    translation = file.read()
+
+                part1 = MIMEText(translation, "plain")
+                message.attach(part1)
+
             server.sendmail(sender_email, email, message.as_string())
     except Exception as e:
         msg = "Error '{0}' sending to {1}".format(e, email)
         logging.error(msg)
 
-MAX_SIZE = 256 * 1024
+MAX_SIZE = 4096 * 1024
 
 def truncate_file(filename):
     f = open(filename, "a")
     f.truncate(MAX_SIZE)
     f.close()
+
+def _is_po_file(filename):
+
+    msgid = False
+    msgstr = False
+    with open(filename, "r") as read_file:
+        lines = 0
+        while True:
+
+            src = read_file.readline().lower()
+
+            if not src or lines > 50:
+                break
+
+            if 'msgid' in src:
+                msgid = True
+
+            if 'msgstr' in src:
+                msgstr = True
+
+            if msgid and msgstr:
+                return True
+
+            lines += 1
+
+    return False
+
 
 def main():
 
@@ -88,12 +130,21 @@ def main():
             source_file = batchfile.filename
             print(source_file)
             translated_file = source_file + "-translated.txt"
-            truncate_file(source_file)
-            cmd = "python3 model-to-txt.py -f {0} -t {1} -m {2} -p {3} -x {4}".format(source_file,
+
+            if _is_po_file(source_file):
+                command = 'model-to-po.py'
+                attachment = True
+            else:
+                command = 'model-to-txt.py'
+                truncate_file(source_file)
+                attachment = False
+
+            cmd = "python3 {0} -f {1} -t {2} -m {3} -p {4} -x {5}".format(command, source_file,
                    translated_file, batchfile.model, TOKENIZER_MODELS, TRANSLATION_MODELS)
+
             logging.debug("Run {0}".format(cmd))
             os.system(cmd)
-            send_email(translated_file, batchfile.email)
+            send_email(translated_file, batchfile.email, attachment)
             batchfile.done = True
             batchfile.save()
 
