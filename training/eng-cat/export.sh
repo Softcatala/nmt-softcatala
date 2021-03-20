@@ -3,6 +3,10 @@ rm exported/ -r -f
 mkdir -p exported/metadata
 mkdir -p exported/tokenizer
 
+if [ ! -f bleu.txt ]; then
+    source bleu.sh
+fi
+
 modelDescription="exported/metadata/model_description.txt"
 currentDate=`date +"%Y-%m-%d-%s"`
 read -p 'Describe model: ' uservar
