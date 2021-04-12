@@ -16,5 +16,9 @@ COPY models/eng-cat/ctranslate2/ /srv/models/eng-cat/
 COPY models/cat-eng/ctranslate2/ /srv/models/cat-eng/
 COPY models/eng-cat/tokenizer/*.model /srv/models/tokenizer/
 
+COPY models/deu-cat/ctranslate2/ /srv/models/deu-cat/
+#COPY models/cat-deu/ctranslate2/ /srv/models/cat-deu/
+COPY models/deu-cat/tokenizer/*.model /srv/models/tokenizer/
+
 ENTRYPOINT /srv/entry-point.sh
 #ENTRYPOINT bash

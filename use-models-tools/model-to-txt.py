@@ -131,14 +131,19 @@ def main():
     model_path = os.path.join(translation_models, model_name)
     openNMT = CTranslate(model_path)
 
-    if (model_name == 'eng-cat'):
+    if model_name == 'eng-cat':
         src_model_path = os.path.join(tokenizer_models, "en_m.model")
         tgt_model_path = os.path.join(tokenizer_models, "ca_m.model")
         language = 'English'
-    else:
+    elif model_name == 'cat-eng':
         src_model_path = os.path.join(tokenizer_models, "ca_m.model")
         tgt_model_path = os.path.join(tokenizer_models, "en_m.model")
         language = 'Catalan'
+    elif model_name == 'deu-cat':
+        src_model_path = os.path.join(tokenizer_models, "de_m.model")
+        tgt_model_path = os.path.join(tokenizer_models, "ca_m.model")
+        language = 'German'
+
 
     openNMT.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path = src_model_path)
     openNMT.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path = tgt_model_path)
