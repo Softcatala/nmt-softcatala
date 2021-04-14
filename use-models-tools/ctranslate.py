@@ -59,6 +59,7 @@ class CTranslate():
 
         print(f"inter_threads: {inter_threads}, intra_threads: {intra_threads}, beam_size {self.beam_size}, use_vmap {self.use_vmap}")
         self.model_path = model_path
+        self.model_name = model_name
         ctranslate_model_path = os.path.join(model_path, "ctranslate2")
         self.translator = ctranslate2.Translator(ctranslate_model_path, inter_threads = inter_threads, intra_threads = intra_threads)
 
@@ -84,6 +85,9 @@ class CTranslate():
             self.use_vmap = False
 
         return inter_threads, intra_threads
+
+    def get_model_name(self):
+        return self.model_name
 
     def get_model_description(self):
         filename = os.path.join(self.model_path, "metadata/model_description.txt")

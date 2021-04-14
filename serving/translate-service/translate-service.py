@@ -170,12 +170,13 @@ def stats():
 @app.route('/version/', methods=['GET'])
 def version_api():
 
-    lines = openNMT_engcat.get_model_description()
-    lines += openNMT_cateng.get_model_description()
-    lines += openNMT_deucat.get_model_description()
+    models = [openNMT_engcat, openNMT_cateng, openNMT_deucat]
 
     result = {}
-    result['version'] = lines
+
+    for model in models:
+        result[model.get_model_name()] = model.get_model_description()
+
     return json_answer(result)
 
 def _allowed_file(filename):
