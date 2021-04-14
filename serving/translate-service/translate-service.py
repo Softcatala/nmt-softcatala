@@ -44,6 +44,7 @@ SAVED_TEXTS = '/srv/data/saved/'
 
 openNMT_engcat = CTranslate(f"{MODELS}", "eng-cat")
 openNMT_cateng = CTranslate(f"{MODELS}", "cat-eng")
+openNMT_deucat = CTranslate(f"{MODELS}", "deu-cat")
 
 def init_logging():
     logfile = 'translate-service.log'
@@ -84,6 +85,8 @@ def apertium_translate_process(values):
 
     if langpair in ['en|cat', 'en|ca', 'eng|ca', 'eng|cat']:
         languages = 'eng-cat'
+    elif langpair in ['de|cat', 'de|ca', 'deu|ca', 'deu|cat']:
+        languages = 'deu-cat'
     else:
         languages = 'cat-eng'
 
@@ -121,8 +124,11 @@ def apertium_translate_process(values):
 
 
 def translate(languages, text):
+
     if languages == 'eng-cat':
         openNMT = openNMT_engcat
+    elif languages == 'deu-cat':
+        openNMT = openNMT_deucat
     else:
         openNMT = openNMT_cateng
 
@@ -166,6 +172,7 @@ def version_api():
 
     lines = openNMT_engcat.get_model_description()
     lines += openNMT_cateng.get_model_description()
+    lines += openNMT_deucat.get_model_description()
 
     result = {}
     result['version'] = lines
