@@ -47,7 +47,6 @@ class CTranslate():
             self.tokenizer_source = tokenizer_target
         else:
             src_model_path = self.get_source_tokenizer_file(model_path, model_name)
-            print(f"src_model_path = {src_model_path}")
             self.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path = src_model_path)
 
         if tokenizer_target:
