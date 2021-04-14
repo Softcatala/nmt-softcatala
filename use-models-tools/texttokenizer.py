@@ -25,6 +25,10 @@ import os
 srx_filepath = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'segment.srx')
 rules = srx_segmenter.parse(srx_filepath)
 
+'''
+    Splits text into sentences keeping spaces to allow later
+    to reconstruct the same text but with translatabled text changed 
+'''
 class TextTokenizer:
 
     def tokenize(self, sentence, language):

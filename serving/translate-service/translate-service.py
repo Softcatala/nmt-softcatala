@@ -37,19 +37,13 @@ from genderbiasdetection import GenderBiasDetection
 app = Flask(__name__)
 CORS(app)
 
-TOKENIZER_MODELS = '/srv/models/tokenizer'
-ENG_CAT_MODEL = '/srv/models/eng-cat'
-CAT_ENG_MODEL = '/srv/models/cat-eng'
+MODELS = '/srv/models/'
+#MODELS = '../../models/' # local
 UPLOAD_FOLDER = '/srv/data/files/'
 SAVED_TEXTS = '/srv/data/saved/'
 
-openNMT_engcat = CTranslate(f"{ENG_CAT_MODEL}")
-openNMT_engcat.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{TOKENIZER_MODELS}/en_m.model")
-openNMT_engcat.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{TOKENIZER_MODELS}/ca_m.model")
-
-openNMT_cateng = CTranslate(f"{CAT_ENG_MODEL}")
-openNMT_cateng.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{TOKENIZER_MODELS}/ca_m.model")
-openNMT_cateng.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path=f"{TOKENIZER_MODELS}/en_m.model")
+openNMT_engcat = CTranslate(f"{MODELS}", "eng-cat")
+openNMT_cateng = CTranslate(f"{MODELS}", "cat-eng")
 
 def init_logging():
     logfile = 'translate-service.log'
@@ -66,27 +60,6 @@ def init_logging():
     console.setLevel(LOGLEVEL)
     logger.addHandler(console)
 
-
-def _request_translation(openNMT, text, sentences, translate):
-    num_sentences = len(sentences)
-    logging.debug(f"_request_translation {num_sentences}")
-    sentences_batch = []
-    indexes = []
-    results = ["" for x in range(num_sentences)]
-    for i in range(num_sentences):
-        if translate[i] is False:
-            continue
-
-        sentences_batch.append(sentences[i])
-        indexes.append(i)
-
-    translated_batch = openNMT.translate_batch(sentences_batch)
-    for pos in range(0, len(translated_batch)):
-        i = indexes[pos]
-        results[i] = translated_batch[pos] 
-
-    logging.debug(f"_request_translation completed. Results: {len(results)}")
-    return results
 
 @cross_origin(origin='*',headers=['Content-Type','Authorization'])
 @app.route('/translate', methods=['GET'])
@@ -146,22 +119,15 @@ def apertium_translate_process(values):
     return json_answer(result)
 
 
+
 def translate(languages, text):
     if languages == 'eng-cat':
         openNMT = openNMT_engcat
-        language = 'English'
     else:
         openNMT = openNMT_cateng
-        language = 'Catalan'
 
-    tokenizer = TextTokenizer()
-    sentences, translate = tokenizer.tokenize(text, language)
-
-    results = _request_translation(openNMT, text, sentences, translate)
-    translated = tokenizer.sentence_from_tokens(sentences, translate, results)
-    return translated
+    return openNMT.translate_parallel(text)
     
-
 
 def _get_processed_files(date):
     try:
@@ -198,13 +164,8 @@ def stats():
 @app.route('/version/', methods=['GET'])
 def version_api():
 
-    with open(f"{ENG_CAT_MODEL}/model_description.txt", "r") as th_description:
-        lines = th_description.read().splitlines()
-
-    with open(f"{CAT_ENG_MODEL}/model_description.txt", "r") as th_description:
-        lines_cat_eng = th_description.read().splitlines()
-
-    lines += lines_cat_eng
+    lines = openNMT_engcat.get_model_description()
+    lines += openNMT_cateng.get_model_description()
 
     result = {}
     result['version'] = lines

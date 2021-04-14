@@ -25,6 +25,7 @@ import ctranslate2
 import pyonmttok
 from preservemarkup import PreserveMarkup
 import re
+import logging
 
 class CTranslate():
 
@@ -41,6 +42,7 @@ class CTranslate():
         inter_threads, intra_threads = self._init_read_env_vars()
 
         model_path = os.path.join(models_path, model_name)
+
         if tokenizer_source:
             self.tokenizer_source = tokenizer_target
         else:
@@ -57,7 +59,8 @@ class CTranslate():
         self.tokenizer_source_language = self._get_setence_tokenizer_source_language(model_name)
 
         print(f"inter_threads: {inter_threads}, intra_threads: {intra_threads}, beam_size {self.beam_size}, use_vmap {self.use_vmap}")
-        ctranslate_model_path =  os.path.join(model_path, "ctranslate2")
+        self.model_path = model_path
+        ctranslate_model_path = os.path.join(model_path, "ctranslate2")
         self.translator = ctranslate2.Translator(ctranslate_model_path, inter_threads = inter_threads, intra_threads = intra_threads)
 
     def _init_read_env_vars(self):
@@ -83,6 +86,11 @@ class CTranslate():
 
         return inter_threads, intra_threads
 
+    def get_model_description(self):
+        filename = os.path.join(self.model_path, "metadata/model_description.txt")
+        with open(filename, "r") as th_description:
+            return th_description.read().splitlines()
+
     def _get_setence_tokenizer_source_language(self, model_name):
         lang =  lang = re.match(self.LANGUAGE_MATCH, model_name).groups()[0]
         lang = lang[:2]
@@ -103,8 +111,6 @@ class CTranslate():
     def get_target_tokenizer_file(self, model_path, model_name):
         return self._get_tokenizer_file(model_path, model_name, 1)
 
-
-
     def _translate_request(self, batch_text, timeout):
         batch_input = [self.tokenizer_source.tokenize(text)[0] for text in batch_text]
 
@@ -115,7 +121,41 @@ class CTranslate():
         batch_output = [self.tokenizer_target.detokenize(prediction) for prediction in tokens]
         return batch_output
 
-    def translate_batch(self, input_batch):
+
+    def translate_parallel(self, text):
+
+        # Split sentences
+        tokenizer = TextTokenizer()
+        sentences, translate = tokenizer.tokenize(text, self.tokenizer_source_language)
+        input_batch = sentences
+
+        num_sentences = len(sentences)
+        logging.debug(f"_request_translation {num_sentences}")
+        sentences_batch = []
+        indexes = []
+        results = ["" for x in range(num_sentences)]
+        for i in range(num_sentences):
+            if translate[i] is False:
+                continue
+
+            sentences_batch.append(sentences[i])
+            indexes.append(i)
+
+        translated_batch = self._translate_batch(sentences_batch)
+        for pos in range(0, len(translated_batch)):
+            i = indexes[pos]
+            results[i] = translated_batch[pos] 
+
+        logging.debug(f"_request_translation completed. Results: {len(results)}")
+        #Rebuild split sentences
+        translated = tokenizer.sentence_from_tokens(sentences, translate, results)
+        return translated
+
+
+    '''
+        Translates asking CTranslate to batch / parallelize
+    '''
+    def _translate_batch(self, input_batch):
 
         batch_input_tokenized = []
 
@@ -133,7 +173,7 @@ class CTranslate():
             translated = self.tokenizer_target.detokenize(tokenized)
             batch_output.append(translated)
 
-        return batch_output
+        return batch_output    
 
     def _translate_sentence(self, text):
         _default = 60.0
@@ -149,18 +189,10 @@ class CTranslate():
 #        print(f"translated: '{translated}'")
         return translated
 
-
-    def translate(self, text):
-        translated = self._translate_sentence(text)
-        return translated
-
-    def _translate_split(self, sentence, i, results):
-        if sentence.strip() == '':
-            results[i] = ''
-        else:
-            results[i] = self.translate(sentence)
-
-
+    '''
+        Splits a piece of text in sequences and translates them sequentially (not in paralell)
+    '''
+    # TODO: Consider deprecated by _translate_batch
     def translate_splitted(self, text):
         tokenizer = TextTokenizer()
         sentences, translate = tokenizer.tokenize(text, self.tokenizer_source_language)
@@ -171,7 +203,12 @@ class CTranslate():
         for i in range(num_sentences):
             if translate[i] is False:
                 continue
+
+            if sentence.strip() == '':
+                results[i] = ''
+            else:
+                results[i] = self._translate_sentence(sentence)
             
-            self._translate_split(sentences[i], i, results)
+            self._translate_sentence(sentences[i], i, results)
 
         return tokenizer.sentence_from_tokens(sentences, translate, results)
