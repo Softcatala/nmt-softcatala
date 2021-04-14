@@ -72,23 +72,13 @@ def read_parameters():
     )
 
     parser.add_option(
-        '-p',
-        '--tokenizer-models',
-        type='string',
-        action='store',
-        dest='tokenizer_models',
-        default='',
-        help='Path to tokenizer SentencePiece models'
-    )
-
-    parser.add_option(
         '-x',
-        '--translation-models',
+        '--models',
         type='string',
         action='store',
-        dest='translation_models',
+        dest='models_path',
         default='',
-        help='Path to translation models'
+        help='Path the model directory'
     )
 
     parser.add_option(
@@ -108,11 +98,11 @@ def read_parameters():
     if options.translated_file is None:
         parser.error('Translate file not given')
 
-    return options.model_name, options.txt_file, options.translated_file, options.tokenizer_models, options.translation_models, options.n_threads
+    return options.model_name, options.txt_file, options.translated_file, options.models_path, options.n_threads
 
-def translate_thread(src, language, openNMT, translations, index, tf_ca):
+def translate_thread(src, openNMT, translations, index, tf_ca):
     try:
-        translations[index] = openNMT.translate_splitted(src, language)
+        translations[index] = openNMT.translate_splitted(src)
     except Exception as e:
         translations[index] = "Error"
         logging.error(str(e))
@@ -125,29 +115,10 @@ def main():
 
     start_time = datetime.datetime.now()
     init_logging(True)
-    model_name, input_filename, translated_file, tokenizer_models, translation_models, n_threads = read_parameters()
+    model_name, input_filename, translated_file, models_path, n_threads = read_parameters()
     print(f'Client threads: {n_threads}')
 
-    model_path = os.path.join(translation_models, model_name)
-    openNMT = CTranslate(model_path)
-
-    if model_name == 'eng-cat':
-        src_model_path = os.path.join(tokenizer_models, "en_m.model")
-        tgt_model_path = os.path.join(tokenizer_models, "ca_m.model")
-        language = 'English'
-    elif model_name == 'cat-eng':
-        src_model_path = os.path.join(tokenizer_models, "ca_m.model")
-        tgt_model_path = os.path.join(tokenizer_models, "en_m.model")
-        language = 'Catalan'
-    elif model_name == 'deu-cat':
-        src_model_path = os.path.join(tokenizer_models, "de_m.model")
-        tgt_model_path = os.path.join(tokenizer_models, "ca_m.model")
-        language = 'German'
-
-
-    openNMT.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path = src_model_path)
-    openNMT.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path = tgt_model_path)
-
+    openNMT = CTranslate(models_path, model_name)
     target_filename_review = "translated-review.txt"
     with open(input_filename, encoding='utf-8', mode='r', errors='ignore') as tf_en,\
          open(translated_file, encoding='utf-8', mode='w') as tf_ca,\
@@ -172,7 +143,7 @@ def main():
 
             for t in range(0, num_threads):
                 src = sources[t]
-                process = Thread(target=translate_thread, args=[sources[t], language, openNMT, translations, t, tf_ca])
+                process = Thread(target=translate_thread, args=[sources[t], openNMT, translations, t, tf_ca])
                 process.start()
                 threads.append(process)
               

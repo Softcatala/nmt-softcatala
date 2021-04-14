@@ -24,6 +24,7 @@ from texttokenizer import TextTokenizer
 import ctranslate2
 import pyonmttok
 from preservemarkup import PreserveMarkup
+import re
 
 class CTranslate():
 
@@ -31,12 +32,35 @@ class CTranslate():
     INTRA_THREADS = 'CTRANSLATE_INTRA_THREADS'
     BEAM_SIZE = 'CTRANSLATE_BEAM_SIZE'
     USE_VMAP = 'CTRANSLATE_USE_VMAP'
+    LANGUAGE_MATCH = "([a-z]{3})-([a-z]{3})"
+    TOKENIZER_SUDIR = "tokenizer"
+    TOKENIZER_FILE = "{0}_m.model"
 
-    def __init__(self, model_path):
-        self.model_path = model_path
-        self.tokenizer_source = None
-        self.tokenizer_target = None
+    def __init__(self, models_path, model_name, tokenizer_source = None, tokenizer_target = None):
 
+        inter_threads, intra_threads = self._init_read_env_vars()
+
+        model_path = os.path.join(models_path, model_name)
+        if tokenizer_source:
+            self.tokenizer_source = tokenizer_target
+        else:
+            src_model_path = self.get_source_tokenizer_file(model_path, model_name)
+            print(f"src_model_path = {src_model_path}")
+            self.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path = src_model_path)
+
+        if tokenizer_target:
+            self.tokenizer_target = tokenizer_target
+        else:
+            tgt_model_path = self.get_target_tokenizer_file(model_path, model_name)
+            self.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path = tgt_model_path)
+
+        self.tokenizer_source_language = self._get_setence_tokenizer_source_language(model_name)
+
+        print(f"inter_threads: {inter_threads}, intra_threads: {intra_threads}, beam_size {self.beam_size}, use_vmap {self.use_vmap}")
+        ctranslate_model_path =  os.path.join(model_path, "ctranslate2")
+        self.translator = ctranslate2.Translator(ctranslate_model_path, inter_threads = inter_threads, intra_threads = intra_threads)
+
+    def _init_read_env_vars(self):
         if self.INTER_THREADS in os.environ:
             inter_threads = int(os.environ[self.INTER_THREADS])
         else:
@@ -57,8 +81,28 @@ class CTranslate():
         else:
             self.use_vmap = False
 
-        print(f"inter_threads: {inter_threads}, intra_threads: {intra_threads}, beam_size {self.beam_size}, use_vmap {self.use_vmap}")
-        self.translator = ctranslate2.Translator(model_path, inter_threads = inter_threads, intra_threads = intra_threads)
+        return inter_threads, intra_threads
+
+    def _get_setence_tokenizer_source_language(self, model_name):
+        lang =  lang = re.match(self.LANGUAGE_MATCH, model_name).groups()[0]
+        lang = lang[:2]
+
+        choices = {'ca': 'Catalan', 'en': 'English', 'de' : 'German'}
+        return choices[lang]
+
+    def _get_tokenizer_file(self, model_path, model_name, index):
+        lang = re.match(self.LANGUAGE_MATCH, model_name).groups()[index]
+        lang = lang[:2]
+        filename = self.TOKENIZER_FILE.format(lang)
+        path = os.path.join(model_path, self.TOKENIZER_SUDIR, filename)
+        return path
+
+    def get_source_tokenizer_file(self, model_path, model_name):
+        return self._get_tokenizer_file(model_path, model_name, 0)
+
+    def get_target_tokenizer_file(self, model_path, model_name):
+        return self._get_tokenizer_file(model_path, model_name, 1)
+
 
 
     def _translate_request(self, batch_text, timeout):
@@ -117,9 +161,9 @@ class CTranslate():
             results[i] = self.translate(sentence)
 
 
-    def translate_splitted(self, text, language):
+    def translate_splitted(self, text):
         tokenizer = TextTokenizer()
-        sentences, translate = tokenizer.tokenize(text, language)
+        sentences, translate = tokenizer.tokenize(text, self.tokenizer_source_language)
 
         num_sentences = len(sentences)
         threads = []
