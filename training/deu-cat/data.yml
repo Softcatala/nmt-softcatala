@@ -10,7 +10,7 @@ data:
 
 train:
    keep_checkpoint_max: 1
-   max_step: 30000
+   max_step: 50000
 
 
 params:
