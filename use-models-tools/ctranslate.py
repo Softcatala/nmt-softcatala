@@ -207,11 +207,9 @@ class CTranslate():
             if translate[i] is False:
                 continue
 
-            if sentence.strip() == '':
+            if sentences[i].strip() == '':
                 results[i] = ''
             else:
-                results[i] = self._translate_sentence(sentence)
+                results[i] = self._translate_sentence(sentences[i])
             
-            self._translate_sentence(sentences[i], i, results)
-
         return tokenizer.sentence_from_tokens(sentences, translate, results)
