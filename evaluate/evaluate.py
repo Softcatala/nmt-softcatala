@@ -25,6 +25,8 @@ from nltk.translate import nist_score, bleu_score
 warnings.filterwarnings("ignore")
 
 def get_bleu(reference_file, hypotesis_file):
+    if reference_file is None or hypotesis_file is None:
+        return 0
 
     if not os.path.exists(reference_file):
         print(f"File '{reference_file}' not found")
@@ -149,9 +151,9 @@ def evaluate_deu_cat():
 
     datasets = \
         [\
-            ['Tatoeba', f'input/tatoeba.de-ca.{language}', f'translated/tatoeba-apertium-{language}.txt',
-                 f'translated/tatoeba-yandex-{language}.txt', f'translated/tatoeba-google-{language}.txt', \
-                 f'translated/tatoeba-opennmt-{language}.txt'],\
+            ['Tatoeba', f'input/tatoeba.ca-de.{language}', None,
+                 None, f'translated/tatoeba.ca-de-google-{language}.txt', \
+                 None],\
         ]
 
     print("Transalion engine\tBLEU\tNIST")
