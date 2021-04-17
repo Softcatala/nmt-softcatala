@@ -103,7 +103,7 @@ def show_score_line(engine, reference_file, hypotesis_file):
     else:
         print(f"{engine}\t\t\t{bleu:.2f}\t{nist:.2f}")
 
-def main():
+def evaluate_eng_cat():
 
     language = 'ca'
 
@@ -140,6 +140,42 @@ def main():
 
         if ds[5] != None:
             show_score_line("nmt-softcatala", ds[1], ds[5])
+
+
+
+def evaluate_deu_cat():
+
+    language = 'ca'
+
+    datasets = \
+        [\
+            ['Tatoeba', f'input/tatoeba.de-ca.{language}', f'translated/tatoeba-apertium-{language}.txt',
+                 f'translated/tatoeba-yandex-{language}.txt', f'translated/tatoeba-google-{language}.txt', \
+                 f'translated/tatoeba-opennmt-{language}.txt'],\
+        ]
+
+    print("Transalion engine\tBLEU\tNIST")
+    for ds in datasets:
+        print("-- " + ds[0])
+
+        if ds[2] != None:
+            show_score_line("Apertium", ds[1], ds[2])
+
+        if ds[3] != None:
+            show_score_line("Yandex", ds[1], ds[3])
+
+        if ds[4] != None:
+            show_score_line("Google", ds[1], ds[4])
+
+        if ds[5] != None:
+            show_score_line("nmt-softcatala", ds[1], ds[5])
+
+
+
+def main():
+    evaluate_deu_cat()
+#    evaluate_eng_cat()
+
 
 if __name__ == "__main__":
     main()
