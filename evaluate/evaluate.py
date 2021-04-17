@@ -152,7 +152,7 @@ def evaluate_deu_cat():
     datasets = \
         [\
             ['Tatoeba', f'input/tatoeba.ca-de.{language}', None,
-                 None, f'translated/tatoeba.ca-de-google-{language}.txt', \
+                 'translated/tatoeba.ca-de-yandex-ca.txt', f'translated/tatoeba.ca-de-google-{language}.txt', \
                  'translated/tatoeba.ca-de.opennmt-ca.txt'],\
         ]
 
