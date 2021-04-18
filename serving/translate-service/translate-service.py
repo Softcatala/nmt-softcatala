@@ -175,7 +175,7 @@ def stats():
 @app.route('/version/', methods=['GET'])
 def version_api():
 
-    models = [openNMT_engcat, openNMT_cateng, openNMT_deucat]
+    models = [openNMT_engcat, openNMT_cateng, openNMT_deucat, openNMT_catdeu]
 
     result = {}
 
