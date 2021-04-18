@@ -6,7 +6,7 @@ to evaluate the performance of the English - Catalan models against others syste
 We use the current corpus that we benchmark:
 * Sleepyhollow - 342 words
 * Tatoeba - 2000 words
-* Fedalist -5681 words
+* Fedalist - 5681 words
 * Softcatalà user's corpus - 492 words
 
 We basically translated these corpus with different engines to be able compare our
@@ -17,7 +17,7 @@ Run ```python evaluate.py```
 # Benchmark
 
 <pre>
-Transalion engine	BLEU	NIST
+Translation engine	BLEU	NIST
 -- Sleepyhollow
 Apertium		0.08	3.51
 Yandex			0.10	3.90
