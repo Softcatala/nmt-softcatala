@@ -127,7 +127,7 @@ def evaluate_eng_cat():
                  f'translated/federalist-opennmt-ca.txt'],\
         ]
 
-    print("Transalion engine\tBLEU\tNIST")
+    print("Translation engine\tBLEU\tNIST")
     for ds in datasets:
         print("-- " + ds[0])
 
