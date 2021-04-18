@@ -154,6 +154,10 @@ def evaluate_deu_cat():
             ['Tatoeba', f'input/tatoeba.ca-de.{language}', None,
                  'translated/tatoeba.ca-de-yandex-ca.txt', f'translated/tatoeba.ca-de-google-{language}.txt', \
                  'translated/tatoeba.ca-de.opennmt-ca.txt'],\
+
+            ['Ubuntu', f'input/ubuntu.ca-de.{language}', None,
+                 None, f'translated/ubuntu.ca-de-google-{language}.txt', \
+                 f'translated/ubuntu.ca-de.opennmt-{language}.txt'],\
         ]
 
     print("Transalion engine\tBLEU\tNIST")
