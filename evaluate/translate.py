@@ -84,7 +84,6 @@ def translate_text_google(text):
     _key = 'XXX'
     SERVER = "https://translation.googleapis.com/language/translate/v2"
 
-    language_pair = 'en-ca'
     url = "{0}/?key={1}&source=en&target=ca".format(SERVER, _key)
     url += "&q=" + urllib.parse.quote_plus(text.encode('utf-8'))
     response = urllib.request.urlopen(url)
