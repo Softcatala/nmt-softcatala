@@ -24,6 +24,10 @@ COPY models/deu-cat/ctranslate2/ /srv/models/deu-cat/ctranslate2/
 COPY models/deu-cat/tokenizer/ /srv/models/deu-cat/tokenizer/
 COPY models/deu-cat/metadata/model_description.txt /srv/models/deu-cat/metadata/
 
+COPY models/cat-deu/ctranslate2/ /srv/models/cat-deu/ctranslate2/
+COPY models/cat-deu/tokenizer/ /srv/models/cat-deu/tokenizer/
+COPY models/cat-deu/metadata/model_description.txt /srv/models/cat-deu/metadata/
+
 
 COPY models/deu-cat/ctranslate2/ /srv/models/deu-cat/
 #COPY models/cat-deu/ctranslate2/ /srv/models/cat-deu/

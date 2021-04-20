@@ -155,9 +155,13 @@ def evaluate_deu_cat():
                  'translated/tatoeba.ca-de-yandex-ca.txt', f'translated/tatoeba.ca-de-google-{language}.txt', \
                  'translated/tatoeba.ca-de.opennmt-ca.txt'],\
 
-            ['Ubuntu', f'input/ubuntu.ca-de.{language}', None,
+            ['Ubuntu de-ca', f'input/ubuntu.ca-de.{language}', None,
                  'translated/ubuntu.ca-de.yandex-ca.txt', f'translated/ubuntu.ca-de-google-{language}.txt', \
                  f'translated/ubuntu.ca-de.opennmt-{language}.txt'],\
+
+            ['Ubuntu ca-de', f'input/ubuntu.ca-de.de', None,
+                 None, f'translated/ubuntu.ca-de.de-google-de.txt', \
+                 f'translated/ubuntu.ca-de.opennmt-de.txt'],\
         ]
 
     print("Transalion engine\tBLEU\tNIST")
