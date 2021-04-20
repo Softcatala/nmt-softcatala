@@ -159,9 +159,9 @@ def evaluate_deu_cat():
                  'translated/ubuntu.ca-de.yandex-ca.txt', f'translated/ubuntu.ca-de-google-{language}.txt', \
                  f'translated/ubuntu.ca-de.opennmt-{language}.txt'],\
 
-            ['Ubuntu ca-de', f'input/ubuntu.ca-de.de', None,
+            ['Ubuntu ca-de', f'input/ubuntu.ca-de.de', None,\
                  None, f'translated/ubuntu.ca-de.de-google-de.txt', \
-                 f'translated/ubuntu.ca-de.opennmt-de.txt'],\
+                 f'translated/ubuntu.ca-de.de-opennmt-de.txt'],\
         ]
 
     print("Transalion engine\tBLEU\tNIST")
