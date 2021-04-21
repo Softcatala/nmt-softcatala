@@ -29,11 +29,11 @@ def get_bleu(reference_file, hypotesis_file):
         return 0
 
     if not os.path.exists(reference_file):
-        print(f"File '{reference_file}' not found")
+        #print(f"File '{reference_file}' not found")
         return 0
 
     if not os.path.exists(hypotesis_file):
-        print(f"File '{hypotesis_file}' not found")
+        #print(f"File '{hypotesis_file}' not found")
         return 0
 
     cumulative_bleu_score = 0
@@ -66,11 +66,11 @@ def get_bleu(reference_file, hypotesis_file):
 
 def get_nist(reference_file, hypotesis_file):
     if not os.path.exists(reference_file):
-        print(f"File '{reference_file}' not found")
+#        print(f"File '{reference_file}' not found")
         return 0
 
     if not os.path.exists(hypotesis_file):
-        print(f"File '{hypotesis_file}' not found")
+#        print(f"File '{hypotesis_file}' not found")
         return 0
 
     cumulative_bleu_score = 0
@@ -99,6 +99,9 @@ def get_nist(reference_file, hypotesis_file):
 def show_score_line(engine, reference_file, hypotesis_file):
     bleu = get_bleu(reference_file, hypotesis_file)
     nist = get_nist(reference_file, hypotesis_file)
+
+    if bleu == 0 or nist == 0:
+        return
 
     if len(engine) >= 8:
         print(f"{engine}\t\t{bleu:.2f}\t{nist:.2f}")
@@ -143,43 +146,31 @@ def evaluate_eng_cat():
         if ds[5] != None:
             show_score_line("nmt-softcatala", ds[1], ds[5])
 
-
-
 def evaluate_deu_cat():
 
     language = 'ca'
 
     datasets = \
         [\
-            ['Tatoeba', f'input/tatoeba.ca-de.{language}', None,
-                 'translated/tatoeba.ca-de-yandex-ca.txt', f'translated/tatoeba.ca-de-google-{language}.txt', \
-                 'translated/tatoeba.ca-de.opennmt-ca.txt'],\
+            ['Tatoeba German - Catalan', f'input/tatoeba.ca-de.{language}',
+                 'translated/tatoeba.ca-de-{0}-{1}.txt'],
 
-            ['Ubuntu de-ca', f'input/ubuntu.ca-de.{language}', None,
-                 'translated/ubuntu.ca-de.yandex-ca.txt', f'translated/ubuntu.ca-de-google-{language}.txt', \
-                 f'translated/ubuntu.ca-de.opennmt-{language}.txt'],\
+            ['Ubuntu German - Catalan', f'input/ubuntu.ca-de.{language}',
+                 'translated/ubuntu.ca-de-{0}-{1}.txt'],
 
-            ['Ubuntu ca-de', f'input/ubuntu.ca-de.de', None,\
-                 None, f'translated/ubuntu.ca-de.de-google-de.txt', \
-                 f'translated/ubuntu.ca-de.de-opennmt-de.txt'],\
+            ['Ubuntu Catalan - German', 'input/ubuntu.ca-de.de',
+                 'translated/ubuntu.ca-de.de-{0}-{1}.txt']
         ]
 
-    print("Transalion engine\tBLEU\tNIST")
+    print("Translation engine\tBLEU\tNIST")
+    engines = ["Apertium", "Yandex", "Google", "nmt-softcatala"]
     for ds in datasets:
         print("-- " + ds[0])
 
-        if ds[2] != None:
-            show_score_line("Apertium", ds[1], ds[2])
-
-        if ds[3] != None:
-            show_score_line("Yandex", ds[1], ds[3])
-
-        if ds[4] != None:
-            show_score_line("Google", ds[1], ds[4])
-
-        if ds[5] != None:
-            show_score_line("nmt-softcatala", ds[1], ds[5])
-
+        for engine in engines:
+            reference_file = ds[1]
+            hypotesis_file = ds[2].format(engine.lower(), language)
+            show_score_line(engine, reference_file, hypotesis_file)
 
 
 def main():
