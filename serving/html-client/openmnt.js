@@ -28,25 +28,6 @@ function show_version() {
     });
 }
 
-function change_direction() {
-    
-    element = document.getElementById('languages');
-    element_action = document.getElementById('change_language');
-    languages = element.value;
-    
-    if (languages == 'eng|cat') {
-        languages = 'cat|eng';
-        action_text = 'Direcció català - anglès';
-    }
-    else {
-        languages = 'eng|cat';
-        action_text = 'Direcció actual anglès - català';
-    }
-
-    element.value = languages
-    element_action.value = action_text
-}
-
 function translate_text() {
 
     text = document.getElementById('source_text').value;

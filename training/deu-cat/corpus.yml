@@ -1,0 +1,20 @@
+source_files:
+    - de-ca-corpus/data/GNOME.ca-de.de
+    - de-ca-corpus/data/KDE4.ca-de.de
+    - de-ca-corpus/data/OpenSubtitles.ca-de.de
+    - de-ca-corpus/data/TED2020.ca-de.de
+    - processed/TildeMODEL.de-es.de
+    - de-ca-corpus/data/europarl.de-ca.de
+#    - de-ca-corpus/data/Tatoeba.ca-de.de
+#    - de-ca-corpus/data/Ubuntu.ca-de.de
+
+target_files:
+    - de-ca-corpus/data/GNOME.ca-de.ca
+    - de-ca-corpus/data/KDE4.ca-de.ca
+    - de-ca-corpus/data/OpenSubtitles.ca-de.ca
+    - de-ca-corpus/data/TED2020.ca-de.ca
+    - processed/TildeMODEL.de-ca.ca
+    - de-ca-corpus/data/europarl.de-ca.ca
+#    - de-ca-corpus/data/Tatoeba.ca-de.ca
+#    - de-ca-corpus/data/Ubuntu.ca-de.ca
+

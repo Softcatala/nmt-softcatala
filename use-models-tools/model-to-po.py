@@ -83,13 +83,13 @@ def read_parameters():
     )
 
     parser.add_option(
-        '-p',
-        '--tokenizer-models',
+        '-x',
+        '--models',
         type='string',
         action='store',
-        dest='tokenizer_models',
+        dest='models_path',
         default='',
-        help='Path to tokenizer SentencePiece models'
+        help='Path the model directory'
     )
 
     parser.add_option(
@@ -101,22 +101,13 @@ def read_parameters():
         help=u'Remove tags from target translation (better output less mess up with tags)'
     )
 
-    parser.add_option(
-        '-x',
-        '--translation-models',
-        type='string',
-        action='store',
-        dest='translation_models',
-        default='',
-        help='Path to translation models'
-    )
 
     (options, args) = parser.parse_args()
     if options.po_file is None:  # if filename is not given
         parser.error('PO file not given')
 
     return options.model_name, options.po_file, options.translated_file,\
-           options.tokenizer_models, options.translation_models, options.remove_tags
+           options.models_path, options.remove_tags
 
 def remove_tags_string(src):
     tgt = re.sub("\\<.*?\\>", " ", src)
@@ -128,26 +119,15 @@ def main():
     start_time = datetime.datetime.now()
 
     init_logging(True)
-    model_name, input_filename, target_filename, tokenizer_models, translation_models, remove_tags = read_parameters()
+    model_name, input_filename, target_filename, models_path, remove_tags = read_parameters()
 
     if len(target_filename) == 0:
         target_filename = input_filename + "-ca.po"
 
     copyfile(input_filename, target_filename)
 
-    model_path = os.path.join(translation_models, model_name)
-    openNMT = CTranslate(model_path)
-
-    if (model_name == 'eng-cat'):
-        src_model_path = os.path.join(tokenizer_models, "en_m.model")
-        tgt_model_path = os.path.join(tokenizer_models, "ca_m.model")
-    else:
-        src_model_path = os.path.join(tokenizer_models, "ca_m.model")
-        tgt_model_path = os.path.join(tokenizer_models, "en_m.model")
-
-    openNMT.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path = src_model_path)
-    openNMT.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path = tgt_model_path)
-    
+    print(f"{models_path} - {model_name}")
+    openNMT = CTranslate(models_path, model_name)
     po_file = polib.pofile(target_filename)
     translated = 0
     errors = 0
@@ -168,8 +148,8 @@ def main():
                     src = remove_tags_string(src)
                     src_plural = remove_tags_string(src_plural)
 
-                tgt = openNMT.translate(src)
-                tgt_plural = openNMT.translate(src_plural)
+                tgt = openNMT.translate_splitted(src)
+                tgt_plural = openNMT.translate_splitted(src_plural)
                 entry.msgstr_plural[0] = tgt
                 entry.msgstr_plural[1] = tgt_plural
             else:
@@ -178,7 +158,7 @@ def main():
                 if remove_tags:
                     src = remove_tags_string(src)
 
-                tgt = openNMT.translate(src)
+                tgt = openNMT.translate_splitted(src)
                 entry.msgstr = tgt
 
             translated = translated + 1
