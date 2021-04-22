@@ -153,13 +153,13 @@ def evaluate_deu_cat():
     datasets = \
         [\
             ['Tatoeba German - Catalan', f'input/tatoeba.ca-de.{language}',
-                 'translated/tatoeba.ca-de-{0}-{1}.txt'],
+                 'translated/tatoeba.ca-de-{0}-ca.txt'],
 
             ['Ubuntu German - Catalan', f'input/ubuntu.ca-de.{language}',
-                 'translated/ubuntu.ca-de-{0}-{1}.txt'],
+                 'translated/ubuntu.ca-de-{0}-ca.txt'],
 
             ['Ubuntu Catalan - German', 'input/ubuntu.ca-de.de',
-                 'translated/ubuntu.ca-de.de-{0}-{1}.txt']
+                 'translated/ubuntu.ca-de.de-{0}-de.txt']
         ]
 
     print("Translation engine\tBLEU\tNIST")
@@ -169,14 +169,13 @@ def evaluate_deu_cat():
 
         for engine in engines:
             reference_file = ds[1]
-            hypotesis_file = ds[2].format(engine.lower(), language)
+            hypotesis_file = ds[2].format(engine.lower())
             show_score_line(engine, reference_file, hypotesis_file)
 
 
 def main():
+    evaluate_eng_cat()
     evaluate_deu_cat()
-#    evaluate_eng_cat()
-
 
 if __name__ == "__main__":
     main()
