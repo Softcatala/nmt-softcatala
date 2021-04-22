@@ -140,8 +140,8 @@ def yandex():
 def google():
 
     print("Translating Google")
-    txt_en_file = 'input/tatoeba.ca-de.de'
-    txt_ca_file = 'translated/tatoeba.ca-de-google-ca.txt'
+    txt_en_file = 'input/sc-users-en.txt'
+    txt_ca_file = 'translated/sc-users-google-ca.txt'
 
     strings = 0
     with open(txt_en_file, 'r') as tf_en, open(txt_ca_file, 'w') as tf_ca:
