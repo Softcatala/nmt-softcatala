@@ -18,19 +18,27 @@ We have created the following models:
 
 * English - Catalan model (https://www.softcatala.org/pub/softcatala/opennmt/models/eng-cat-2021-01-11.zip)
   * Total number of sentences: 4602069
-  * replace_unknown_target: yes
   * model: TransformerRelative
   * Tokenizer: SentencePiece
   * BLEU = 41.56
-  * Default if no specified otherwise
 
 * Catalan - English model (https://www.softcatala.org/pub/softcatala/opennmt/models/cat-eng-2021-01-19.zip)
   * Total number of sentences: 4602069
-  * replace_unknown_target: yes
   * model: TransformerRelative
   * Tokenizer: SentencePiece
   * BLEU = 42.39
-  * Default if no specified otherwise
+
+* German - Catalan model (https://www.softcatala.org/pub/softcatala/opennmt/models/deu-cat-2021-04-22.zip)
+  * Total number of sentences: 3262424
+  * model: TransformerRelative
+  * Tokenizer: SentencePiece
+  * BLEU = 32.71
+
+* Catalan - German model (https://www.softcatala.org/pub/softcatala/opennmt/models/cat-deu-2021-04-22.zip)
+  * Total number of sentences: 3262424
+  * model: TransformerRelative
+  * Tokenizer: SentencePiece
+  * BLEU = 27.18
 
 ### Structure of the models
 
