@@ -93,27 +93,32 @@ def truncate_file(filename):
 
 def _is_po_file(filename):
 
-    msgid = False
-    msgstr = False
-    with open(filename, "r") as read_file:
-        lines = 0
-        while True:
+    try:
+        msgid = False
+        msgstr = False
+        with open(filename, "r") as read_file:
+            lines = 0
+            while True:
 
-            src = read_file.readline().lower()
+                src = read_file.readline().lower()
 
-            if not src or lines > 50:
-                break
+                if not src or lines > 50:
+                    break
 
-            if 'msgid' in src:
-                msgid = True
+                if 'msgid' in src:
+                    msgid = True
 
-            if 'msgstr' in src:
-                msgstr = True
+                if 'msgstr' in src:
+                    msgstr = True
 
-            if msgid and msgstr:
-                return True
+                if msgid and msgstr:
+                    return True
 
-            lines += 1
+                lines += 1
+
+    except Exception as e:
+        msg = "_is_po_file. Error '{0}'".format(e)
+        logging.error(msg)
 
     return False
 
