@@ -29,7 +29,6 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
 from email.mime.text import MIMEText
 
-TOKENIZER_MODELS = '/srv/models/tokenizer/'
 TRANSLATION_MODELS = '/srv/models/'
 
 def init_logging():
