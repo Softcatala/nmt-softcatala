@@ -31,9 +31,10 @@ class Usage(object):
 
     FILE = "/srv/data/usage.txt"
     DAYS_TO_KEEP = 7
+    rotate = True
 
-    def __init__(self):
-        self.rotate = True
+    def _set_filename(self, filename):
+        self.FILE = filename
 
     def _get_time_now(self):
         return datetime.datetime.utcnow()

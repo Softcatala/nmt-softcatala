@@ -6,3 +6,5 @@ install:
 script:
   - cd use-models-tools
   - nosetests
+  - cd ../serving/translate-service
+  - nosetests
