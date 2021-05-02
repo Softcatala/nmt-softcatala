@@ -39,7 +39,15 @@ class UsageTest(Usage):
         MODEL_NAME = "eng-cat"
         WORDS = 10200
         TIME_USED = datetime.datetime(2013,12,30,23,59,59) - datetime.datetime(2013,12,30,23,59,50)
-        self.log(MODEL_NAME, WORDS, TIME_USED)
+        TYPE = "form"
+        self.log(MODEL_NAME, WORDS, TIME_USED, TYPE)
+
+    def _log_file(self):
+        MODEL_NAME = "eng-cat"
+        WORDS = 10200
+        TIME_USED = datetime.datetime(2013,12,30,23,59,59) - datetime.datetime(2013,12,30,23,59,50)
+        TYPE = "file"
+        self.log(MODEL_NAME, WORDS, TIME_USED, TYPE)
 
 
 class TestUsage(unittest.TestCase):
@@ -59,12 +67,9 @@ class TestUsage(unittest.TestCase):
         usage._set_time_now(datetime.datetime(2016, 10, 5))
         usage._log()
         lines = self.readLog()
-        print(len(lines))
-        for line in lines:
-            print(line)
 
         self.assertEqual(len(lines), 1)
-        self.assertEqual('2016-10-05 00:00:00	eng-cat	10200	9.0\n', lines[0])
+        self.assertEqual('2016-10-05 00:00:00	eng-cat	10200	9.0	form\n', lines[0])
 
     def test_log_two(self):
         usage = UsageTest()
@@ -76,8 +81,8 @@ class TestUsage(unittest.TestCase):
         lines = self.readLog()
 
         self.assertEqual(2, len(lines))
-        self.assertEqual('2016-10-05 00:00:00	eng-cat	10200	9.0\n', lines[0])
-        self.assertEqual('2016-10-06 00:00:00	eng-cat	10200	9.0\n', lines[1])
+        self.assertEqual('2016-10-05 00:00:00	eng-cat	10200	9.0	form\n', lines[0])
+        self.assertEqual('2016-10-06 00:00:00	eng-cat	10200	9.0	form\n', lines[1])
 
     def test_get_stats_none(self):
         usage = UsageTest()
@@ -119,12 +124,19 @@ class TestUsage(unittest.TestCase):
         usage._set_time_now(datetime.datetime(2016, 10, 9))
         usage._log()
         lines = self.readLog()
-        for line in lines:
-            print(line)
 
         self.assertEqual(2, len(lines))
-        self.assertEqual('2016-10-02 00:00:00	eng-cat	10200	9.0\n', lines[0])
-        self.assertEqual('2016-10-09 00:00:00	eng-cat	10200	9.0\n', lines[1])
+        self.assertEqual('2016-10-02 00:00:00	eng-cat	10200	9.0	form\n', lines[0])
+        self.assertEqual('2016-10-09 00:00:00	eng-cat	10200	9.0	form\n', lines[1])
+
+    def test_get_stats_file(self):
+        date = datetime.datetime(2016, 10, 5)
+        usage = UsageTest()
+        usage._set_time_now(date)
+        usage._log_file()
+
+        stats = usage.get_stats(date)
+        self.assertEqual(1, stats["eng-cat"]["files"])
 
 
 if __name__ == '__main__':

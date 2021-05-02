@@ -1,7 +1,6 @@
 flask
 flask_cors
 gunicorn>=20.0.4
-peewee>=3.0.0
 pyonmttok==1.18.0
 ctranslate2==1.17
 numpy

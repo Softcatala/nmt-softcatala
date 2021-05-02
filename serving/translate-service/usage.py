@@ -21,6 +21,7 @@
 import os
 import datetime
 from shutil import copyfile
+import logging
 
 '''
     This class keeps a log of the usage of a service
@@ -42,26 +43,27 @@ class Usage(object):
     def get_date_from_line(self, line):
          return line.split("\t", 1)[0]
 
-    def log(self, model_name, words, time_used):
+    def log(self, model_name, words, time_used, _type):
         try:
             with open(self.FILE, "a+") as file_out:
                 current_time = self._get_time_now().strftime('%Y-%m-%d %H:%M:%S')
-                file_out.write('{0}\t{1}\t{2}\t{3}\n'.format(current_time, model_name, words, time_used.total_seconds()))
+                file_out.write('{0}\t{1}\t{2}\t{3}\t{4}\n'.format(current_time, model_name, words, time_used.total_seconds(), _type))
 
             if self.rotate and self._is_old_line(self._read_first_line()):
                 self._rotate_file()
         except Exception as exception:
-            print("Error:" + str(exception))
+            logging.error("log. Error:" + str(exception))
             pass
 
     def _get_line_components(self, line):
-        components = line.split("\t")
-        return components[0], components[1], components[2], components[3]
+        components = line.strip().split("\t")
+        return components[0], components[1], components[2], components[3], components[4]
 
     def _init_stats_dict(self, dictionary):
         dictionary["calls"] = 0
         dictionary["words"] = 0
         dictionary["time_used"] = 0
+        dictionary["files"] = 0
         return dictionary
 
     def get_stats(self, date_requested):
@@ -69,7 +71,7 @@ class Usage(object):
         try:
             with open(self.FILE, "r") as file_in:
                 for line in file_in:
-                    date_component, model_component, words_component, time_component = self._get_line_components(line)
+                    date_component, model_component, words_component, time_component, _type = self._get_line_components(line)
 
                     if model_component in results:
                         stats = results[model_component]
@@ -80,12 +82,15 @@ class Usage(object):
                     datetime_no_newline = date_component
                     line_datetime = datetime.datetime.strptime(datetime_no_newline, '%Y-%m-%d %H:%M:%S')
                     if line_datetime.date() == date_requested.date():
-                        stats["calls"] = stats["calls"] + 1
-                        stats["words"] = stats["words"] + int(words_component)
-                        stats["time_used"] = stats["time_used"] + float(time_component)
+                        if _type == 'file':
+                            stats["files"] = stats["files"] + 1
+                        else:
+                            stats["calls"] = stats["calls"] + 1
+                            stats["words"] = stats["words"] + int(words_component)
+                            stats["time_used"] = stats["time_used"] + float(time_component)
 
         except Exception as exception:
-            print("Error:" + str(exception))
+            logging.error("get_stats. Error:" + str(exception))
             pass
 
         return results
@@ -113,7 +118,7 @@ class Usage(object):
 
         copyfile(self.FILE, temp_file)
 
-        with open(TEMP, "r") as temp:
+        with open(temp_file, "r") as temp:
             with open(self.FILE, "w") as new:
                 for line in temp:
                     if self._is_old_line(line) is False:

@@ -27,7 +27,7 @@ from ctranslate import CTranslate
 import pyonmttok
 from texttokenizer import TextTokenizer
 from usage import Usage
-from batchfiles import *
+from batchfilesdb import BatchFilesDB
 import os
 import uuid
 import logging
@@ -107,7 +107,7 @@ def apertium_translate_process(values):
     time_used = datetime.datetime.now() - start_time
     words = len(text.split(' '))
     usage = Usage()
-    usage.log(languages, words, time_used)
+    usage.log(languages, words, time_used, 'form')
 
     if check_bias:
         bias = GenderBiasDetection(text)
@@ -140,20 +140,6 @@ def translate(languages, text):
     return openNMT.translate_parallel(text)
     
 
-def _get_processed_files(date):
-    try:
-        database.open()
-        cnt = batchfiles = BatchFile.select().where(BatchFile.done ==1 and\
-                (BatchFile.date.year == date.year and\
-                 BatchFile.date.month == date.month and\
-                 BatchFile.date.day == date.day)).count()
-        database.close()
-    except:
-        cnt = 0
-
-    return cnt
-
-
 @app.route('/savedtexts/', methods=['GET'])
 def savedtexts():
     saved_filename = os.path.join(SAVED_TEXTS, "source.txt")
@@ -167,8 +153,6 @@ def stats():
     usage = Usage()
     result = usage.get_stats(date_requested)
 
-    cnt = _get_processed_files(date_requested)
-    result["files"] = cnt
     return json_answer(result)
 
 
@@ -191,20 +175,12 @@ def _allowed_file(filename):
 
 
 def save_file_to_process(filename, email, model_name):
-    database.open()
-    db_entry = BatchFile()
-    db_entry.filename = filename
-    db_entry.email = email
-    db_entry.model = model_name
-    db_entry.save()
-    
-    database.close()
-
+    db = BatchFilesDB()
+    db.create(filename, email, model_name)
 
 @cross_origin(origin='*',headers=['Content-Type','Authorization'])
 @app.route('/translate_file/', methods=['POST'])
 def upload_file():
-    print("**Start")
     file = request.files['file']
     email = request.values['email']
     model_name = request.values['model_name']
@@ -225,8 +201,10 @@ def upload_file():
         file.save(fullname)
 
         save_file_to_process(fullname, email, model_name)
-        print("Saved file {0}".format(fullname))
+        logging.debug("Saved file {0}".format(fullname))
         result = []
+        usage = Usage()
+        usage.log(model_name, 0, datetime.timedelta(), 'file')
         return json_answer(result)
 
     result = {}

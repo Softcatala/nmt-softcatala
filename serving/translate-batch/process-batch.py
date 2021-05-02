@@ -22,7 +22,7 @@ from __future__ import print_function
 import logging
 import logging.handlers
 import os
-from batchfiles import *
+from batchfilesdb import BatchFilesDB
 import time
 import smtplib
 from email.mime.multipart import MIMEMultipart
@@ -126,10 +126,10 @@ def main():
 
     print("Process batch files to translate")
     init_logging()
-    database.open()
+    db = BatchFilesDB()
 
     while True:
-        batchfiles = BatchFile.select().where(BatchFile.done == 0)
+        batchfiles = db.select()
         for batchfile in batchfiles:
             source_file = batchfile.filename
             print(source_file)
@@ -144,14 +144,12 @@ def main():
                 attachment = False
 
             cmd = "python3 {0} -f {1} -t {2} -m {3} -x {4}".format(command, source_file,
-                   translated_file, batchfile.model, TRANSLATION_MODELS)
+                   translated_file, batchfile.model_name, TRANSLATION_MODELS)
 
             logging.debug("Run {0}".format(cmd))
             os.system(cmd)
             send_email(translated_file, batchfile.email, attachment)
-            batchfile.done = True
-            batchfile.save()
-
+            db.delete(batchfile.filename_dbrecord)
             os.remove(source_file)
             os.remove(translated_file)
 
