@@ -10,18 +10,18 @@ sudo apt install ./nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
 sudo apt-get update
 
 # Install NVIDIA driver
-sudo apt-get install --no-install-recommends nvidia-driver-450
+sudo apt-get install --no-install-recommends nvidia-driver-450 -y
 # Reboot. Check that GPUs are visible using the command: nvidia-smi
 
 # Install development and runtime libraries (~4GB)
 sudo apt-get install --no-install-recommends \
     cuda-10-1 \
     libcudnn7=7.6.5.32-1+cuda10.1  \
-    libcudnn7-dev=7.6.5.32-1+cuda10.1
+    libcudnn7-dev=7.6.5.32-1+cuda10.1 -y
 
 
 # Install TensorRT. Requires that libcudnn7 is installed above.
 sudo apt-get install -y --no-install-recommends libnvinfer6=6.0.1-1+cuda10.1 \
     libnvinfer-dev=6.0.1-1+cuda10.1 \
-    libnvinfer-plugin6=6.0.1-1+cuda10.1
+    libnvinfer-plugin6=6.0.1-1+cuda10.1 -y
 
