@@ -55,7 +55,7 @@ class TextTokenizer:
         translation = ''
         for i in range(0, num_sentences):
             if translate[i] is True:
-                translation += translated[i] + " "
+                translation += translated[i]
             else:
                 translation += sentences[i]
 

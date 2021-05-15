@@ -64,8 +64,8 @@ class TestTextTokenizer(unittest.TestCase):
 
         sentences = translated.split("\r")
         self.assertEquals(3, len(sentences))
-        self.assertEquals("Hola. ", sentences[0])
-        self.assertEquals("Com estàs? ", sentences[1])
+        self.assertEquals("Hola.", sentences[0])
+        self.assertEquals("Com estàs?", sentences[1])
         self.assertEquals("És tard.", sentences[2])
 
 if __name__ == '__main__':
