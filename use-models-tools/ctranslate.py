@@ -161,11 +161,16 @@ class CTranslate():
     def _translate_batch(self, input_batch):
 
         batch_input_tokenized = []
+        batch_input_markers = []
+
+        preserve_markup = PreserveMarkup()
 
         num_sentences = len(input_batch)
         for pos in range(0, num_sentences):
-            tokenized = self.tokenizer_source.tokenize(input_batch[pos])[0]
+            markers, text = preserve_markup.create_markers_in_string(input_batch[pos])
+            tokenized = self.tokenizer_source.tokenize(text)[0]
             batch_input_tokenized.append(tokenized)
+            batch_input_markers.append(markers)
 
         result = self.translator.translate_batch(batch_input_tokenized, return_scores=False, replace_unknowns=True,
                                                  beam_size=self.beam_size, use_vmap=self.use_vmap)
@@ -174,6 +179,7 @@ class CTranslate():
         for pos in range(0, num_sentences):
             tokenized = result[pos][0]['tokens']
             translated = self.tokenizer_target.detokenize(tokenized)
+            translated = preserve_markup.get_back_markup(translated, batch_input_markers[pos])
             batch_output.append(translated)
 
         return batch_output    
