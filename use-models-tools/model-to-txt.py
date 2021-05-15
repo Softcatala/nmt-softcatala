@@ -102,7 +102,7 @@ def read_parameters():
 
 def translate_thread(src, openNMT, translations, index, tf_ca):
     try:
-        translations[index] = openNMT.translate_splitted(src)
+        translations[index] = openNMT.translate_parallel(src)
     except Exception as e:
         translations[index] = "Error"
         logging.error(str(e))

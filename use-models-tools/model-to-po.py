@@ -148,8 +148,8 @@ def main():
                     src = remove_tags_string(src)
                     src_plural = remove_tags_string(src_plural)
 
-                tgt = openNMT.translate_splitted(src)
-                tgt_plural = openNMT.translate_splitted(src_plural)
+                tgt = openNMT.translate_parallel(src)
+                tgt_plural = openNMT.translate_parallel(src_plural)
                 entry.msgstr_plural[0] = tgt
                 entry.msgstr_plural[1] = tgt_plural
             else:
@@ -158,7 +158,7 @@ def main():
                 if remove_tags:
                     src = remove_tags_string(src)
 
-                tgt = openNMT.translate_splitted(src)
+                tgt = openNMT.translate_parallel(src)
                 entry.msgstr = tgt
 
             translated = translated + 1
