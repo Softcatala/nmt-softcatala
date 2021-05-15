@@ -5,9 +5,9 @@ This repository contains Neural Machine Translation tools and models built at So
 # Description of the directories
 
 * *data-processing-tools*: set of data processing tools that convert for different formats to OpenNMT plain text input format
-* *serving*: contains a microservice that provides a basic transtion API calling TensorFlow serving.
+* *serving*: contains a microservice that provides a transtion API for web service and batch file processing.
 * *use-models-tools*: contains tools to use the models to translate text files or PO files
-* *evaluate*: set of tools and corpus to evaluatate diferent translation systems
+* *evaluate*: set of tools and corpus to evaluatate diferent translation systems (including BLEU scores)
 * *training*: scrips and configurations to train the models
 
 # Models
@@ -55,8 +55,8 @@ Description of the directories on the contained in the models zip file:
 
 You can download the docker that we use in production
 
-* Type ```docker pull jordimash/translate-service:v22``` (check if there are newer versions of the [tag](https://hub.docker.com/repository/docker/jordimash/translate-service))
-* docker run  -it --rm -p 8700:8700 jordimash/translate-service:v22
+* Type ```docker pull jordimash/translate-service:v27``` (check if there are newer versions of the [tag](https://hub.docker.com/repository/docker/jordimash/translate-service))
+* docker run  -it --rm -p 8700:8700 jordimash/translate-service:v27
 * http://localhost:8700/translate?langpair=en|cat&q=Hello!
 
 ## Apertium API
