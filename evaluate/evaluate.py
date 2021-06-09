@@ -108,74 +108,58 @@ def show_score_line(engine, reference_file, hypotesis_file):
     else:
         print(f"{engine}\t\t\t{bleu:.2f}\t{nist:.2f}")
 
-def evaluate_eng_cat():
-
-    language = 'ca'
-
-    datasets = \
-        [\
-            ['Sleepyhollow', f'input/sleepyhollow.en-ca.{language}', f'translated/sleepyhollow-apertium-{language}.txt',\
-                 f'translated/sleepyhollow-yandex-{language}.txt', f'translated/sleepyhollow-google-{language}.txt',\
-                 f'translated/sleepyhollow-opennmt-{language}.txt' ],\
-            ['Tatoeba', f'input/tatoeba.en-ca.{language}', f'translated/tatoeba-apertium-{language}.txt',
-                 f'translated/tatoeba-yandex-{language}.txt', f'translated/tatoeba-google-{language}.txt', \
-                 f'translated/tatoeba-opennmt-{language}.txt'],\
-
-            ['SC Users', f'input/sc-users-{language}.txt', f'translated/sc-users-apertium-{language}.txt',
-                 None, f'translated/sc-users-google-{language}.txt', \
-                 f'translated/sc-users-opennmt-{language}.txt'],\
-
-            ['Fedalist', f'input/federalist.en-{language}.ca', None,
-                 'translated/federalist-yandex-ca.txt', f'translated/federalist-google-{language}.txt', \
-                 f'translated/federalist-opennmt-ca.txt'],\
-        ]
+def _evaluate(datasets, source_language, target_language, language_pair):
 
     print("Translation engine\tBLEU\tNIST")
-    for ds in datasets:
-        print("-- " + ds[0])
-
-        if ds[2] != None:
-            show_score_line("Apertium", ds[1], ds[2])
-
-        if ds[3] != None:
-            show_score_line("Yandex", ds[1], ds[3])
-
-        if ds[4] != None:
-            show_score_line("Google", ds[1], ds[4])
-
-        if ds[5] != None:
-            show_score_line("nmt-softcatala", ds[1], ds[5])
-
-def evaluate_deu_cat():
-
-    language = 'ca'
-
-    datasets = \
-        [\
-            ['Tatoeba German - Catalan', f'input/tatoeba.ca-de.{language}',
-                 'translated/tatoeba.ca-de-{0}-ca.txt'],
-
-            ['Ubuntu German - Catalan', f'input/ubuntu.ca-de.{language}',
-                 'translated/ubuntu.ca-de-{0}-ca.txt'],
-
-            ['Ubuntu Catalan - German', 'input/ubuntu.ca-de.de',
-                 'translated/ubuntu.ca-de.de-{0}-de.txt']
-        ]
-
-    print("Translation engine\tBLEU\tNIST")
+    print(f"Language pair: {language_pair}")
     engines = ["Apertium", "Yandex", "Google", "nmt-softcatala"]
     for ds in datasets:
         print("-- " + ds[0])
 
         for engine in engines:
-            reference_file = ds[1]
-            hypotesis_file = ds[2].format(engine.lower())
+            reference_file = ds[1].format(source_language, target_language, engine.lower())
+            hypotesis_file = ds[2].format(source_language, target_language, engine.lower())
             show_score_line(engine, reference_file, hypotesis_file)
 
 
+
 def main():
-    evaluate_eng_cat()
-    evaluate_deu_cat()
+
+    datasets_en_ca = \
+        [\
+            ['Sleepyhollow', 'input/sleepyhollow-{0}-{1}.{1}',
+                 'translated/sleepyhollow-{0}-{1}-{2}.{1}' ],
+
+            ['Tatoeba', 'input/tatoeba-{0}-{1}.{1}',
+                 'translated/tatoeba-{0}-{1}-{2}.{1}' ],
+
+            ['SC Users', 'input/sc-users-{0}-{1}.{1}',
+                'translated/sc-users-{0}-{1}-{2}.{1}'],
+
+            ['Fedalist', 'input/federalist-{0}-{1}.{1}',
+                'translated/federalist-{0}-{1}-{2}.{1}']
+        ]
+
+    datasets_de_ca = \
+        [\
+            ['Tatoeba', 'input/tatoeba-{0}-{1}.{1}',
+                 'translated/tatoeba-{0}-{1}-{2}.{1}'],
+
+            ['Ubuntu', 'input/ubuntu-{0}-{1}.{1}',
+                 'translated/ubuntu-{0}-{1}-{2}.{1}'],
+
+        ]
+
+    datasets_ca_de = \
+        [\
+            ['Ubuntu', 'input/ubuntu-{1}-{0}.{1}',
+                 'translated/ubuntu-{1}-{0}-{2}.{1}']
+        ]
+
+
+    _evaluate(datasets_en_ca, "en", "ca", "English > Catalan")
+    _evaluate(datasets_de_ca, "de", "ca", "German > Catalan")
+    _evaluate(datasets_ca_de, "ca", "de", "Catalan > German")
 
 if __name__ == "__main__":
     main()
