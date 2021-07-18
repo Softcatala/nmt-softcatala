@@ -20,16 +20,17 @@
 
 import os
 import urllib
-from urllib.parse import urlparse
 import urllib.request
 import json
 import time
+from optparse import OptionParser
 
+def _translate_apertium(text, pair):
 
-def _translate_apertium_en_ca(text):
+    src_lang, tgt_lang = pair.split("-")
 
     # Request translation
-    url = "https://www.softcatala.org/apertium/json/translate?langpair=en|ca&markUnknown=no"
+    url = f"https://www.softcatala.org/apertium/json/translate?langpair={src_lang}|{tgt_lang}&markUnknown=no"
     url += "&q=" + urllib.parse.quote_plus(text.encode('utf-8'))
     #print("url->" + url)
 
@@ -52,7 +53,7 @@ def _translate_apertium_en_ca2(english):
     cmd = "apertium eng-cat -u input.txt output.txt"
     os.system(cmd)
 
-    with open ("output.txt", "r") as myfile:
+    with open("output.txt", "r") as myfile:
         line_list = myfile.readlines()
         translation = ' '.join([str(elem) for elem in line_list]) 
         translation = translation.replace('\n', '')
@@ -62,12 +63,10 @@ def _translate_apertium_en_ca2(english):
 #        print("translation raw->" + str(line_list))
         return translation
 
-def translate_text_yandex(text):
+def _translate_text_yandex(text, key, pair):
 
-    _key = 'XXX'
     SERVER = "https://translate.yandex.net/api/v1.5/tr.json"
-    language_pair = 'en-ca'
-    url = "{0}/translate?lang={1}&format=plain&key={2}".format(SERVER, language_pair, _key)
+    url = "{0}/translate?lang={1}&format=plain&key={2}".format(SERVER, pair, key)
     url += "&text=" + urllib.parse.quote_plus(text.encode('utf-8'))
     response = urllib.request.urlopen(url)
     r = response.read().decode("utf-8")
@@ -79,74 +78,68 @@ def translate_text_yandex(text):
         all_text += text
     return all_text.rstrip()
 
-def translate_text_google(text):
+def _translate_text_google(text, key, pair):
 
-    _key = 'XXX'
     SERVER = "https://translation.googleapis.com/language/translate/v2"
 
-    url = "{0}/?key={1}&source=en&target=ca".format(SERVER, _key)
+    src_lang, tgt_lang = pair.split("-")
+
+    url = f"{SERVER}/?key={key}&source={src_lang}&target={tgt_lang}"
     url += "&q=" + urllib.parse.quote_plus(text.encode('utf-8'))
     response = urllib.request.urlopen(url)
     r = response.read().decode("utf-8")
     data = json.loads(r)
     translated = data['data']['translations'][0]
     translated = translated['translatedText']
+    translated = translated.replace("&#39;", "'")
     return translated.rstrip()
 
 
-def apertium():
-    print("Translating Apertium")
-    txt_en_file = 'input/globalvoices-en.txt'
-    txt_ca_file = 'translated/globalvoices-apertium-ca.txt'
+def apertium(source, target, pair):
+
+    print("Translating using Apertium")
 
     strings = 0
-    with open(txt_en_file, 'r') as tf_en, open(txt_ca_file, 'w') as tf_ca:
+    with open(source, 'r') as tf_en, open(target, 'w') as tf_ca:
         en_strings = tf_en.readlines()
     
         for string in en_strings:
-            translated = _translate_apertium_en_ca(string)
+            translated = _translate_apertium(string, pair)
             tf_ca.write("{0}\n".format(translated))
             strings = strings + 1
 
         if strings % 100:
             print(strings)
-            time.sleep(60*5*1000)
+            time.sleep(5)
 
     print("Translated {0} strings".format(strings))
 
-def yandex():
+def yandex(source, target, key, pair):
 
-    print("Translating Yandex")
-    txt_en_file = 'input/globalvoices-en.txt'
-    txt_ca_file = 'translated/globalvoices-yandex-ca.txt'
+    print("Translating using Yandex")
 
     strings = 0
-    with open(txt_en_file, 'r') as tf_en, open(txt_ca_file, 'w') as tf_ca:
+    with open(source, 'r') as tf_en, open(target, 'w') as tf_ca:
         en_strings = tf_en.readlines()
-    
+
         cnt = 0
         for string in en_strings:
             cnt = cnt + 1
-    
-#            if cnt > 10:
-#                break
 
-            translated = translate_text_yandex(string)
+            translated = _translate_text_yandex(string, key, pair)
             tf_ca.write("{0}\n".format(translated))
             strings = strings + 1
 
     print("Translated {0} strings".format(strings))
 
-def google():
+def google(source, target, key, pair):
 
-    print("Translating Google")
-    txt_en_file = 'input/sc-users-en.txt'
-    txt_ca_file = 'translated/sc-users-google-ca.txt'
+    print("Translating using Google")
 
     strings = 0
-    with open(txt_en_file, 'r') as tf_en, open(txt_ca_file, 'w') as tf_ca:
+    with open(source, 'r') as tf_en, open(target, 'w') as tf_ca:
         en_strings = tf_en.readlines()
-    
+
         cnt = 0
         for string in en_strings:
             cnt = cnt + 1
@@ -155,7 +148,7 @@ def google():
 #                break
 
             try:
-                translated = translate_text_google(string)
+                translated = _translate_text_google(string, key, pair)
                 tf_ca.write("{0}\n".format(translated))
                 strings = strings + 1
 
@@ -170,10 +163,80 @@ def google():
     print("Translated {0} strings".format(strings))
 
 
+def read_parameters():
+    parser = OptionParser()
+
+    parser.add_option(
+        '-e',
+        '--engine',
+        action='store',
+        type='string',
+        dest='engine',
+        default='',
+        help='Translation engine to use'
+    )
+
+    parser.add_option(
+        '-k',
+        '--key',
+        action='store',
+        type='string',
+        dest='key',
+        default='',
+        help='API Key to use (if applies)'
+    )
+
+    parser.add_option(
+        '-p',
+        '--pair',
+        action='store',
+        type='string',
+        dest='pair',
+        default='',
+        help='Language pair in format source-target'
+    )
+
+    parser.add_option(
+        '-s',
+        '--source',
+        action='store',
+        type='string',
+        dest='source',
+        default='',
+        help='Source file to translate'
+    )
+
+    parser.add_option(
+        '-t',
+        '--target',
+        action='store',
+        type='string',
+        dest='target',
+        default='',
+        help='Translated target file'
+    )
+
+    (options, args) = parser.parse_args()
+
+    return options.engine, options.key, options.pair, options.source, options.target
+
+
 def main():
-#    yandex()
-#    apertium()
-    google()
+
+    print("Translate text files for evaluation using different engines")
+
+    engine, key, pair, source, target = read_parameters()
+
+    engine = engine.lower()
+    if engine == 'yandex':
+        yandex(source, target, key, pair)
+    elif engine == 'google':
+        google(source, target, key, pair)
+    elif engine == 'apertium':
+        apertium(source, target, pair)
+    else:
+        print(f"Translation engine '{engine}' not supported")
+
     return
 
 if __name__ == "__main__":
