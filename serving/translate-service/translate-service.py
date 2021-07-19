@@ -46,6 +46,7 @@ openNMT_engcat = CTranslate(f"{MODELS}", "eng-cat")
 openNMT_cateng = CTranslate(f"{MODELS}", "cat-eng")
 openNMT_deucat = CTranslate(f"{MODELS}", "deu-cat")
 openNMT_catdeu = CTranslate(f"{MODELS}", "cat-deu")
+LIST_PAIRS = {"eng-cat", "cat-eng", "deu-cat", "cat-deu"}
 
 def init_logging():
     logfile = 'translate-service.log'
@@ -238,13 +239,12 @@ def list_pairs():
     result = {}
     responseData = []
 
-    pair = { "sourceLanguage": "eng",
-             "targetLanguage": "cat"}
-    responseData.append(pair)
+    for pair in LIST_PAIRS:
+        src, trg = pair.split("-")
 
-    pair = { "sourceLanguage": "cat",
-             "targetLanguage": "eng"}
-    responseData.append(pair)
+        pair = { "sourceLanguage": src,
+                 "targetLanguage": trg}
+        responseData.append(pair)
 
     result['responseStatus'] = 200
     result['responseData'] = responseData
