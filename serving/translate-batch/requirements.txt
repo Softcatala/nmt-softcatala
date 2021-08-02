@@ -1,5 +1,5 @@
-pyonmttok==1.18.0
-ctranslate2==1.17
+pyonmttok==1.26.0
+ctranslate2==2.3.1
 numpy
 lxml
 regex

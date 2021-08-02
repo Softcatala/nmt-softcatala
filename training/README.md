@@ -4,6 +4,7 @@ We use an AWS EC2 <em>p3.2xlarge</em> instance with a Tesla
 V100-SXM2-16GB. We use the following Linux image:
 
 Deep Learning AMI (Ubuntu 18.04) Version 36.0 - ami-096a6497745975f89
+Deep Learning AMI (Ubuntu 18.04) Version 48.0 - ami-09a678bb59a5760a8
 
 
 # Installing the software
