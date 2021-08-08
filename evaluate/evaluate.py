@@ -23,6 +23,7 @@ import warnings
 import os
 from nltk.translate import nist_score, bleu_score
 warnings.filterwarnings("ignore")
+from optparse import OptionParser
 
 def get_bleu(reference_file, hypotesis_file):
     if reference_file is None or hypotesis_file is None:
@@ -36,7 +37,6 @@ def get_bleu(reference_file, hypotesis_file):
         #print(f"File '{hypotesis_file}' not found")
         return 0
 
-    cumulative_bleu_score = 0
     with open(reference_file, 'r') as tf_ref, open(hypotesis_file, 'r') as tf_hyp:
         lines_ref = tf_ref.read().splitlines()
         lines_hyp = tf_hyp.read().splitlines()
@@ -58,11 +58,6 @@ def get_bleu(reference_file, hypotesis_file):
 
         bleu = nltk.translate.bleu_score.corpus_bleu(strings_ref, strings_hyp)
         return bleu
- #       print("** Bleu score (corpus): " + str(bleu_score))
-        
-
-#        show_nist(reference_file, hypotesis_file)
-
 
 def get_nist(reference_file, hypotesis_file):
     if not os.path.exists(reference_file):
@@ -73,7 +68,6 @@ def get_nist(reference_file, hypotesis_file):
 #        print(f"File '{hypotesis_file}' not found")
         return 0
 
-    cumulative_bleu_score = 0
     with open(reference_file, 'r') as tf_ref, open(hypotesis_file, 'r') as tf_hyp:
         lines_ref = tf_ref.read().splitlines()
         lines_hyp = tf_hyp.read().splitlines()
@@ -117,49 +111,121 @@ def _evaluate(datasets, source_language, target_language, language_pair):
         print("-- " + ds[0])
 
         for engine in engines:
-            reference_file = ds[1].format(source_language, target_language, engine.lower())
-            hypotesis_file = ds[2].format(source_language, target_language, engine.lower())
+            reference_file = ds[1].format(source_language, target_language, engine.lower(), target_language)
+            hypotesis_file = ds[2].format(source_language, target_language, engine.lower(), target_language)
             show_score_line(engine, reference_file, hypotesis_file)
 
+def _inference(datasets, source_language, target_language):
+
+    if source_language == "en" and target_language == "ca":
+        model = "eng-cat"
+    elif source_language == "ca" and target_language == "en":
+        model = "cat-eng"
+    elif source_language == "de" and target_language == "ca":
+        model = "deu-cat"
+    elif source_language == "ca" and target_language == "de":
+        model = "cat-deu"
+    else:
+        print(f"Unknown translation model {source_language}, {target_language}")
+        exit(0)
+
+    engine = "nmt-softcatala"
+    for ds in datasets:
+        print("-- " + ds[0])
+
+#        for engine in engines:
+        source_file = ds[1].format(source_language, target_language, engine.lower(), source_language)
+        hypotesis_file = ds[2].format(source_language, target_language, engine.lower(), target_language)
+        cmd = f'docker run -it -v "$(pwd)":/srv/files/ --env CTRANSLATE_BEAM_SIZE=2 --env COMMAND_LINE="-f {source_file} -t {hypotesis_file} -m {model}" --rm use-models-tools --name use-models-tools'
+        
+        print(cmd)
+        os.system(cmd)
+
+def read_parameters():
+    parser = OptionParser()
+
+    parser.add_option(
+        '-l',
+        '--language-pair',
+        type='string',
+        action='store',
+        dest='lang_pair',
+        default = '',
+        help='Language pair to evaluate (e.g. en-ca)'
+    )
+
+    parser.add_option(
+        '-i',
+        '--inference',
+        action="store_true",
+        dest='inference',
+        default='false',
+        help='Translate opennmt dataset to evaluate later new results'
+    )
+
+    (options, args) = parser.parse_args()
+
+    if options.inference == True and len(options.lang_pair) == 0:
+        print("Inference option needs a language pair")
+        exit(1)
+
+    return options.lang_pair, options.inference
 
 
 def main():
 
+    lang_pair, inference = read_parameters()
+
     datasets_en_ca = \
         [\
-            ['Sleepyhollow', 'input/sleepyhollow-{0}-{1}.{1}',
-                 'translated/sleepyhollow-{0}-{1}-{2}.{1}' ],
+            ['Sleepyhollow', 'input/sleepyhollow-{0}-{1}.{3}',
+                 'translated/sleepyhollow-{0}-{1}-{2}.{3}' ],
 
-            ['Tatoeba', 'input/tatoeba-{0}-{1}.{1}',
-                 'translated/tatoeba-{0}-{1}-{2}.{1}' ],
+            ['Tatoeba', 'input/tatoeba-{0}-{1}.{3}',
+                 'translated/tatoeba-{0}-{1}-{2}.{3}' ],
 
-            ['SC Users', 'input/sc-users-{0}-{1}.{1}',
-                'translated/sc-users-{0}-{1}-{2}.{1}'],
+            ['SC Users', 'input/sc-users-{0}-{1}.{3}',
+                'translated/sc-users-{0}-{1}-{2}.{3}'],
 
-            ['Fedalist', 'input/federalist-{0}-{1}.{1}',
-                'translated/federalist-{0}-{1}-{2}.{1}']
+            ['Fedalist', 'input/federalist-{0}-{1}.{3}',
+                'translated/federalist-{0}-{1}-{2}.{3}']
         ]
 
     datasets_de_ca = \
         [\
             ['Tatoeba', 'input/tatoeba-{0}-{1}.{1}',
-                 'translated/tatoeba-{0}-{1}-{2}.{1}'],
+                 'translated/tatoeba-{0}-{1}-{2}.{3}'],
 
             ['Ubuntu', 'input/ubuntu-{0}-{1}.{1}',
-                 'translated/ubuntu-{0}-{1}-{2}.{1}'],
+                 'translated/ubuntu-{0}-{1}-{2}.{3}'],
 
         ]
 
     datasets_ca_de = \
         [\
             ['Ubuntu', 'input/ubuntu-{1}-{0}.{1}',
-                 'translated/ubuntu-{1}-{0}-{2}.{1}']
+                 'translated/ubuntu-{1}-{0}-{2}.{3}']
         ]
 
+    if inference is True:
+        if lang_pair == 'en-ca':
+            _inference(datasets_en_ca, "en", "ca")
 
-    _evaluate(datasets_en_ca, "en", "ca", "English > Catalan")
-    _evaluate(datasets_de_ca, "de", "ca", "German > Catalan")
-    _evaluate(datasets_ca_de, "ca", "de", "Catalan > German")
+        if lang_pair == 'de-ca':
+            _inference(datasets_de_ca, "de", "ca", "German > Catalan")
+
+        if lang_pair == 'ca-de':
+            _inference(datasets_ca_de, "ca", "de", "Catalan > German")
+    else:
+        print("Eval")
+        if len(lang_pair) == 0 or lang_pair == 'en-ca':
+            _evaluate(datasets_en_ca, "en", "ca", "English > Catalan")
+
+        if len(lang_pair) == 0 or lang_pair == 'de-ca':
+            _evaluate(datasets_de_ca, "de", "ca", "German > Catalan")
+
+        if len(lang_pair) == 0 or lang_pair == 'ca-de':
+            _evaluate(datasets_ca_de, "ca", "de", "Catalan > German")
 
 if __name__ == "__main__":
     main()
