@@ -34,8 +34,28 @@ def read_parameters():
         help='Size of the vocabulary'
     )
 
+    parser.add_option(
+        '-s',
+        '--source-model',
+        type='string',
+        action='store',
+        default='en_m',
+        dest='source_model',
+        help='Source tokenizer model name'
+    )
+
+    parser.add_option(
+        '-t',
+        '--target-model',
+        type='string',
+        action='store',
+        default='ca_m',
+        dest='target_model',
+        help='Target tokenizer model name'
+    )
+
     (options, args) = parser.parse_args()
-    return options.vocabulary_size
+    return options.vocabulary_size, options.source_model, options.target_model
 
 def _get_file_len(fname):
     with open(fname) as f:
@@ -76,12 +96,12 @@ def ingest_file(learner, ingest_file):
 
     return learner.ingest_file(reduced_file)
 
-def src(vocabulary_size):
+def src(vocabulary_size, model):
     learner = pyonmttok.SentencePieceLearner(vocab_size=vocabulary_size,
                                             keep_vocab = True)
     ingest_file(learner, "src-train.txt")
 
-    tokenizer = learner.learn("en_m", verbose=True)
+    tokenizer = learner.learn(model, verbose=True)
     tokens = tokenizer.tokenize_file("src-train.txt", "src-train.txt.token")
     tokens = tokenizer.tokenize_file("src-test.txt", "src-test.txt.token")
     tokens = tokenizer.tokenize_file("src-val.txt", "src-val.txt.token")
@@ -91,7 +111,7 @@ def tgt(vocabulary_size):
                                             keep_vocab = True)
     ingest_file(learner, "tgt-train.txt")
 
-    tokenizer = learner.learn("ca_m", verbose=True)
+    tokenizer = learner.learn(model, verbose=True)
     tokens = tokenizer.tokenize_file("tgt-train.txt", "tgt-train.txt.token")
     tokens = tokenizer.tokenize_file("tgt-test.txt", "tgt-test.txt.token")
     tokens = tokenizer.tokenize_file("tgt-val.txt", "tgt-val.txt.token")
@@ -99,11 +119,13 @@ def tgt(vocabulary_size):
 def main():
 
     print("Creates tokenized output corpus using SentencePiece")
-    vocabulary_size = read_parameters()
+    vocabulary_size, source_model, target_model = read_parameters()
     print("Vocabulary size {0}".format(vocabulary_size))
+    print(f"{source_model}")
+    print(f"{target_model}")
 
-    src(vocabulary_size)
-    tgt(vocabulary_size)
+    src(vocabulary_size, source_model)
+    tgt(vocabulary_size, target_model)
 
 if __name__ == "__main__":
     main()
