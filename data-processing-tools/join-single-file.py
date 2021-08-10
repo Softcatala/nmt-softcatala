@@ -46,6 +46,18 @@ def _clean_localized(result):
     cleaned = original != result
     return result, cleaned
 
+def _convert_newlines(result):
+    original = result
+    mapping = {
+                u"\u2028" : '',
+                u"\u2029" : '',
+              }
+
+    for char in mapping.keys():
+        result = result.replace(char, mapping[char])
+
+    cleaned = original != result
+    return result, cleaned
 
 def split_in_six_files(src_filename, tgt_filename):
 
@@ -89,8 +101,10 @@ def split_in_six_files(src_filename, tgt_filename):
             trg = read_target.readline()
 
             if not (src and trg):
-                break;
+                break
 
+            src, cleaned = _convert_newlines(src)
+            trg, cleaned = _convert_newlines(trg)
             trg, cleaned = _clean_localized(trg)
 
             pair = src + trg

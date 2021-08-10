@@ -121,8 +121,6 @@ def main():
     print("Creates tokenized output corpus using SentencePiece")
     vocabulary_size, source_model, target_model = read_parameters()
     print("Vocabulary size {0}".format(vocabulary_size))
-    print(f"{source_model}")
-    print(f"{target_model}")
 
     src(vocabulary_size, source_model)
     tgt(vocabulary_size, target_model)

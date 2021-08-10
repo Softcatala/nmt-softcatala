@@ -10,17 +10,6 @@ data:
 
 train:
    keep_checkpoint_max: 1
-   max_step: 40000
+   max_step: 50000
 
-
-params:
-    replace_unknown_target: True
-
-    #eval:
-        #    early_stopping:
-        # (optional) The target metric name (default: "loss").
-        #   metric: loss
-        # (optional) The metric should improve at least by this much to be considered as an improvement (default: 0)
-        #min_improvement: 0.01
-        #steps: 4
 
