@@ -106,7 +106,7 @@ def src(vocabulary_size, model):
     tokens = tokenizer.tokenize_file("src-test.txt", "src-test.txt.token")
     tokens = tokenizer.tokenize_file("src-val.txt", "src-val.txt.token")
 
-def tgt(vocabulary_size):
+def tgt(vocabulary_size, model):
     learner = pyonmttok.SentencePieceLearner(vocab_size=vocabulary_size,
                                             keep_vocab = True)
     ingest_file(learner, "tgt-train.txt")
