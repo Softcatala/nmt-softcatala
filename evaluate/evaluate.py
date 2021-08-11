@@ -135,8 +135,8 @@ def _inference(datasets, source_language, target_language):
 
         source_file = ds[1].format(source_language, target_language, engine.lower(), source_language)
         hypotesis_file = ds[2].format(source_language, target_language, engine.lower(), target_language)
-        cmd = f'docker run -it -v "$(pwd)":/srv/files/ --env CTRANSLATE_BEAM_SIZE=2 --env COMMAND_LINE="-f {source_file} -t {hypotesis_file} -m {model}" --rm use-models-tools --name use-models-tools'
-        
+#        cmd = f'docker run -it -v "$(pwd)":/srv/files/ --env CTRANSLATE_BEAM_SIZE=2 --env COMMAND_LINE="-f {source_file} -t {hypotesis_file} -m {model}" --rm use-models-tools --name use-models-tools'
+        cmd = f'python3 ../use-models-tools/model-to-txt.py -x ../models/ -f {source_file} -t {hypotesis_file} -m {model}'
         print(cmd)
         os.system(cmd)
 

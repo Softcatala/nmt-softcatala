@@ -1,0 +1,59 @@
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+
+image: docker:latest
+services:
+  - docker:dind
+
+stages:
+  - models
+  - translate-service
+  - translate-batch
+  - use-models-tools
+
+before_script:
+  - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  - docker info
+
+
+models:
+  stage: models
+  script:
+    - export REPO_NAME=$CI_REGISTRY_IMAGE/nmt-models
+    - export IMAGE_NAME=$REPO_NAME:$CI_COMMIT_REF_NAME
+    - export DOCKER_PATH=models/docker/Dockerfile
+    - docker build --cache-from $IMAGE_NAME --tag nmt-models --tag $IMAGE_NAME --tag $REPO_NAME:$CI_COMMIT_SHA . -f $DOCKER_PATH
+    - docker push $REPO_NAME:$CI_COMMIT_SHA
+    - docker push $IMAGE_NAME   
+
+translate-service:
+  stage: translate-service
+  script:
+    - export REPO_NAME=$CI_REGISTRY_IMAGE/translate-service
+    - export IMAGE_NAME=$REPO_NAME:$CI_COMMIT_REF_NAME
+    - export DOCKER_PATH=serving/translate-service/docker/Dockerfile
+    - docker build -f $DOCKER_PATH --cache-from $IMAGE_NAME --tag $IMAGE_NAME --tag $REPO_NAME:$CI_COMMIT_SHA .
+    - docker push $REPO_NAME:$CI_COMMIT_SHA
+    - docker push $IMAGE_NAME
+
+translate-batch:
+  stage: translate-batch
+  script:
+    - export REPO_NAME=$CI_REGISTRY_IMAGE/translate-batch
+    - export IMAGE_NAME=$REPO_NAME:$CI_COMMIT_REF_NAME
+    - export DOCKER_PATH=serving/translate-batch/docker/Dockerfile
+    - docker build -f $DOCKER_PATH --cache-from $IMAGE_NAME --tag $IMAGE_NAME --tag $REPO_NAME:$CI_COMMIT_SHA .
+    - docker push $REPO_NAME:$CI_COMMIT_SHA
+    - docker push $IMAGE_NAME
+
+use-models-tools:
+  stage: use-models-tools
+  script:
+    - export REPO_NAME=$CI_REGISTRY_IMAGE/use-models-tools
+    - export IMAGE_NAME=$REPO_NAME:$CI_COMMIT_REF_NAME
+    - export DOCKER_PATH=use-models-tools/docker/Dockerfile
+    - docker build -f $DOCKER_PATH --cache-from $IMAGE_NAME --tag latest --tag $IMAGE_NAME --tag $REPO_NAME:$CI_COMMIT_SHA .
+    - docker push $REPO_NAME:$CI_COMMIT_SHA
+    - docker push $IMAGE_NAME
+
