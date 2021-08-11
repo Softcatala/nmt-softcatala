@@ -133,7 +133,6 @@ def _inference(datasets, source_language, target_language):
     for ds in datasets:
         print("-- " + ds[0])
 
-#        for engine in engines:
         source_file = ds[1].format(source_language, target_language, engine.lower(), source_language)
         hypotesis_file = ds[2].format(source_language, target_language, engine.lower(), target_language)
         cmd = f'docker run -it -v "$(pwd)":/srv/files/ --env CTRANSLATE_BEAM_SIZE=2 --env COMMAND_LINE="-f {source_file} -t {hypotesis_file} -m {model}" --rm use-models-tools --name use-models-tools'
@@ -212,10 +211,10 @@ def main():
             _inference(datasets_en_ca, "en", "ca")
 
         if lang_pair == 'de-ca':
-            _inference(datasets_de_ca, "de", "ca", "German > Catalan")
+            _inference(datasets_de_ca, "de", "ca")
 
         if lang_pair == 'ca-de':
-            _inference(datasets_ca_de, "ca", "de", "Catalan > German")
+            _inference(datasets_ca_de, "ca", "de")
     else:
         print("Eval")
         if len(lang_pair) == 0 or lang_pair == 'en-ca':
