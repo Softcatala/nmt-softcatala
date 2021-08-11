@@ -9,7 +9,7 @@ cp ../deu-cat/tgt-vocab.txt.token src-vocab.txt.token
 cp ../deu-cat/tgt-test.txt.token src-test.txt.token
 cp ../deu-cat/src-test.txt tgt-test.txt
 cp ../deu-cat/ca_m.model .
-cp ../deu-cat/en_m.model .
+cp ../deu-cat/de_m.model .
  
 
 
