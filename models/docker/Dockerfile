@@ -10,9 +10,9 @@ RUN wget -q https://www.softcatala.org/pub/softcatala/opennmt/models/eng-cat-202
 RUN wget -q https://www.softcatala.org/pub/softcatala/opennmt/models/cat-eng-2021-08-10.zip && \
     unzip cat-eng-2021-08-10.zip -x tensorflow/* -d cat-eng/
 RUN wget -q https://www.softcatala.org/pub/softcatala/opennmt/models/deu-cat-2021-08-11.zip && \
-    unzip deu-cat-2021-08-11.zip -x deu-cat/tensorflow/* -d deu-cat/
-RUN wget -q https://www.softcatala.org/pub/softcatala/opennmt/models/cat-deu-2021-04-22.zip && \
-    unzip cat-deu-2021-04-22.zip -x cat-deu/tensorflow/* -d .
+    unzip deu-cat-2021-08-11.zip -x tensorflow/* -d deu-cat/
+RUN wget -q https://www.softcatala.org/pub/softcatala/opennmt/models/cat-deu-2021-08-12.zip && \
+    unzip cat-deu-2021-08-12.zip -x tensorflow/* -d . cat-deu/
 
 RUN rm *.zip
 
