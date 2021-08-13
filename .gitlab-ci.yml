@@ -14,8 +14,6 @@ stages:
 
 before_script:
   - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
-  - docker info
-
 
 models:
   stage: models
@@ -23,7 +21,7 @@ models:
     - export REPO_NAME=$CI_REGISTRY_IMAGE/nmt-models
     - export IMAGE_NAME=$REPO_NAME:$CI_COMMIT_REF_NAME
     - export DOCKER_PATH=models/docker/Dockerfile
-    - docker build --cache-from $IMAGE_NAME --tag nmt-models --tag $IMAGE_NAME --tag $REPO_NAME:$CI_COMMIT_SHA . -f $DOCKER_PATH
+    - docker build --tag nmt-models --tag $IMAGE_NAME --tag $REPO_NAME:$CI_COMMIT_SHA . -f $DOCKER_PATH
     - docker push $REPO_NAME:$CI_COMMIT_SHA
     - docker push $IMAGE_NAME   
 
@@ -33,7 +31,7 @@ translate-service:
     - export REPO_NAME=$CI_REGISTRY_IMAGE/translate-service
     - export IMAGE_NAME=$REPO_NAME:$CI_COMMIT_REF_NAME
     - export DOCKER_PATH=serving/translate-service/docker/Dockerfile
-    - docker build -f $DOCKER_PATH --cache-from $IMAGE_NAME --tag $IMAGE_NAME --tag $REPO_NAME:$CI_COMMIT_SHA .
+    - docker build -f $DOCKER_PATH --tag $IMAGE_NAME --tag $REPO_NAME:$CI_COMMIT_SHA .
     - docker push $REPO_NAME:$CI_COMMIT_SHA
     - docker push $IMAGE_NAME
 
@@ -43,7 +41,7 @@ translate-batch:
     - export REPO_NAME=$CI_REGISTRY_IMAGE/translate-batch
     - export IMAGE_NAME=$REPO_NAME:$CI_COMMIT_REF_NAME
     - export DOCKER_PATH=serving/translate-batch/docker/Dockerfile
-    - docker build -f $DOCKER_PATH --cache-from $IMAGE_NAME --tag $IMAGE_NAME --tag $REPO_NAME:$CI_COMMIT_SHA .
+    - docker build -f $DOCKER_PATH --tag $IMAGE_NAME --tag $REPO_NAME:$CI_COMMIT_SHA .
     - docker push $REPO_NAME:$CI_COMMIT_SHA
     - docker push $IMAGE_NAME
 
@@ -53,7 +51,7 @@ use-models-tools:
     - export REPO_NAME=$CI_REGISTRY_IMAGE/use-models-tools
     - export IMAGE_NAME=$REPO_NAME:$CI_COMMIT_REF_NAME
     - export DOCKER_PATH=use-models-tools/docker/Dockerfile
-    - docker build -f $DOCKER_PATH --cache-from $IMAGE_NAME --tag latest --tag $IMAGE_NAME --tag $REPO_NAME:$CI_COMMIT_SHA .
+    - docker build -f $DOCKER_PATH --tag latest --tag $IMAGE_NAME --tag $REPO_NAME:$CI_COMMIT_SHA .
     - docker push $REPO_NAME:$CI_COMMIT_SHA
     - docker push $IMAGE_NAME
 
