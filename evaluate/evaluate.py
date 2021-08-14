@@ -207,17 +207,17 @@ def main():
 
     datasets_de_ca = \
         [\
-            ['Tatoeba', 'input/tatoeba-{0}-{1}.{1}',
+            ['Tatoeba', 'input/tatoeba-{0}-{1}.{3}',
                  'translated/tatoeba-{0}-{1}-{2}.{3}'],
 
-            ['Ubuntu', 'input/ubuntu-{0}-{1}.{1}',
+            ['Ubuntu', 'input/ubuntu-{0}-{1}.{3}',
                  'translated/ubuntu-{0}-{1}-{2}.{3}'],
 
         ]
 
     datasets_ca_de = \
         [\
-            ['Ubuntu', 'input/ubuntu-{1}-{0}.{1}',
+            ['Ubuntu', 'input/ubuntu-{1}-{0}.{3}',
                  'translated/ubuntu-{1}-{0}-{2}.{3}']
         ]
 
