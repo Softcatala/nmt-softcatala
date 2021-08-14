@@ -115,7 +115,7 @@ def _evaluate(datasets, source_language, target_language, language_pair):
             hypotesis_file = ds[2].format(source_language, target_language, engine.lower(), target_language)
             show_score_line(engine, reference_file, hypotesis_file)
 
-def _inference(datasets, source_language, target_language):
+def _inference(datasets, source_language, target_language, local):
 
     if source_language == "en" and target_language == "ca":
         model = "eng-cat"
@@ -135,8 +135,12 @@ def _inference(datasets, source_language, target_language):
 
         source_file = ds[1].format(source_language, target_language, engine.lower(), source_language)
         hypotesis_file = ds[2].format(source_language, target_language, engine.lower(), target_language)
-#        cmd = f'docker run -it -v "$(pwd)":/srv/files/ --env CTRANSLATE_BEAM_SIZE=2 --env COMMAND_LINE="-f {source_file} -t {hypotesis_file} -m {model}" --rm use-models-tools --name use-models-tools'
-        cmd = f'python3 ../use-models-tools/model-to-txt.py -x ../models/ -f {source_file} -t {hypotesis_file} -m {model}'
+
+        if local:
+            cmd = f'python3 ../use-models-tools/model-to-txt.py -x ../models/ -f {source_file} -t {hypotesis_file} -m {model}'
+        else:
+            cmd = f'docker run -it -v "$(pwd)":/srv/files/ --env CTRANSLATE_BEAM_SIZE=2 --env COMMAND_LINE="-f {source_file} -t {hypotesis_file} -m {model}" registry.softcatala.org/github/nmt-softcatala/use-models-tools:master'
+
         print(cmd)
         os.system(cmd)
 
@@ -162,18 +166,29 @@ def read_parameters():
         help='Translate opennmt dataset to evaluate later new results'
     )
 
+
+    parser.add_option(
+        '-o',
+        '--local',
+        action='store_true',
+        dest='local',
+        default=False,
+        help=u'For inference use local model directories or the built docker container'
+    )
+
+
     (options, args) = parser.parse_args()
 
     if options.inference == True and len(options.lang_pair) == 0:
         print("Inference option needs a language pair")
         exit(1)
 
-    return options.lang_pair, options.inference
+    return options.lang_pair, options.inference, options.local
 
 
 def main():
 
-    lang_pair, inference = read_parameters()
+    lang_pair, inference, local = read_parameters()
 
     datasets_en_ca = \
         [\
@@ -208,15 +223,14 @@ def main():
 
     if inference is True:
         if lang_pair == 'en-ca':
-            _inference(datasets_en_ca, "en", "ca")
+            _inference(datasets_en_ca, "en", "ca", local)
 
         if lang_pair == 'de-ca':
-            _inference(datasets_de_ca, "de", "ca")
+            _inference(datasets_de_ca, "de", "ca", local)
 
         if lang_pair == 'ca-de':
-            _inference(datasets_ca_de, "ca", "de")
+            _inference(datasets_ca_de, "ca", "de", local)
     else:
-        print("Eval")
         if len(lang_pair) == 0 or lang_pair == 'en-ca':
             _evaluate(datasets_en_ca, "en", "ca", "English > Catalan")
 
