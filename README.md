@@ -16,29 +16,31 @@ This repository contains Neural Machine Translation tools and models built at So
 
 We have created the following models:
 
-* English - Catalan model (https://www.softcatala.org/pub/softcatala/opennmt/models/eng-cat-2021-01-11.zip)
+* English - Catalan model (https://www.softcatala.org/pub/softcatala/opennmt/models/eng-cat-2021-08-09.zip)
   * Total number of sentences: 4602069
   * model: TransformerRelative
   * Tokenizer: SentencePiece
-  * BLEU = 41.56
+  * BLEU = 41.44
 
-* Catalan - English model (https://www.softcatala.org/pub/softcatala/opennmt/models/cat-eng-2021-01-19.zip)
+* Catalan - English model (https://www.softcatala.org/pub/softcatala/opennmt/models/cat-eng-2021-08-10.zip)
   * Total number of sentences: 4602069
   * model: TransformerRelative
   * Tokenizer: SentencePiece
-  * BLEU = 42.39
+  * BLEU = 42.60
 
-* German - Catalan model (https://www.softcatala.org/pub/softcatala/opennmt/models/deu-cat-2021-04-22.zip)
+* German - Catalan model (https://www.softcatala.org/pub/softcatala/opennmt/models/deu-cat-2021-08-11.zip)
   * Total number of sentences: 3262424
   * model: TransformerRelative
   * Tokenizer: SentencePiece
-  * BLEU = 32.71
+  * BLEU = 33.65
 
-* Catalan - German model (https://www.softcatala.org/pub/softcatala/opennmt/models/cat-deu-2021-04-22.zip)
+* Catalan - German model (https://www.softcatala.org/pub/softcatala/opennmt/models/cat-deu-2021-08-12.zip)
   * Total number of sentences: 3262424
   * model: TransformerRelative
   * Tokenizer: SentencePiece
-  * BLEU = 27.18
+  * BLEU = 27.02
+
+The corpus that we used for training are available at https://www.softcatala.org/pub/softcatala/opennmt/training-sets/ and https://github.com/Softcatala/parallel-catalan-corpus/
 
 ### Structure of the models
 
@@ -53,11 +55,11 @@ Description of the directories on the contained in the models zip file:
 
 ## Serving the models in production
 
-You can download the docker that we use in production
+You can build and run the docker that we use in production
 
-* Type ```docker pull jordimash/translate-service:v27``` (check if there are newer versions of the [tag](https://hub.docker.com/repository/docker/jordimash/translate-service))
-* docker run  -it --rm -p 8700:8700 jordimash/translate-service:v27
-* http://localhost:8700/translate?langpair=en|cat&q=Hello!
+* Build ```cd serving/translate-service/docker/ && ./build-docker.sh```
+* Run ```docker run -it --rm -p 8700:8700 translate-service```
+* Open in your browser ```http://localhost:8700/translate?langpair=en|ca&q=Hello!```
 
 ## Apertium API
 
@@ -85,22 +87,22 @@ This is useful for example if you want to translate large volumes using our preb
 
 * You need Docker installed in your system
 
-* Type ```docker pull jordimash/use-models-tools```
+* Type ```cd use-models-tools/docker && ./build-docker.sh```
 
 To test quickly that every works:
 * ```echo "Hello World" > input.txt```
-* ```docker run -it -v "$(pwd)":/srv/files/ --env COMMAND_LINE="-f input.txt -t output.txt" --rm jordimash/use-models-tools --name jordimash/use-models-tools```
+* ```docker run -it -v "$(pwd)":/srv/files/ --env COMMAND_LINE="-f input.txt -t output.txt" --rm use-models-tools --name use-models-tools```
 * ```more output.txt```
 
 To translate PO files:
 * File ```ca.po``` is your current directory
-* ```docker run -it -v "$(pwd)":/srv/files/ --env COMMAND_LINE="-f ca.po" --env FILE_TYPE='po' --rm jordimash/use-models-tools --name jordimash/use-models-tools```
+* ```docker run -it -v "$(pwd)":/srv/files/ --env COMMAND_LINE="-f ca.po" --env FILE_TYPE='po' --rm use-models-tools --name use-models-tools```
 
 The translated file will be ```ca.po-ca.po```
 
 To translate a text file from Catalan to English:
 * ```echo "Hola món" > input.txt```
-* ```docker run -it -v "$(pwd)":/srv/files/ --env COMMAND_LINE="-f input.txt -t output.txt -m cat-eng" --rm jordimash/use-models-tools --name jordimash/use-models-tools```
+* ```docker run -it -v "$(pwd)":/srv/files/ --env COMMAND_LINE="-f input.txt -t output.txt -m cat-eng" --rm use-models-tools --name use-models-tools```
 * ```more output.txt```
 
 # License
