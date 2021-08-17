@@ -1,6 +1,6 @@
 # Introduction
 
-This directory hols diferent corpus that have not been used during training and we use 
+This directory holds diferent corpus that have not been used during training and we use
 to evaluate the performance of the English - Catalan models against others systems.
 
 We use the current corpus that we benchmark:
