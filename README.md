@@ -55,9 +55,10 @@ Description of the directories on the contained in the models zip file:
 
 ## Serving the models in production
 
-You can build and run the docker that we use in production
+You can build and run the docker that we use in production:
 
-* Build ```cd serving/translate-service/docker/ && ./build-docker.sh```
+* Build models ```cd models/docker/ && ./build-docker.sh```
+* Build serving ```cd serving/translate-service/docker/ && ./build-docker.sh```
 * Run ```docker run -it --rm -p 8700:8700 translate-service```
 * Open in your browser ```http://localhost:8700/translate?langpair=en|ca&q=Hello!```
 
@@ -83,11 +84,10 @@ We confirm that the following tools work using Apertium pluggins:
 
 # Using the models in your machine
 
-This is useful for example if you want to translate large volumes using our prebuild English - Catalan models using the same exact version that we have in production.
+This is useful for example if you want to translate large volumes using our prebuild English - Catalan models using the same exact version that we have in production:
 
-* You need Docker installed in your system
-
-* Type ```cd use-models-tools/docker && ./build-docker.sh```
+* Build models ```cd models/docker/ && ./build-docker.sh```
+* Build serving ```cd use-models-tools/docker && ./build-docker.sh```
 
 To test quickly that every works:
 * ```echo "Hello World" > input.txt```
