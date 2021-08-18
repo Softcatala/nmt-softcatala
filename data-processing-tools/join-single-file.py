@@ -59,6 +59,15 @@ def _convert_newlines(result):
     cleaned = original != result
     return result, cleaned
 
+def _is_sentence_len_good(src, trg):
+    src = src.strip()
+    trg = trg.strip()
+
+    if len(src) == 0 or len(trg) == 0:
+        return False
+
+    return True
+
 def split_in_six_files(src_filename, tgt_filename):
 
     pairs = set()
@@ -73,6 +82,7 @@ def split_in_six_files(src_filename, tgt_filename):
     total_lines = file_len(src_filename)
     validation_each = round(total_lines / number_validation)
     test_each = round(total_lines / number_test)
+    empty_sentences = 0
 
     if test_each == validation_each:
         print("test_each ({0}) and validation_each  ({0}) cannot be equal".format(test_each, validation_each))
@@ -102,6 +112,10 @@ def split_in_six_files(src_filename, tgt_filename):
 
             if not (src and trg):
                 break
+
+            if _is_sentence_len_good(src, trg) is False:
+                empty_sentences = empty_sentences + 1
+                continue
 
             src, cleaned = _convert_newlines(src)
             trg, cleaned = _convert_newlines(trg)
@@ -136,10 +150,12 @@ def split_in_six_files(src_filename, tgt_filename):
 
             strings = strings + 1
 
-    pclean = clean * 100 / strings
     pduplicated = duplicated * 100 / strings
+    pclean = clean * 100 / strings
+    pempty_sentences = empty_sentences * 100 / strings
     print(f"Strings: {strings}, duplicated {duplicated} ({pduplicated:.2f}%)")
     print(f"Cleaned acute accents: {clean} ({pclean:.2f}%)")
+    print(f"Empty sentences: {empty_sentences} ({pempty_sentences:.2f}%)")
 
 def append_lines_from_file(src_filename, trg_file):
     lines = 0
