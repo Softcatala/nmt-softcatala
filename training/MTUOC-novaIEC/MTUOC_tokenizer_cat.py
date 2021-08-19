@@ -26,9 +26,27 @@ subs=sorted_subs
 
 expgeminada=re.compile(r'[\w]+·[\w]+')
 
+d_sub = {}
+d_replace = {}
+d_replaceUC = {}
+d_replaceCAP = {}
+
 def protect_tags(segment):
     protectedsegment=re.sub(r'(<[^>]+>)', r'｟\1｠',segment)
-    return(protectedsegment)    
+    return(protectedsegment)
+
+def create_cache():
+    for sub in subs:
+        sub_org = sub
+        sub=sub.replace("￭","")
+        replace="｟"+sub+"｠"
+        replaceUC="｟"+sub.upper()+"｠"
+        replaceCAP="｟"+sub.capitalize()+"｠"
+
+        d_sub[sub_org] = sub
+        d_replace[sub] = replace
+        d_replaceUC[sub] = replaceUC
+        d_replaceCAP[sub] = replaceCAP
 
 def protect(segment):
     segment=protect_tags(segment)
@@ -38,21 +56,27 @@ def protect(segment):
         segment=segment.replace(m,replace)
     segmentList=segment.split(" ")
     segment2List=segment.split(" ")
+
+    if len(d_replaceUC) == 0:
+        create_cache()
+
     for i in range(0,len(segment2List)):
+#        print(f"{len(segment2List)}, {len(subs)}")
         for sub in subs:
-            sub=sub.replace("￭","")
-            replace="｟"+sub+"｠"
-            replaceUC="｟"+sub.upper()+"｠"
-            replaceCAP="｟"+sub.capitalize()+"｠"
+            sub=d_sub[sub]
+            replace=d_replace[sub]
+            replaceUC=d_replaceUC[sub]
+            replaceCAP=d_replaceCAP[sub]
+            sub_upper = sub.upper()
             if segment2List[i].find(sub)>-1:
                 segment2List[i]=segment2List[i].replace(sub,"")
                 segmentList[i]=segmentList[i].replace(sub,replace)
-            if segment2List[i].find(sub.upper())>-1:
-                segment2List[i]=segment2List[i].replace(sub.upper(),"")
-                segmentList[i]=segmentList[i].replace(sub.upper(),replaceUC)
-            if segment2List[i].find(sub.upper())>-1:
-                segment2List[i]=segment2List[i].replace(sub.upper(),"")
-                segmentList[i]=segmentList[i].replace(sub.upper(),replaceUC)
+            if segment2List[i].find(sub_upper)>-1:
+                segment2List[i]=segment2List[i].replace(sub_upper,"")
+                segmentList[i]=segmentList[i].replace(sub_upper,replaceUC)
+            if segment2List[i].find(sub_upper)>-1:
+                segment2List[i]=segment2List[i].replace(sub_upper,"")
+                segmentList[i]=segmentList[i].replace(sub_upper,replaceUC)
             if segment2List[i].find(sub.capitalize())>-1:
                 segment2List[i]=segment2List[i].replace(sub.capitalize(),"")
                 segmentList[i]=segmentList[i].replace(sub.capitalize(),replaceCAP)
