@@ -17,6 +17,8 @@ jobs:
       run: |
         cd use-models-tools
         nosetests
+        cd ../data-processing-tools
+        nosetests
         cd ../serving/translate-batch/
         nosetests
         cd ../translate-service/

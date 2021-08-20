@@ -59,6 +59,30 @@ def _convert_newlines(result):
     cleaned = original != result
     return result, cleaned
 
+def _has_dot_or_equivalent(text):
+    t = text
+
+    if t[-1:]== '.' or t[-1:] == '…' or t[-1:] == '?' or t[-1:] == '!':
+        return True
+
+    if t[-2:] == '.)' or t[-2:] == '."' or t[-2:] == '.\'':
+        return True
+
+    return False
+
+def _process_dot(src, trg, dots):
+    s = src.rstrip()
+    t = trg.rstrip()
+
+    if s[-1:] == '.' and _has_dot_or_equivalent(t) is False:
+        trg = trg + "."
+        dots = dots + 1
+    elif t[-1:] == '.' and _has_dot_or_equivalent(s) is False:
+        src = src + "."
+        dots = dots + 1
+
+    return src, trg, dots
+
 def _is_sentence_len_good(src, trg):
     src = src.strip()
     trg = trg.strip()
@@ -83,6 +107,7 @@ def split_in_six_files(src_filename, tgt_filename):
     validation_each = round(total_lines / number_validation)
     test_each = round(total_lines / number_test)
     empty_sentences = 0
+    dots = 0
 
     if test_each == validation_each:
         print("test_each ({0}) and validation_each  ({0}) cannot be equal".format(test_each, validation_each))
@@ -141,6 +166,8 @@ def split_in_six_files(src_filename, tgt_filename):
                 source = source_train
                 target = target_train
 
+            src, trg, dots = _process_dot(src, trg, dots)
+
             source.write(src)
             target.write(trg)
 
@@ -151,11 +178,13 @@ def split_in_six_files(src_filename, tgt_filename):
             strings = strings + 1
 
     pduplicated = duplicated * 100 / strings
+    pdots = dots * 100 / strings
     pclean = clean * 100 / strings
     pempty_sentences = empty_sentences * 100 / strings
     print(f"Strings: {strings}, duplicated {duplicated} ({pduplicated:.2f}%)")
     print(f"Cleaned acute accents: {clean} ({pclean:.2f}%)")
     print(f"Empty sentences: {empty_sentences} ({pempty_sentences:.2f}%)")
+    print(f"Dots: {dots} ({pdots:.2f}%)")
 
 def append_lines_from_file(src_filename, trg_file):
     lines = 0
