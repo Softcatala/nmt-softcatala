@@ -38,15 +38,27 @@ app = Flask(__name__)
 CORS(app)
 
 MODELS = '/srv/models/'
-#MODELS = '../../models/' # local
 UPLOAD_FOLDER = '/srv/data/files/'
 SAVED_TEXTS = '/srv/data/saved/'
 
-openNMT_engcat = CTranslate(f"{MODELS}", "eng-cat")
-openNMT_cateng = CTranslate(f"{MODELS}", "cat-eng")
-openNMT_deucat = CTranslate(f"{MODELS}", "deu-cat")
-openNMT_catdeu = CTranslate(f"{MODELS}", "cat-deu")
-LIST_PAIRS = {"eng-cat", "cat-eng", "deu-cat", "cat-deu"}
+MODELS_NAMES = ["eng-cat", "cat-eng", "deu-cat", "cat-deu"]
+LIST_PAIRS = MODELS_NAMES
+openNMTs = {}
+
+LANGUAGE_ALIASES = {
+    "eng-cat": ["en|cat", "en|ca", "eng|ca", "eng|cat"],
+    "cat-eng": ["cat|en", "ca|en", "ca|eng", "cat|eng"],
+    "deu-cat": ["de|cat", "de|ca", "deu|ca", "deu|cat"],
+    "cat-deu": ["cat|de", "ca|de", "ca|deu", "cat|deu"]
+}
+
+def load_models():
+    for model in MODELS_NAMES:
+        openNMT = CTranslate(f"{MODELS}", model)
+        openNMTs[model] = openNMT
+
+    print(f"{len(MODELS_NAMES)} models loaded")
+
 
 def init_logging():
     logfile = 'translate-service.log'
@@ -85,14 +97,10 @@ def apertium_translate_process(values):
     langpair = values['langpair']
     savetext = 'savetext' in values and values['savetext'] == True
 
-    if langpair in ['en|cat', 'en|ca', 'eng|ca', 'eng|cat']:
-        languages = 'eng-cat'
-    elif langpair in ['de|cat', 'de|ca', 'deu|ca', 'deu|cat']:
-        languages = 'deu-cat'
-    elif langpair in ['cat|de', 'ca|de', 'ca|deu', 'cat|deu']:
-        languages = 'cat-deu'
-    else:
-        languages = 'cat-eng'
+    for key, value in LANGUAGE_ALIASES.items():
+        if langpair in value:
+            languages = key
+            break
 
     if savetext:
         saved_filename = os.path.join(SAVED_TEXTS, "source.txt")
@@ -100,7 +108,8 @@ def apertium_translate_process(values):
             t = text.replace('\n', '')
             text_file.write(f'{languages}\t{t}\n')
 
-    translated = translate(languages, text)
+    openNMT = openNMTs[languages]
+    translated = openNMT.translate_parallel(text)
 
     check_bias = languages == 'eng-cat'
     result = {}
@@ -125,22 +134,6 @@ def apertium_translate_process(values):
     result['time'] = str(time_used)
     return json_answer(result)
 
-
-
-def translate(languages, text):
-
-    if languages == 'eng-cat':
-        openNMT = openNMT_engcat
-    elif languages == 'deu-cat':
-        openNMT = openNMT_deucat
-    elif languages == 'cat-deu':
-        openNMT = openNMT_catdeu
-    else:
-        openNMT = openNMT_cateng
-
-    return openNMT.translate_parallel(text)
-    
-
 @app.route('/savedtexts/', methods=['GET'])
 def savedtexts():
     saved_filename = os.path.join(SAVED_TEXTS, "source.txt")
@@ -160,11 +153,9 @@ def stats():
 @app.route('/version/', methods=['GET'])
 def version_api():
 
-    models = [openNMT_engcat, openNMT_cateng, openNMT_deucat, openNMT_catdeu]
-
     result = {}
 
-    for model in models:
+    for model in openNMTs.values():
         result[model.get_model_name()] = model.get_model_description()
 
     return json_answer(result)
@@ -254,7 +245,9 @@ def list_pairs():
 if __name__ == '__main__':
 #    app.debug = True
     init_logging()
+    load_models()
     app.run()
 
 if __name__ != '__main__':
+    load_models()
     init_logging()
