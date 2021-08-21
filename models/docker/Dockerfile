@@ -5,14 +5,19 @@ RUN apt-get update && apt-get -y upgrade && apt-get install wget unzip -y --no-i
 RUN mkdir models
 WORKDIR models
 
-RUN wget -q https://www.softcatala.org/pub/softcatala/opennmt/models/eng-cat-2021-08-09.zip && \
-    unzip eng-cat-2021-08-09.zip -x tensorflow/* -d eng-cat/
-RUN wget -q https://www.softcatala.org/pub/softcatala/opennmt/models/cat-eng-2021-08-10.zip && \
-    unzip cat-eng-2021-08-10.zip -x tensorflow/* -d cat-eng/
-RUN wget -q https://www.softcatala.org/pub/softcatala/opennmt/models/deu-cat-2021-08-11.zip && \
-    unzip deu-cat-2021-08-11.zip -x tensorflow/* -d deu-cat/
-RUN wget -q https://www.softcatala.org/pub/softcatala/opennmt/models/cat-deu-2021-08-12.zip && \
-    unzip cat-deu-2021-08-12.zip -x tensorflow/* -d cat-deu/
+ENV URL https://www.softcatala.org/pub/softcatala/opennmt/models/
+
+ENV FILE eng-cat-2021-08-09.zip
+RUN wget -q $URL/$FILE && unzip $FILE -x tensorflow/* -d eng-cat/
+
+ENV FILE cat-eng-2021-08-10.zip
+RUN wget -q $URL/$FILE && unzip $FILE -x tensorflow/* -d cat-eng/
+
+ENV FILE deu-cat-2021-08-11.zip
+RUN wget -q $URL/$FILE && unzip $FILE -x tensorflow/* -d deu-cat/
+
+ENV FILE cat-deu-2021-08-12.zip
+RUN wget -q $URL/$FILE && unzip $FILE -x tensorflow/* -d cat-deu/
 
 RUN rm *.zip
 
