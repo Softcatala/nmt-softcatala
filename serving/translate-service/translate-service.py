@@ -54,7 +54,6 @@ LANGUAGE_ALIASES = {
 
 def load_models():
     for model in MODELS_NAMES:
-        print(model)
         openNMT = CTranslate(f"{MODELS}", model)
         openNMTs[model] = openNMT
 
@@ -109,7 +108,8 @@ def apertium_translate_process(values):
             t = text.replace('\n', '')
             text_file.write(f'{languages}\t{t}\n')
 
-    translated = translate(languages, text)
+    openNMT = openNMTs[languages]
+    translated = openNMT.translate_parallel(text)
 
     check_bias = languages == 'eng-cat'
     result = {}
@@ -133,15 +133,6 @@ def apertium_translate_process(values):
     result['responseData'] = responseData
     result['time'] = str(time_used)
     return json_answer(result)
-
-
-
-def translate(languages, text):
-    print(languages)
-    print(text)
-    openNMT = openNMTs[languages]
-    return openNMT.translate_parallel(text)
-    
 
 @app.route('/savedtexts/', methods=['GET'])
 def savedtexts():
