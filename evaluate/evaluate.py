@@ -139,7 +139,7 @@ def _inference(datasets, source_language, target_language, local):
         if local:
             cmd = f'python3 ../use-models-tools/model-to-txt.py -x ../models/ -f {source_file} -t {hypotesis_file} -m {model}'
         else:
-            cmd = f'docker run -it -v "$(pwd)":/srv/files/ --env CTRANSLATE_BEAM_SIZE=2 --env COMMAND_LINE="-f {source_file} -t {hypotesis_file} -m {model}" registry.softcatala.org/github/nmt-softcatala/use-models-tools:master'
+            cmd = f'docker run -it -v "$(pwd)":/srv/files/ --env CTRANSLATE_BEAM_SIZE=2 --env COMMAND_LINE="-f {source_file} -t {hypotesis_file} -m {model}" use-models-tools'
 
         print(cmd)
         os.system(cmd)
