@@ -86,9 +86,22 @@ def _process_dot(src, trg, dots):
 def _is_sentence_len_good(src, trg):
     src = src.strip()
     trg = trg.strip()
+    lsrc = len(src)
+    ltrg = len(trg)
 
-    if len(src) == 0 or len(trg) == 0:
+    if lsrc == 0 or ltrg == 0:
         return False
+
+    MIN_CHARS = 50
+    if max(lsrc, ltrg) > MIN_CHARS:
+        if lsrc < ltrg:
+           tmp = lsrc
+           lsrc = ltrg
+           ltrg = tmp
+
+        diff = (lsrc - ltrg) / lsrc * 100
+        if diff > 70:
+            return False
 
     return True
 
@@ -106,7 +119,7 @@ def split_in_six_files(src_filename, tgt_filename):
     total_lines = file_len(src_filename)
     validation_each = round(total_lines / number_validation)
     test_each = round(total_lines / number_test)
-    empty_sentences = 0
+    bad_length = 0
     dots = 0
 
     if test_each == validation_each:
@@ -139,7 +152,7 @@ def split_in_six_files(src_filename, tgt_filename):
                 break
 
             if _is_sentence_len_good(src, trg) is False:
-                empty_sentences = empty_sentences + 1
+                bad_length = bad_length + 1
                 continue
 
             src, cleaned = _convert_newlines(src)
@@ -180,10 +193,10 @@ def split_in_six_files(src_filename, tgt_filename):
     pduplicated = duplicated * 100 / strings
     pdots = dots * 100 / strings
     pclean = clean * 100 / strings
-    pempty_sentences = empty_sentences * 100 / strings
+    pbad_length = bad_length * 100 / strings
     print(f"Strings: {strings}, duplicated {duplicated} ({pduplicated:.2f}%)")
     print(f"Cleaned acute accents: {clean} ({pclean:.2f}%)")
-    print(f"Empty sentences: {empty_sentences} ({pempty_sentences:.2f}%)")
+    print(f"Empty sentences or diff len too long: {bad_length} ({pbad_length:.2f}%)")
     print(f"Dots: {dots} ({pdots:.2f}%)")
 
 def append_lines_from_file(src_filename, trg_file):

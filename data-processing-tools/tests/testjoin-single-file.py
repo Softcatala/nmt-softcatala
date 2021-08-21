@@ -53,15 +53,39 @@ class TestJoinSingleFile(unittest.TestCase):
         self.assertEquals("Yes.", src)
         self.assertEquals("No.", trg)
 
-    def test__has_dot_or_equivalent_true(self):
+    def test_has_dot_or_equivalent_true(self):
         self.assertTrue(join_single_file._has_dot_or_equivalent("Hola."))
         self.assertTrue(join_single_file._has_dot_or_equivalent("Hola?"))
         self.assertTrue(join_single_file._has_dot_or_equivalent("Hola!"))
         self.assertTrue(join_single_file._has_dot_or_equivalent("Hola…"))
 
-    def test__has_dot_or_equivalent_false(self):
+    def test_has_dot_or_equivalent_false(self):
         self.assertFalse(join_single_file._has_dot_or_equivalent("num1"))
         self.assertFalse(join_single_file._has_dot_or_equivalent("Hola"))
+
+    def test__is_sentence_len_good_len_zero(self):
+        self.assertFalse(join_single_file._is_sentence_len_good("", ""))
+        self.assertFalse(join_single_file._is_sentence_len_good("A", ""))
+        self.assertFalse(join_single_file._is_sentence_len_good("", "B"))
+
+    def test__is_sentence_len_good_diff(self):
+        src = "Mai"
+        trg = "localized lexeme inflections - short month form||Jun"
+        self.assertFalse(join_single_file._is_sentence_len_good(src, trg))
+
+        src = "All contacts must use Friendica protocols. All other built-in communication protocols disabled."
+        trg = "Tots els contactes"
+        self.assertFalse(join_single_file._is_sentence_len_good(src, trg))
+
+    def test__is_sentence_len_good_true(self):
+        src = "May"
+        trg = "Maig"
+        self.assertTrue(join_single_file._is_sentence_len_good(src, trg))
+
+        src = "All contacts must use Friendica protocols."
+        trg = "Tots els contactes"
+        self.assertTrue(join_single_file._is_sentence_len_good(src, trg))
+
 
 if __name__ == '__main__':
     unittest.main()
