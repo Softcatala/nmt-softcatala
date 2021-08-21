@@ -47,9 +47,9 @@ openNMTs = {}
 
 LANGUAGE_ALIASES = {
     "eng-cat": ["en|cat", "en|ca", "eng|ca", "eng|cat"],
+    "cat-eng": ["cat|en", "ca|en", "ca|eng", "cat|eng"],
     "deu-cat": ["de|cat", "de|ca", "deu|ca", "deu|cat"],
-    "cat-deu": ["cat|de", "ca|de", "ca|deu", "cat|deu"],
-    "deu-cat": ["de|cat", "de|ca", "deu|ca", "deu|cat"]
+    "cat-deu": ["cat|de", "ca|de", "ca|deu", "cat|deu"]
 }
 
 def load_models():
