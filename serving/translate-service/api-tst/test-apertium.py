@@ -6,7 +6,7 @@ class TestApertium(TestCase):
 
     OK = 200
     #URL = "https://www.softcatala.org/api/traductor"
-    URL = "http://127.0.0.1:5000"
+    URL = "http://127.0.0.1:8700"
 
     TRANSLATE = "/translate"
     LISTPAIRS = "/listPairs"
