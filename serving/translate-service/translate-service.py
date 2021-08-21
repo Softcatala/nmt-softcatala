@@ -136,6 +136,8 @@ def apertium_translate_process(values):
 
 
 def translate(languages, text):
+    print(languages)
+    print(text)
     openNMT = openNMTs[languages]
     return openNMT.translate_parallel(text)
     
