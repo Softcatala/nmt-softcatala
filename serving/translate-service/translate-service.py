@@ -41,7 +41,7 @@ MODELS = '/srv/models/'
 UPLOAD_FOLDER = '/srv/data/files/'
 SAVED_TEXTS = '/srv/data/saved/'
 
-MODELS_NAMES = {"eng-cat", "cat-eng", "deu-cat", "cat-deu"}
+MODELS_NAMES = ["eng-cat", "cat-eng", "deu-cat", "cat-deu"]
 LIST_PAIRS = MODELS_NAMES
 openNMTs = {}
 
@@ -54,6 +54,7 @@ LANGUAGE_ALIASES = {
 
 def load_models():
     for model in MODELS_NAMES:
+        print(model)
         openNMT = CTranslate(f"{MODELS}", model)
         openNMTs[model] = openNMT
 
@@ -163,7 +164,7 @@ def version_api():
 
     result = {}
 
-    for model in openNMTs:
+    for model in openNMTs.values():
         result[model.get_model_name()] = model.get_model_description()
 
     return json_answer(result)
