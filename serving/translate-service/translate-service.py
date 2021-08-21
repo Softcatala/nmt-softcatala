@@ -42,11 +42,25 @@ MODELS = '/srv/models/'
 UPLOAD_FOLDER = '/srv/data/files/'
 SAVED_TEXTS = '/srv/data/saved/'
 
-openNMT_engcat = CTranslate(f"{MODELS}", "eng-cat")
-openNMT_cateng = CTranslate(f"{MODELS}", "cat-eng")
-openNMT_deucat = CTranslate(f"{MODELS}", "deu-cat")
-openNMT_catdeu = CTranslate(f"{MODELS}", "cat-deu")
-LIST_PAIRS = {"eng-cat", "cat-eng", "deu-cat", "cat-deu"}
+LIST_PAIRS = {}
+openNMTs = {}
+
+LANGUAGE_ALIAS = {
+    "eng-cat": ['en|cat', 'en|ca', 'eng|ca', 'eng|cat'],
+    "deu-cat": ['de|cat', 'de|ca', 'deu|ca', 'deu|cat'],
+    "cat-deu": ['cat|de', 'ca|de', 'ca|deu', 'cat|deu']
+}
+
+def load_models():
+
+    models = {"eng-cat", "cat-eng", "deu-cat", "cat-deu"}
+    LIST_PAIRS = models
+    for model in models:
+        openNMT = CTranslate(f"{MODELS}", model)
+        openNMTs[model] = openNMT
+
+    print(f"{len(models)} models loaded")
+
 
 def init_logging():
     logfile = 'translate-service.log'
@@ -77,6 +91,7 @@ def translate_api():
 
 def apertium_translate_process(values):
     start_time = datetime.datetime.now()
+
 
     text = None
     languages = None
@@ -128,16 +143,7 @@ def apertium_translate_process(values):
 
 
 def translate(languages, text):
-
-    if languages == 'eng-cat':
-        openNMT = openNMT_engcat
-    elif languages == 'deu-cat':
-        openNMT = openNMT_deucat
-    elif languages == 'cat-deu':
-        openNMT = openNMT_catdeu
-    else:
-        openNMT = openNMT_cateng
-
+    openNMT = openNMTs[languages]
     return openNMT.translate_parallel(text)
     
 
@@ -160,11 +166,9 @@ def stats():
 @app.route('/version/', methods=['GET'])
 def version_api():
 
-    models = [openNMT_engcat, openNMT_cateng, openNMT_deucat, openNMT_catdeu]
-
     result = {}
 
-    for model in models:
+    for model in openNMTs:
         result[model.get_model_name()] = model.get_model_description()
 
     return json_answer(result)
@@ -254,7 +258,9 @@ def list_pairs():
 if __name__ == '__main__':
 #    app.debug = True
     init_logging()
+    load_models()
     app.run()
 
 if __name__ != '__main__':
+    load_models()
     init_logging()
