@@ -243,7 +243,7 @@ def list_pairs():
 
 
 if __name__ == '__main__':
-    app.debug = True
+#    app.debug = True
     init_logging()
     load_models()
     app.run()
