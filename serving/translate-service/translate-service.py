@@ -38,28 +38,26 @@ app = Flask(__name__)
 CORS(app)
 
 MODELS = '/srv/models/'
-#MODELS = '../../models/' # local
 UPLOAD_FOLDER = '/srv/data/files/'
 SAVED_TEXTS = '/srv/data/saved/'
 
-LIST_PAIRS = {}
+MODELS_NAMES = {"eng-cat", "cat-eng", "deu-cat", "cat-deu"}
+LIST_PAIRS = MODELS_NAMES
 openNMTs = {}
 
-LANGUAGE_ALIAS = {
-    "eng-cat": ['en|cat', 'en|ca', 'eng|ca', 'eng|cat'],
-    "deu-cat": ['de|cat', 'de|ca', 'deu|ca', 'deu|cat'],
-    "cat-deu": ['cat|de', 'ca|de', 'ca|deu', 'cat|deu']
+LANGUAGE_ALIASES = {
+    "eng-cat": ["en|cat", "en|ca", "eng|ca", "eng|cat"],
+    "deu-cat": ["de|cat", "de|ca", "deu|ca", "deu|cat"],
+    "cat-deu": ["cat|de", "ca|de", "ca|deu", "cat|deu"],
+    "deu-cat": ["de|cat", "de|ca", "deu|ca", "deu|cat"]
 }
 
 def load_models():
-
-    models = {"eng-cat", "cat-eng", "deu-cat", "cat-deu"}
-    LIST_PAIRS = models
-    for model in models:
+    for model in MODELS_NAMES:
         openNMT = CTranslate(f"{MODELS}", model)
         openNMTs[model] = openNMT
 
-    print(f"{len(models)} models loaded")
+    print(f"{len(MODELS_NAMES)} models loaded")
 
 
 def init_logging():
@@ -92,7 +90,6 @@ def translate_api():
 def apertium_translate_process(values):
     start_time = datetime.datetime.now()
 
-
     text = None
     languages = None
 
@@ -100,14 +97,10 @@ def apertium_translate_process(values):
     langpair = values['langpair']
     savetext = 'savetext' in values and values['savetext'] == True
 
-    if langpair in ['en|cat', 'en|ca', 'eng|ca', 'eng|cat']:
-        languages = 'eng-cat'
-    elif langpair in ['de|cat', 'de|ca', 'deu|ca', 'deu|cat']:
-        languages = 'deu-cat'
-    elif langpair in ['cat|de', 'ca|de', 'ca|deu', 'cat|deu']:
-        languages = 'cat-deu'
-    else:
-        languages = 'cat-eng'
+    for key, value in LANGUAGE_ALIASES.items():
+        if langpair in value:
+            languages = key
+            break
 
     if savetext:
         saved_filename = os.path.join(SAVED_TEXTS, "source.txt")
@@ -256,7 +249,7 @@ def list_pairs():
 
 
 if __name__ == '__main__':
-#    app.debug = True
+    app.debug = True
     init_logging()
     load_models()
     app.run()
