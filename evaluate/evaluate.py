@@ -115,19 +115,7 @@ def _evaluate(datasets, source_language, target_language, language_pair):
             hypotesis_file = ds[2].format(source_language, target_language, engine.lower(), target_language)
             show_score_line(engine, reference_file, hypotesis_file)
 
-def _inference(datasets, source_language, target_language, local):
-
-    if source_language == "eng" and target_language == "cat":
-        model = "eng-cat"
-    elif source_language == "cat" and target_language == "eng":
-        model = "cat-eng"
-    elif source_language == "deu" and target_language == "cat":
-        model = "deu-cat"
-    elif source_language == "cat" and target_language == "deu":
-        model = "cat-deu"
-    else:
-        print(f"Unknown translation model {source_language}, {target_language}")
-        exit(0)
+def _inference(datasets, source_language, target_language, local, model):
 
     engine = "nmt-softcatala"
     for ds in datasets:
@@ -223,13 +211,13 @@ def main():
 
     if inference is True:
         if lang_pair == 'eng-cat':
-            _inference(datasets_en_ca, "en", "ca", local)
+            _inference(datasets_en_ca, "en", "ca", local, lang_pair)
 
         if lang_pair == 'deu-cat':
-            _inference(datasets_de_ca, "de", "ca", local)
+            _inference(datasets_de_ca, "de", "ca", local, lang_pair)
 
         if lang_pair == 'cat-deu':
-            _inference(datasets_ca_de, "ca", "de", local)
+            _inference(datasets_ca_de, "ca", "de", local, lang_pair)
     else:
         if len(lang_pair) == 0 or lang_pair == 'eng-cat':
             _evaluate(datasets_en_ca, "en", "ca", "English > Catalan")
