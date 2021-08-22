@@ -1,20 +1,20 @@
 source_files:
-    - de-ca-corpus/data/GNOME.ca-de.de
-    - de-ca-corpus/data/KDE4.ca-de.de
-    - de-ca-corpus/data/OpenSubtitles.ca-de.de
-    - de-ca-corpus/data/TED2020.ca-de.de
-    - de-ca-corpus/data/TildeMODEL.de-es.de
-    - de-ca-corpus/data/europarl.de-ca.de
-#    - de-ca-corpus/data/Tatoeba.ca-de.de
-#    - de-ca-corpus/data/Ubuntu.ca-de.de
+    - corpus-raw/deu-cat/GNOME.ca-de.de
+    - corpus-raw/deu-cat/KDE4.ca-de.de
+    - corpus-raw/deu-cat/OpenSubtitles.ca-de.de
+    - corpus-raw/deu-cat/TED2020.ca-de.de
+    - corpus-raw/deu-cat/TildeMODEL.de-es.de
+    - corpus-raw/deu-cat/europarl.de-ca.de
+#    - corpus-raw/deu-cat/Tatoeba.ca-de.de
+#    - corpus-raw/deu-cat/Ubuntu.ca-de.de
 
 target_files:
-    - de-ca-corpus/data/GNOME.ca-de.ca
-    - de-ca-corpus/data/KDE4.ca-de.ca
-    - de-ca-corpus/data/OpenSubtitles.ca-de.ca
-    - de-ca-corpus/data/TED2020.ca-de.ca
-    - de-ca-corpus/data/TildeMODEL.de-ca.ca
-    - de-ca-corpus/data/europarl.de-ca.ca
-#    - de-ca-corpus/data/Tatoeba.ca-de.ca
-#    - de-ca-corpus/data/Ubuntu.ca-de.ca
+    - corpus-raw/deu-cat/GNOME.ca-de.ca
+    - corpus-raw/deu-cat/KDE4.ca-de.ca
+    - corpus-raw/deu-cat/OpenSubtitles.ca-de.ca
+    - corpus-raw/deu-cat/TED2020.ca-de.ca
+    - corpus-raw/deu-cat/TildeMODEL.de-ca.ca
+    - corpus-raw/deu-cat/europarl.de-ca.ca
+#    - corpus-raw/deu-cat/Tatoeba.ca-de.ca
+#    - corpus-raw/deu-cat/Ubuntu.ca-de.ca
 
