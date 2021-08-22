@@ -117,13 +117,13 @@ def _evaluate(datasets, source_language, target_language, language_pair):
 
 def _inference(datasets, source_language, target_language, local):
 
-    if source_language == "en" and target_language == "ca":
+    if source_language == "eng" and target_language == "cat":
         model = "eng-cat"
-    elif source_language == "ca" and target_language == "en":
+    elif source_language == "cat" and target_language == "eng":
         model = "cat-eng"
-    elif source_language == "de" and target_language == "ca":
+    elif source_language == "deu" and target_language == "cat":
         model = "deu-cat"
-    elif source_language == "ca" and target_language == "de":
+    elif source_language == "cat" and target_language == "deu":
         model = "cat-deu"
     else:
         print(f"Unknown translation model {source_language}, {target_language}")
@@ -154,7 +154,7 @@ def read_parameters():
         action='store',
         dest='lang_pair',
         default = '',
-        help='Language pair to evaluate (e.g. en-ca)'
+        help='Language pair to evaluate (e.g. eng-cat)'
     )
 
     parser.add_option(
@@ -222,22 +222,22 @@ def main():
         ]
 
     if inference is True:
-        if lang_pair == 'en-ca':
+        if lang_pair == 'eng-cat':
             _inference(datasets_en_ca, "en", "ca", local)
 
-        if lang_pair == 'de-ca':
+        if lang_pair == 'deu-cat':
             _inference(datasets_de_ca, "de", "ca", local)
 
-        if lang_pair == 'ca-de':
+        if lang_pair == 'cat-deu':
             _inference(datasets_ca_de, "ca", "de", local)
     else:
-        if len(lang_pair) == 0 or lang_pair == 'en-ca':
+        if len(lang_pair) == 0 or lang_pair == 'eng-cat':
             _evaluate(datasets_en_ca, "en", "ca", "English > Catalan")
 
-        if len(lang_pair) == 0 or lang_pair == 'de-ca':
+        if len(lang_pair) == 0 or lang_pair == 'deu-cat':
             _evaluate(datasets_de_ca, "de", "ca", "German > Catalan")
 
-        if len(lang_pair) == 0 or lang_pair == 'ca-de':
+        if len(lang_pair) == 0 or lang_pair == 'cat-deu':
             _evaluate(datasets_ca_de, "ca", "de", "Catalan > German")
 
 if __name__ == "__main__":
