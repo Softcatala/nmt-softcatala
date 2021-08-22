@@ -75,10 +75,12 @@ def _process_dot(src, trg, dots):
     t = trg.rstrip()
 
     if s[-1:] == '.' and _has_dot_or_equivalent(t) is False:
-        trg = trg + "."
+        src = src.rstrip()
+        trg = trg.rstrip() + "."
         dots = dots + 1
     elif t[-1:] == '.' and _has_dot_or_equivalent(s) is False:
-        src = src + "."
+        trg = trg.rstrip()
+        src = src.rstrip() + "."
         dots = dots + 1
 
     return src, trg, dots
