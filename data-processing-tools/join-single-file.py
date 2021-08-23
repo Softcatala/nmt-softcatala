@@ -250,6 +250,8 @@ def join_multiple_sources_and_target_into_two_files(src_filename, tgt_filename):
     print("src lines: " + str(src_lines))
     print("trg lines: " + str(trg_lines))
 
+    if src_lines != trg_lines:
+        raise Exception(f"Source and target corpus have different lengths.")
 
 def main():
 
