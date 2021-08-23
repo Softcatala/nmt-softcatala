@@ -1,3 +1,4 @@
+modelName=${PWD##*/}
 rm -f exported.zip
 rm exported/ -r -f
 mkdir -p exported/metadata
@@ -11,7 +12,7 @@ modelDescription="exported/metadata/model_description.txt"
 currentDate=`date +"%Y-%m-%d-%s"`
 read -p 'Describe model: ' uservar
 onmt-main --config data.yml --auto_config export --export_dir exported/tensorflow/
-echo "Model description: $uservar" >  $modelDescription
+echo "Model description: $modelName, $uservar" >> $modelDescription
 cat bleu.txt >>  $modelDescription
 echo "Date: $currentDate" >> $modelDescription
 python3 ../stack-versions.py >> $modelDescription
@@ -21,4 +22,4 @@ cp data.yml exported/metadata/
 cp src-vocab.txt.token exported/tensorflow/assets/
 cp tgt-vocab.txt.token exported/tensorflow/assets/
 ct2-opennmt-tf-converter --model_path run/ --model_type TransformerBaseRelative --output_dir exported/ctranslate2 --src_vocab src-vocab.txt.token --tgt_vocab tgt-vocab.txt.token --quantization int8
-cd exported && zip -r ../exported-$currentDate.zip *
+cd exported && zip -r ../$modelName-$currentDate.zip *
