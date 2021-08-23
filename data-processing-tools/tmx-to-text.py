@@ -19,6 +19,8 @@
 # Boston, MA 02111-1307, USA.
 
 import xml.etree.ElementTree as ET
+from optparse import OptionParser
+
 
 class ConvertTmx():
 
@@ -27,7 +29,7 @@ class ConvertTmx():
         self.en_filename = en_filename
         self.ca_filename = ca_filename
 
-    def convert(self):
+    def convert(self, target_language):
         tree = ET.parse(self.input_file)
         root = tree.getroot()
         sources = set()
@@ -58,13 +60,13 @@ class ConvertTmx():
                 for seg_entry in tuv_entry.iter('seg'):
                     if llengua == 'en' or llengua == 'en-us':
                         source = seg_entry.text
-                    elif llengua == 'ca':
+                    elif llengua == target_language:
                         translation = seg_entry.text
 
-            if source is None or source is '':
+            if source is None or len(source) == 0:
                 continue
 
-            if translation is None or translation is '':
+            if translation is None or len(translation) == 0:
                 continue
 
             if source in sources:
@@ -85,17 +87,59 @@ class ConvertTmx():
         tf_ca.close()
         print("Wrote {0} strings".format(entries))
 
+def read_parameters():
+    parser = OptionParser()
+
+    parser.add_option(
+        '-f',
+        '--tmx-file',
+        type='string',
+        action='store',
+        dest='tmx_file',
+        help='tmx File to convert to Text'
+    )
+
+    parser.add_option(
+        '-s',
+        '--source_lang',
+        type='string',
+        action='store',
+        default='en',
+        dest='source_language',
+        help='Source text file'
+    )
+
+    parser.add_option(
+        '-t',
+        '--target_lang',
+        type='string',
+        action='store',
+        dest='target_language',
+        help='Target text file'
+    )
+
+    (options, args) = parser.parse_args()
+    if options.tmx_file is None:
+        parser.error('TMX file not given')
+
+    if options.target_language is None:
+        parser.error('target_language file not given')
+
+    return options.tmx_file, options.source_language, options.target_language
+
+
 def main():
 
-    print("Converts  into Text")
-    print("and cleans the strings")
+    print("Converts TMX into two text files")
+
+    tmx_file, source, target = read_parameters()
 
     txt_file = 'raw/GlobalVoices-ca-en.tmx'
-    txt_en_file = 'input/globalvoices-en.txt'
-    txt_ca_file = 'input/globalvoices-ca.txt'
+    txt_en_file = f'{source}-{target}.{source}'
+    txt_ca_file = f'{source}-{target}.{target}'
 
-    convert = ConvertTmx(txt_file, txt_en_file, txt_ca_file)
-    convert.convert()
+    convert = ConvertTmx(tmx_file, txt_en_file, txt_ca_file)
+    convert.convert(target)
 
 if __name__ == "__main__":
     main()
