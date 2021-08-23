@@ -20,6 +20,7 @@
 
 import pyonmttok
 from optparse import OptionParser
+from shutil import copyfile
 
 def read_parameters():
     parser = OptionParser()
@@ -100,21 +101,17 @@ def src(vocabulary_size, model):
     learner = pyonmttok.SentencePieceLearner(vocab_size=vocabulary_size,
                                             keep_vocab = True)
     ingest_file(learner, "src-train.txt")
+    ingest_file(learner, "tgt-train.txt")
 
     tokenizer = learner.learn(model, verbose=True)
     tokens = tokenizer.tokenize_file("src-train.txt", "src-train.txt.token")
     tokens = tokenizer.tokenize_file("src-test.txt", "src-test.txt.token")
     tokens = tokenizer.tokenize_file("src-val.txt", "src-val.txt.token")
 
-def tgt(vocabulary_size, model):
-    learner = pyonmttok.SentencePieceLearner(vocab_size=vocabulary_size,
-                                            keep_vocab = True)
-    ingest_file(learner, "tgt-train.txt")
-
-    tokenizer = learner.learn(model, verbose=True)
     tokens = tokenizer.tokenize_file("tgt-train.txt", "tgt-train.txt.token")
     tokens = tokenizer.tokenize_file("tgt-test.txt", "tgt-test.txt.token")
     tokens = tokenizer.tokenize_file("tgt-val.txt", "tgt-val.txt.token")
+
 
 def main():
 
@@ -123,7 +120,9 @@ def main():
     print("Vocabulary size {0}".format(vocabulary_size))
 
     src(vocabulary_size, source_model)
-    tgt(vocabulary_size, target_model)
+
+    copyfile(source_model + ".model", target_model + ".model")
+    copyfile(source_model + ".vocab", target_model + ".vocab")
 
 if __name__ == "__main__":
     main()
