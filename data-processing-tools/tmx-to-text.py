@@ -29,7 +29,7 @@ class ConvertTmx():
         self.en_filename = en_filename
         self.ca_filename = ca_filename
 
-    def convert(self, target_language):
+    def convert(self, source_language, target_language):
         tree = ET.parse(self.input_file)
         root = tree.getroot()
         sources = set()
@@ -58,7 +58,7 @@ class ConvertTmx():
                     llengua = tuv_entry.attrib['lang'].lower()
 
                 for seg_entry in tuv_entry.iter('seg'):
-                    if llengua == 'en' or llengua == 'en-us':
+                    if llengua == source_language:
                         source = seg_entry.text
                     elif llengua == target_language:
                         translation = seg_entry.text
@@ -139,7 +139,7 @@ def main():
     txt_ca_file = f'{source}-{target}.{target}'
 
     convert = ConvertTmx(tmx_file, txt_en_file, txt_ca_file)
-    convert.convert(target)
+    convert.convert(source, target)
 
 if __name__ == "__main__":
     main()
