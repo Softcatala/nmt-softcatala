@@ -1,1 +1,0 @@
-../master-language/voc.sh
