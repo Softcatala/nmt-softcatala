@@ -41,7 +41,7 @@ MODELS = '/srv/models/'
 UPLOAD_FOLDER = '/srv/data/files/'
 SAVED_TEXTS = '/srv/data/saved/'
 
-MODELS_NAMES = ["eng-cat", "cat-eng", "deu-cat", "cat-deu"]
+MODELS_NAMES = ["eng-cat", "cat-eng", "deu-cat", "cat-deu", "fra-cat", "spa-cat"]
 LIST_PAIRS = MODELS_NAMES
 openNMTs = {}
 
@@ -49,13 +49,15 @@ LANGUAGE_ALIASES = {
     "eng-cat": ["en|cat", "en|ca", "eng|ca", "eng|cat"],
     "cat-eng": ["cat|en", "ca|en", "ca|eng", "cat|eng"],
     "deu-cat": ["de|cat", "de|ca", "deu|ca", "deu|cat"],
-    "cat-deu": ["cat|de", "ca|de", "ca|deu", "cat|deu"]
+    "cat-deu": ["cat|de", "ca|de", "ca|deu", "cat|deu"],
+    "fra-cat": ["fr|cat", "fr|ca", "fra|ca", "fra|cat"],
+    "spa-cat": ["es|cat", "es|ca", "spa|ca", "spa|cat"],
 }
 
 def load_models():
     for model in MODELS_NAMES:
         openNMT = CTranslate(f"{MODELS}", model)
-        openNMTs[model] = openNMT
+        openNMTs[model] = openNMT        
 
     print(f"{len(MODELS_NAMES)} models loaded")
 
@@ -107,7 +109,7 @@ def apertium_translate_process(values):
         with open(saved_filename, "a") as text_file:
             t = text.replace('\n', '')
             text_file.write(f'{languages}\t{t}\n')
-
+    
     openNMT = openNMTs[languages]
     translated = openNMT.translate_parallel(text)
 

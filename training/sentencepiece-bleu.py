@@ -23,7 +23,7 @@ import pyonmttok
 
 
 def predictions():
-    tokenizer = pyonmttok.Tokenizer(mode="none", sp_model_path="ca_m.model")
+    tokenizer = pyonmttok.Tokenizer(mode="none", sp_model_path="sp_m.model")
     tokens = tokenizer.detokenize_file("predictions.txt.token", "predictions.txt")
 
 

@@ -1,0 +1,11 @@
+source_files:
+    - corpus-raw/open-source-fr-ca.fr
+    - corpus-raw/europarl.fr-ca.fr
+    - corpus-raw/wikimatrix.fr-ca.fr
+    - corpus-raw/TildeMODEL.fr-ca.fr
+
+target_files:
+    - corpus-raw/open-source-fr-ca.ca
+    - corpus-raw/europarl.fr-ca.ca
+    - corpus-raw/wikimatrix.fr-ca.ca
+    - corpus-raw/TildeMODEL.fr-ca.ca

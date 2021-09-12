@@ -1,20 +1,20 @@
 source_files:
-    - preprocessed/tots-tm.en
-    - raw/WikiMatrix.en-ca.txt.en
-    - raw/globalvoices-en.txt
-    - raw/europarl.en-ca.en
-    - raw/OpenSubtitles2018.en-ca.en
-    - raw/tedtalks.en-ca.en
-    - raw/covost2.ca-en.en
-    - raw/covost2.en-ca.en
+    - corpus-raw/MemoriesProjectesLliures.en-ca.en
+    - corpus-raw/WikiMatrix.en-ca.txt.en
+    - corpus-raw/globalvoices.en-ca.en
+    - corpus-raw/europarl.en-ca.en
+    - corpus-raw/OpenSubtitles2018.en-ca.en
+    - corpus-raw/tedtalks.en-ca.en
+    - corpus-raw/covost2.ca-en.en
+    - corpus-raw/covost2.en-ca.en
 
 target_files:
-    - preprocessed/tots-tm.ca
-    - raw/WikiMatrix.en-ca.txt.ca
-    - raw/globalvoices-ca.txt
-    - raw/europarl.en-ca.ca
-    - raw/OpenSubtitles2018.en-ca.ca
-    - raw/tedtalks.en-ca.ca
-    - raw/covost2.ca-en.ca
-    - raw/covost2.en-ca.ca
+    - corpus-raw/MemoriesProjectesLliures.en-ca.ca
+    - corpus-raw/WikiMatrix.en-ca.txt.ca
+    - corpus-raw/globalvoices.en-ca.ca
+    - corpus-raw/europarl.en-ca.ca
+    - corpus-raw/OpenSubtitles2018.en-ca.ca
+    - corpus-raw/tedtalks.en-ca.ca
+    - corpus-raw/covost2.ca-en.ca
+    - corpus-raw/covost2.en-ca.ca
 

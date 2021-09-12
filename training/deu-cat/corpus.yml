@@ -1,20 +1,20 @@
 source_files:
-    - corpus-raw/deu-cat/GNOME.ca-de.de
-    - corpus-raw/deu-cat/KDE4.ca-de.de
-    - corpus-raw/deu-cat/OpenSubtitles.ca-de.de
-    - corpus-raw/deu-cat/TED2020.ca-de.de
-    - corpus-raw/deu-cat/TildeMODEL.de-es.de
-    - corpus-raw/deu-cat/europarl.de-ca.de
-#    - corpus-raw/deu-cat/Tatoeba.ca-de.de
-#    - corpus-raw/deu-cat/Ubuntu.ca-de.de
+    - corpus-raw/GNOME.ca-de.de
+    - corpus-raw/KDE4.ca-de.de
+    - corpus-raw/OpenSubtitles.ca-de.de
+    - corpus-raw/TED2020.ca-de.de
+    - corpus-raw/TildeMODEL.de-es.de
+    - corpus-raw/europarl.de-ca.de
+#    - corpus-raw/Tatoeba.ca-de.de
+#    - corpus-raw/Ubuntu.ca-de.de
 
 target_files:
-    - corpus-raw/deu-cat/GNOME.ca-de.ca
-    - corpus-raw/deu-cat/KDE4.ca-de.ca
-    - corpus-raw/deu-cat/OpenSubtitles.ca-de.ca
-    - corpus-raw/deu-cat/TED2020.ca-de.ca
-    - corpus-raw/deu-cat/TildeMODEL.de-ca.ca
-    - corpus-raw/deu-cat/europarl.de-ca.ca
-#    - corpus-raw/deu-cat/Tatoeba.ca-de.ca
-#    - corpus-raw/deu-cat/Ubuntu.ca-de.ca
+    - corpus-raw/GNOME.ca-de.ca
+    - corpus-raw/KDE4.ca-de.ca
+    - corpus-raw/OpenSubtitles.ca-de.ca
+    - corpus-raw/TED2020.ca-de.ca
+    - corpus-raw/TildeMODEL.de-ca.ca
+    - corpus-raw/europarl.de-ca.ca
+#    - corpus-raw/Tatoeba.ca-de.ca
+#    - corpus-raw/Ubuntu.ca-de.ca
 

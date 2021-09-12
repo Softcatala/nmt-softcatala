@@ -1,0 +1,7 @@
+source_files:
+    - corpus-raw/dogc-es-ca.es
+    - corpus-raw/europarl.es-ca.es
+
+target_files:
+    - corpus-raw/dogc-es-ca.ca
+    - corpus-raw/europarl.es-ca.ca

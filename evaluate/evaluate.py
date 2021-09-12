@@ -102,21 +102,24 @@ def show_score_line(engine, reference_file, hypotesis_file):
     else:
         print(f"{engine}\t\t\t{bleu:.2f}\t{nist:.2f}")
 
-def _evaluate(datasets, source_language, target_language, language_pair):
-
+def _evaluate(datasets, language_pair, name):
     print("Translation engine\tBLEU\tNIST")
-    print(f"Language pair: {language_pair}")
-    engines = ["Apertium", "Yandex", "Google", "nmt-softcatala"]
+    print(f"Language pair: {name}")
+
+    source_language, target_language = language_pair.split("-")
+    engines = ["Apertium", "Yandex", "Google", "nmt-softcatala", "hf"]
     for ds in datasets:
         print("-- " + ds[0])
 
         for engine in engines:
             reference_file = ds[1].format(source_language, target_language, engine.lower(), target_language)
             hypotesis_file = ds[2].format(source_language, target_language, engine.lower(), target_language)
+
             show_score_line(engine, reference_file, hypotesis_file)
 
-def _inference(datasets, source_language, target_language, local, model):
+def _inference(datasets, language_pair, local):
 
+    source_language, target_language = language_pair.split("-")
     engine = "nmt-softcatala"
     for ds in datasets:
         print("-- " + ds[0])
@@ -125,9 +128,9 @@ def _inference(datasets, source_language, target_language, local, model):
         hypotesis_file = ds[2].format(source_language, target_language, engine.lower(), target_language)
 
         if local:
-            cmd = f'python3 ../use-models-tools/model-to-txt.py -x ../models/ -f {source_file} -t {hypotesis_file} -m {model}'
+            cmd = f'python3 ../use-models-tools/model-to-txt.py -x ../models/ -f {source_file} -t {hypotesis_file} -m {language_pair}'
         else:
-            cmd = f'docker run -it -v "$(pwd)":/srv/files/ --env CTRANSLATE_BEAM_SIZE=2 --env COMMAND_LINE="-f {source_file} -t {hypotesis_file} -m {model}" use-models-tools'
+            cmd = f'docker run -it -v "$(pwd)":/srv/files/ --env CTRANSLATE_BEAM_SIZE=2 --env COMMAND_LINE="-f {source_file} -t {hypotesis_file} -m {language_pair}" use-models-tools'
 
         print(cmd)
         os.system(cmd)
@@ -164,6 +167,14 @@ def read_parameters():
         help=u'For inference use local model directories or the built docker container'
     )
 
+    parser.add_option(
+        '-f',
+        '--flores',
+        action='store_true',
+        dest='flores',
+        default=False,
+        help=u'Flores dataset'
+    )
 
     (options, args) = parser.parse_args()
 
@@ -171,12 +182,24 @@ def read_parameters():
         print("Inference option needs a language pair")
         exit(1)
 
-    return options.lang_pair, options.inference, options.local
+    return options.lang_pair, options.inference, options.local, options.flores
 
+def _get_flores_dataset(lang_pair):
+
+    datasets = []
+    dataset  = []
+    name = f"flores {lang_pair}"
+    dataset.append(name)
+    source = "input/flores101.{3}"
+    dataset.append(source)
+    target = "translated/flores101-{0}-{1}-{2}.{3}"
+    dataset.append(target)
+    datasets.append(dataset)
+    return datasets
 
 def main():
 
-    lang_pair, inference, local = read_parameters()
+    lang_pair, inference, local, flores = read_parameters()
 
     datasets_en_ca = \
         [\
@@ -209,24 +232,40 @@ def main():
                  'translated/ubuntu-{1}-{0}-{2}.{3}']
         ]
 
-    if inference is True:
-        if lang_pair == 'eng-cat':
-            _inference(datasets_en_ca, "en", "ca", local, lang_pair)
+    if flores:
+        if len(lang_pair) == 0:
+            languages = ["eng-cat", "deu-cat", "fra-cat", "spa-cat", "ita-cat"]
+        else:
+            languages = [lang_pair]
 
-        if lang_pair == 'deu-cat':
-            _inference(datasets_de_ca, "de", "ca", local, lang_pair)
+        for language in languages:
+            dataset = _get_flores_dataset(language)
 
-        if lang_pair == 'cat-deu':
-            _inference(datasets_ca_de, "ca", "de", local, lang_pair)
+            if inference is True:
+                _inference(dataset, language, local)
+            else:
+                _evaluate(dataset, language, language)
+
+        return
     else:
-        if len(lang_pair) == 0 or lang_pair == 'eng-cat':
-            _evaluate(datasets_en_ca, "en", "ca", "English > Catalan")
+        if inference is True:
+            if lang_pair == 'eng-cat':
+                _inference(datasets_en_ca, lang_pair, local)
 
-        if len(lang_pair) == 0 or lang_pair == 'deu-cat':
-            _evaluate(datasets_de_ca, "de", "ca", "German > Catalan")
+            if lang_pair == 'deu-cat':
+                _inference(datasets_de_ca, lang_pair, local)
 
-        if len(lang_pair) == 0 or lang_pair == 'cat-deu':
-            _evaluate(datasets_ca_de, "ca", "de", "Catalan > German")
+            if lang_pair == 'cat-deu':
+                _inference(datasets_ca_de, lang_pair, local)
+        else:
+            if len(lang_pair) == 0 or lang_pair == 'eng-cat':
+                _evaluate(datasets_en_ca, 'eng-cat', "English > Catalan")
+
+            if len(lang_pair) == 0 or lang_pair == 'deu-cat':
+                _evaluate(datasets_de_ca, 'deu-cat', "German > Catalan")
+
+            if len(lang_pair) == 0 or lang_pair == 'cat-deu':
+                _evaluate(datasets_ca_de, 'cat-deu', "Catalan > German")
 
 if __name__ == "__main__":
     main()

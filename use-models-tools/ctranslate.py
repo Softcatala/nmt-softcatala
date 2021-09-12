@@ -102,7 +102,7 @@ class CTranslate():
         lang =  lang = re.match(self.LANGUAGE_MATCH, model_name).groups()[0]
         lang = lang[:2]
 
-        choices = {'ca': 'Catalan', 'en': 'English', 'de' : 'German'}
+        choices = {'ca': 'Catalan', 'en': 'English', 'de' : 'German', 'fr' : 'French', 'sp' : 'Spanish', 'it' : 'Italian'}
         return choices[lang]
 
     def _get_tokenizer_file(self, model_path, model_name, index):
@@ -110,6 +110,12 @@ class CTranslate():
         lang = lang[:2]
         filename = self.TOKENIZER_FILE.format(lang)
         path = os.path.join(model_path, self.TOKENIZER_SUDIR, filename)
+
+        if os.path.isfile(path) is False:
+            filename = self.TOKENIZER_FILE.format("sp")
+            path = os.path.join(model_path, self.TOKENIZER_SUDIR, filename)
+
+        print(path)
         return path
 
     def get_source_tokenizer_file(self, model_path, model_name):

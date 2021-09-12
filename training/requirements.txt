@@ -1,3 +1,4 @@
 ctranslate2==2.3.1
 tensorflow==2.4.0
 OpenNMT-tf==2.20.1
+sacrebleu==2.0.0

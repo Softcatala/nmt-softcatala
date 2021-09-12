@@ -36,27 +36,17 @@ def read_parameters():
     )
 
     parser.add_option(
-        '-s',
-        '--source-model',
+        '-l',
+        '--language_pair',
         type='string',
         action='store',
-        default='en_m',
-        dest='source_model',
-        help='Source tokenizer model name'
-    )
-
-    parser.add_option(
-        '-t',
-        '--target-model',
-        type='string',
-        action='store',
-        default='ca_m',
-        dest='target_model',
-        help='Target tokenizer model name'
+        default='',
+        dest='language_pair',
+        help="Language pair for flores dataset"
     )
 
     (options, args) = parser.parse_args()
-    return options.vocabulary_size, options.source_model, options.target_model
+    return options.vocabulary_size, options.language_pair
 
 def _get_file_len(fname):
     with open(fname) as f:
@@ -97,7 +87,7 @@ def ingest_file(learner, ingest_file):
 
     return learner.ingest_file(reduced_file)
 
-def src(vocabulary_size, model):
+def src(vocabulary_size, model, language_pair):
     learner = pyonmttok.SentencePieceLearner(vocab_size=vocabulary_size,
                                             keep_vocab = True)
     ingest_file(learner, "src-train.txt")
@@ -112,17 +102,22 @@ def src(vocabulary_size, model):
     tokens = tokenizer.tokenize_file("tgt-test.txt", "tgt-test.txt.token")
     tokens = tokenizer.tokenize_file("tgt-val.txt", "tgt-val.txt.token")
 
+    source_language, target_language = language_pair.split("-")
+    flores_src = f"flores101.{source_language}"
+    flores_tgt = f"flores101.{target_language}"
+    
+    tokens = tokenizer.tokenize_file(flores_src, flores_src + ".token")
+    tokens = tokenizer.tokenize_file(flores_tgt, flores_tgt + ".token")
+
 
 def main():
 
     print("Creates tokenized output corpus using SentencePiece")
-    vocabulary_size, source_model, target_model = read_parameters()
+    vocabulary_size, language_pair = read_parameters()
+    model_name = 'sp_m'
     print("Vocabulary size {0}".format(vocabulary_size))
 
-    src(vocabulary_size, source_model)
-
-    copyfile(source_model + ".model", target_model + ".model")
-    copyfile(source_model + ".vocab", target_model + ".vocab")
+    src(vocabulary_size, model_name, language_pair)
 
 if __name__ == "__main__":
     main()

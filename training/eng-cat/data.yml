@@ -1,15 +1,1 @@
-model_dir: run/
-
-data:
-  train_features_file: src-train.txt.token
-  train_labels_file: tgt-train.txt.token
-  eval_features_file: src-val.txt.token
-  eval_labels_file: tgt-val.txt.token
-  source_vocabulary: src-vocab.txt.token
-  target_vocabulary: tgt-vocab.txt.token
-
-train:
-   keep_checkpoint_max: 1
-   max_step: 50000
-
-
+../master-language/data.yml
