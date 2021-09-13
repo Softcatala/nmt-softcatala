@@ -41,7 +41,7 @@ MODELS = '/srv/models/'
 UPLOAD_FOLDER = '/srv/data/files/'
 SAVED_TEXTS = '/srv/data/saved/'
 
-MODELS_NAMES = ["eng-cat", "cat-eng", "deu-cat", "cat-deu", "fra-cat", "spa-cat"]
+MODELS_NAMES = ["eng-cat", "cat-eng", "deu-cat", "cat-deu"]
 LIST_PAIRS = MODELS_NAMES
 openNMTs = {}
 
@@ -49,9 +49,7 @@ LANGUAGE_ALIASES = {
     "eng-cat": ["en|cat", "en|ca", "eng|ca", "eng|cat"],
     "cat-eng": ["cat|en", "ca|en", "ca|eng", "cat|eng"],
     "deu-cat": ["de|cat", "de|ca", "deu|ca", "deu|cat"],
-    "cat-deu": ["cat|de", "ca|de", "ca|deu", "cat|deu"],
-    "fra-cat": ["fr|cat", "fr|ca", "fra|ca", "fra|cat"],
-    "spa-cat": ["es|cat", "es|ca", "spa|ca", "spa|cat"],
+    "cat-deu": ["cat|de", "ca|de", "ca|deu", "cat|deu"]
 }
 
 def load_models():
