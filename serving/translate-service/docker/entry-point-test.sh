@@ -1,5 +1,5 @@
 ./entry-point.sh &
 
-sleep 20s
+sleep 30s
 cd /srv/api-tst
 nosetests

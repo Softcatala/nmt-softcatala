@@ -40,9 +40,6 @@ CORS(app)
 MODELS = '/srv/models/'
 UPLOAD_FOLDER = '/srv/data/files/'
 SAVED_TEXTS = '/srv/data/saved/'
-
-MODELS_NAMES = ["eng-cat", "cat-eng", "deu-cat", "cat-deu"]
-LIST_PAIRS = MODELS_NAMES
 openNMTs = {}
 
 LANGUAGE_ALIASES = {
@@ -53,11 +50,13 @@ LANGUAGE_ALIASES = {
 }
 
 def load_models():
-    for model in MODELS_NAMES:
-        openNMT = CTranslate(f"{MODELS}", model)
-        openNMTs[model] = openNMT        
+    model_directories = next(os.walk(MODELS))[1]
+    for model_dir in model_directories:
+        print(f"Model dir: {model_dir}")
+        openNMT = CTranslate(f"{MODELS}", model_dir)
+        openNMTs[model_dir] = openNMT
 
-    print(f"{len(MODELS_NAMES)} models loaded")
+    print(f"{len(openNMTs)} models loaded")
 
 
 def init_logging():
@@ -91,12 +90,11 @@ def apertium_translate_process(values):
     start_time = datetime.datetime.now()
 
     text = None
-    languages = None
-
     text = values['q']
     langpair = values['langpair']
     savetext = 'savetext' in values and values['savetext'] == True
 
+    languages = langpair.replace("|", "-")
     for key, value in LANGUAGE_ALIASES.items():
         if langpair in value:
             languages = key
@@ -230,7 +228,7 @@ def list_pairs():
     result = {}
     responseData = []
 
-    for pair in LIST_PAIRS:
+    for pair in openNMTs.keys():
         src, trg = pair.split("-")
 
         pair = { "sourceLanguage": src,
