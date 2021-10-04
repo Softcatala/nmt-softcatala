@@ -1,5 +1,5 @@
 polib
 pyonmttok==1.26.0
-ctranslate2==2.3.1
+ctranslate2==2.5.0
 lxml
 regex
