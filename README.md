@@ -12,29 +12,7 @@ This repository contains Neural Machine Translation tools and models built at So
 
 # Models
 
-## Softcatalà built models
-
-We have created the following translation models:
-
-| Language pair | BLEU|  Sentences| Download model
-|---|---|---|---
-|English - Catalan | 41.44 | 4602069 | [eng-cat-2021-08-09.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/eng-cat-2021-08-09.zip)
-|Catalan - English | 42.60 | 4602069 | [cat-eng-2021-08-10.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/cat-eng-2021-08-10.zip)
-|German - Catalan | 33.65 | 3262424 | [deu-cat-2021-08-11.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/deu-cat-2021-08-11.zip)
-|Catalan - German | 27.02 | 3262424 | [cat-deu-2021-08-12.zip](https://www.softcatala.org/pub/softcatala/opennmt/models/cat-deu-2021-08-12.zip)
-
-All models are based on TransformerRelative and SentencePiece has been used as tokenizer.
-
-The corpus that we used for training are available at https://www.softcatala.org/pub/softcatala/opennmt/training-sets/ and https://github.com/Softcatala/parallel-catalan-corpus/
-
-### Structure of the models
-
-Description of the directories on the contained in the models zip file:
-
-* *tensorflow*: model exported in Tensorflow format
-* *ctranslate2*: model exported in CTranslate2 format (used for inference)
-* *metadata*: description of the model
-* *tokenizer*: SentencePiece models for both languages
+All the Softcatalà built models are available here: https://github.com/Softcatala/nmt-models
 
 # Serving
 
