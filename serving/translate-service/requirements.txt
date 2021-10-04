@@ -2,7 +2,7 @@ flask
 flask_cors
 gunicorn>=20.0.4
 pyonmttok==1.26.0
-ctranslate2==2.3.1
+ctranslate2==2.5.0
 numpy
 lxml
 regex
