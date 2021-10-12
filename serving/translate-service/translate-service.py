@@ -46,7 +46,11 @@ LANGUAGE_ALIASES = {
     "eng-cat": ["en|cat", "en|ca", "eng|ca", "eng|cat"],
     "cat-eng": ["cat|en", "ca|en", "ca|eng", "cat|eng"],
     "deu-cat": ["de|cat", "de|ca", "deu|ca", "deu|cat"],
-    "cat-deu": ["cat|de", "ca|de", "ca|deu", "cat|deu"]
+    "cat-deu": ["cat|de", "ca|de", "ca|deu", "cat|deu"],
+    "fra-cat": ["fr|cat", "fr|ca", "fra|ca", "fra|cat"],
+    "cat-fra": ["cat|fr", "ca|fr", "ca|fra", "cat|fra"],
+    "por-cat": ["pt|cat", "pt|ca", "por|ca", "por|cat"],
+    "cat-por": ["cat|pt", "ca|pt", "ca|por", "cat|por"]
 }
 
 def load_models():
