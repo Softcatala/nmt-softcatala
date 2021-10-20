@@ -26,6 +26,7 @@ import pyonmttok
 from preservemarkup import PreserveMarkup
 import re
 import logging
+import unicodedata
 
 class CTranslate():
 
@@ -61,11 +62,13 @@ class CTranslate():
 
         if translator is None:
             self.model_path = model_path
-            self.model_name = model_name
             ctranslate_model_path = os.path.join(model_path, "ctranslate2")
             self.translator = ctranslate2.Translator(ctranslate_model_path, inter_threads = inter_threads, intra_threads = intra_threads)
         else:
-            self.translator = translator 
+            self.translator = translator
+
+        self.model_name = model_name
+
 
     def _init_read_env_vars(self):
         if self.INTER_THREADS in os.environ:
@@ -125,7 +128,24 @@ class CTranslate():
     def get_target_tokenizer_file(self, model_path, model_name):
         return self._get_tokenizer_file(model_path, model_name, 1)
 
+    def _normalize_input_string(self, result):
+        original = result
+        result = unicodedata.normalize('NFC', result)
+
+        if (self.model_name[:3] == "cat"):
+            mapping = {
+                        '’' : '\'',
+            }
+
+            for char in mapping.keys():
+                result = result.replace(char, mapping[char])
+
+        cleaned = original != result
+        return result
+
     def translate_parallel(self, text):
+
+        text = self._normalize_input_string(text)
 
         # Split sentences
         tokenizer = TextTokenizer()

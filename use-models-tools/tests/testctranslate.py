@@ -68,5 +68,13 @@ class TestTextTokenizer(unittest.TestCase):
         self.assertEquals("Com estàs?", sentences[1])
         self.assertEquals("És tard.", sentences[2])
 
+    def test_normalize_input_string_cat(self):
+        ctranslate = CTranslate("tests/data/", "cat-eng", translator = CTranslateMock())
+
+        text = 'L’oferta demà és molt bona'
+
+        result = ctranslate._normalize_input_string(text)
+        self.assertEquals("L'oferta demà és molt bona", result)
+
 if __name__ == '__main__':
     unittest.main()
