@@ -28,25 +28,25 @@ RUN wget -q $URL/2021-09-30/$FILE && unzip $FILE -x tensorflow/* -d cat-por/
 ENV FILE cat-spa-2021-09-28.zip
 RUN wget -q $URL/2021-09-30/$FILE && unzip $FILE -x tensorflow/* -d cat-spa/
 
-ENV FILE deu-cat-2021-09-27.zip
+ENV FILE deu-cat-2021-10-19.zip
 RUN wget -q $URL/2021-09-30/$FILE && unzip $FILE -x tensorflow/* -d deu-cat/
 
-ENV FILE eng-cat-2021-09-26.zip
+ENV FILE eng-cat-2021-10-17.zip
 RUN wget -q $URL/2021-09-30/$FILE && unzip $FILE -x tensorflow/* -d eng-cat/
 
-ENV FILE fra-cat-2021-09-24.zip
+ENV FILE fra-cat-2021-10-18.zip
 RUN wget -q $URL/2021-09-30/$FILE && unzip $FILE -x tensorflow/* -d fra-cat/
 
-ENV FILE ita-cat-2021-09-23.zip
+ENV FILE ita-cat-2021-10-19.zip
 RUN wget -q $URL/2021-09-30/$FILE && unzip $FILE -x tensorflow/* -d ita-cat/
 
-ENV FILE nld-cat-2021-09-27.zip
+ENV FILE nld-cat-2021-10-20.zip
 RUN wget -q $URL/2021-09-30/$FILE && unzip $FILE -x tensorflow/* -d nld-cat/
 
-ENV FILE por-cat-2021-09-25.zip
+ENV FILE por-cat-2021-10-19.zip
 RUN wget -q $URL/2021-09-30/$FILE && unzip $FILE -x tensorflow/* -d por-cat/
 
-ENV FILE spa-cat-2021-09-25.zip
+ENV FILE spa-cat-2021-10-18.zip
 RUN wget -q $URL/2021-09-30/$FILE && unzip $FILE -x tensorflow/* -d spa-cat/
 
 RUN rm *.zip
