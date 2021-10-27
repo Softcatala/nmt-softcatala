@@ -92,26 +92,12 @@ def read_parameters():
         help='Path the model directory'
     )
 
-    parser.add_option(
-        '-r',
-        '--remove-tags',
-        action='store_true',
-        dest='remove_tags',
-        default=False,
-        help=u'Remove tags from target translation (better output less mess up with tags)'
-    )
-
-
     (options, args) = parser.parse_args()
     if options.po_file is None:  # if filename is not given
         parser.error('PO file not given')
 
     return options.model_name, options.po_file, options.translated_file,\
-           options.models_path, options.remove_tags
-
-def remove_tags_string(src):
-    tgt = re.sub("\\<.*?\\>", " ", src)
-    return tgt
+           options.models_path
 
 def main():
 
@@ -119,7 +105,7 @@ def main():
     start_time = datetime.datetime.now()
 
     init_logging(True)
-    model_name, input_filename, target_filename, models_path, remove_tags = read_parameters()
+    model_name, input_filename, target_filename, models_path = read_parameters()
 
     if len(target_filename) == 0:
         target_filename = input_filename + "-ca.po"
@@ -144,20 +130,12 @@ def main():
                 src = _clean_string(entry.msgid)
                 src_plural = _clean_string(entry.msgid_plural)
 
-                if remove_tags:
-                    src = remove_tags_string(src)
-                    src_plural = remove_tags_string(src_plural)
-
                 tgt = openNMT.translate_parallel(src)
                 tgt_plural = openNMT.translate_parallel(src_plural)
                 entry.msgstr_plural[0] = tgt
                 entry.msgstr_plural[1] = tgt_plural
             else:
                 src = _clean_string(entry.msgid)
-
-                if remove_tags:
-                    src = remove_tags_string(src)
-
                 tgt = openNMT.translate_parallel(src)
                 entry.msgstr = tgt
 
