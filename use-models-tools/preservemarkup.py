@@ -23,7 +23,7 @@ import re
 class PreserveMarkup():
 
     TAG = "{87719"
-    REGEX = re.compile(r"\<(.*?)\>", re.VERBOSE)
+    HTML_REGEX = re.compile(r"\<(.*?)\>", re.VERBOSE)
 
     def _get_marker(self, pos):
         return self.TAG + str(pos)
@@ -31,7 +31,7 @@ class PreserveMarkup():
 
     def create_markers_in_string(self, text):
         markers = {}
-        matches = self.REGEX.findall(text)
+        matches = self.HTML_REGEX.findall(text)
         pos = 0
         new_text = text
 
