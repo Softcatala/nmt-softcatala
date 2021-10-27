@@ -41,8 +41,6 @@ class TestPreserveMarkup(unittest.TestCase):
         preserve_markup = PreserveMarkup()
         text = '<b>Hello</b><u id=1>World</u>'
         markers, text = preserve_markup.create_markers_in_string(text)
-        print(markers)
-        print(text)
         keys = list(markers.keys())
         self.assertEquals(f"{self.TAG_0} Hello {self.TAG_1}  {self.TAG_2} World {self.TAG_3}", text)
         self.assertEquals(f"{self.TAG_0} ", keys[0])
@@ -54,8 +52,6 @@ class TestPreserveMarkup(unittest.TestCase):
         preserve_markup = PreserveMarkup()
         text = 'Hello<br/>my friends'
         markers, text = preserve_markup.create_markers_in_string(text)
-        print(markers)
-        print(text)
         keys = list(markers.keys())
         self.assertEquals(f"Hello {self.TAG_0} my friends", text)
         self.assertEquals(f" {self.TAG_0} ", keys[0])
@@ -67,6 +63,22 @@ class TestPreserveMarkup(unittest.TestCase):
         translated = preserve_markup.get_back_markup(text, markers)
         self.assertEquals(src_text, translated)
 
+    def _simulate_ctranslate_eating_spaces_when_translating(self, text, markers):
+        marker0 = list(markers.keys())[0]
+        marker3 = list(markers.keys())[3]
+        translated_text = text.replace(marker0, marker0[0:-1])
+        translated_text = translated_text.replace(marker3, marker3[1:])
+        return translated_text
+
+    def test_get_back_markup_spaces_removed_by_ctranslator(self):
+        preserve_markup = PreserveMarkup()
+        src_text = '<b>Hello</b><i>there</i>'
+        markers, text = preserve_markup.create_markers_in_string(src_text)
+
+        translated_text = self._simulate_ctranslate_eating_spaces_when_translating(text, markers)
+
+        translated = preserve_markup.get_back_markup(translated_text, markers)
+        self.assertEquals(src_text, translated)
 
 if __name__ == '__main__':
     unittest.main()

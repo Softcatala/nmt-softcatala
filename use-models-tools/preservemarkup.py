@@ -66,6 +66,8 @@ class PreserveMarkup():
       
             translated = translated.replace(marker, markup, 1)
             # In case translate ate the spaces
+            translated = translated.replace(marker.rstrip(), markup, 1)
+            translated = translated.replace(marker.lstrip(), markup, 1)
             translated = translated.replace(marker.strip(), markup, 1)
 
         return translated
