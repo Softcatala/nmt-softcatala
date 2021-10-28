@@ -25,9 +25,6 @@ RUN wget -q $URL/2021-10-27/$FILE && unzip $FILE -x tensorflow/* -d cat-nld/
 ENV FILE cat-por-2021-10-27.zip
 RUN wget -q $URL/2021-10-27/$FILE && unzip $FILE -x tensorflow/* -d cat-por/
 
-ENV FILE cat-spa-2021-10-27.zip
-RUN wget -q $URL/2021-10-27/$FILE && unzip $FILE -x tensorflow/* -d cat-spa/
-
 ENV FILE deu-cat-2021-10-23.zip
 RUN wget -q $URL/2021-10-27/$FILE && unzip $FILE -x tensorflow/* -d deu-cat/
 
