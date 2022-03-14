@@ -24,8 +24,6 @@ from flask_cors import CORS, cross_origin
 import json
 import datetime
 from ctranslate import CTranslate
-import pyonmttok
-from texttokenizer import TextTokenizer
 from usage import Usage
 from batchfilesdb import BatchFilesDB
 import os
@@ -90,6 +88,26 @@ def apertium_translate_get():
 def translate_api():
     return apertium_translate_process(request.form)
 
+def _convert_apertium_languages_aliases_to_iso639_3(langpair):
+    languages = langpair.replace("|", "-")
+    for key, value in LANGUAGE_ALIASES.items():
+        if langpair in value:
+            return key
+
+    return langpair
+
+def _get_bias_message_if_needed(languages, text, result):
+    check_bias = languages == 'eng-cat'
+    if check_bias:
+        bias = GenderBiasDetection(text)
+        if bias.has_bias():
+            words = ', '.join(bias.get_words())
+            msg = f'Atenció: tingueu present que el text original en anglès conté professions sense marca de gènere, '
+            msg += f'com ara «{words}». Adapteu-ne la traducció si és necessari.'
+            result['message'] = msg
+
+    return result
+
 def apertium_translate_process(values):
     start_time = datetime.datetime.now()
 
@@ -98,11 +116,7 @@ def apertium_translate_process(values):
     langpair = values['langpair']
     savetext = 'savetext' in values and values['savetext'] == True
 
-    languages = langpair.replace("|", "-")
-    for key, value in LANGUAGE_ALIASES.items():
-        if langpair in value:
-            languages = key
-            break
+    languages = _convert_apertium_languages_aliases_to_iso639_3(langpair)
 
     if savetext:
         saved_filename = os.path.join(SAVED_TEXTS, "source.txt")
@@ -113,21 +127,13 @@ def apertium_translate_process(values):
     openNMT = openNMTs[languages]
     translated = openNMT.translate_parallel(text)
 
-    check_bias = languages == 'eng-cat'
     result = {}
+    result = _get_bias_message_if_needed(languages, text, result)
 
     time_used = datetime.datetime.now() - start_time
     words = len(text.split(' '))
     usage = Usage()
     usage.log(languages, words, time_used, 'form')
-
-    if check_bias:
-        bias = GenderBiasDetection(text)
-        if bias.has_bias():
-            words = ', '.join(bias.get_words())
-            msg = f'Atenció: tingueu present que el text original en anglès conté professions sense marca de gènere, '
-            msg += f'com ara «{words}». Adapteu-ne la traducció si és necessari.'
-            result['message'] = msg
 
     responseData = {}
     responseData['translatedText'] = translated
