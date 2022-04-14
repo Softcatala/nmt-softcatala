@@ -119,7 +119,6 @@ class CTranslate():
             filename = self.TOKENIZER_FILE.format("sp")
             path = os.path.join(model_path, self.TOKENIZER_SUDIR, filename)
 
-        print(path)
         return path
 
     def get_source_tokenizer_file(self, model_path, model_name):
