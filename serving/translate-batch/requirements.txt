@@ -2,5 +2,5 @@ pyonmttok==1.26.0
 ctranslate2==2.5.0
 numpy
 lxml
-regex
+regex==2021.4.4
 polib
