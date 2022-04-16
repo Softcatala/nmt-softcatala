@@ -35,7 +35,7 @@ class CTranslate():
     BEAM_SIZE = 'CTRANSLATE_BEAM_SIZE'
     USE_VMAP = 'CTRANSLATE_USE_VMAP'
     LANGUAGE_MATCH = "([a-z]{3})-([a-z]{3})"
-    TOKENIZER_SUDIR = "tokenizer"
+    TOKENIZER_SUBDIR = "tokenizer"
     TOKENIZER_FILE = "{0}_m.model"
 
     def __init__(self, models_path, model_name, tokenizer_source = None, tokenizer_target = None, translator = None):
@@ -56,7 +56,7 @@ class CTranslate():
             tgt_model_path = self.get_target_tokenizer_file(model_path, model_name)
             self.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path = tgt_model_path)
 
-        self.tokenizer_source_language = self._get_setence_tokenizer_source_language(model_name)
+        self.tokenizer_source_language = self._get_sentence_tokenizer_source_language(model_name)
 
         print(f"inter_threads: {inter_threads}, intra_threads: {intra_threads}, beam_size {self.beam_size}, use_vmap {self.use_vmap}")
 
@@ -101,7 +101,7 @@ class CTranslate():
         with open(filename, "r") as th_description:
             return th_description.read().splitlines()
 
-    def _get_setence_tokenizer_source_language(self, model_name):
+    def _get_sentence_tokenizer_source_language(self, model_name):
         lang =  lang = re.match(self.LANGUAGE_MATCH, model_name).groups()[0]
         lang = lang[:2]
 
@@ -113,11 +113,11 @@ class CTranslate():
         lang = re.match(self.LANGUAGE_MATCH, model_name).groups()[index]
         lang = lang[:2]
         filename = self.TOKENIZER_FILE.format(lang)
-        path = os.path.join(model_path, self.TOKENIZER_SUDIR, filename)
+        path = os.path.join(model_path, self.TOKENIZER_SUBDIR, filename)
 
         if os.path.isfile(path) is False:
             filename = self.TOKENIZER_FILE.format("sp")
-            path = os.path.join(model_path, self.TOKENIZER_SUDIR, filename)
+            path = os.path.join(model_path, self.TOKENIZER_SUBDIR, filename)
 
         return path
 
