@@ -30,6 +30,7 @@ import os
 import uuid
 import logging
 import logging.handlers
+import psutil
 from genderbiasdetection import GenderBiasDetection
 
 app = Flask(__name__)
@@ -50,6 +51,9 @@ LANGUAGE_ALIASES = {
     "por-cat": ["pt|cat", "pt|ca", "por|ca", "por|cat"],
     "cat-por": ["cat|pt", "ca|pt", "ca|por", "cat|por"]
 }
+
+translate_calls = 0
+translate_chars = 0
 
 def load_models():
     model_directories = next(os.walk(MODELS))[1]
@@ -82,6 +86,17 @@ def init_logging():
 def apertium_translate_get():
     return apertium_translate_process(request.args)
 
+@cross_origin(origin='*',headers=['Content-Type','Authorization'])
+@app.route('/health', methods=['GET'])
+def health_get():
+    health = {}
+    rss = psutil.Process(os.getpid()).memory_info().rss // 1024 ** 2
+    health['id'] = os.getpid()
+    health['rss'] = f"{rss} MB"
+    health['translate_calls'] = translate_calls
+    health['average_chars'] = translate_chars // translate_calls if translate_calls else 0
+    return health
+
 # This should become /translate once front calls the right API endpoint
 @cross_origin(origin='*',headers=['Content-Type','Authorization'])
 @app.route('/translate/', methods=['POST'])
@@ -109,10 +124,14 @@ def _get_bias_message_if_needed(languages, text, result):
     return result
 
 def apertium_translate_process(values):
+    global translate_calls, translate_chars
+
+    translate_calls += 1
     start_time = datetime.datetime.now()
 
     text = None
     text = values['q']
+    translate_chars += len(text)
     langpair = values['langpair']
     savetext = 'savetext' in values and values['savetext'] == True
 

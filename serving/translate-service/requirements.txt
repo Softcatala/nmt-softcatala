@@ -6,3 +6,4 @@ ctranslate2==2.5.0
 numpy
 lxml
 regex==2021.4.4
+psutil
