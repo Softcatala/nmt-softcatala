@@ -109,7 +109,7 @@ def _convert_apertium_languages_aliases_to_iso639_3(langpair):
         if langpair in value:
             return key
 
-    return langpair
+    return languages
 
 def _get_bias_message_if_needed(languages, text, result):
     check_bias = languages == 'eng-cat'
