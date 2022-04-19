@@ -1,4 +1,4 @@
-FROM python:3.8.2-slim-buster as generate_data
+FROM python:3.10.4-slim-bullseye as generate_data
 
 RUN apt-get update && apt-get -y upgrade && apt-get install wget unzip -y --no-install-recommends
 
