@@ -53,7 +53,9 @@ LANGUAGE_ALIASES = {
 }
 
 translate_calls = 0
+total_seconds = 0
 translate_chars = 0
+total_words = 0
 
 def load_models():
     model_directories = next(os.walk(MODELS))[1]
@@ -93,7 +95,9 @@ def health_get():
     rss = psutil.Process(os.getpid()).memory_info().rss // 1024 ** 2
     health['id'] = os.getpid()
     health['rss'] = f"{rss} MB"
+    health['average_time_per_request'] = total_seconds / translate_calls if translate_calls else 0
     health['translate_calls'] = translate_calls
+    health['words_per_second'] = total_words / total_seconds if total_seconds else 0
     health['average_chars'] = translate_chars // translate_calls if translate_calls else 0
     return health
 
@@ -124,14 +128,13 @@ def _get_bias_message_if_needed(languages, text, result):
     return result
 
 def apertium_translate_process(values):
-    global translate_calls, translate_chars
+    global translate_calls, translate_chars, total_seconds, total_words
 
     translate_calls += 1
     start_time = datetime.datetime.now()
 
     text = None
     text = values['q']
-    translate_chars += len(text)
     langpair = values['langpair']
     savetext = 'savetext' in values and values['savetext'] == True
 
@@ -153,6 +156,10 @@ def apertium_translate_process(values):
     words = len(text.split(' '))
     usage = Usage()
     usage.log(languages, words, time_used, 'form')
+
+    total_seconds += (time_used).total_seconds()
+    total_words += words
+    translate_chars += len(text)
 
     responseData = {}
     responseData['translatedText'] = translated
