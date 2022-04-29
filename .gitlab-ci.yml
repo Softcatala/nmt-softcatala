@@ -70,4 +70,3 @@ use-models-tools:
     - docker build -f $DOCKER_PATH --tag latest --tag $IMAGE_NAME --tag $REPO_NAME:$CI_COMMIT_SHA .
     - docker push $REPO_NAME:$CI_COMMIT_SHA
     - docker push $IMAGE_NAME
-
