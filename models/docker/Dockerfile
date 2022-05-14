@@ -43,9 +43,16 @@ RUN wget -q $URL/2021-10-27/$FILE && unzip $FILE -x tensorflow/* -d nld-cat/
 ENV FILE por-cat-2021-10-26.zip
 RUN wget -q $URL/2021-10-27/$FILE && unzip $FILE -x tensorflow/* -d por-cat/
 
+#ENV FILE nld-cat-2021-10-24.zip
+#RUN wget -q $URL/2021-10-27/$FILE && unzip $FILE -x tensorflow/* -d spa-cat/
+
+#ENV FILE spa-cat-2021-10-28.zip
+#RUN wget -q $URL/2021-10-27/$FILE && unzip $FILE -x tensorflow/* -d cat-spa/
+
+
 RUN rm *.zip
 
-FROM python:3.8.2-slim-buster
+FROM python:3.10.4-slim-bullseye
 COPY --from=generate_data /models/ /srv/models/
 
 ENTRYPOINT bash
