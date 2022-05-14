@@ -20,9 +20,8 @@ All the Softcatalà built models are available here: https://github.com/Softcata
 
 You can build and run the docker that we use in production:
 
-* Build models ```cd models/docker/ && ./build-docker.sh```
-* Build serving ```cd serving/translate-service/docker/ && ./build-docker.sh```
-* Run ```docker run -it --rm -p 8700:8700 translate-service```
+* Build the solution ```make all```
+* Run ```make docker-run-translate-service```
 * Open in your browser ```http://localhost:8700/translate?langpair=en|ca&q=Hello!```
 
 ## Apertium API
