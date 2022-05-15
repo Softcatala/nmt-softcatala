@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# Copyright (c) 2020 Jordi Mas i Hernandez <jmas@softcatala.org>
+# Copyright (c) 2020-2022 Jordi Mas i Hernandez <jmas@softcatala.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -25,7 +25,7 @@ import json
 import time
 from optparse import OptionParser
 
-def _translate_apertium(text, pair):
+def _translate_apertium_remote(text, pair):
 
     src_lang, tgt_lang = pair.split("-")
 
@@ -45,23 +45,11 @@ def _translate_apertium(text, pair):
         time.sleep(5)
         return ""
 
-def _translate_apertium_en_ca2(english):
-    with open("input.txt", "w") as text_file:
-        text_file.write(english)
-        text_file.close()
+def apertium_local(source, target, pair):
+    print("Translating using Apertium local")
 
-    cmd = "apertium eng-cat -u input.txt output.txt"
+    cmd = f"apertium {pair} -u {source} {target}"
     os.system(cmd)
-
-    with open("output.txt", "r") as myfile:
-        line_list = myfile.readlines()
-        translation = ' '.join([str(elem) for elem in line_list]) 
-        translation = translation.replace('\n', '')
-#        print("text->" + text)
-#        print("cmd->" + cmd)
-#        print("translation->" + translation)
-#        print("translation raw->" + str(line_list))
-        return translation
 
 def _translate_text_yandex(text, key, pair):
 
@@ -95,16 +83,17 @@ def _translate_text_google(text, key, pair):
     return translated.rstrip()
 
 
-def apertium(source, target, pair):
+def apertium_remote(source, target, pair):
 
-    print("Translating using Apertium")
+    print("Translating using Apertium remote")
 
     strings = 0
     with open(source, 'r') as tf_en, open(target, 'w') as tf_ca:
         en_strings = tf_en.readlines()
     
         for string in en_strings:
-            translated = _translate_apertium(string, pair)
+            translated = _translate_apertium_remote(string, pair)
+
             tf_ca.write("{0}\n".format(translated))
             strings = strings + 1
 
@@ -232,11 +221,15 @@ def main():
         yandex(source, target, key, pair)
     elif engine == 'google':
         google(source, target, key, pair)
-    elif engine == 'apertium':
-        apertium(source, target, pair)
+    elif engine == 'apertium-local':
+        apertium_local(source, target, pair)
+    elif engine == 'apertium-remote':
+        apertium_remote(source, target, pair)
     else:
-        print(f"Translation engine '{engine}' not supported")
-
+        if len(engine) == 0:
+            print("Translation engine (-e) is a mandatory parameter")
+        else:
+            print(f"Translation engine '{engine}' not supported")
     return
 
 if __name__ == "__main__":
