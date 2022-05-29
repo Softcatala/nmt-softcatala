@@ -232,6 +232,20 @@ def main():
                  'translated/ubuntu-{1}-{0}-{2}.{3}']
         ]
 
+    datasets_es_ca = \
+        [\
+            ['Paracrawl', 'input/paracrawl-v9-{0}-{1}.{3}',
+                 'translated/paracrawl-v9-{0}-{1}-{2}.{3}'],
+            ['Flores101', 'input/flores101-{0}-{1}.{3}',
+                 'translated/flores101-{0}-{1}-{2}.{3}']
+        ]
+
+    datasets_ca_es = \
+        [\
+            ['Paracrawl', 'input/paracrawl-v9-{1}-{0}.{3}',
+                 'translated/paracrawl-v9-{1}-{0}-{2}.{3}']
+        ]
+
     if flores:
         if len(lang_pair) == 0:
             languages = ["eng-cat", "deu-cat", "fra-cat", "spa-cat", "ita-cat"]
@@ -257,6 +271,9 @@ def main():
 
             if lang_pair == 'cat-deu':
                 _inference(datasets_ca_de, lang_pair, local)
+
+            if lang_pair == 'spa-cat':
+                _inference(datasets_es_ca, lang_pair, local)
         else:
             if len(lang_pair) == 0 or lang_pair == 'eng-cat':
                 _evaluate(datasets_en_ca, 'eng-cat', "English > Catalan")
@@ -266,6 +283,13 @@ def main():
 
             if len(lang_pair) == 0 or lang_pair == 'cat-deu':
                 _evaluate(datasets_ca_de, 'cat-deu', "Catalan > German")
+
+            if len(lang_pair) == 0 or lang_pair == 'spa-cat':
+                _evaluate(datasets_es_ca, 'spa-cat', "Spanish > Catalan")
+
+            if len(lang_pair) == 0 or lang_pair == 'cat-spa':
+                _evaluate(datasets_ca_es, 'cat-spa', "Catalan > Spanish")
+
 
 if __name__ == "__main__":
     main()
