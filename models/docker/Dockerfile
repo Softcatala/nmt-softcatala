@@ -43,10 +43,10 @@ RUN wget -q $URL/2021-10-27/$FILE && unzip $FILE -x tensorflow/* -d nld-cat/
 ENV FILE por-cat-2021-10-26.zip
 RUN wget -q $URL/2021-10-27/$FILE && unzip $FILE -x tensorflow/* -d por-cat/
 
-#ENV FILE nld-cat-2021-10-24.zip
+#ENV FILE spa-cat-2021-10-28.zip
 #RUN wget -q $URL/2021-10-27/$FILE && unzip $FILE -x tensorflow/* -d spa-cat/
 
-#ENV FILE spa-cat-2021-10-28.zip
+#ENV FILE cat-spa-2021-10-29.zip
 #RUN wget -q $URL/2021-10-27/$FILE && unzip $FILE -x tensorflow/* -d cat-spa/
 
 
