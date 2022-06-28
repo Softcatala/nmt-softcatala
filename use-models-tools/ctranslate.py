@@ -128,7 +128,6 @@ class CTranslate():
         return self._get_tokenizer_file(model_path, model_name, 1)
 
     def _normalize_input_string(self, result):
-        original = result
         result = unicodedata.normalize('NFC', result)
 
         if (self.model_name[:3] == "cat"):
@@ -139,7 +138,6 @@ class CTranslate():
             for char in mapping.keys():
                 result = result.replace(char, mapping[char])
 
-        cleaned = original != result
         return result
 
     def translate_parallel(self, text):

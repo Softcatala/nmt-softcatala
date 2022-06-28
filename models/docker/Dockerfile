@@ -28,8 +28,8 @@ RUN wget -q $URL/2021-10-27/$FILE && unzip $FILE -x tensorflow/* -d cat-por/
 ENV FILE deu-cat-2021-10-23.zip
 RUN wget -q $URL/2021-10-27/$FILE && unzip $FILE -x tensorflow/* -d deu-cat/
 
-ENV FILE eng-cat-2021-10-23.zip
-RUN wget -q $URL/2021-10-27/$FILE && unzip $FILE -x tensorflow/* -d eng-cat/
+ENV FILE eng-cat-2022-06-18.zip
+RUN wget -q $URL/2022-06-17/$FILE && unzip $FILE -x */tensorflow/*
 
 ENV FILE fra-cat-2021-10-25.zip
 RUN wget -q $URL/2021-10-27/$FILE && unzip $FILE -x tensorflow/* -d fra-cat/
