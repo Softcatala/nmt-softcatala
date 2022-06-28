@@ -106,7 +106,7 @@ class CTranslate():
         lang = lang[:2]
 
         choices = {'ca': 'Catalan', 'en': 'English', 'de' : 'German', 'fr' : 'French', 'sp' : 'Spanish', 'it' : 'Italian',
-                  "nl" : 'Dutch', "po" : "Portuguese"}
+                  'nl' : 'Dutch', 'po' : 'Portuguese', 'jp': 'Japanese'}
         return choices[lang]
 
     def _get_tokenizer_file(self, model_path, model_name, index):
