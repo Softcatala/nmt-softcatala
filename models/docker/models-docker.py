@@ -25,7 +25,7 @@ import os
 from urllib.parse import urlparse
 
 
-URL = 'https://www.softcatala.org/pub/softcatala/opennmt/models/2021-10-27/'
+URL = 'https://www.softcatala.org/pub/softcatala/opennmt/models/2022-06-17/'
 EXT = 'zip'
 
 def get_list_of_models(url, ext=''):
@@ -54,7 +54,7 @@ def main():
         filename = get_filename(url)
 
         print(f"ENV FILE {filename}")
-        print(f"RUN wget -q $URL/2021-10-27/$FILE && unzip $FILE -x tensorflow/* -d {language_pair}/")
+        print(f"RUN wget -q $URL/2022-06-17/$FILE && unzip $FILE -x */tensorflow/*")
         print("")
 
 if __name__ == "__main__":
