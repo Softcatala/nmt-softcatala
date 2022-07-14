@@ -7,7 +7,7 @@ WORKDIR models
 
 ENV URL https://www.softcatala.org/pub/softcatala/opennmt/models/
 
-ENV FILE cat-deu-2022-06-25.zip
+ENV FILE cat-deu-2022-07-10.zip
 RUN wget -q $URL/2022-06-17/$FILE && unzip $FILE -x */tensorflow/*
 
 ENV FILE cat-eng-2022-06-24.zip
@@ -31,7 +31,7 @@ RUN wget -q $URL/2022-06-17/$FILE && unzip $FILE -x */tensorflow/*
 #ENV FILE cat-spa-2022-06-27.zip
 #RUN wget -q $URL/2022-06-17/$FILE && unzip $FILE -x */tensorflow/*
 
-ENV FILE deu-cat-2022-06-19.zip
+ENV FILE deu-cat-2022-07-09.zip
 RUN wget -q $URL/2022-06-17/$FILE && unzip $FILE -x */tensorflow/*
 
 ENV FILE eng-cat-2022-06-18.zip
