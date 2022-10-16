@@ -20,7 +20,7 @@
 from ctranslate import CTranslate
 import unittest
 
-class CTranslateMock():
+class CTranslate2Mock():
 
     def translate_batch(self, source, target_prefix=None, max_batch_size=0, batch_type="examples", beam_size=2, num_hypotheses=1,
          length_penalty=0, coverage_penalty=0, max_decoding_length=250, min_decoding_length=1, use_vmap=False,
@@ -53,11 +53,10 @@ class CTranslateMock():
         return translations
 
 
-class TestTextTokenizer(unittest.TestCase):
-
+class TestCTranslate(unittest.TestCase):
 
     def test_translate_parallel(self):
-        ctranslate = CTranslate("tests/data/", "eng-cat", translator = CTranslateMock())
+        ctranslate = CTranslate("tests/data/", "eng-cat", translator = CTranslate2Mock())
 
         text = 'Hello.\rHow are you?\rIt is getting late'
         translated = ctranslate.translate_parallel(text)
@@ -69,7 +68,7 @@ class TestTextTokenizer(unittest.TestCase):
         self.assertEquals("És tard.", sentences[2])
 
     def test_normalize_input_string_cat(self):
-        ctranslate = CTranslate("tests/data/", "cat-eng", translator = CTranslateMock())
+        ctranslate = CTranslate("tests/data/", "cat-eng", translator = CTranslate2Mock())
 
         text = 'L’oferta demà és molt bona'
 
