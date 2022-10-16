@@ -30,7 +30,10 @@ class CTranslate2Mock():
         eng_to_cat = {
                         "▁Hello." : ["▁Hola", "."],
                         "▁How▁are▁you?" : ["▁Com", "▁estàs", "?"],
-                        "▁It▁is▁getting▁late" : ["▁És", "▁tard", "."]
+                        "▁It▁is▁getting▁late" : ["▁És", "▁tard", "."],
+                        '▁Hello▁everybody.' : ['▁Hola', '▁a', '▁tothom', '.'],
+                        '▁It▁is▁a▁sunny▁day.' : ['▁És', '▁un', '▁dia', '▁as', 'sol', 'ella', 't', '.'],
+                        "▁Let's▁go▁to▁the▁beach." : ['▁Anem', '▁a', '▁la', '▁platja', '.']
                      }
 
         translations = []
@@ -66,6 +69,14 @@ class TestCTranslate(unittest.TestCase):
         self.assertEquals("Hola.", sentences[0])
         self.assertEquals("Com estàs?", sentences[1])
         self.assertEquals("És tard.", sentences[2])
+
+    def test_translate_parallel_three_sentences_one_line(self):
+        ctranslate = CTranslate("tests/data/", "eng-cat", translator = CTranslate2Mock())
+
+        text = "Hello everybody. It is a sunny day. Let's go to the beach."
+        translated = ctranslate.translate_parallel(text)
+
+        self.assertEquals("Hola a tothom. És un dia assolellat. Anem a la platja.", translated)
 
     def test_normalize_input_string_cat(self):
         ctranslate = CTranslate("tests/data/", "cat-eng", translator = CTranslate2Mock())
