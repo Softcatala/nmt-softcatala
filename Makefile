@@ -3,16 +3,16 @@ build-all: docker-build-models docker-build-use-models-tools docker-build-transl
 docker-build-models:
 	docker build -t nmt-models . -f models/docker/Dockerfile;
 
-docker-build-use-models-tools:
+docker-build-use-models-tools: docker-build-models
 	docker build -t use-models-tools . -f use-models-tools/docker/Dockerfile;
 
-docker-build-translate-service:
+docker-build-translate-service: docker-build-models
 	docker build -t translate-service . -f serving/translate-service/docker/Dockerfile;
 
-docker-build-translate-service-test:
+docker-build-translate-service-test: docker-build-translate-service
 	docker build -t translate-service-test . -f serving/translate-service/docker/Dockerfile-test;
 
-docker-build-translate-batch:
+docker-build-translate-batch: docker-build-models
 	docker build -t translate-batch . -f serving/translate-batch/docker/Dockerfile;
 
 docker-run-translate-batch:
