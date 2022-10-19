@@ -34,7 +34,6 @@ We confirm that the following tools work using Apertium pluggins:
 
 * Okapi Framework
 * OmegaT translation plugin
-* Gedit's Apertium plugin
 
 **Supported methods**
 
@@ -48,8 +47,7 @@ We confirm that the following tools work using Apertium pluggins:
 
 This is useful for example if you want to translate large volumes using our prebuild English - Catalan models using the same exact version that we have in production:
 
-* Build models ```cd models/docker/ && ./build-docker.sh```
-* Build serving ```cd use-models-tools/docker && ./build-docker.sh```
+* Build command line tool ```make docker-build-use-models-tools```
 
 To test quickly that every works:
 * ```echo "Hello World" > input.txt```
