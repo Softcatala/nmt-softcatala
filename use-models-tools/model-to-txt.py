@@ -87,8 +87,8 @@ def read_parameters():
         type='int',
         action='store',
         dest='n_threads',
-        default=1,
-        help='Number of threads in the client side'
+        default=0,
+        help='Number of threads in the client side (0 = inter threads)'
     )
 
     (options, args) = parser.parse_args()
@@ -109,16 +109,31 @@ def translate_thread(src, openNMT, translations, index, tf_ca):
         logging.error("Processing: {0}".format(src))
         #tf_ca.write("{0}\n".format("Error"))
 
+
+def _get_words_per_second(start_time, words):
+    time = datetime.datetime.now() - start_time
+    total_seconds = time.total_seconds()
+    words_second = words / total_seconds if total_seconds > 0 else 0
+    return words_second
+
+
 def main():
 
     print("Applies an OpenNMT model to translate a TXT file")
+    print("For maximum performance when translating corpus, set")
+    print("the environment variable CTRANSLATE_INTER_THREADS to your")
+    print("number or processors and CTRANSLATE_INTRA_THREADS to 1")
 
     start_time = datetime.datetime.now()
     init_logging(True)
     model_name, input_filename, translated_file, models_path, n_threads = read_parameters()
+    openNMT = CTranslate(models_path, model_name)
+
+    if n_threads == 0:
+        n_threads = openNMT.inter_threads
+
     print(f'Client threads: {n_threads}')
 
-    openNMT = CTranslate(models_path, model_name)
     target_filename_review = "translated-review.txt"
     with open(input_filename, encoding='utf-8', mode='r', errors='ignore') as tf_en,\
          open(translated_file, encoding='utf-8', mode='w') as tf_ca,\
@@ -128,6 +143,7 @@ def main():
         len_en_strings = len(en_strings)
         translated = 0
         errors = 0
+        words = 0
 
         i = 0
         while i < len_en_strings:
@@ -154,7 +170,9 @@ def main():
                 i = i + 1
                 translated = translated + 1
                 if translated % 500 == 0:
-                    print(translated)
+                    per =  translated / len_en_strings * 100
+                    words_second = _get_words_per_second(start_time, words)
+                    print(f" Sentences translated: {translated} ({per:.1f}%). Words/s {words_second:.1f}")
 
                 src = sources[t]
                 tgt = translations[t]
@@ -162,10 +180,13 @@ def main():
                 tf_ca_review.write("{0}\n{1}\n\n".format(src, tgt))
                 logging.debug('Source: ' + str(src))
                 logging.debug('Target: ' + str(tgt))
+                words += len(src.split())
 
+    time = datetime.datetime.now() - start_time
+    words_second = _get_words_per_second(start_time, words)
     print("Sentences translated: {0}".format(translated))
     print("Sentences unable to translate {0} (NMT errors)".format(errors))
-    print("Time used {0}".format(str(datetime.datetime.now() - start_time)))
+    print(f"Time used {time}. Words per second {words_second:.1f}")
 
 if __name__ == "__main__":
     main()

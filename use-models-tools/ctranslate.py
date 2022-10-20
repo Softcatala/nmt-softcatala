@@ -40,7 +40,7 @@ class CTranslate():
 
     def __init__(self, models_path, model_name, tokenizer_source = None, tokenizer_target = None, translator = None):
 
-        inter_threads, intra_threads = self._init_read_env_vars()
+        self._init_read_env_vars()
 
         model_path = os.path.join(models_path, model_name)
 
@@ -58,12 +58,12 @@ class CTranslate():
 
         self.tokenizer_source_language = self._get_sentence_tokenizer_source_language(model_name)
 
-        print(f"inter_threads: {inter_threads}, intra_threads: {intra_threads}, beam_size {self.beam_size}, use_vmap {self.use_vmap}")
+        print(f"inter_threads: {self.inter_threads}, intra_threads: {self.intra_threads}, beam_size {self.beam_size}, use_vmap {self.use_vmap}")
 
         if translator is None:
             self.model_path = model_path
             ctranslate_model_path = os.path.join(model_path, "ctranslate2")
-            self.translator = ctranslate2.Translator(ctranslate_model_path, inter_threads = inter_threads, intra_threads = intra_threads)
+            self.translator = ctranslate2.Translator(ctranslate_model_path, inter_threads = self.inter_threads, intra_threads = self.intra_threads)
         else:
             self.translator = translator
 
@@ -72,14 +72,14 @@ class CTranslate():
 
     def _init_read_env_vars(self):
         if self.INTER_THREADS in os.environ:
-            inter_threads = int(os.environ[self.INTER_THREADS])
+            self.inter_threads = int(os.environ[self.INTER_THREADS])
         else:
-            inter_threads = 1
+            self.inter_threads = 1
 
         if self.INTRA_THREADS in os.environ:
-            intra_threads = int(os.environ[self.INTRA_THREADS])
+            self.intra_threads = int(os.environ[self.INTRA_THREADS])
         else:
-            intra_threads = 4
+            self.intra_threads = 4
 
         if self.BEAM_SIZE in os.environ:
             self.beam_size = int(os.environ[self.BEAM_SIZE])
@@ -90,8 +90,6 @@ class CTranslate():
             self.use_vmap = True
         else:
             self.use_vmap = False
-
-        return inter_threads, intra_threads
 
     def get_model_name(self):
         return self.model_name
