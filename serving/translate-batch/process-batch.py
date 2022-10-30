@@ -83,7 +83,7 @@ def send_email(translated_file, email, attachment):
         msg = "Error '{0}' sending to {1}".format(e, email)
         logging.error(msg)
 
-MAX_SIZE = 4096 * 1024
+MAX_SIZE = 8192 * 1024
 
 def truncate_file(filename):
     f = open(filename, "a")
