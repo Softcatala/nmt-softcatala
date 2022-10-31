@@ -16,6 +16,10 @@ All the Softcatalà built models are available here: https://github.com/Softcata
 
 # Serving
 
+## Requirements
+
+You need [Docker](https://www.docker.com/) and [Make](https://www.gnu.org/software/make/) for which there are different implementations depending on your operating system.
+
 ## Serving the models in production
 
 You can build and run the docker that we use in production:
