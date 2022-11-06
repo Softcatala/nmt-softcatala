@@ -1,5 +1,5 @@
 polib
-pyonmttok==1.31.0
-ctranslate2==2.18.0
+pyonmttok==1.34
+ctranslate2==2.24.0
 lxml
 regex==2021.4.4
