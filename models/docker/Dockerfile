@@ -1,4 +1,4 @@
-FROM python:3.10.4-slim-bullseye as generate_data
+FROM python:3.11.0-slim-bullseye as generate_data
 
 RUN apt-get update && apt-get -y upgrade && apt-get install wget unzip -y --no-install-recommends
 
@@ -57,7 +57,7 @@ RUN wget -q $URL/2022-06-17/$FILE && unzip $FILE -x */tensorflow/*
 
 RUN rm *.zip
 
-FROM python:3.10.4-slim-bullseye
+FROM python:3.11.0-slim-bullseye
 COPY --from=generate_data /models/ /srv/models/
 
 ENTRYPOINT bash
