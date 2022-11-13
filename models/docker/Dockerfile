@@ -16,6 +16,9 @@ RUN wget -q $URL/2022-06-17/$FILE && unzip $FILE -x */tensorflow/*
 ENV FILE cat-fra-2022-06-25.zip
 RUN wget -q $URL/2022-06-17/$FILE && unzip $FILE -x */tensorflow/*
 
+ENV FILE cat-glg-2022-11-06.zip
+RUN wget -q $URL/2022-06-17/$FILE && unzip $FILE -x */tensorflow/*
+
 ENV FILE cat-ita-2022-06-26.zip
 RUN wget -q $URL/2022-06-17/$FILE && unzip $FILE -x */tensorflow/*
 
@@ -23,6 +26,9 @@ ENV FILE cat-jpn-2022-07-02.zip
 RUN wget -q $URL/2022-06-17/$FILE && unzip $FILE -x */tensorflow/*
 
 ENV FILE cat-nld-2022-08-01.zip
+RUN wget -q $URL/2022-06-17/$FILE && unzip $FILE -x */tensorflow/*
+
+ENV FILE cat-oci-2022-11-13.zip
 RUN wget -q $URL/2022-06-17/$FILE && unzip $FILE -x */tensorflow/*
 
 ENV FILE cat-por-2022-06-28.zip
@@ -40,6 +46,9 @@ RUN wget -q $URL/2022-06-17/$FILE && unzip $FILE -x */tensorflow/*
 ENV FILE fra-cat-2022-06-20.zip
 RUN wget -q $URL/2022-06-17/$FILE && unzip $FILE -x */tensorflow/*
 
+ENV FILE glg-cat-2022-11-06.zip
+RUN wget -q $URL/2022-06-17/$FILE && unzip $FILE -x */tensorflow/*
+
 ENV FILE ita-cat-2022-06-21.zip
 RUN wget -q $URL/2022-06-17/$FILE && unzip $FILE -x */tensorflow/*
 
@@ -49,11 +58,15 @@ RUN wget -q $URL/2022-06-17/$FILE && unzip $FILE -x */tensorflow/*
 ENV FILE nld-cat-2022-08-01.zip
 RUN wget -q $URL/2022-06-17/$FILE && unzip $FILE -x */tensorflow/*
 
+ENV FILE oci-cat-2022-11-13.zip
+RUN wget -q $URL/2022-06-17/$FILE && unzip $FILE -x */tensorflow/*
+
 ENV FILE por-cat-2022-06-22.zip
 RUN wget -q $URL/2022-06-17/$FILE && unzip $FILE -x */tensorflow/*
 
 #ENV FILE spa-cat-2022-06-21.zip
 #RUN wget -q $URL/2022-06-17/$FILE && unzip $FILE -x */tensorflow/*
+
 
 RUN rm *.zip
 
