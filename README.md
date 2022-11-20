@@ -55,12 +55,12 @@ This is useful for example if you want to translate large volumes using our preb
 
 To test quickly that every works:
 * ```echo "Hello World" > input.txt```
-* ```docker run -it -v "$(pwd)":/srv/files/ --env COMMAND_LINE="-f input.txt -t output.txt" --rm use-models-tools --name use-models-tools```
+* ```docker run -it -v "$(pwd)":/srv/files/ --env COMMAND_LINE="-f input.txt -t output.txt -m eng-cat" --rm use-models-tools --name use-models-tools```
 * ```more output.txt```
 
 To translate PO files:
 * File ```ca.po``` is your current directory
-* ```docker run -it -v "$(pwd)":/srv/files/ --env COMMAND_LINE="-f ca.po" --env FILE_TYPE='po' --rm use-models-tools --name use-models-tools```
+* ```docker run -it -v "$(pwd)":/srv/files/ --env COMMAND_LINE="-f ca.po -m eng-cat" --env FILE_TYPE='po' --rm use-models-tools --name use-models-tools```
 
 The translated file will be ```ca.po-ca.po```
 
@@ -68,6 +68,8 @@ To translate a text file from Catalan to English:
 * ```echo "Hola món" > input.txt```
 * ```docker run -it -v "$(pwd)":/srv/files/ --env COMMAND_LINE="-f input.txt -t output.txt -m cat-eng" --rm use-models-tools --name use-models-tools```
 * ```more output.txt```
+
+Note: that the parameter ```-m cat-eng``` indicates the translation model to use.
 
 # License
 
