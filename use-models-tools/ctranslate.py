@@ -143,6 +143,7 @@ class CTranslate():
     def translate_parallel(self, text):
 
         text = self._normalize_input_string(text)
+        text = self.case_tagging(text)
 
         # Split sentences
         tokenizer = TextTokenizer()
@@ -169,8 +170,60 @@ class CTranslate():
         logging.debug(f"_request_translation completed. Results: {len(results)}")
         #Rebuild split sentences
         translated = tokenizer.sentence_from_tokens(sentences, translate, results)
+        translated = self.case_tagging(translated)
         return translated
 
+    def case_tagging(self, text):
+        cased = ""
+        tagged = False
+        for word in text.split():
+            if word.isupper():
+                tagged = True
+                word = "<uu> " + word.lower()
+            elif len(word) > 1 and word[0:1].isupper() and word[1:].islower():
+                tagged = True
+                word = " <ut>" + word.lower()
+
+            cased += word + " "
+
+        if tagged == False:
+            return text
+
+        cased = cased.rstrip() + "\n"
+       # print("org:" + text)
+    #3  print("cased:" + cased)
+
+        return cased
+
+
+    def case_untagging(self, text):
+        cased = ""
+        tagged = False
+        next_upper = False
+        next_title = False
+        for word in text.split():
+            if word == "<uu>":
+                next_upper = True
+                continue
+
+            if word == "<ut>":
+                next_title = True
+                continue
+
+            if next_upper:
+                word = word.upper()
+                next_upper = False
+
+            if next_title:
+                word = word[0:1].upper() + word[1:].lower()
+                next_title = False
+
+            cased += word + " "
+
+        cased = cased.rstrip() + "\n"
+       # print("org:" + text)
+    #3  print("cased:" + cased)
+        return cased
 
     '''
         Translates asking CTranslate to batch / parallelize
