@@ -197,8 +197,8 @@ class CTranslate():
         cased = cased.rstrip()
        # print("org:" + text)
     #3  print("cased:" + cased)
-        print(f"non-cased: {text}")
-        print(f"cased: {cased}")
+      #  print(f"non-cased: {text}")
+       # print(f"cased: {cased}")
         return cased
 
     def case_untagging(self, text):
@@ -217,8 +217,8 @@ class CTranslate():
             cased += word + " "
 
         cased = cased.rstrip()
-       # print("org:" + text)
-    #3  print("cased:" + cased)
+        print("org:" + text)
+        print("cased:" + cased)
         return cased
 
 
