@@ -219,7 +219,7 @@ class CTranslate():
 
             cased += word + " "
 
-        cased = cased.rstrip() + "\n"
+        cased = cased.rstrip()
        # print("org:" + text)
     #3  print("cased:" + cased)
         return cased
