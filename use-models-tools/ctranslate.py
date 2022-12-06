@@ -170,7 +170,7 @@ class CTranslate():
         logging.debug(f"_request_translation completed. Results: {len(results)}")
         #Rebuild split sentences
         translated = tokenizer.sentence_from_tokens(sentences, translate, results)
-        translated = self.case_tagging(translated)
+        translated = self.case_untagging(translated)
         return translated
 
     def case_tagging(self, text):
@@ -198,7 +198,6 @@ class CTranslate():
 
     def case_untagging(self, text):
         cased = ""
-        tagged = False
         next_upper = False
         next_title = False
         for word in text.split():
