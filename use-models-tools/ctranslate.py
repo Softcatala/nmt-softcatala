@@ -197,7 +197,7 @@ class CTranslate():
 
         return cased
 
-    def case_untagging_1(self, text):
+    def case_untagging(self, text):
         cased = ""
         next_upper = False
         next_title = False
