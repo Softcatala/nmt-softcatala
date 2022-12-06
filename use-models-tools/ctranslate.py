@@ -179,24 +179,46 @@ class CTranslate():
         for word in text.split():
             if word.isupper():
                 tagged = True
-                word = "<uu> " + word.lower()
+                word = "<uu>" + word.lower()
+#word = "<uu> " + word.lower()
             elif len(word) > 1 and word[0:1].isupper() and word[1:].islower():
                 tagged = True
-                word = "<ut> " + word.lower()
+                word = "<ut>" + word.lower()
+#                word = "<ut> " + word.lower()
 
             cased += word + " "
 
         if tagged == False:
             return text
 
-        cased = cased.rstrip() + "\n"
+        cased = cased.rstrip()
        # print("org:" + text)
     #3  print("cased:" + cased)
 
         return cased
 
+    def case_untagging_1(self, text):
+        cased = ""
+        next_upper = False
+        next_title = False
+        for word in text.split():
+            if "<uu>" in word:
+                word = word.replace("<uu>", "")
+                word = word.upper()
+                
+            if "<ut>" in word:
+                word = word.replace("<ut>", "")
+                word = word[0:1].upper() + word[1:].lower()
 
-    def case_untagging(self, text):
+            cased += word + " "
+
+        cased = cased.rstrip()
+       # print("org:" + text)
+    #3  print("cased:" + cased)
+        return cased
+
+
+    def case_untagging_1(self, text):
         cased = ""
         next_upper = False
         next_title = False
