@@ -142,6 +142,8 @@ class CTranslate():
 
     def translate_parallel(self, text):
 
+        print("---")
+        print("src: {text}")
         text = self._normalize_input_string(text)
         text = self.case_tagging(text)
 
@@ -170,6 +172,7 @@ class CTranslate():
         logging.debug(f"_request_translation completed. Results: {len(results)}")
         #Rebuild split sentences
         translated = tokenizer.sentence_from_tokens(sentences, translate, results)
+        print("translated: {translated}")
         translated = self.case_untagging(translated)
         return translated
 
@@ -194,7 +197,8 @@ class CTranslate():
         cased = cased.rstrip()
        # print("org:" + text)
     #3  print("cased:" + cased)
-
+        print("non-cased: {text}")
+        print("cased: {cased}")
         return cased
 
     def case_untagging(self, text):
