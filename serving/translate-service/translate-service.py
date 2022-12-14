@@ -50,8 +50,6 @@ LANGUAGE_ALIASES = {
     "cat-fra": ["cat|fr", "ca|fr", "ca|fra", "cat|fra"],
     "por-cat": ["pt|cat", "pt|ca", "por|ca", "por|cat"],
     "cat-por": ["cat|pt", "ca|pt", "ca|por", "cat|por"],
-    "oci-cat": ["oci_gascon|cat", "oci_gascon|ca", "oci|ca", "oci|cat"],
-    "cat-oci": ["cat|oci_gascon", "ca|oci_gascon", "ca|oci", "cat|oci"]
 }
 
 translate_calls = 0
