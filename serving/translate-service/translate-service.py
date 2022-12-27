@@ -222,7 +222,7 @@ def upload_file():
         return json_answer(result, 404)
 
     if file and _allowed_file(file.filename):
-        filename = uuid.uuid4().hex;
+        filename = uuid.uuid4().hex
         fullname = os.path.join(UPLOAD_FOLDER, filename)
         file.save(fullname)
 
