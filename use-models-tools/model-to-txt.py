@@ -24,7 +24,6 @@ import os
 import datetime
 from optparse import OptionParser
 from ctranslate import CTranslate
-import pyonmttok
 from threading import Thread
 
 def init_logging(del_logs):
@@ -33,7 +32,6 @@ def init_logging(del_logs):
     if del_logs and os.path.isfile(logfile):
         os.remove(logfile)
 
-    import logging
     logger = logging.getLogger()
 
     hdlr = logging.FileHandler(logfile)
