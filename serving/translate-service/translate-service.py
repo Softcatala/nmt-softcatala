@@ -212,23 +212,20 @@ def save_file_to_process(filename, email, model_name):
 @cross_origin(origin='*',headers=['Content-Type','Authorization'])
 @app.route('/translate_file/', methods=['POST'])
 def upload_file():
-    file = request.files['file']
-    email = request.values['email']
+    file = request.files['file'] if 'file' in request.files else ""
+    email = request.values['email'] if 'email' in request.values else ""
     model_name = request.values['model_name']
     
     if model_name not in openNMTs:
-        result = {}
-        result['error'] = "No podem traduir en aquest parell de llengües"
+        result = {"error": "No podem traduir en aquest parell de llengües"}
         return json_answer(result, 404)
 
-    if file.filename == '':
-        result = {}
-        result['error'] = "No s'ha especificat el fitxer"
+    if file == "" or file.filename == "":
+        result = {"error": "No s'ha especificat el fitxer"}
         return json_answer(result, 404)
 
-    if email == '':
-        result = {}
-        result['error'] = "No s'ha especificat el correu"
+    if email == "":
+        result = {"error": "No s'ha especificat el correu"}
         return json_answer(result, 404)
 
     if file and _allowed_file(file.filename):
