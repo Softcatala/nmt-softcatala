@@ -145,6 +145,11 @@ def apertium_translate_process(values):
         with open(saved_filename, "a") as text_file:
             t = text.replace('\n', '')
             text_file.write(f'{languages}\t{t}\n')
+
+    if languages not in openNMTs:
+        result = {}
+        result['error'] = "No podem traduir en aquest parell de llengües"
+        return json_answer(result, 404)
     
     openNMT = openNMTs[languages]
     translated = openNMT.translate_parallel(text)
@@ -211,6 +216,11 @@ def upload_file():
     email = request.values['email']
     model_name = request.values['model_name']
     
+    if model_name not in openNMTs:
+        result = {}
+        result['error'] = "No podem traduir en aquest parell de llengües"
+        return json_answer(result, 404)
+
     if file.filename == '':
         result = {}
         result['error'] = "No s'ha especificat el fitxer"
