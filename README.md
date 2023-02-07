@@ -75,10 +75,6 @@ Note: that the parameter ```-m cat-eng``` indicates the translation model to use
 
 See [license](./LICENSE.md)
 
-# How to help?
-
-See [here](./CONTRIBUTING.md) (In Catalan)
-
 # Contact
 
 Email address: Jordi Mas: jmas@softcatala.org
