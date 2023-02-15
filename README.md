@@ -22,11 +22,16 @@ You need [Docker](https://www.docker.com/) and [Make](https://www.gnu.org/softwa
 
 ## Serving the models in production
 
-You can build and run the docker that we use in production:
+You can build and run the docker translation service:
 
-* Build the solution ``` make build-all```
+* Build the solution ```make build-all```
 * Run ```make docker-run-translate-service```
 * Open in your browser ```http://localhost:8700/translate?langpair=en|ca&q=Hello!```
+
+To run exactly the system in production you also need ```docker-compose```. You can execute it by running:
+
+* ```make docker-run-all-services```
+
 
 ## Apertium API
 

@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  translate-service:
+    image: translate-service:latest
+    restart: always
+    ports:
+      - "8700:8700"
+
+    volumes:
+      - traductor-files:/srv/data
+
+    environment:
+        CTRANSLATE_BEAM_SIZE: 1
+
+  translate-batch:
+    image: translate-batch:latest
+    restart: always
+
+    volumes:
+      - traductor-files:/srv/data
+
+networks:
+  default:
+    external:
+      name: softcatala
+
+  
+volumes:
+  traductor-files:

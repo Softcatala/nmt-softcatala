@@ -25,6 +25,9 @@ docker-run-translate-service:
 docker-run-translate-service-test:
 	docker run -it --rm -p 8700:8700 translate-service-test;
 
+docker-run-all-services:
+	docker-compose -f local.yml up;
+
 test:
 	cd use-models-tools && python -m nose2
 	cd serving/translate-batch/ && python -m nose2
