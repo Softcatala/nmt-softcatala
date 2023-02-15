@@ -24,7 +24,7 @@ You need [Docker](https://www.docker.com/) and [Make](https://www.gnu.org/softwa
 
 You can build and run the docker that we use in production:
 
-* Build the solution ```make all```
+* Build the solution ``` make build-all```
 * Run ```make docker-run-translate-service```
 * Open in your browser ```http://localhost:8700/translate?langpair=en|ca&q=Hello!```
 
