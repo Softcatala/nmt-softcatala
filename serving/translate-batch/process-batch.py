@@ -50,7 +50,7 @@ def init_logging():
 def send_email(translated_file, email, attachment):
     try:
         port = 25
-        sender_email = "info@softcatala.org"
+        sender_email = "serveis@softcatala.org"
 
         with smtplib.SMTP("mail.scnet", port) as server:
             message = MIMEMultipart("alternative")
