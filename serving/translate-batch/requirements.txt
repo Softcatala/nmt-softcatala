@@ -1,6 +1,2 @@
-pyonmttok==1.34
-ctranslate2==2.24.0
-numpy
-lxml
-regex==2021.4.4
 polib
+git+https://github.com/Softcatala/nmt-softcatala#subdirectory=use-models-tools

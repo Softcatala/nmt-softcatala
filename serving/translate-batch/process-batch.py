@@ -136,14 +136,14 @@ def main():
             translated_file = source_file + "-translated.txt"
 
             if _is_po_file(source_file):
-                command = 'model-to-po.py'
+                command = 'model_to_po'
                 attachment = True
             else:
-                command = 'model-to-txt.py'
+                command = 'model_to_txt'
                 truncate_file(source_file)
                 attachment = False
 
-            cmd = "python3 {0} -f {1} -t {2} -m {3} -x {4}".format(command, source_file,
+            cmd = "{0} -f {1} -t {2} -m {3} -x {4}".format(command, source_file,
                    translated_file, batchfile.model_name, TRANSLATION_MODELS)
 
             logging.debug("Run {0}".format(cmd))

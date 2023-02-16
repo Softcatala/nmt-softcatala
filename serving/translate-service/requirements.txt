@@ -1,9 +1,5 @@
 flask==2.0.3
 flask_cors==3.0.10
 gunicorn==20.1.0
-pyonmttok==1.34
-ctranslate2==2.24.0
-numpy
-lxml
-regex==2021.4.4
 psutil
+git+https://github.com/Softcatala/nmt-softcatala#subdirectory=use-models-tools

@@ -20,10 +20,10 @@
 
 from __future__ import print_function
 import os
-from texttokenizer import TextTokenizer
+from .texttokenizer import TextTokenizer
 import ctranslate2
 import pyonmttok
-from preservemarkup import PreserveMarkup
+from .preservemarkup import PreserveMarkup
 import re
 import logging
 import unicodedata

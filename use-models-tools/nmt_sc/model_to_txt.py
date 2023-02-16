@@ -23,7 +23,7 @@ import logging
 import os
 import datetime
 from optparse import OptionParser
-from ctranslate import CTranslate
+from .ctranslate import CTranslate
 from threading import Thread
 
 def init_logging(del_logs):

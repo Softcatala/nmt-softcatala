@@ -21,7 +21,7 @@ before_script:
 test:
   image: python:3.11.0-slim-bullseye
   before_script:
-    - apt-get update && apt-get install make gcc -y
+    - apt-get update && apt-get install make gcc git -y
     - pip install nose2
   stage: test
   script:

@@ -19,11 +19,11 @@
 # Boston, MA 02111-1307, USA.
 
 from __future__ import print_function
-import srx_segmenter
+from .srx_segmenter import SrxSegmenter, parse
 import os
 
 srx_filepath = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'segment.srx')
-rules = srx_segmenter.parse(srx_filepath)
+rules = parse(srx_filepath)
 
 '''
     Splits text into sentences keeping spaces to allow later
@@ -35,7 +35,7 @@ class TextTokenizer:
         strings = []
         translate = []
 
-        segmenter = srx_segmenter.SrxSegmenter(rules[language], sentence)
+        segmenter = SrxSegmenter(rules[language], sentence)
         segments, whitespaces = segmenter.extract()
 
         for i in range(len(segments)):

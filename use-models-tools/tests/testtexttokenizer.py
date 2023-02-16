@@ -17,7 +17,7 @@
 # Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA 02111-1307, USA.
 
-from texttokenizer import TextTokenizer
+from nmt_sc.texttokenizer import TextTokenizer
 import unittest
 
 

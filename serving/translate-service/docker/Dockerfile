@@ -1,7 +1,6 @@
 FROM python:3.11.0-slim-bullseye as copied_files
 
 COPY serving/translate-service/*.py /srv/
-COPY serving/translate-service/segment.srx /srv/
 COPY serving/translate-service/docker/entry-point.sh /srv/
 COPY serving/translate-service/gender-bias-terms.txt /srv/
 
@@ -9,7 +8,7 @@ FROM nmt-models as models
 
 FROM python:3.11.0-slim-bullseye
 
-RUN apt-get update -y && apt-get upgrade -y && apt-get install gcc vim -y
+RUN apt-get update -y && apt-get upgrade -y && apt-get install gcc vim git -y
 RUN apt-get install python3-pip -y --no-install-recommends
 RUN pip3 install --upgrade pip && pip3 install --upgrade setuptools
 

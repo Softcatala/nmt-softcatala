@@ -17,7 +17,7 @@
 # Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA 02111-1307, USA.
 
-from preservemarkup import PreserveMarkup
+from nmt_sc.preservemarkup import PreserveMarkup
 import unittest
 
 

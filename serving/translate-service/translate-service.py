@@ -23,7 +23,7 @@ from flask import Flask, request, Response
 from flask_cors import CORS, cross_origin
 import json
 import datetime
-from ctranslate import CTranslate
+from nmt_sc.ctranslate import CTranslate
 from usage import Usage
 from batchfilesdb import BatchFilesDB
 import os

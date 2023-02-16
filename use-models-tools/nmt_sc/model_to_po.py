@@ -26,7 +26,7 @@ import os
 from optparse import OptionParser
 import re
 import logging
-from ctranslate import CTranslate
+from .ctranslate import CTranslate
 import pyonmttok
 
 def init_logging(del_logs):
