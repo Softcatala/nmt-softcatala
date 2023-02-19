@@ -22,7 +22,7 @@ RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 ENV FILE cat-ita-2022-11-15.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
-ENV FILE cat-jpn-2022-11-19.zip
+ENV FILE cat-jpn-2023-02-18.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
 ENV FILE cat-nld-2022-11-19.zip
@@ -52,7 +52,7 @@ RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 ENV FILE ita-cat-2022-11-11.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
-ENV FILE jpn-cat-2022-11-18.zip
+ENV FILE jpn-cat-2023-02-17.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
 ENV FILE nld-cat-2022-11-19.zip
