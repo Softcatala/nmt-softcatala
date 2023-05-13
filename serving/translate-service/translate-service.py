@@ -20,7 +20,7 @@
 
 from __future__ import print_function
 from flask import Flask, request, Response
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 import json
 import datetime
 from nmt_sc.ctranslate import CTranslate
@@ -83,12 +83,10 @@ def init_logging():
     logger.addHandler(console)
 
 
-@cross_origin(origin='*',headers=['Content-Type','Authorization'])
 @app.route('/translate', methods=['GET'])
 def apertium_translate_get():
     return apertium_translate_process(request.args)
 
-@cross_origin(origin='*',headers=['Content-Type','Authorization'])
 @app.route('/health', methods=['GET'])
 def health_get():
     health = {}
@@ -102,7 +100,6 @@ def health_get():
     return health
 
 # This should become /translate once front calls the right API endpoint
-@cross_origin(origin='*',headers=['Content-Type','Authorization'])
 @app.route('/translate/', methods=['POST'])
 def translate_api():
     return apertium_translate_process(request.form)
@@ -209,7 +206,6 @@ def save_file_to_process(filename, email, model_name):
     db = BatchFilesDB()
     db.create(filename, email, model_name)
 
-@cross_origin(origin='*',headers=['Content-Type','Authorization'])
 @app.route('/translate_file/', methods=['POST'])
 def upload_file():
     file = request.files['file'] if 'file' in request.files else ""
