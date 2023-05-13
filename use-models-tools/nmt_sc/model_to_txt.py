@@ -132,10 +132,8 @@ def main():
 
     print(f'Client threads: {n_threads}')
 
-    target_filename_review = "translated-review.txt"
     with open(input_filename, encoding='utf-8', mode='r', errors='ignore') as tf_en,\
-         open(translated_file, encoding='utf-8', mode='w') as tf_ca,\
-         open(target_filename_review, encoding='utf-8', mode='w') as tf_ca_review:
+         open(translated_file, encoding='utf-8', mode='w') as tf_ca:
 
         en_strings = tf_en.readlines()
         len_en_strings = len(en_strings)
@@ -175,7 +173,6 @@ def main():
                 src = sources[t]
                 tgt = translations[t]
                 tf_ca.write("{0}\n".format(tgt))
-                tf_ca_review.write("{0}\n{1}\n\n".format(src, tgt))
                 logging.debug('Source: ' + str(src))
                 logging.debug('Target: ' + str(tgt))
                 words += len(src.split())
