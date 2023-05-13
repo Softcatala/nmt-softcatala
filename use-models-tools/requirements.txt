@@ -1,4 +1,4 @@
-polib
+polib==1.2.0
 pyonmttok==1.34
 ctranslate2==2.24.0
 lxml
