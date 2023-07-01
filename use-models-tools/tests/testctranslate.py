@@ -86,5 +86,13 @@ class TestCTranslate(unittest.TestCase):
         result = ctranslate._normalize_input_string(text)
         self.assertEquals("L'oferta demà és molt bona", result)
 
+    def test_languages(self):
+        ctranslate = CTranslate("tests/data/", "cat-eng", translator = CTranslate2Mock())
+
+        self.assertEquals('English', ctranslate._get_sentence_tokenizer_source_language("eng-cat"))
+        self.assertEquals('Catalan', ctranslate._get_sentence_tokenizer_source_language("cat-eng"))
+        self.assertEquals('Catalan', ctranslate._get_sentence_tokenizer_source_language("oci-eng"))
+        self.assertEquals('Danish', ctranslate._get_sentence_tokenizer_source_language("swe-eng"))
+
 if __name__ == '__main__':
     unittest.main()

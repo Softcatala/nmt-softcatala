@@ -100,12 +100,13 @@ class CTranslate():
             return th_description.read().splitlines()
 
     def _get_sentence_tokenizer_source_language(self, model_name):
-        lang =  lang = re.match(self.LANGUAGE_MATCH, model_name).groups()[0]
+        lang = re.match(self.LANGUAGE_MATCH, model_name).groups()[0]
         lang = lang[:2]
 
         choices = {'ca': 'Catalan', 'en': 'English', 'de' : 'German', 'fr' : 'French', 'sp' : 'Spanish', 'it' : 'Italian',
                   'nl' : 'Dutch', 'po' : 'Portuguese', 'jp': 'Japanese', 'gl': "Galician",
-                  "oc": "Catalan" ## No Occitan suport, Catalan rules probably the best for now
+                  "oc": "Catalan", ## No Occitan support, Catalan rules probably the best for now
+                  "sw": "Danish" ## Our best option today
                   }
         return choices[lang]
 
