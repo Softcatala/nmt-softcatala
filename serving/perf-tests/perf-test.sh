@@ -1,5 +1,11 @@
-URL='https://www.softcatala.org/sc/v2/api/nmt-engcat/translate/'
-#URL=http://127.0.0.1:5000/translate/
+if [ -z "$1" ]
+then
+    URL="http://127.0.0.1:8700/translate/"
+else
+    URL=$1
+fi
+
+echo "Doing test on URL:" $URL
 
 echo "** Catalan - English (10 req, 1 at the time)"
 wrk -t1 -c1 -d 10s -s post-data-cat-eng.form.lua $URL

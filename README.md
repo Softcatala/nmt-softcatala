@@ -76,6 +76,18 @@ To translate a text file from Catalan to English:
 
 Note: that the parameter ```-m cat-eng``` indicates the translation model to use.
 
+# Development
+
+## Performance test of the translation service
+
+It is important to understand that there are no major performance regressions.
+
+Install the ```wrk``` performance testing tool by using ```sudo apt-get install wrk```
+
+Follow these steps:
+* Run ```make docker-run-all-services``` to run all the services for the performance test
+* Use ```serving/perf-tests``` script to run the performance test
+
 # License
 
 See [license](./LICENSE.md)

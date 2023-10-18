@@ -11,7 +11,9 @@ services:
       - traductor-files:/srv/data
 
     environment:
-        CTRANSLATE_BEAM_SIZE: 1
+        CTRANSLATE_BEAM_SIZE: 2
+        CTRANSLATE_INTER_THREADS: 1
+        CTRANSLATE_INTRA_THREADS: 6
 
   translate-batch:
     image: translate-batch:latest
