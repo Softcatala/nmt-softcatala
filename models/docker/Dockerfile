@@ -10,7 +10,7 @@ ENV URL https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22
 ENV FILE cat-deu-2022-11-16.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
-ENV FILE cat-eng-2022-11-12.zip
+ENV FILE cat-eng-2023-10-29.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
 ENV FILE cat-fra-2022-11-14.zip
@@ -40,7 +40,7 @@ RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 ENV FILE deu-cat-2022-11-14.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
-ENV FILE eng-cat-2022-11-09.zip
+ENV FILE eng-cat-2023-10-30.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
 ENV FILE fra-cat-2022-11-09.zip
