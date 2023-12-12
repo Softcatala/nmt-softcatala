@@ -6,10 +6,11 @@ COPY serving/translate-service/gender-bias-terms.txt /srv/
 
 FROM nmt-models as models
 
-FROM python:3.11.0-slim-bullseye
+FROM nvidia/cuda:12.3.1-base-ubuntu22.04
+#FROM python:3.11.0-slim-bullseye
 
-RUN apt-get update -y && apt-get upgrade -y && apt-get install gcc vim git -y
-RUN apt-get install python3-pip -y --no-install-recommends
+RUN apt-get update -y && apt-get upgrade -y && apt-get install gcc vim git  -y
+RUN apt-get install python3-pip python3-dev -y --no-install-recommends
 RUN pip3 install --upgrade pip && pip3 install --upgrade setuptools
 
 COPY serving/translate-service/requirements.txt /srv/
