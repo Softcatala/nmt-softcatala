@@ -34,6 +34,7 @@ class CTranslate():
     INTRA_THREADS = 'CTRANSLATE_INTRA_THREADS'
     BEAM_SIZE = 'CTRANSLATE_BEAM_SIZE'
     USE_VMAP = 'CTRANSLATE_USE_VMAP'
+    DEVICE = 'DEVICE'
     LANGUAGE_MATCH = "([a-z]{3})-([a-z]{3})"
     TOKENIZER_SUBDIR = "tokenizer"
     TOKENIZER_FILE = "{0}_m.model"
@@ -58,12 +59,12 @@ class CTranslate():
 
         self.tokenizer_source_language = self._get_sentence_tokenizer_source_language(model_name)
 
-        print(f"inter_threads: {self.inter_threads}, intra_threads: {self.intra_threads}, beam_size {self.beam_size}, use_vmap {self.use_vmap}")
+        print(f"inter_threads: device: {self.device}, {self.inter_threads}, intra_threads: {self.intra_threads}, beam_size {self.beam_size}, use_vmap {self.use_vmap}")
 
         if translator is None:
             self.model_path = model_path
             ctranslate_model_path = os.path.join(model_path, "ctranslate2")
-            self.translator = ctranslate2.Translator(ctranslate_model_path, device="cuda", inter_threads = self.inter_threads, intra_threads = self.intra_threads)
+            self.translator = ctranslate2.Translator(ctranslate_model_path, device = self.device, inter_threads = self.inter_threads, intra_threads = self.intra_threads)
         else:
             self.translator = translator
 
@@ -90,6 +91,8 @@ class CTranslate():
             self.use_vmap = True
         else:
             self.use_vmap = False
+
+        self.device = os.environ.get(self.DEVICE, "cpu")
 
     def get_model_name(self):
         return self.model_name
