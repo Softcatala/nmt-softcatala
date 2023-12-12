@@ -1,2 +1,3 @@
 polib
-git+https://github.com/Softcatala/nmt-softcatala#subdirectory=use-models-tools
+./../use-models-tools
+

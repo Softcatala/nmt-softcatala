@@ -63,7 +63,7 @@ class CTranslate():
         if translator is None:
             self.model_path = model_path
             ctranslate_model_path = os.path.join(model_path, "ctranslate2")
-            self.translator = ctranslate2.Translator(ctranslate_model_path, inter_threads = self.inter_threads, intra_threads = self.intra_threads)
+            self.translator = ctranslate2.Translator(ctranslate_model_path, device="cuda", inter_threads = self.inter_threads, intra_threads = self.intra_threads)
         else:
             self.translator = translator
 
