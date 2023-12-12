@@ -16,7 +16,9 @@ COPY --from=copied_files /srv/ /srv/
 COPY --from=models /srv/models /srv/models
 
 WORKDIR /srv
+COPY use-models-tools/ /use-models-tools/
 RUN pip3 install -r requirements.txt
+RUN rm -r -f use-models-tools/
 
 ENTRYPOINT /srv/entry-point.sh
 #ENTRYPOINT bash
