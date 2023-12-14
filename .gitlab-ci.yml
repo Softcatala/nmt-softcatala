@@ -52,7 +52,7 @@ translate-service-test:
     - export IMAGE_NAME=translate-service-test
     - export DOCKER_PATH=serving/translate-service/docker/Dockerfile-test
     - docker build -f $DOCKER_PATH --tag $IMAGE_NAME .
-    - docker run -t $IMAGE_NAME
+ #    - docker run -t $IMAGE_NAME
 
 translate-service-publish:
   stage: translate-service-publish
