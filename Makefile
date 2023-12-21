@@ -5,7 +5,8 @@ docker-build-models:
 
 docker-build-use-models-tools: docker-build-models
 	docker build --no-cache -t use-models-tools . -f use-models-tools/docker/Dockerfile;
-
+	docker image ls | grep use-models-tools
+	
 docker-build-translate-service: docker-build-models
 	docker build -t translate-service . -f serving/translate-service/docker/Dockerfile;
 
