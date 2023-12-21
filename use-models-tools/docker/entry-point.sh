@@ -4,4 +4,4 @@
 
 
 cd /srv/flores
-/usr/bin/time -f %U whisper-ctranslate2 15GdH1.mp3  --model medium --device $DEVICE
+/usr/bin/time -f %U whisper-ctranslate2 15GdH1.mp3  --model medium --threads 8 --device $DEVICE
