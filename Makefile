@@ -15,6 +15,9 @@ docker-build-translate-service-test: docker-build-translate-service
 docker-build-translate-batch: docker-build-models
 	docker build -t translate-batch . -f serving/translate-batch/docker/Dockerfile;
 
+docker-run-use-models-tools:
+	docker run -it --rm use-models-tools;
+
 docker-run-translate-batch:
 	docker volume create traductor-files;
 	docker run -v traductor-files:/srv/data -it --rm translate-batch;
