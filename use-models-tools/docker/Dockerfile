@@ -9,7 +9,7 @@ RUN apt-get update -y && apt-get upgrade -y && apt-get install gcc vim -y
 RUN apt-get install python3-pip python3-dev -y --no-install-recommends
 
 RUN pip3 install --upgrade pip && pip3 install --upgrade setuptools
-RUN apt-get install nvidia-cudnn -y
+RUN apt-get install libcudnn8 -y
 
 COPY use-models-tools/*.mp3 /srv/flores/
 COPY use-models-tools/requirements.txt /srv/
