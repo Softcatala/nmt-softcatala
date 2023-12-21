@@ -1,6 +1,8 @@
 #!/bin/bash
 
-COMMAND_LINE="-f flores200.eng -t output.cat -m eng-cat"
+#COMMAND_LINE="-f flores200.eng -t output.cat -m eng-cat"
+
+COMMAND_LINE="-f cat.txt -t output.cat -m eng-cat"
 
 cd /srv/flores
 if [ "$FILE_TYPE" = "po" ] ; then
@@ -8,3 +10,4 @@ if [ "$FILE_TYPE" = "po" ] ; then
 else
     model_to_txt -x /srv/models/ $COMMAND_LINE
 fi
+
