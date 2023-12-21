@@ -23,7 +23,7 @@ docker-run-translate-batch:
 	docker run -v traductor-files:/srv/data -it --rm translate-batch;
 
 docker-run-translate-service:
-	docker run -it --rm -p 8700:8700 translate-service;
+	docker run -it --rm -p 8700:8700 translate-service  --gpus 0;
 
 docker-run-translate-service-test:
 	docker run -it --rm -p 8700:8700 translate-service-test;
