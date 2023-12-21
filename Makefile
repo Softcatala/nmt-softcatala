@@ -4,7 +4,7 @@ docker-build-models:
 	docker build -t nmt-models . -f models/docker/Dockerfile;
 
 docker-build-use-models-tools: docker-build-models
-	docker build -t use-models-tools . -f use-models-tools/docker/Dockerfile;
+	docker build --no-cache -t use-models-tools . -f use-models-tools/docker/Dockerfile;
 
 docker-build-translate-service: docker-build-models
 	docker build -t translate-service . -f serving/translate-service/docker/Dockerfile;

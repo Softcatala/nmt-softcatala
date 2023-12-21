@@ -1,7 +1,7 @@
 #FROM nmt-models as models
 #FROM python:3.11.0-slim-bullseye
-FROM nvidia/cuda:12.3.1-base-ubuntu22.04
-#FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu20.04
+#FROM nvidia/cuda:12.3.1-base-ubuntu22.04
+FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu20.04
 
 
 RUN apt-get update -y && apt-get upgrade -y && apt-get install gcc vim -y
@@ -9,7 +9,7 @@ RUN apt-get update -y && apt-get upgrade -y && apt-get install gcc vim -y
 RUN apt-get install python3-pip python3-dev -y --no-install-recommends
 
 RUN pip3 install --upgrade pip && pip3 install --upgrade setuptools
-RUN apt-get install libcudnn8 -y
+#RUN apt-get install libcudnn8 -y
 
 COPY use-models-tools/*.mp3 /srv/flores/
 COPY use-models-tools/requirements.txt /srv/
