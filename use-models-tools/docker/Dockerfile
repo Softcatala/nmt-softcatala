@@ -18,7 +18,7 @@ COPY use-models-tools/nmt_sc/ /srv/nmt_sc/
 WORKDIR /srv
 RUN pip3 install .
 
-COPY --from=models /srv/models /srv/models
+#COPY --from=models /srv/models /srv/models
 
 ENTRYPOINT /srv/entry-point.sh
 #ENTRYPOINT bash
