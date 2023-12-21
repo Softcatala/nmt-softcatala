@@ -118,7 +118,7 @@ def _get_words_per_second(start_time, words):
 def main():
 
     print("Applies an OpenNMT model to translate a TXT file")
-    print("For maximum performance when translating corpus, set")
+    print("For maximum performance when translating corpus using CPU, set")
     print("the environment variable CTRANSLATE_INTER_THREADS to your")
     print("number or processors and CTRANSLATE_INTRA_THREADS to 1")
 
