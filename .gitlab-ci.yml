@@ -38,6 +38,16 @@ models:
     - docker push $REPO_NAME:$CI_COMMIT_SHA
     - docker push $IMAGE_NAME   
 
+use-models-tools:
+  stage: use-models-tools
+  script:
+    - export REPO_NAME=$CI_REGISTRY_IMAGE/use-models-tools
+    - export IMAGE_NAME=$REPO_NAME:$CI_COMMIT_REF_NAME
+    - export DOCKER_PATH=use-models-tools/docker/Dockerfile
+    - docker build -f $DOCKER_PATH --tag latest --tag $IMAGE_NAME --tag $REPO_NAME:$CI_COMMIT_SHA .
+    - docker push $REPO_NAME:$CI_COMMIT_SHA
+    - docker push $IMAGE_NAME
+
 translate-service:
   stage: translate-service
   script:
@@ -72,12 +82,4 @@ translate-batch:
     - docker push $REPO_NAME:$CI_COMMIT_SHA
     - docker push $IMAGE_NAME
 
-use-models-tools:
-  stage: use-models-tools
-  script:
-    - export REPO_NAME=$CI_REGISTRY_IMAGE/use-models-tools
-    - export IMAGE_NAME=$REPO_NAME:$CI_COMMIT_REF_NAME
-    - export DOCKER_PATH=use-models-tools/docker/Dockerfile
-    - docker build -f $DOCKER_PATH --tag latest --tag $IMAGE_NAME --tag $REPO_NAME:$CI_COMMIT_SHA .
-    - docker push $REPO_NAME:$CI_COMMIT_SHA
-    - docker push $IMAGE_NAME
+
