@@ -10,6 +10,7 @@ RUN apt-get install python3-pip python3-dev -y --no-install-recommends
 
 RUN pip3 install --upgrade pip && pip3 install --upgrade setuptools
 
+COPY use-models-tools/cat.txt /srv/flores/
 COPY use-models-tools/flores* /srv/flores/
 COPY use-models-tools/requirements.txt /srv/
 COPY use-models-tools/docker/entry-point.sh /srv/
