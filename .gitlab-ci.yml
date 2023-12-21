@@ -18,6 +18,6 @@ use-models-tools:
     - export REPO_NAME=$CI_REGISTRY_IMAGE/use-models-tools
     - export IMAGE_NAME=$REPO_NAME:$CI_COMMIT_REF_NAME
     - export DOCKER_PATH=use-models-tools/docker/Dockerfile
-    - docker build -f $DOCKER_PATH --tag latest --tag $IMAGE_NAME --tag $REPO_NAME:$CI_COMMIT_SHA .
+    - docker build -f $DOCKER_PATH --tag latest --tag $IMAGE_NAME
 #    - docker push $REPO_NAME:$CI_COMMIT_SHA
     - docker push $IMAGE_NAME
