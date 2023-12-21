@@ -4,8 +4,9 @@
 FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu20.04
 
 
-RUN apt-get update -y && apt-get upgrade -y && apt-get install gcc vim -y
+##RUN apt-get update -y && apt-get upgrade -y && apt-get install gcc vim -y
 #RUN apt-get install python3-pip -y --no-install-recommends
+RUN apt-get update -y 
 RUN apt-get install python3-pip python3-dev -y --no-install-recommends
 
 RUN pip3 install --upgrade pip && pip3 install --upgrade setuptools
