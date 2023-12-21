@@ -1,4 +1,4 @@
-FROM nmt-models as models
+#FROM nmt-models as models
 #FROM python:3.11.0-slim-bullseye
 #FROM nvidia/cuda:12.3.1-base-ubuntu22.04
 FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu20.04
