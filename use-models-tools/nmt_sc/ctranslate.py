@@ -143,43 +143,53 @@ class CTranslate():
                 result = result.replace(char, mapping[char])
 
         return result
-
+        
     def translate_parallel(self, text):
         translations = translate_parallel_batch(self, [text])
         return translations[0]
 
     def translate_parallel_batch(self, sources):
         translateds = []
+        
+        sentences = []
+        translate = []
+        end_sentences = []
+        
         for text in sources:
-
             text = self._normalize_input_string(text)
 
             # Split sentences
             tokenizer = TextTokenizer()
-            sentences, translate = tokenizer.tokenize(text, self.tokenizer_source_language)
-            input_batch = sentences
+            _sentences, _translate = tokenizer.tokenize(text, self.tokenizer_source_language)
+            sentences.extend(_sentences)
+            translate.extend(_translate)
+            pos = len(translate)
+            end_sentences.append(pos)
 
-            num_sentences = len(sentences)
-            logging.debug(f"_request_translation {num_sentences}")
-            sentences_batch = []
-            indexes = []
-            results = ["" for x in range(num_sentences)]
-            for i in range(num_sentences):
-                if translate[i] is False:
-                    continue
+        num_sentences = len(sentences)
+        sentences_batch = []
+        indexes = []
+        results = ["" for x in range(num_sentences)]
+            
+        for i in range(num_sentences):
+            if translate[i] is False:
+                continue
 
-                sentences_batch.append(sentences[i])
-                indexes.append(i)
+            sentences_batch.append(sentences[i])
+            indexes.append(i)
 
-            translated_batch = self._translate_batch(sentences_batch)
-            for pos in range(0, len(translated_batch)):
-                i = indexes[pos]
-                results[i] = translated_batch[pos] 
+        translated_batch = self._translate_batch(sentences_batch)
+        for pos in range(0, len(translated_batch)):
+            i = indexes[pos]
+            results[i] = translated_batch[pos] 
 
-            logging.debug(f"_request_translation completed. Results: {len(results)}")
-            #Rebuild split sentences
-            translated = tokenizer.sentence_from_tokens(sentences, translate, results)
+        #Rebuild split sentences
+        pos = 0
+        for end_sentence in end_sentences:
+            translated = tokenizer.sentence_from_tokens(sentences[pos:end_sentence], translate[pos:end_sentence], results[pos:end_sentence])
             translateds.append(translated)
+            pos = end_sentence
+    
         return translateds
 
     '''
