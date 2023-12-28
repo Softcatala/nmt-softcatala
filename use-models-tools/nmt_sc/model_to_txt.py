@@ -79,16 +79,6 @@ def read_parameters():
         help='Path the model directory'
     )
 
-    parser.add_option(
-        '-r',
-        '--threads',
-        type='int',
-        action='store',
-        dest='n_threads',
-        default=0,
-        help='Number of threads in the client side (0 = inter threads)'
-    )
-
     (options, args) = parser.parse_args()
     if options.txt_file is None:
         parser.error('TXT file not given')
@@ -96,7 +86,7 @@ def read_parameters():
     if options.translated_file is None:
         parser.error('Translate file not given')
 
-    return options.model_name, options.txt_file, options.translated_file, options.models_path, options.n_threads
+    return options.model_name, options.txt_file, options.translated_file, options.models_path
 
 def translate_thread(src, openNMT, translations, index, tf_ca):
     try:
@@ -124,7 +114,7 @@ def main():
 
     start_time = datetime.datetime.now()
     init_logging(True)
-    model_name, input_filename, translated_file, models_path, n_threads = read_parameters()
+    model_name, input_filename, translated_file, models_path = read_parameters()
     openNMT = CTranslate(models_path, model_name)
 
     with open(input_filename, encoding='utf-8', mode='r', errors='ignore') as tf_en,\
