@@ -130,25 +130,24 @@ def main():
         BATCH_SIZE = 16
         while i < len_en_strings:
 
-            translations = []
-            batch_size = min(i, BATCH_SIZE)
-            
+            batch_size = min(len_en_strings - i, BATCH_SIZE)
             translations = openNMT._translate_batch(en_strings[i: i + batch_size])
+#            print(f"translation size: {len(translations)}, i:{i}, batch_size: {batch_size}")
 
             for t in range(0, batch_size):
-                i = i + 1
                 translated = translated + 1
                 if translated % 500 == 0:
                     per =  translated / len_en_strings * 100
                     words_second = _get_words_per_second(start_time, words)
                     print(f" Sentences translated: {translated} ({per:.1f}%). Words/s {words_second:.1f}")
 
-                src = en_strings[i + t]
+                src = en_strings[i]
                 tgt = translations[t]
                 tf_ca.write("{0}\n".format(tgt))
                 logging.debug('Source: ' + str(src))
                 logging.debug('Target: ' + str(tgt))
                 words += len(src.split())
+                i = i + 1
 
     time = datetime.datetime.now() - start_time
     words_second = _get_words_per_second(start_time, words)
