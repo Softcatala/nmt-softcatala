@@ -149,16 +149,15 @@ class CTranslate():
         return translations[0]
 
     def translate_parallel_batch(self, sources):
-        translateds = []
-        
+        translateds = []        
         sentences = []
         translate = []
         end_sentences = []
-        
+
+        # Split sentences        
         for text in sources:
             text = self._normalize_input_string(text)
 
-            # Split sentences
             tokenizer = TextTokenizer()
             _sentences, _translate = tokenizer.tokenize(text, self.tokenizer_source_language)
             sentences.extend(_sentences)
@@ -178,7 +177,13 @@ class CTranslate():
             sentences_batch.append(sentences[i])
             indexes.append(i)
 
+# It works sending sentence by sentence, not in batches
         translated_batch = self._translate_batch(sentences_batch)
+#        translated_batch = []
+#        for s in sentences_batch:
+#            t = self._translate_batch([s])
+#            translated_batch.extend(t)
+
         for pos in range(0, len(translated_batch)):
             i = indexes[pos]
             results[i] = translated_batch[pos] 
@@ -186,6 +191,8 @@ class CTranslate():
         #Rebuild split sentences
         pos = 0
         for end_sentence in end_sentences:
+#            logging.debug(f"end_sentence: {end_sentence}")
+#            logging.debug(f"{sentences[pos:end_sentence]}, {translate[pos:end_sentence]}, {results[pos:end_sentence]}")
             translated = tokenizer.sentence_from_tokens(sentences[pos:end_sentence], translate[pos:end_sentence], results[pos:end_sentence])
             translateds.append(translated)
             pos = end_sentence
