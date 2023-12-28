@@ -127,11 +127,6 @@ def main():
     model_name, input_filename, translated_file, models_path, n_threads = read_parameters()
     openNMT = CTranslate(models_path, model_name)
 
-    if n_threads == 0:
-        n_threads = openNMT.inter_threads
-
-    print(f'Client threads: {n_threads}')
-
     with open(input_filename, encoding='utf-8', mode='r', errors='ignore') as tf_en,\
          open(translated_file, encoding='utf-8', mode='w') as tf_ca:
 
@@ -142,27 +137,15 @@ def main():
         words = 0
 
         i = 0
+        BATCH_SIZE = 16
         while i < len_en_strings:
 
-            threads = []
-            sources = []
             translations = []
-            num_threads = min(n_threads, len_en_strings - i)
+            batch_size = min(i, BATCH_SIZE)
+            
+            translations = openNMT._translate_batch(en_strings[i: i + batch_size])
 
-            for t in range(0, num_threads):
-                sources.append(en_strings[i + t].replace('\n', ''))
-                translations.append("")
-
-            for t in range(0, num_threads):
-                src = sources[t]
-                process = Thread(target=translate_thread, args=[sources[t], openNMT, translations, t, tf_ca])
-                process.start()
-                threads.append(process)
-              
-            for process in threads:
-                process.join()
-
-            for t in range(0, num_threads):
+            for t in range(0, batch_size):
                 i = i + 1
                 translated = translated + 1
                 if translated % 500 == 0:
@@ -170,7 +153,7 @@ def main():
                     words_second = _get_words_per_second(start_time, words)
                     print(f" Sentences translated: {translated} ({per:.1f}%). Words/s {words_second:.1f}")
 
-                src = sources[t]
+                src = en_strings[i + t]
                 tgt = translations[t]
                 tf_ca.write("{0}\n".format(tgt))
                 logging.debug('Source: ' + str(src))
