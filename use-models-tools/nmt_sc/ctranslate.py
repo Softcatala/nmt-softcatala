@@ -59,7 +59,7 @@ class CTranslate():
 
         self.tokenizer_source_language = self._get_sentence_tokenizer_source_language(model_name)
 
-        print(f"inter_threads: device: {self.device}, {self.inter_threads}, intra_threads: {self.intra_threads}, beam_size {self.beam_size}, use_vmap {self.use_vmap}")
+        print(f"device: {self.device}, inter_threads: {self.inter_threads}, intra_threads: {self.intra_threads}, beam_size {self.beam_size}, use_vmap {self.use_vmap}")
 
         if translator is None:
             self.model_path = model_path
