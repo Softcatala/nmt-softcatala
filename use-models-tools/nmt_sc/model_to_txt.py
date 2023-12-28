@@ -127,11 +127,11 @@ def main():
         words = 0
 
         i = 0
-        BATCH_SIZE = 32
+        BATCH_SIZE = 16
         while i < len_en_strings:
 
             batch_size = min(len_en_strings - i, BATCH_SIZE)
-            translations = openNMT._translate_batch(en_strings[i: i + batch_size])
+            translations = openNMT.translate_parallel_batch(en_strings[i: i + batch_size])
 #            print(f"translation size: {len(translations)}, i:{i}, batch_size: {batch_size}")
 
             for t in range(0, batch_size):

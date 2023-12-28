@@ -145,36 +145,42 @@ class CTranslate():
         return result
 
     def translate_parallel(self, text):
+        translations = translate_parallel_batch(self, [text])
+        return translations[0]
 
-        text = self._normalize_input_string(text)
+    def translate_parallel_batch(self, sources):
+        translateds = []
+        for text in sources:
 
-        # Split sentences
-        tokenizer = TextTokenizer()
-        sentences, translate = tokenizer.tokenize(text, self.tokenizer_source_language)
-        input_batch = sentences
+            text = self._normalize_input_string(text)
 
-        num_sentences = len(sentences)
-        logging.debug(f"_request_translation {num_sentences}")
-        sentences_batch = []
-        indexes = []
-        results = ["" for x in range(num_sentences)]
-        for i in range(num_sentences):
-            if translate[i] is False:
-                continue
+            # Split sentences
+            tokenizer = TextTokenizer()
+            sentences, translate = tokenizer.tokenize(text, self.tokenizer_source_language)
+            input_batch = sentences
 
-            sentences_batch.append(sentences[i])
-            indexes.append(i)
+            num_sentences = len(sentences)
+            logging.debug(f"_request_translation {num_sentences}")
+            sentences_batch = []
+            indexes = []
+            results = ["" for x in range(num_sentences)]
+            for i in range(num_sentences):
+                if translate[i] is False:
+                    continue
 
-        translated_batch = self._translate_batch(sentences_batch)
-        for pos in range(0, len(translated_batch)):
-            i = indexes[pos]
-            results[i] = translated_batch[pos] 
+                sentences_batch.append(sentences[i])
+                indexes.append(i)
 
-        logging.debug(f"_request_translation completed. Results: {len(results)}")
-        #Rebuild split sentences
-        translated = tokenizer.sentence_from_tokens(sentences, translate, results)
-        return translated
+            translated_batch = self._translate_batch(sentences_batch)
+            for pos in range(0, len(translated_batch)):
+                i = indexes[pos]
+                results[i] = translated_batch[pos] 
 
+            logging.debug(f"_request_translation completed. Results: {len(results)}")
+            #Rebuild split sentences
+            translated = tokenizer.sentence_from_tokens(sentences, translate, results)
+            translateds.append(translated)
+        return translateds
 
     '''
         Translates asking CTranslate to batch / parallelize
