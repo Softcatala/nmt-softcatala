@@ -127,7 +127,7 @@ def main():
         words = 0
 
         i = 0
-        BATCH_SIZE = 16
+        BATCH_SIZE = 32
         while i < len_en_strings:
 
             batch_size = min(len_en_strings - i, BATCH_SIZE)
