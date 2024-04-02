@@ -178,8 +178,12 @@ def savedtexts():
 
 @app.route('/stats/', methods=['GET'])
 def stats():
-    requested = request.args.get('date')
-    date_requested = datetime.datetime.strptime(requested, '%Y-%m-%d')
+    try:
+        requested = request.args.get('date')
+        date_requested = datetime.datetime.strptime(requested, '%Y-%m-%d')
+    except Exception as e:
+        return json_answer({}, 400)
+
     usage = Usage()
     result = usage.get_stats(date_requested)
 
