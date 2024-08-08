@@ -93,6 +93,7 @@ class TestCTranslate(unittest.TestCase):
         self.assertEquals('Catalan', ctranslate._get_sentence_tokenizer_source_language("cat-eng"))
         self.assertEquals('Catalan', ctranslate._get_sentence_tokenizer_source_language("oci-eng"))
         self.assertEquals('Danish', ctranslate._get_sentence_tokenizer_source_language("swe-eng"))
+        self.assertEquals('Generic', ctranslate._get_sentence_tokenizer_source_language("xxx-xxx"))
 
 if __name__ == '__main__':
     unittest.main()

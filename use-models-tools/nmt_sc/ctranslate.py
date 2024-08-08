@@ -111,7 +111,11 @@ class CTranslate():
                   "oc": "Catalan", ## No Occitan support, Catalan rules probably the best for now
                   "sw": "Danish" ## Our best option today
                   }
-        return choices[lang]
+
+        if lang in choices:
+            return choices[lang]
+        else:
+            return "Generic"
 
     def _get_tokenizer_file(self, model_path, model_name, index):
         lang = re.match(self.LANGUAGE_MATCH, model_name).groups()[index]
