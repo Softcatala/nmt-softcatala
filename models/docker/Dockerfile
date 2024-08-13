@@ -13,6 +13,9 @@ RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 ENV FILE cat-eng-2023-10-29.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
+ENV FILE cat-eus-2024-08-12.zip
+RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
+
 ENV FILE cat-fra-2022-11-14.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
@@ -41,6 +44,9 @@ ENV FILE deu-cat-2022-11-14.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
 ENV FILE eng-cat-2023-10-30.zip
+RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
+
+ENV FILE eus-cat-2024-08-09.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
 ENV FILE fra-cat-2022-11-09.zip
