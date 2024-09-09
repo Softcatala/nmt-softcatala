@@ -16,13 +16,13 @@ RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 ENV FILE cat-eus-2024-08-12.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
-ENV FILE cat-fra-2022-11-14.zip
+ENV FILE cat-fra-2024-08-30.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
-ENV FILE cat-glg-2022-11-21.zip
+ENV FILE cat-glg-2024-09-04.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
-ENV FILE cat-ita-2022-11-15.zip
+ENV FILE cat-ita-2024-08-30.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
 ENV FILE cat-jpn-2023-02-18.zip
@@ -49,13 +49,13 @@ RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 ENV FILE eus-cat-2024-08-09.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
-ENV FILE fra-cat-2022-11-09.zip
+ENV FILE fra-cat-2024-08-29.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
-ENV FILE glg-cat-2022-11-17.zip
+ENV FILE glg-cat-2024-09-03.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
-ENV FILE ita-cat-2022-11-11.zip
+ENV FILE ita-cat-2024-08-29.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
 ENV FILE jpn-cat-2023-02-17.zip
