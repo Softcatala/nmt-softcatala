@@ -24,10 +24,8 @@ import polib
 from shutil import copyfile
 import os
 from optparse import OptionParser
-import re
 import logging
 from .ctranslate import CTranslate
-import pyonmttok
 
 def init_logging(del_logs):
     logfile = 'model-to-po.log'
@@ -99,6 +97,15 @@ def read_parameters():
     return options.model_name, options.po_file, options.translated_file,\
            options.models_path
 
+def _translate(openNMT, src_org):
+    src = _clean_string(src_org)
+    tgt = openNMT.translate_parallel(src)
+    # Models do not return \n, add it the translated sentece to save the postediting
+    if src_org.endswith("\n") and not tgt.endswith("\n"):
+        tgt += "\n"
+
+    return tgt
+
 def main():
 
     print("Applies a OpenNMT model to translate a PO file")
@@ -127,16 +134,12 @@ def main():
 
         try:
             if len(entry.msgid_plural) > 0:
-                src = _clean_string(entry.msgid)
-                src_plural = _clean_string(entry.msgid_plural)
-
-                tgt = openNMT.translate_parallel(src)
-                tgt_plural = openNMT.translate_parallel(src_plural)
+                tgt = _translate(openNMT, entry.msgid)
+                tgt_plural = _translate(openNMT, entry.msgid_plural)
                 entry.msgstr_plural[0] = tgt
                 entry.msgstr_plural[1] = tgt_plural
             else:
-                src = _clean_string(entry.msgid)
-                tgt = openNMT.translate_parallel(src)
+                tgt = _translate(openNMT, entry.msgid)
                 entry.msgstr = tgt
 
             translated = translated + 1
@@ -148,7 +151,7 @@ def main():
         
         except Exception as e:
             logging.error(str(e))
-            logging.error("Processing: {0}".format(src))
+            logging.error("Processing: {0}".format(entry.msgid))
             errors = errors + 1
 
     po_file.save(target_filename)
