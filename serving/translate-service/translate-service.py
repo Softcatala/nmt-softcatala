@@ -145,8 +145,11 @@ def apertium_translate_process(values):
 
     if languages not in openNMTs:
         result = {}
-        result['error'] = "No podem traduir en aquest parell de llengües"
-        return json_answer(result, 404)
+        result['status'] = "error"
+        result['code'] = 400
+        result['message'] = "Bad Request"
+        result['explanation'] = "No podem traduir en aquest parell de llengües"
+        return json_answer(result, 400)
     
     openNMT = openNMTs[languages]
     translated = openNMT.translate_parallel(text)
@@ -217,16 +220,25 @@ def upload_file():
     model_name = request.values['model_name']
     
     if model_name not in openNMTs:
-        result = {"error": "No podem traduir en aquest parell de llengües"}
-        return json_answer(result, 404)
+        result['status'] = "error"
+        result['code'] = 400
+        result['message'] = "Bad Request"
+        result['explanation'] = "No podem traduir en aquest parell de llengües"
+        return json_answer(result, 400)
 
     if file == "" or file.filename == "":
-        result = {"error": "No s'ha especificat el fitxer"}
-        return json_answer(result, 404)
+        result['status'] = "error"
+        result['code'] = 400
+        result['message'] = "Bad Request"
+        result['explanation'] = "No s'ha especificat el fitxer"
+        return json_answer(result, 400)
 
     if email == "":
-        result = {"error": "No s'ha especificat el correu"}
-        return json_answer(result, 404)
+        result['status'] = "error"
+        result['code'] = 400
+        result['message'] = "Bad Request"
+        result['explanation'] = "No s'ha especificat el correu"
+        return json_answer(result, 400)
 
     if file and _allowed_file(file.filename):
         filename = uuid.uuid4().hex
