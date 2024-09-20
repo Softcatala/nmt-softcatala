@@ -220,6 +220,7 @@ def upload_file():
     model_name = request.values['model_name']
     
     if model_name not in openNMTs:
+        result = {}
         result['status'] = "error"
         result['code'] = 400
         result['message'] = "Bad Request"
@@ -227,6 +228,7 @@ def upload_file():
         return json_answer(result, 400)
 
     if file == "" or file.filename == "":
+        result = {}
         result['status'] = "error"
         result['code'] = 400
         result['message'] = "Bad Request"
@@ -234,6 +236,7 @@ def upload_file():
         return json_answer(result, 400)
 
     if email == "":
+        result = {}
         result['status'] = "error"
         result['code'] = 400
         result['message'] = "Bad Request"
