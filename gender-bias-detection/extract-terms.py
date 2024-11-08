@@ -20,9 +20,6 @@
 
 def get_plural(word):
 
-    if word == 'someone':
-        return None
-
     last = word[-1:]
     if last == 's' or last == 'x' or last == 'z' or last == 'ss' or last == 'sh' or last == 'ch':
         return word + "es"

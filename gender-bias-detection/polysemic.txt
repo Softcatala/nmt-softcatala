@@ -7,3 +7,4 @@ witness # to witness
 visitor # Does not have gender version
 mover # Uncommon
 guard # Does not have gender version
+someone # Can be gender neutral in target depending of the translation

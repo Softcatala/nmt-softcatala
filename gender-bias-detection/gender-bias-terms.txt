@@ -154,7 +154,6 @@ secretary
 secretaries
 sheriff
 sheriffs
-someone
 specialist
 specialists
 student
