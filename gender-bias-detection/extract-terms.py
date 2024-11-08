@@ -77,7 +77,7 @@ def main():
 
     counter = 0
     with open("gender-bias-terms.txt", "w+") as fp:
-        for term in terms:
+        for term in sorted(terms, key=str.lower):
             plural_term = get_plural(term)
             fp.write(f"{term}\n")   
             counter = counter + 1

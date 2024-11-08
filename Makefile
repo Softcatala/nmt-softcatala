@@ -28,6 +28,9 @@ docker-run-translate-service-test:
 docker-run-all-services:
 	docker-compose -f local.yml up;
 
+generate-bias-terms:
+	cd gender-bias-detection/ &&  python3 extract-terms.py
+
 test:
 	cd use-models-tools && python -m nose2
 	cd serving/translate-batch/ && python -m nose2
