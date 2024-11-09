@@ -7,10 +7,10 @@ WORKDIR models
 
 ENV URL https://www.softcatala.org/pub/softcatala/opennmt/models/2022-11-22
 
-ENV FILE cat-deu-2022-11-16.zip
+ENV FILE cat-deu-2024-10-06.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
-ENV FILE cat-eng-2023-10-29.zip
+ENV FILE cat-eng-2024-09-29.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
 ENV FILE cat-eus-2024-08-12.zip
@@ -25,7 +25,7 @@ RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 ENV FILE cat-ita-2024-08-30.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
-ENV FILE cat-jpn-2023-02-18.zip
+ENV FILE cat-jpn-2024-10-08.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
 ENV FILE cat-nld-2022-11-19.zip
@@ -37,13 +37,13 @@ RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 ENV FILE cat-por-2022-11-18.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
-ENV FILE cat-spa-2022-11-17.zip
+#ENV FILE cat-spa-2022-11-17.zip
+#RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
+
+ENV FILE deu-cat-2024-10-02.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
-ENV FILE deu-cat-2022-11-14.zip
-RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
-
-ENV FILE eng-cat-2023-10-30.zip
+ENV FILE eng-cat-2024-09-24.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
 ENV FILE eus-cat-2024-08-09.zip
@@ -58,7 +58,7 @@ RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 ENV FILE ita-cat-2024-08-29.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
-ENV FILE jpn-cat-2023-02-17.zip
+ENV FILE jpn-cat-2024-10-04.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
 ENV FILE nld-cat-2022-11-19.zip
@@ -70,8 +70,8 @@ RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 ENV FILE por-cat-2022-11-16.zip
 RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
-ENV FILE spa-cat-2022-11-16.zip
-RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
+#ENV FILE spa-cat-2022-11-16.zip
+#RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
 RUN rm *.zip
 
