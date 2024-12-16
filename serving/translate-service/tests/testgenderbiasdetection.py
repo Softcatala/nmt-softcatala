@@ -34,9 +34,8 @@ class TestGenderBiasDetection(unittest.TestCase):
         self.assertFalse(detector.has_bias())
 
     def _test_bias_true(self):
-        bias = GenderBiasDetection("You are an accountant", self.terms_file)
-        self.assertTrue(bias)
-
+        detector = GenderBiasDetection("You are an accountant", self.terms_file)
+        self.assertTrue(detector.has_bias())
 
 if __name__ == "__main__":
     unittest.main()
