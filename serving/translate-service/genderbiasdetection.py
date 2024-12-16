@@ -47,11 +47,9 @@ class GenderBiasDetection(object):
 
             word = word.lower()
             if word in self.terms and word not in self.words:
-                print(f"*** word: {word}")
                 self.words.add(word)
 
     def has_bias(self):
-        print(f"*** has bias: {self.words}")
         return len(self.words) > 0
 
     def get_words(self):
