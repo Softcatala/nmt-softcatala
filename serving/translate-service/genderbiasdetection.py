@@ -19,38 +19,34 @@
 # Boston, MA 02111-1307, USA.
 
 
+class GenderBiasTermsLoader:
+    _cached_terms = None
 
-def load_data():
-    with open("gender-bias-terms.txt") as fp:
-        while True:
-            term = fp.readline()
+    @classmethod
+    def load_terms(cls, file_path):
+        if cls._cached_terms is None:
+            with open(file_path, "r") as fp:
+                cls._cached_terms = {line.strip() for line in fp if line.strip()}
 
-            if not term:
-                break
+        return cls._cached_terms
 
-            term = term.replace("\n", "")
-            terms.add(term)
-
-    print("Loaded gender bias data")
-
-terms = set()
-load_data()
 
 class GenderBiasDetection(object):
 
-    def __init__(self, sentence):
+    def __init__(self, sentence, terms_file_path="gender-bias-terms.txt"):
+        self.terms = GenderBiasTermsLoader.load_terms(terms_file_path)
         self.words = set()
         self._compute(sentence)
 
     def _compute(self, sentence):
-        chars_to_remove = ['.', '!', '?', ',', ':']
+        chars_to_remove = [".", "!", "?", ",", ":"]
 
         for word in sentence.split():
             for char in chars_to_remove:
-                word = word.replace(char, '')
+                word = word.replace(char, "")
 
             word = word.lower()
-            if word in terms and word not in self.words:
+            if word in self.terms and word not in self.words:
                 self.words.add(word)
 
     def has_bias(self):
@@ -58,4 +54,3 @@ class GenderBiasDetection(object):
 
     def get_words(self):
         return self.words
-
