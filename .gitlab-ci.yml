@@ -10,8 +10,6 @@ stages:
   - test
   - models
   - translate-service
-  - translate-service-test
-  - translate-service-publish
   - translate-batch
   - use-models-tools
 
@@ -45,22 +43,28 @@ translate-service:
     - export IMAGE_NAME=$REPO_NAME:$CI_COMMIT_REF_NAME
     - export DOCKER_PATH=serving/translate-service/docker/Dockerfile
     - docker build --tag translate-service -f $DOCKER_PATH --tag $IMAGE_NAME --tag $REPO_NAME:$CI_COMMIT_SHA .
+  needs:
+    - models
 
 translate-service-test:
-  stage: translate-service-test
+  stage: translate-service
   script:
     - export IMAGE_NAME=translate-service-test
     - export DOCKER_PATH=serving/translate-service/docker/Dockerfile-test
     - docker build -f $DOCKER_PATH --tag $IMAGE_NAME .
     - docker run -t $IMAGE_NAME
+  needs:
+    - translate-service
 
 translate-service-publish:
-  stage: translate-service-publish
+  stage: translate-service
   script:
     - export REPO_NAME=$CI_REGISTRY_IMAGE/translate-service
     - export IMAGE_NAME=$REPO_NAME:$CI_COMMIT_REF_NAME
     - docker push $REPO_NAME:$CI_COMMIT_SHA
     - docker push $IMAGE_NAME
+  needs:
+    - translate-service-test
 
 translate-batch:
   stage: translate-batch
@@ -71,6 +75,8 @@ translate-batch:
     - docker build -f $DOCKER_PATH --tag $IMAGE_NAME --tag $REPO_NAME:$CI_COMMIT_SHA .
     - docker push $REPO_NAME:$CI_COMMIT_SHA
     - docker push $IMAGE_NAME
+  needs:
+    - models
 
 use-models-tools:
   stage: use-models-tools
@@ -81,3 +87,5 @@ use-models-tools:
     - docker build -f $DOCKER_PATH --tag latest --tag $IMAGE_NAME --tag $REPO_NAME:$CI_COMMIT_SHA .
     - docker push $REPO_NAME:$CI_COMMIT_SHA
     - docker push $IMAGE_NAME
+  needs:
+    - models
