@@ -113,7 +113,7 @@ def _convert_apertium_languages_aliases_to_iso639_3(langpair):
     return languages
 
 def _get_bias_message_if_needed(languages, text, result):
-    bias_detector = GenderBiasDetectionFactory.get(languages='eng-cat')
+    bias_detector = GenderBiasDetectionFactory.get(languages=languages)
     if bias_detector:
         bias_words = bias_detector.get_words(text)
         if len(bias_words) > 0:

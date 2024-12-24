@@ -20,8 +20,17 @@
 import unittest
 import os
 import datetime
-from genderbiasdetection import GenderBiasDetection
+from genderbiasdetection import GenderBiasDetection, GenderBiasDetectionFactory
 
+class TestGenderBiasDetectionFactory(unittest.TestCase):
+
+    def test_eng_cat(self):
+        detector = GenderBiasDetectionFactory.get("eng-cat")
+        self.assertEquals(GenderBiasDetection, type(detector))
+
+    def test_none(self):
+        detector = GenderBiasDetectionFactory.get("xxx-xxx")
+        self.assertEquals(None, detector)
 
 class TestGenderBiasDetection(unittest.TestCase):
 

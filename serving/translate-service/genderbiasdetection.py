@@ -18,7 +18,8 @@
 # Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA 02111-1307, USA.
 
-
+import re
+import string
 
 class GenderBiasTermsLoader:
     _cached_terms = None
@@ -61,3 +62,101 @@ class GenderBiasDetection(object):
     def get_words(self, sentence):
         words = self._compute(sentence)
         return words
+
+class GenderBiasDetectionBasque(object):
+
+    class TrieNode:
+        def __init__(self):
+            self.children = {}
+            self.label = None
+
+    class Trie:
+        def __init__(self):
+            self.dict = {}
+
+        def insert(self, word, label):
+            node = self.root
+            for char in word:
+                if char not in node.children:
+                    node.children[char] = self.TrieNode()
+                node = node.children[char]
+            node.label = label
+
+        def has_prefix(self, word):
+            # Careful, it just checks the first prefix.
+            # Perhaps it is not a good idea : do that later
+            node = self.root
+            prefix = ""
+            for char in word:
+                if char in node.children:
+                    node = node.children[char]
+                    prefix = prefix + char
+                    if node.label:
+                        return prefix, node.label
+                else:
+                    break
+            return False
+
+
+    def load_data(prefixlist):
+        with open("gender-bias-terms.tsv", "r") as fp:
+            cnt = 0
+            for line in fp:
+                word, label = line.strip().split("\t")
+                prefixlist.insert(word, label)
+                cnt += 1
+
+            print(f"load_data. Size: {cnt}")
+
+    #  read regular expressions in a dictionary
+    #  and compile them
+    def load_regexes(suffixlist):
+        with open("regex.tsv", "r") as fp:
+            cnt = 0
+            for line in fp:
+                try:
+                    label, regex = line.strip().split("\t")
+                except Exception as error:
+                    print("Error reading suffix regex line starting " + line[:30] + "...")
+                    exit()
+                print(label)
+                try:
+                    suffixlist[label] = re.compile(
+                        regex
+                    )  # we will compile later for efficiency
+    #                print(regex)
+                    cnt += 1
+                except Exception as error:
+                    print("Found an error in the regex for suffix " + label + ":")
+                    print(error)
+
+            print(f"load_regexes: {cnt}")
+
+
+    def __init__(self, sentence):
+        self.words = list()
+        self._compute(sentence)
+
+        self.prefixlist = self.Trie()
+        self.suffixlist = dict()
+        self.load_data(self.prefixlist)
+        self.load_regexes(self.suffixlist)
+
+
+    def _compute(self, sentence):
+        # remove all punctuation using the string library
+        translator = str.maketrans("", "", string.punctuation)
+        for word in sentence.split():
+            word = word.translate(translator).lower()
+            result = self.prefixlist.has_prefix(word)
+            if result and word not in self.words:
+                prefix, label = result
+                suffix = word[len(prefix) :]  # get suffix
+                if self.suffixlist[label].fullmatch(suffix):
+                    self.words.append(word)
+
+    def has_bias(self):
+        return len(self.words) > 0
+
+    def get_words(self):
+        return self.words
