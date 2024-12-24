@@ -30,16 +30,16 @@ class TestGenderBiasDetection(unittest.TestCase):
         self.terms_file = os.path.join(dir, "terms.txt")
 
     def test_bias_false(self):
-        detector = GenderBiasDetection("How are you today?", self.terms_file)
-        self.assertFalse(detector.has_bias())
+        detector = GenderBiasDetection(self.terms_file)
+        self.assertEqual(0, len(detector.get_words("How are you today?")))
 
     def test_bias_true(self):
-        detector = GenderBiasDetection("You are an accountant", self.terms_file)
-        self.assertTrue(detector.has_bias())
+        detector = GenderBiasDetection(self.terms_file)
+        self.assertEqual(1, len(detector.get_words("You are an accountant")))
 
     def test_bias_words(self):
-        bias = GenderBiasDetection("You are an administrator or an accountant", self.terms_file)
-        self.assertEqual({'accountant', 'administrator'}, bias.get_words())
+        bias = GenderBiasDetection(self.terms_file)
+        self.assertEqual({'accountant', 'administrator'}, bias.get_words("You are an administrator or an accountant"))
 
 if __name__ == "__main__":
     unittest.main()

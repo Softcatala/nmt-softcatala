@@ -31,7 +31,7 @@ import uuid
 import logging
 import logging.handlers
 import psutil
-from genderbiasdetection import GenderBiasDetection
+from genderbiasdetection import GenderBiasDetectionFactory
 
 app = Flask(__name__)
 CORS(app)
@@ -113,11 +113,11 @@ def _convert_apertium_languages_aliases_to_iso639_3(langpair):
     return languages
 
 def _get_bias_message_if_needed(languages, text, result):
-    check_bias = languages == 'eng-cat'
-    if check_bias:
-        bias = GenderBiasDetection(text)
-        if bias.has_bias():
-            words = ', '.join(bias.get_words())
+    bias_detector = GenderBiasDetectionFactory.get(languages='eng-cat')
+    if bias_detector:
+        bias_words = bias_detector.get_words(text)
+        if len(bias_words) > 0:
+            words = ', '.join(bias_words)
             msg = f'Atenció: tingueu present que el text original en anglès conté professions sense marca de gènere, '
             msg += f'com ara «{words}». Adapteu-ne la traducció si és necessari.'
             result['message'] = msg

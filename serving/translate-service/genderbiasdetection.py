@@ -19,6 +19,7 @@
 # Boston, MA 02111-1307, USA.
 
 
+
 class GenderBiasTermsLoader:
     _cached_terms = None
 
@@ -30,15 +31,21 @@ class GenderBiasTermsLoader:
 
         return cls._cached_terms
 
+class GenderBiasDetectionFactory:
+    @staticmethod
+    def get(languages):
+        if languages == 'eng-cat':
+            return GenderBiasDetection()
+
+        return None
 
 class GenderBiasDetection(object):
 
-    def __init__(self, sentence, terms_file_path="gender-bias-terms.txt"):
+    def __init__(self, terms_file_path="gender-bias-terms.txt"):
         self.terms = GenderBiasTermsLoader.load_terms(terms_file_path)
-        self.words = set()
-        self._compute(sentence)
 
     def _compute(self, sentence):
+        words = set()
         chars_to_remove = [".", "!", "?", ",", ":"]
 
         for word in sentence.split():
@@ -46,11 +53,11 @@ class GenderBiasDetection(object):
                 word = word.replace(char, "")
 
             word = word.lower()
-            if word in self.terms and word not in self.words:
-                self.words.add(word)
+            if word in self.terms and word not in words:
+                words.add(word)
 
-    def has_bias(self):
-        return len(self.words) > 0
+        return words
 
-    def get_words(self):
-        return self.words
+    def get_words(self, sentence):
+        words = self._compute(sentence)
+        return words
