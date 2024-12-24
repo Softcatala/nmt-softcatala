@@ -47,7 +47,7 @@ class TestGenderBiasDetectionBasque(unittest.TestCase):
     def setUp(self):
         dir = os.path.dirname(os.path.realpath(__file__))
         self.terms_file = os.path.join(dir, "eus-gender-bias-terms.tsv")
-        self.regexs = os.path.join(dir, "eus-regex.tsv")
+        self.regexs = os.path.join(dir, "eus-gender-regex.tsv")
 
     def test_bias_false(self):
         detector = GenderBiasDetectionBasque(terms=self.terms_file, regexs=self.regexs)
