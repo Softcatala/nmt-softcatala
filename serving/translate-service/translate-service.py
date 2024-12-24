@@ -113,14 +113,17 @@ def _convert_apertium_languages_aliases_to_iso639_3(langpair):
     return languages
 
 def _get_bias_message_if_needed(languages, text, result):
-    bias_detector = GenderBiasDetectionFactory.get(languages=languages)
-    if bias_detector:
-        bias_words = bias_detector.get_words(text)
-        if len(bias_words) > 0:
-            words = ', '.join(bias_words)
-            msg = f'Atenció: tingueu present que el text original en anglès conté professions sense marca de gènere, '
-            msg += f'com ara «{words}». Adapteu-ne la traducció si és necessari.'
-            result['message'] = msg
+    try:
+        bias_detector = GenderBiasDetectionFactory.get(languages=languages)
+        if bias_detector:
+            bias_words = bias_detector.get_words(text)
+            if len(bias_words) > 0:
+                words = ', '.join(bias_words)
+                msg = 'Atenció: tingueu present que el text original en anglès conté professions sense marca de gènere, '
+                msg += f'com ara «{words}». Adapteu-ne la traducció si és necessari.'
+                result['message'] = msg
+    except Exception as e:
+        logging.error(f"_get_bias_message_if_needed. Error: {e}")
 
     return result
 
