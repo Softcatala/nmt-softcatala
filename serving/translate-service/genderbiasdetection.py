@@ -68,14 +68,15 @@ class GenderBiasDetection(object):
 
 class GenderBiasDetectionBasque(object):
 
-    class TrieNode:
-        def __init__(self):
-            self.children = {}
-            self.label = None
-
     class Trie:
+
+       class TrieNode:
+            def __init__(self):
+                self.children = {}
+
         def __init__(self):
             self.dict = {}
+            self.root = self.TrieNode()
 
         def insert(self, word, label):
             node = self.root
@@ -113,7 +114,7 @@ class GenderBiasDetectionBasque(object):
 
     #  read regular expressions in a dictionary
     #  and compile them
-    def load_regexes(suffixlist):
+    def load_regexes(self, suffixlist):
         with open("eus-regex.tsv", "r") as fp:
             cnt = 0
             for line in fp:
