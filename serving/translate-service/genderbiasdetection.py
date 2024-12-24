@@ -150,7 +150,7 @@ class GenderBiasDetectionBasque(object):
 
     def _compute(self, sentence):
         # remove all punctuation using the string library        
-        words = set()
+        words = list()
         translator = str.maketrans("", "", string.punctuation)
         for word in sentence.split():
             word = word.translate(translator).lower()
@@ -159,7 +159,7 @@ class GenderBiasDetectionBasque(object):
                 prefix, label = result
                 suffix = word[len(prefix) :]  # get suffix
                 if self.suffixlist[label].fullmatch(suffix):
-                    words.append(word)    
+                    words.append(word)
 
         return words
 
