@@ -61,13 +61,10 @@ class GenderBiasDetection(GenderBiasBase):
 
     def _compute(self, sentence):
         words = set()
-        chars_to_remove = [".", "!", "?", ",", ":"]
 
+        translator = str.maketrans("", "", string.punctuation)
         for word in sentence.split():
-            for char in chars_to_remove:
-                word = word.replace(char, "")
-
-            word = word.lower()
+            word = word.translate(translator).lower()
             if word in self.terms and word not in words:
                 words.add(word)
 
