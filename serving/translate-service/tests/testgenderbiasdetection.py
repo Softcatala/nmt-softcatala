@@ -26,15 +26,26 @@ class TestGenderBiasDetectionFactory(unittest.TestCase):
 
     def test_eng_cat(self):
         detector = GenderBiasDetectionFactory.get("eng-cat")
-        self.assertEquals(GenderBiasDetection, type(detector))
+        self.assertEqual(GenderBiasDetection, type(detector))
 
     def test_eus_cat(self):
         detector = GenderBiasDetectionFactory.get("eus-cat")
-        self.assertEquals(GenderBiasDetectionBasque, type(detector))
+        self.assertEqual(GenderBiasDetectionBasque, type(detector))
 
     def test_none(self):
         detector = GenderBiasDetectionFactory.get("xxx-xxx")
-        self.assertEquals(None, detector)
+        self.assertEqual(None, detector)
+
+class TestGenderBiasDetectionBasque(unittest.TestCase):
+
+    def setUp(self):
+        dir = os.path.dirname(os.path.realpath(__file__))
+        self.terms_file = os.path.join(dir, "eus-gender-bias-terms.tsv")
+        self.regexs = os.path.join(dir, "eus-regex.tsv")
+
+    def test_bias_false(self):
+        detector = GenderBiasDetectionBasque(terms=self.terms_file, regexs=self.regexs)
+        self.assertEqual(0, len(detector.get_words("Kaixo")))
 
 class TestGenderBiasDetection(unittest.TestCase):
 
