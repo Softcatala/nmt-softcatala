@@ -40,7 +40,7 @@ class TestGenderBiasDetection(unittest.TestCase):
 
     def setUp(self):
         dir = os.path.dirname(os.path.realpath(__file__))
-        self.terms_file = os.path.join(dir, "terms.txt")
+        self.terms_file = os.path.join(dir, "eng-terms.txt")
 
     def test_bias_false(self):
         detector = GenderBiasDetection(self.terms_file)
