@@ -102,7 +102,7 @@ class GenderBiasDetectionBasque(object):
                     break
             return False
 
-    def __init__(self, terms = "eus-gender-bias-terms.tsv", regexs = "eus-regex.tsv"):
+    def __init__(self, terms = "eus-gender-bias-terms.tsv", regexs = "eus-gender-regex.tsv"):
         self.words = list()
         self.terms = terms
         self.regexs = regexs
