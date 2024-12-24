@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 #
-# Copyright (c) 2020 Jordi Mas i Hernandez <jmas@softcatala.org>
+# Copyright (c) 2020-2024 Jordi Mas i Hernandez <jmas@softcatala.org>
+#           and 2024 Mikel L. Forcada <mlf@prompsit.com>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
