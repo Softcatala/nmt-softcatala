@@ -20,6 +20,7 @@
 
 import re
 import string
+from abc import ABC, abstractmethod
 
 class GenderBiasTermsLoader:
     _cached_terms = None
@@ -43,7 +44,16 @@ class GenderBiasDetectionFactory:
 
         return None
 
-class GenderBiasDetection(object):
+class GenderBiasBase():
+    def get_words(self, sentence):
+        words = self._compute(sentence)
+        return words
+
+    @abstractmethod
+    def _compute(self, sentence):
+        pass
+
+class GenderBiasDetection(GenderBiasBase):
 
     def __init__(self, terms_file_path="eng-gender-bias-terms.txt"):
         self.terms = GenderBiasTermsLoader.load_terms(terms_file_path)
@@ -62,11 +72,8 @@ class GenderBiasDetection(object):
 
         return words
 
-    def get_words(self, sentence):
-        words = self._compute(sentence)
-        return words
 
-class GenderBiasDetectionBasque(object):
+class GenderBiasDetectionBasque(GenderBiasBase):
 
     class Trie:
 
@@ -131,12 +138,10 @@ class GenderBiasDetectionBasque(object):
                 except Exception as error:
                     print("Error reading suffix regex line starting " + line[:30] + "...")
                     exit()
-                print(label)
                 try:
                     suffixlist[label] = re.compile(
                         regex
                     )  # we will compile later for efficiency
-    #                print(regex)
                     cnt += 1
                 except Exception as error:
                     print("Found an error in the regex for suffix " + label + ":")
@@ -155,8 +160,4 @@ class GenderBiasDetectionBasque(object):
                 if self.suffixlist[label].fullmatch(suffix):
                     words.append(word)
 
-        return words
-
-    def get_words(self, sentence):
-        words = self._compute(sentence)
         return words
