@@ -45,7 +45,7 @@ class GenderBiasDetectionFactory:
 
 class GenderBiasDetection(object):
 
-    def __init__(self, terms_file_path="en-gender-bias-terms.txt"):
+    def __init__(self, terms_file_path="eng-gender-bias-terms.txt"):
         self.terms = GenderBiasTermsLoader.load_terms(terms_file_path)
 
     def _compute(self, sentence):
@@ -102,7 +102,7 @@ class GenderBiasDetectionBasque(object):
 
 
     def load_data(self, prefixlist):
-        with open("gender-bias-terms.tsv", "r") as fp:
+        with open("eus-gender-bias-terms.tsv", "r") as fp:
             cnt = 0
             for line in fp:
                 word, label = line.strip().split("\t")
@@ -114,7 +114,7 @@ class GenderBiasDetectionBasque(object):
     #  read regular expressions in a dictionary
     #  and compile them
     def load_regexes(suffixlist):
-        with open("regex.tsv", "r") as fp:
+        with open("eus-regex.tsv", "r") as fp:
             cnt = 0
             for line in fp:
                 try:
