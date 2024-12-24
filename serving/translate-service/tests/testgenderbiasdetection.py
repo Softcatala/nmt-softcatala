@@ -97,13 +97,16 @@ class TestGenderBiasDetection(unittest.TestCase):
         detector = GenderBiasDetection(self.terms_file)
         self.assertEqual(1, len(detector.get_words("You are an accountant")))
 
+    def test_bias_true_punctuation(self):
+        detector = GenderBiasDetection(self.terms_file)
+        self.assertEqual(1, len(detector.get_words("You are an accountant!")))
+
     def test_bias_words(self):
         bias = GenderBiasDetection(self.terms_file)
         self.assertEqual(
             {"accountant", "administrator"},
-            bias.get_words("You are an administrator or an accountant"),
+            bias.get_words("You are an administrator or an accountant."),
         )
-
 
 if __name__ == "__main__":
     unittest.main()
