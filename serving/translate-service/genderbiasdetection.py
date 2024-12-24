@@ -38,11 +38,14 @@ class GenderBiasDetectionFactory:
         if languages == 'eng-cat':
             return GenderBiasDetection()
 
+        if languages == 'eus-cat':
+            return GenderBiasDetectionBasque()
+
         return None
 
 class GenderBiasDetection(object):
 
-    def __init__(self, terms_file_path="gender-bias-terms.txt"):
+    def __init__(self, terms_file_path="en-gender-bias-terms.txt"):
         self.terms = GenderBiasTermsLoader.load_terms(terms_file_path)
 
     def _compute(self, sentence):
@@ -98,7 +101,7 @@ class GenderBiasDetectionBasque(object):
             return False
 
 
-    def load_data(prefixlist):
+    def load_data(self, prefixlist):
         with open("gender-bias-terms.tsv", "r") as fp:
             cnt = 0
             for line in fp:
@@ -133,30 +136,30 @@ class GenderBiasDetectionBasque(object):
             print(f"load_regexes: {cnt}")
 
 
-    def __init__(self, sentence):
+    def __init__(self):
         self.words = list()
-        self._compute(sentence)
 
         self.prefixlist = self.Trie()
         self.suffixlist = dict()
         self.load_data(self.prefixlist)
         self.load_regexes(self.suffixlist)
 
-
     def _compute(self, sentence):
-        # remove all punctuation using the string library
+        # remove all punctuation using the string library        
+        words = set()
         translator = str.maketrans("", "", string.punctuation)
         for word in sentence.split():
             word = word.translate(translator).lower()
             result = self.prefixlist.has_prefix(word)
-            if result and word not in self.words:
+            if result and word not in words:
                 prefix, label = result
                 suffix = word[len(prefix) :]  # get suffix
                 if self.suffixlist[label].fullmatch(suffix):
-                    self.words.append(word)
+                    words.append(word)    
 
-    def has_bias(self):
-        return len(self.words) > 0
+        return words
 
-    def get_words(self):
-        return self.words
+    def get_words(self, sentence):
+        words = self._compute(sentence)
+        return words
+
