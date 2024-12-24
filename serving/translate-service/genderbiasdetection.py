@@ -70,7 +70,7 @@ class GenderBiasDetectionBasque(object):
 
     class Trie:
 
-       class TrieNode:
+        class TrieNode:
             def __init__(self):
                 self.children = {}
 
@@ -101,9 +101,18 @@ class GenderBiasDetectionBasque(object):
                     break
             return False
 
+    def __init__(self, terms = "eus-gender-bias-terms.tsv", regexs = "eus-regex.tsv"):
+        self.words = list()
+        self.terms = terms
+        self.regexs = regexs
+
+        self.prefixlist = self.Trie()
+        self.suffixlist = dict()
+        self.load_data(self.prefixlist)
+        self.load_regexes(self.suffixlist)
 
     def load_data(self, prefixlist):
-        with open("eus-gender-bias-terms.tsv", "r") as fp:
+        with open(self.terms, "r") as fp:
             cnt = 0
             for line in fp:
                 word, label = line.strip().split("\t")
@@ -115,7 +124,7 @@ class GenderBiasDetectionBasque(object):
     #  read regular expressions in a dictionary
     #  and compile them
     def load_regexes(self, suffixlist):
-        with open("eus-regex.tsv", "r") as fp:
+        with open(self.regexs, "r") as fp:
             cnt = 0
             for line in fp:
                 try:
@@ -137,13 +146,6 @@ class GenderBiasDetectionBasque(object):
             print(f"load_regexes: {cnt}")
 
 
-    def __init__(self):
-        self.words = list()
-
-        self.prefixlist = self.Trie()
-        self.suffixlist = dict()
-        self.load_data(self.prefixlist)
-        self.load_regexes(self.suffixlist)
 
     def _compute(self, sentence):
         # remove all punctuation using the string library        
