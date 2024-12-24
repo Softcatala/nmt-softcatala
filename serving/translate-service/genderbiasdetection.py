@@ -120,8 +120,6 @@ class GenderBiasDetectionBasque(object):
                 prefixlist.insert(word, label)
                 cnt += 1
 
-            print(f"load_data. Size: {cnt}")
-
     #  read regular expressions in a dictionary
     #  and compile them
     def load_regexes(self, suffixlist):
@@ -143,11 +141,7 @@ class GenderBiasDetectionBasque(object):
                 except Exception as error:
                     print("Found an error in the regex for suffix " + label + ":")
                     print(error)
-
-            print(f"load_regexes: {cnt}")
-
-
-
+            
     def _compute(self, sentence):
         # remove all punctuation using the string library        
         words = list()
@@ -166,4 +160,3 @@ class GenderBiasDetectionBasque(object):
     def get_words(self, sentence):
         words = self._compute(sentence)
         return words
-
