@@ -7,7 +7,7 @@ services:
   - docker:dind
 
 stages:
-  - test
+  - tests
   - models
   - translate-service
   - translate-batch
@@ -16,15 +16,15 @@ stages:
 before_script:
   - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
 
-test:
+tests:
   image: python:3.11.0-slim-bullseye
   before_script:
     - apt-get update && apt-get install make gcc git -y
     - pip install nose2
-  stage: test
+  stage: tests
   script:
     - pip install -r use-models-tools/requirements.txt
-    - make test
+    - make run-tests
 
 models:
   stage: models
