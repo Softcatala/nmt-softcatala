@@ -1,4 +1,4 @@
-build-all: docker-build-models docker-build-use-models-tools docker-build-translate-service docker-build-translate-service-test docker-build-translate-batch
+mabuild-all: docker-build-models docker-build-use-models-tools docker-build-translate-service docker-build-translate-service-test docker-build-translate-batch run-tests
 
 docker-build-models:
 	docker build -t nmt-models . -f models/docker/Dockerfile;
@@ -31,7 +31,7 @@ docker-run-all-services:
 generate-bias-terms:
 	cd gender-bias-detection/ &&  python3 extract-terms.py
 
-test:
+run-tests:
 	cd use-models-tools && python -m nose2
 	cd serving/translate-batch/ && python -m nose2
 	cd serving/translate-service/ && python -m nose2
