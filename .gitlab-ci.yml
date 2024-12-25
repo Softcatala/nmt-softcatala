@@ -32,8 +32,7 @@ models:
     - export REPO_NAME=$CI_REGISTRY_IMAGE/nmt-models
     - export IMAGE_NAME=$REPO_NAME:$CI_COMMIT_REF_NAME
     - export DOCKER_PATH=models/docker/Dockerfile
-    - docker build --tag nmt-models --tag $IMAGE_NAME --tag $REPO_NAME:$CI_COMMIT_SHA . -f $DOCKER_PATH
-    - docker push $REPO_NAME:$CI_COMMIT_SHA
+    - docker build --tag nmt-models --tag $IMAGE_NAME . -f $DOCKER_PATH
     - docker push $IMAGE_NAME   
 
 translate-service:
@@ -42,7 +41,7 @@ translate-service:
     - export REPO_NAME=$CI_REGISTRY_IMAGE/translate-service
     - export IMAGE_NAME=$REPO_NAME:$CI_COMMIT_REF_NAME
     - export DOCKER_PATH=serving/translate-service/docker/Dockerfile
-    - docker build --tag translate-service -f $DOCKER_PATH --tag $IMAGE_NAME --tag $REPO_NAME:$CI_COMMIT_SHA .
+    - docker build --tag translate-service -f $DOCKER_PATH --tag $IMAGE_NAME .
   needs:
     - models
 
@@ -61,7 +60,6 @@ translate-service-publish:
   script:
     - export REPO_NAME=$CI_REGISTRY_IMAGE/translate-service
     - export IMAGE_NAME=$REPO_NAME:$CI_COMMIT_REF_NAME
-    - docker push $REPO_NAME:$CI_COMMIT_SHA
     - docker push $IMAGE_NAME
   needs:
     - translate-service-test
@@ -72,8 +70,7 @@ translate-batch:
     - export REPO_NAME=$CI_REGISTRY_IMAGE/translate-batch
     - export IMAGE_NAME=$REPO_NAME:$CI_COMMIT_REF_NAME
     - export DOCKER_PATH=serving/translate-batch/docker/Dockerfile
-    - docker build -f $DOCKER_PATH --tag $IMAGE_NAME --tag $REPO_NAME:$CI_COMMIT_SHA .
-    - docker push $REPO_NAME:$CI_COMMIT_SHA
+    - docker build -f $DOCKER_PATH --tag $IMAGE_NAME .
     - docker push $IMAGE_NAME
   needs:
     - models
@@ -84,8 +81,7 @@ use-models-tools:
     - export REPO_NAME=$CI_REGISTRY_IMAGE/use-models-tools
     - export IMAGE_NAME=$REPO_NAME:$CI_COMMIT_REF_NAME
     - export DOCKER_PATH=use-models-tools/docker/Dockerfile
-    - docker build -f $DOCKER_PATH --tag latest --tag $IMAGE_NAME --tag $REPO_NAME:$CI_COMMIT_SHA .
-    - docker push $REPO_NAME:$CI_COMMIT_SHA
+    - docker build -f $DOCKER_PATH --tag latest --tag $IMAGE_NAME .
     - docker push $IMAGE_NAME
   needs:
     - models
