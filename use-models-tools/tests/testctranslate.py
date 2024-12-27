@@ -89,11 +89,11 @@ class TestCTranslate(unittest.TestCase):
     def test_languages(self):
         ctranslate = CTranslate("tests/data/", "cat-eng", translator = CTranslate2Mock())
 
-        self.assertEquals('English', ctranslate._get_sentence_tokenizer_source_language("eng-cat"))
-        self.assertEquals('Catalan', ctranslate._get_sentence_tokenizer_source_language("cat-eng"))
-        self.assertEquals('Catalan', ctranslate._get_sentence_tokenizer_source_language("oci-eng"))
-        self.assertEquals('Danish', ctranslate._get_sentence_tokenizer_source_language("swe-eng"))
-        self.assertEquals('Generic', ctranslate._get_sentence_tokenizer_source_language("xxx-xxx"))
+        self.assertEquals('English', ctranslate._get_sentence_tokenizer_language("eng-cat"))
+        self.assertEquals('Catalan', ctranslate._get_sentence_tokenizer_language("cat-eng"))
+        self.assertEquals('Catalan', ctranslate._get_sentence_tokenizer_language("oci-eng"))
+        self.assertEquals('Danish', ctranslate._get_sentence_tokenizer_language("swe-eng"))
+        self.assertEquals('Generic', ctranslate._get_sentence_tokenizer_language("xxx-xxx"))
 
 if __name__ == '__main__':
     unittest.main()
