@@ -37,27 +37,17 @@ class CTranslate():
     DEVICE = 'DEVICE'
     LANGUAGE_MATCH = "([a-z]{3})-([a-z]{3})"
     TOKENIZER_SUBDIR = "tokenizer"
-    TOKENIZER_FILE = "{0}_m.model"
+    TOKENIZER_FILE = "sp_m.model"
 
-    def __init__(self, models_path, model_name, tokenizer_source = None, tokenizer_target = None, translator = None):
+    def __init__(self, models_path, model_name, translator = None):
 
         self._init_read_env_vars()
 
         model_path = os.path.join(models_path, model_name)
+        tokenizer_path = os.path.join(model_path, self.TOKENIZER_SUBDIR, self.TOKENIZER_FILE)
 
-        if tokenizer_source:
-            self.tokenizer_source = tokenizer_target
-        else:
-            src_model_path = self.get_source_tokenizer_file(model_path, model_name)
-            self.tokenizer_source = pyonmttok.Tokenizer(mode="none", sp_model_path = src_model_path)
-
-        if tokenizer_target:
-            self.tokenizer_target = tokenizer_target
-        else:
-            tgt_model_path = self.get_target_tokenizer_file(model_path, model_name)
-            self.tokenizer_target = pyonmttok.Tokenizer(mode="none", sp_model_path = tgt_model_path)
-
-        self.tokenizer_source_language = self._get_sentence_tokenizer_source_language(model_name)
+        self.tokenizer = pyonmttok.Tokenizer(mode="none", sp_model_path = tokenizer_path)
+        self.tokenizer_language = self._get_sentence_tokenizer_language(model_name)
 
         print(f"device: {self.device}, inter_threads: {self.inter_threads}, intra_threads: {self.intra_threads}, beam_size {self.beam_size}, use_vmap {self.use_vmap}")
 
@@ -102,7 +92,7 @@ class CTranslate():
         with open(filename, "r") as th_description:
             return th_description.read().splitlines()
 
-    def _get_sentence_tokenizer_source_language(self, model_name):
+    def _get_sentence_tokenizer_language(self, model_name):
         lang = re.match(self.LANGUAGE_MATCH, model_name).groups()[0]
         lang = lang[:2]
 
@@ -116,24 +106,6 @@ class CTranslate():
             return choices[lang]
         else:
             return "Generic"
-
-    def _get_tokenizer_file(self, model_path, model_name, index):
-        lang = re.match(self.LANGUAGE_MATCH, model_name).groups()[index]
-        lang = lang[:2]
-        filename = self.TOKENIZER_FILE.format(lang)
-        path = os.path.join(model_path, self.TOKENIZER_SUBDIR, filename)
-
-        if os.path.isfile(path) is False:
-            filename = self.TOKENIZER_FILE.format("sp")
-            path = os.path.join(model_path, self.TOKENIZER_SUBDIR, filename)
-
-        return path
-
-    def get_source_tokenizer_file(self, model_path, model_name):
-        return self._get_tokenizer_file(model_path, model_name, 0)
-
-    def get_target_tokenizer_file(self, model_path, model_name):
-        return self._get_tokenizer_file(model_path, model_name, 1)
 
     def _normalize_input_string(self, result):
         result = unicodedata.normalize('NFC', result)
@@ -154,7 +126,7 @@ class CTranslate():
 
         # Split sentences
         tokenizer = TextTokenizer()
-        sentences, translate = tokenizer.tokenize(text, self.tokenizer_source_language)
+        sentences, translate = tokenizer.tokenize(text, self.tokenizer_language)
         input_batch = sentences
 
         num_sentences = len(sentences)
@@ -193,7 +165,7 @@ class CTranslate():
         num_sentences = len(input_batch)
         for pos in range(0, num_sentences):
             markers, text = preserve_markup.create_markers_in_string(input_batch[pos])
-            tokenized = self.tokenizer_source.tokenize(text)[0]
+            tokenized = self.tokenizer.tokenize(text)[0]
             batch_input_tokenized.append(tokenized)
             batch_input_markers.append(markers)
 
@@ -203,7 +175,7 @@ class CTranslate():
         batch_output = []
         for pos in range(0, num_sentences):
             tokenized = result[pos][0]['tokens']
-            translated = self.tokenizer_target.detokenize(tokenized)
+            translated = self.tokenizer.detokenize(tokenized)
             translated = preserve_markup.get_back_markup(translated, batch_input_markers[pos])
             batch_output.append(translated)
 
