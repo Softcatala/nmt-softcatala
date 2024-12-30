@@ -30,6 +30,7 @@ docker-run-all-services:
 
 generate-bias-terms:
 	cd gender-bias-detection/ &&  python3 extract-terms.py
+	cd gender-bias-detection/eus/ && awk -f gen-regexes.awk > regex.tsv
 
 run-tests:
 	cd use-models-tools && python -m nose2

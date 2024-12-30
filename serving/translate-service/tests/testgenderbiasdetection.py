@@ -20,26 +20,93 @@
 import unittest
 import os
 import datetime
-from genderbiasdetection import GenderBiasDetection
+from genderbiasdetection import (
+    GenderBiasDetection,
+    GenderBiasDetectionFactory,
+    GenderBiasDetectionBasque,
+)
+
+
+class TestGenderBiasDetectionFactory(unittest.TestCase):
+
+    def test_eng_cat(self):
+        detector = GenderBiasDetectionFactory.get("eng-cat")
+        self.assertEqual(GenderBiasDetection, type(detector))
+
+    def test_eus_cat(self):
+        detector = GenderBiasDetectionFactory.get("eus-cat")
+        self.assertEqual(GenderBiasDetectionBasque, type(detector))
+
+    def test_none(self):
+        detector = GenderBiasDetectionFactory.get("xxx-xxx")
+        self.assertEqual(None, detector)
+
+
+class TestGenderBiasDetectionBasque(unittest.TestCase):
+
+    def setUp(self):
+        dir = os.path.dirname(os.path.realpath(__file__))
+        self.terms_file = os.path.join(dir, "eus-gender-bias-terms.tsv")
+        self.regexs = os.path.join(dir, "eus-gender-regex.tsv")
+
+    def test_bias_false(self):
+        detector = GenderBiasDetectionBasque(terms=self.terms_file, regexs=self.regexs)
+        self.assertEqual(0, len(detector.get_words("Kaixo")))
+
+    def test_bias_false(self):
+
+        sentence = """
+            Eusko Jaurlaritza osatzen duten alderdiek —EAJk eta PSE-EEk— eta EH Bilduk ez dute akordiorik lortu Gasteizko gobernuaren 2025eko aurrekontu proiektuaren inguruan. Negoziazioan murgildurik egon dira gaur arte, baina koalizio abertzaleak ez du onartu Ogasun Sailak eskainitako azken proposamena, Bingen Zupiria Segurtasun sailburuak Euskadi Irratian iragarri duenez, eta, hortaz, gobernuak bukatutzat jo du koalizioarekin egin duen negoziazio prozesua. Gobernuaren iragarpenaren ondorioa da EAJk eta PSEk euren gehiengoa baliatuko dutela Eusko Legebiltzarrean, abenduaren 20ko osoko bilkuran, aurrekontuak euren kabuz onartzeko, oposizioko taldeen babesik gabe.
+
+            Lanbide arteko gutxieneko soldata baten sorreran eta etxebizitzarako bitarteko gehiagoren eskaeran kokatu dute negoziazioa, azken egunetan. Atzo gauean, Ogasun sailburu Noel D'Anjou bere azken eskaintza igorri zion EH Bilduri, eta bertan ez dira onartzen koalizioaren eskaera gehienak. Hau da, EH Bilduren zuzenketa gehienak baztertu egingo ditu Ogasun Sailak. Etxebizitzarako 90 milioi euroko bitartekoak eskatu ditu koalizio subiranistak, eta 16 besterik ez ditu eskaini Jaurlaritzak. Kopuru hori 100 milioira igotzeko aukera ere jasotzen du Ogasun Sailak, baina legealdi osoa kontuan hartuta, eta eskaera baldin badago. Izan ere, diru hori merkatu librera aterako diren etxebizitzak erosi eta babes ofizialeko gisa merkaturatzeko eskatu du EH Bilduk.
+
+            Gaurko aurrekontuen Batzordean, zuzenketa horiek eta gainontzeko taldeenak onartu ala baztertuko dituzte, eta, gaurko informazio horren arabera, EH Bilduren zuzenketa gehienak ez dituzte onartuko EAJk eta PSEk. Lanbide arteko gutxieneko soldataren eskaera ere atzera bota du Ogasun Sailak, argudiatuta ez dela gobernuaren eskumenen arteko edukia.
+
+            Madalen Iriarte Gipuzkoako Batzar Nagusietako EH Bilduren eledunak ohartarazi du «terminoak irauli» egiten ari direla, eta ezezkoa gobernuarena dela, bai eta aurrekontuen inguruko akordioa ez lortzearen «ardura» ere, eta ez EH Bildurena. «Gobernuak esan die ezetz EH Bilduren bi proposamenei». Erantsi du Jaurlaritzak negoziazioa eten egin dela iragartzeko moduak «politika zaharra» islatzen duela. Edonola ere, Iriartek ez du itxitzat jo negoziazioa eta gogoratu du EAJk eta PSEk aukera dutela gaurko batzordean EH Bilduren zuzenketak onartzeko.
+
+            Baserritarrenganako neurriak ez dira herritarrenganakoak bezain argiak.
+            """
+
+        detector = GenderBiasDetectionBasque(terms=self.terms_file, regexs=self.regexs)
+        self.assertEqual(
+            [
+                "sailburuak",
+                "bitarteko",
+                "sailburu",
+                "bitartekoak",
+                "ofizialeko",
+                "nagusietako",
+                "baserritarrenganako",
+                "herritarrenganakoak",
+            ],
+            detector.get_words(sentence),
+        )
 
 
 class TestGenderBiasDetection(unittest.TestCase):
 
     def setUp(self):
         dir = os.path.dirname(os.path.realpath(__file__))
-        self.terms_file = os.path.join(dir, "terms.txt")
+        self.terms_file = os.path.join(dir, "eng-terms.txt")
 
     def test_bias_false(self):
-        detector = GenderBiasDetection("How are you today?", self.terms_file)
-        self.assertFalse(detector.has_bias())
+        detector = GenderBiasDetection(self.terms_file)
+        self.assertEqual(0, len(detector.get_words("How are you today?")))
 
     def test_bias_true(self):
-        detector = GenderBiasDetection("You are an accountant", self.terms_file)
-        self.assertTrue(detector.has_bias())
+        detector = GenderBiasDetection(self.terms_file)
+        self.assertEqual(1, len(detector.get_words("You are an accountant")))
+
+    def test_bias_true_punctuation(self):
+        detector = GenderBiasDetection(self.terms_file)
+        self.assertEqual(1, len(detector.get_words("You are an accountant!")))
 
     def test_bias_words(self):
-        bias = GenderBiasDetection("You are an administrator or an accountant", self.terms_file)
-        self.assertEqual({'accountant', 'administrator'}, bias.get_words())
+        bias = GenderBiasDetection(self.terms_file)
+        self.assertEqual(
+            {"accountant", "administrator"},
+            bias.get_words("You are an administrator or an accountant."),
+        )
 
 if __name__ == "__main__":
     unittest.main()

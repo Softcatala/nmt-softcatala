@@ -2,7 +2,7 @@ FROM python:3.11.0-slim-bullseye as copied_files
 
 COPY serving/translate-service/*.py /srv/
 COPY serving/translate-service/docker/entry-point.sh /srv/
-COPY serving/translate-service/gender-bias-terms.txt /srv/
+COPY serving/translate-service/???-gender* /srv/
 
 FROM nmt-models as models
 
