@@ -128,8 +128,8 @@ def _get_bias_message_if_needed(languages, text, result):
                 source_language = languages[0:3]
                 language_name = get_language_name(source_language)
                 words = ', '.join(bias_words)
-                msg = f'Atenció: tingueu present que el text original en {language_name} conté professions sense marca de gènere, '
-                msg += f'com ara «{words}». Adapteu-ne la traducció si és necessari.'
+                msg = f'Atenció: tingueu present que el text original en {language_name} conté substantius que designen '
+                msg += f'persones sense marca de gènere, com ara «{words}». Adapteu-ne la traducció si és necessari.'
                 result['message'] = msg
     except Exception as e:
         logging.error(f"_get_bias_message_if_needed. Error: {e}")
