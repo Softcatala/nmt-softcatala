@@ -1,4 +1,4 @@
-mabuild-all: docker-build-models docker-build-use-models-tools docker-build-translate-service docker-build-translate-service-test docker-build-translate-batch run-tests
+build-all: docker-build-models docker-build-use-models-tools docker-build-translate-service docker-build-translate-service-test docker-build-translate-batch run-tests
 
 docker-build-models:
 	docker build -t nmt-models . -f models/docker/Dockerfile;
