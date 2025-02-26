@@ -1,3 +1,9 @@
+if ! command -v wrk &> /dev/null
+then
+    echo "Please install wrk using: 'sudo apt install wrk'"
+    exit 1
+fi
+
 if [ -z "$1" ]
 then
     URL="http://127.0.0.1:8700/translate/"
