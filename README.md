@@ -5,10 +5,10 @@ This repository contains Neural Machine Translation tools and models built at So
 # Description of the directories
 
 * *data-processing-tools*: set of data processing tools that convert for different formats to OpenNMT plain text input format
-* *serving*: contains a microservice that provides a transtion API for web service and batch file processing.
+* *serving*: contains a microservice that provides a translation API for web service and batch file processing.
 * *use-models-tools*: contains tools to use the models to translate text files or PO files
-* *evaluate*: set of tools and corpus to evaluatate diferent translation systems (including BLEU scores)
-* *training*: scrips and configurations to train the models
+* *evaluate*: set of tools and corpus to evaluate different translation systems (including BLEU scores)
+* *training*: scripts and configurations to train the models
 
 # Models
 
@@ -58,7 +58,7 @@ This is useful for example if you want to translate large volumes using our preb
 
 * Build command line tool ```make docker-build-use-models-tools```
 
-To test quickly that every works:
+To test quickly that everything works:
 * ```echo "Hello World" > input.txt```
 * ```docker run -it -v "$(pwd)":/srv/files/ --env COMMAND_LINE="-f input.txt -t output.txt -m eng-cat" --rm use-models-tools --name use-models-tools```
 * ```more output.txt```
