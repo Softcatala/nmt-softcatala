@@ -178,7 +178,7 @@ def apertium_translate_process(values):
     total_words += words
     translate_chars += len(text)
 
-    if time_used > 3:
+    if (time_used).total_seconds() > 3:
         logging.debug(f"/translate - time {time_used} - langpair: {langpair} - words: {words}")
 
     responseData = {}
