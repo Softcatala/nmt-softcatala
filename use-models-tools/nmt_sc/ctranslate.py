@@ -130,7 +130,6 @@ class CTranslate():
         input_batch = sentences
 
         num_sentences = len(sentences)
-        logging.debug(f"_request_translation {num_sentences}")
         sentences_batch = []
         indexes = []
         results = ["" for x in range(num_sentences)]
@@ -146,7 +145,6 @@ class CTranslate():
             i = indexes[pos]
             results[i] = translated_batch[pos] 
 
-        logging.debug(f"_request_translation completed. Results: {len(results)}")
         #Rebuild split sentences
         translated = tokenizer.sentence_from_tokens(sentences, translate, results)
         return translated
