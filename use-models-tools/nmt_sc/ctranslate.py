@@ -163,7 +163,7 @@ class CTranslate():
         num_sentences = len(input_batch)
         for pos in range(0, num_sentences):
             markers, text = preserve_markup.create_markers_in_string(input_batch[pos])
-            tokenized = self.tokenizer.tokenize(text)[0]
+            tokenized = self.tokenizer.tokenize(text)
             batch_input_tokenized.append(tokenized)
             batch_input_markers.append(markers)
 
