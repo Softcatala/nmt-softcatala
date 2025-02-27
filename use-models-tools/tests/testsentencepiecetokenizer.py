@@ -25,7 +25,7 @@ class TestSentencePieceTokenizer(unittest.TestCase):
 
     def test_tokenize(self):
         sp = SentencePieceTokenizer("tests/data/eng-cat/tokenizer/sp_m.model")
-        tokenized = sp.tokenizer("Hola, com esteu avui?")
+        tokenized = sp.tokenize("Hola, com esteu avui?")
         self.assertEquals(['▁H', 'ola', ',', '▁com', '▁', 'est', 'eu', '▁a', 'v', 'ui', '?'], tokenized)
 
     def test_detokenize(self):

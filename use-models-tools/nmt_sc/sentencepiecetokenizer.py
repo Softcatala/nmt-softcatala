@@ -18,15 +18,15 @@
 # Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA 02111-1307, USA.
 
-import pyonmttok
+import sentencepiece as spm
 
 class SentencePieceTokenizer:
 
     def __init__(self, tokenizer_path):
-        self.tokenizer = pyonmttok.Tokenizer(mode="none", sp_model_path = tokenizer_path)
+        self.tokenizer = spm.SentencePieceProcessor(model_file = tokenizer_path)
     
     def tokenize(self, text):
-        return self.tokenizer.tokenize(text)[0]
+        return self.tokenizer.encode(text, out_type=str)
 
     def detokenize(self, tokenized):
-        return self.tokenizer.detokenize(tokenized)
+        return self.tokenizer.decode(tokenized)
