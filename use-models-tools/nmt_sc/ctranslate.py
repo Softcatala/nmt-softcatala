@@ -22,11 +22,11 @@ from __future__ import print_function
 import os
 from .texttokenizer import TextTokenizer
 import ctranslate2
-import pyonmttok
 from .preservemarkup import PreserveMarkup
 import re
 import logging
 import unicodedata
+from .sentencepiecetokenizer import SentencePieceTokenizer
 
 class CTranslate():
 
@@ -46,7 +46,7 @@ class CTranslate():
         model_path = os.path.join(models_path, model_name)
         tokenizer_path = os.path.join(model_path, self.TOKENIZER_SUBDIR, self.TOKENIZER_FILE)
 
-        self.tokenizer = pyonmttok.Tokenizer(mode="none", sp_model_path = tokenizer_path)
+        self.tokenizer = SentencePieceTokenizer(tokenizer_path)
         self.tokenizer_language = self._get_sentence_tokenizer_language(model_name)
 
         print(f"device: {self.device}, inter_threads: {self.inter_threads}, intra_threads: {self.intra_threads}, beam_size {self.beam_size}, use_vmap {self.use_vmap}")
@@ -163,7 +163,7 @@ class CTranslate():
         num_sentences = len(input_batch)
         for pos in range(0, num_sentences):
             markers, text = preserve_markup.create_markers_in_string(input_batch[pos])
-            tokenized = self.tokenizer.tokenize(text)[0]
+            tokenized = self.tokenizer.tokenize(text)
             batch_input_tokenized.append(tokenized)
             batch_input_markers.append(markers)
 
