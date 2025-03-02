@@ -26,9 +26,9 @@ class SentencePieceTokenizer:
         self.tokenizer = spm.SentencePieceProcessor(model_file = tokenizer_path)
     
     def tokenize(self, text):
-        x = self.tokenizer.encode(text, out_type=str)
-        return x
+        return self.tokenizer.encode(text, out_type=str)
+
     def detokenize(self, tokenized):
-        x =  self.tokenizer.decode(tokenized)
-        updated_list = x.replace('▁', ' ').strip()
-        return updated_list
+        text =  self.tokenizer.decode(tokenized)
+        final_text = text.replace('▁', ' ').strip()
+        return final_text
