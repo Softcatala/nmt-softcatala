@@ -26,13 +26,13 @@ class SentencePieceTokenizer:
     def __init__(self, tokenizer_path):
         self.tokenizer = spm.SentencePieceProcessor(model_file=tokenizer_path)
 
-    def tokenize(self, text):
+    def tokenize(self, text: str) -> list[str]:
         if len(text) == 0:
-            return ""
+            return []
 
         return self.tokenizer.encode(text, out_type=str)
 
-    def detokenize(self, tokenized):
+    def detokenize(self, tokenized: list[str]) -> str:
         if len(tokenized) == 0:
             return ""
 
