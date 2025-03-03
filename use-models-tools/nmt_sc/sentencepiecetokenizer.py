@@ -27,15 +27,9 @@ class SentencePieceTokenizer:
         self.tokenizer = spm.SentencePieceProcessor(model_file=tokenizer_path)
 
     def tokenize(self, text: str) -> list[str]:
-        if len(text) == 0:
-            return []
-
         return self.tokenizer.encode(text, out_type=str)
 
     def detokenize(self, tokenized: list[str]) -> str:
-        if len(tokenized) == 0:
-            return ""
-
         text = self.tokenizer.decode(tokenized)
         final_text = text.replace("▁", " ").strip()
         return final_text
