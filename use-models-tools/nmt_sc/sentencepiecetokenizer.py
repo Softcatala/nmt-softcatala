@@ -20,15 +20,22 @@
 
 import sentencepiece as spm
 
+
 class SentencePieceTokenizer:
 
     def __init__(self, tokenizer_path):
-        self.tokenizer = spm.SentencePieceProcessor(model_file = tokenizer_path)
-    
+        self.tokenizer = spm.SentencePieceProcessor(model_file=tokenizer_path)
+
     def tokenize(self, text):
+        if len(text) == 0:
+            return ""
+
         return self.tokenizer.encode(text, out_type=str)
 
     def detokenize(self, tokenized):
-        text =  self.tokenizer.decode(tokenized)
-        final_text = text.replace('▁', ' ').strip()
+        if len(tokenized) == 0:
+            return ""
+
+        text = self.tokenizer.decode(tokenized)
+        final_text = text.replace("▁", " ").strip()
         return final_text
