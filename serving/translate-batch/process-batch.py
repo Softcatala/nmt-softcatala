@@ -88,9 +88,12 @@ def send_email(translated_file, email, attachment):
 MAX_SIZE = 8192 * 1024
 
 def truncate_file(filename):
-    f = open(filename, "a")
-    f.truncate(MAX_SIZE)
-    f.close()
+    file_size = os.path.getsize(filename)
+
+    if file_size > MAX_SIZE:
+        f = open(filename, "a")
+        f.truncate(MAX_SIZE)
+        f.close()
 
 def _is_po_file(filename):
 
