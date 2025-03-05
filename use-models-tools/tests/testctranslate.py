@@ -65,10 +65,10 @@ class TestCTranslate(unittest.TestCase):
         translated = ctranslate.translate_parallel(text)
 
         sentences = translated.split("\r")
-        self.assertEquals(3, len(sentences))
-        self.assertEquals("Hola.", sentences[0])
-        self.assertEquals("Com estàs?", sentences[1])
-        self.assertEquals("És tard.", sentences[2])
+        self.assertEqual(3, len(sentences))
+        self.assertEqual("Hola.", sentences[0])
+        self.assertEqual("Com estàs?", sentences[1])
+        self.assertEqual("És tard.", sentences[2])
 
     def test_translate_parallel_three_sentences_one_line(self):
         ctranslate = CTranslate("tests/data/", "eng-cat", translator = CTranslate2Mock())
@@ -76,7 +76,7 @@ class TestCTranslate(unittest.TestCase):
         text = "Hello everybody. It is a sunny day. Let's go to the beach."
         translated = ctranslate.translate_parallel(text)
 
-        self.assertEquals("Hola a tothom. És un dia assolellat. Anem a la platja.", translated)
+        self.assertEqual("Hola a tothom. És un dia assolellat. Anem a la platja.", translated)
 
     def test_normalize_input_string_cat(self):
         ctranslate = CTranslate("tests/data/", "cat-eng", translator = CTranslate2Mock())
@@ -84,16 +84,16 @@ class TestCTranslate(unittest.TestCase):
         text = 'L’oferta demà és molt bona'
 
         result = ctranslate._normalize_input_string(text)
-        self.assertEquals("L'oferta demà és molt bona", result)
+        self.assertEqual("L'oferta demà és molt bona", result)
 
     def test_languages(self):
         ctranslate = CTranslate("tests/data/", "cat-eng", translator = CTranslate2Mock())
 
-        self.assertEquals('English', ctranslate._get_sentence_tokenizer_language("eng-cat"))
-        self.assertEquals('Catalan', ctranslate._get_sentence_tokenizer_language("cat-eng"))
-        self.assertEquals('Catalan', ctranslate._get_sentence_tokenizer_language("oci-eng"))
-        self.assertEquals('Danish', ctranslate._get_sentence_tokenizer_language("swe-eng"))
-        self.assertEquals('Generic', ctranslate._get_sentence_tokenizer_language("xxx-xxx"))
+        self.assertEqual('English', ctranslate._get_sentence_tokenizer_language("eng-cat"))
+        self.assertEqual('Catalan', ctranslate._get_sentence_tokenizer_language("cat-eng"))
+        self.assertEqual('Catalan', ctranslate._get_sentence_tokenizer_language("oci-eng"))
+        self.assertEqual('Danish', ctranslate._get_sentence_tokenizer_language("swe-eng"))
+        self.assertEqual('Generic', ctranslate._get_sentence_tokenizer_language("xxx-xxx"))
 
 if __name__ == '__main__':
     unittest.main()

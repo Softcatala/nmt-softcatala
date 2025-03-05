@@ -30,44 +30,44 @@ class TestTextTokenizer(unittest.TestCase):
         text = 'Hello'
         strings, translate = tokenizer.tokenize(text, self.ENGLISH)
 
-        self.assertEquals(1, len(translate))
-        self.assertEquals("Hello", strings[0])
-        self.assertEquals(True, translate[0])
+        self.assertEqual(1, len(translate))
+        self.assertEqual("Hello", strings[0])
+        self.assertEqual(True, translate[0])
 
     def test_tokenize_single_word_with_dot(self):
         tokenizer = TextTokenizer()
         text = 'Hello.'
         strings, translate = tokenizer.tokenize(text, self.ENGLISH)
 
-        self.assertEquals(1, len(translate))
-        self.assertEquals("Hello.", strings[0])
-        self.assertEquals(True, translate[0])
+        self.assertEqual(1, len(translate))
+        self.assertEqual("Hello.", strings[0])
+        self.assertEqual(True, translate[0])
 
     def test_tokenize_two_sentences_with_newline(self):
         tokenizer = TextTokenizer()
         text = 'Hello.\nHow are you?'
         strings, translate = tokenizer.tokenize(text, self.ENGLISH)
 
-        self.assertEquals(3, len(translate))
-        self.assertEquals("Hello.", strings[0])
-        self.assertEquals(True, translate[0])
-        self.assertEquals("\n", strings[1])
-        self.assertEquals(False, translate[1])
-        self.assertEquals("How are you?", strings[2])
-        self.assertEquals(True, translate[2])
+        self.assertEqual(3, len(translate))
+        self.assertEqual("Hello.", strings[0])
+        self.assertEqual(True, translate[0])
+        self.assertEqual("\n", strings[1])
+        self.assertEqual(False, translate[1])
+        self.assertEqual("How are you?", strings[2])
+        self.assertEqual(True, translate[2])
 
     def test_tokenize_with_abbreviation(self):
         tokenizer = TextTokenizer()
         text = '"Why not, Mr. Wizard?" asked Jellia.\rNot now.'
         strings, translate = tokenizer.tokenize(text, self.ENGLISH)
 
-        self.assertEquals(3, len(translate))
-        self.assertEquals('"Why not, Mr. Wizard?" asked Jellia.', strings[0])
-        self.assertEquals(True, translate[0])
-        self.assertEquals("\r", strings[1])
-        self.assertEquals(False, translate[1])
-        self.assertEquals("Not now.", strings[2])
-        self.assertEquals(True, translate[2])
+        self.assertEqual(3, len(translate))
+        self.assertEqual('"Why not, Mr. Wizard?" asked Jellia.', strings[0])
+        self.assertEqual(True, translate[0])
+        self.assertEqual("\r", strings[1])
+        self.assertEqual(False, translate[1])
+        self.assertEqual("Not now.", strings[2])
+        self.assertEqual(True, translate[2])
 
 if __name__ == '__main__':
     unittest.main()

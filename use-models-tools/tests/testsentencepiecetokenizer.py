@@ -26,12 +26,12 @@ class TestSentencePieceTokenizer(unittest.TestCase):
     def test_tokenize(self):
         sp = SentencePieceTokenizer("tests/data/eng-cat/tokenizer/sp_m.model")
         tokenized = sp.tokenize("Hola, com esteu avui?")
-        self.assertEquals(['▁H', 'ola', ',', '▁com', '▁', 'est', 'eu', '▁a', 'v', 'ui', '?'], tokenized)
+        self.assertEqual(['▁H', 'ola', ',', '▁com', '▁', 'est', 'eu', '▁a', 'v', 'ui', '?'], tokenized)
 
     def test_detokenize(self):
         sp = SentencePieceTokenizer("tests/data/eng-cat/tokenizer/sp_m.model")
         tokenized = sp.detokenize(['▁H', 'ola', ',', '▁com', '▁', 'est', 'eu', '▁a', 'v', 'ui', '?'])
-        self.assertEquals("Hola, com esteu avui?", tokenized)
+        self.assertEqual("Hola, com esteu avui?", tokenized)
 
 if __name__ == '__main__':
     unittest.main()

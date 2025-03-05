@@ -46,21 +46,21 @@ class TestBatchFilesDB(unittest.TestCase):
         filename_dbrecord = db.create(self.FILENAME, self.EMAIL, self.MODEL_NAME)
 
         record = db._read_record(filename_dbrecord)
-        self.assertEquals(self.FILENAME, record.filename)
-        self.assertEquals(self.EMAIL, record.email)
-        self.assertEquals(self.MODEL_NAME, record.model_name)
+        self.assertEqual(self.FILENAME, record.filename)
+        self.assertEqual(self.EMAIL, record.email)
+        self.assertEqual(self.MODEL_NAME, record.model_name)
 
     def test_select(self):
         db = self._create_db_object()
         db.create(self.FILENAME, self.EMAIL, self.MODEL_NAME)
 
         records = db.select()
-        self.assertEquals(1, len(records))
+        self.assertEqual(1, len(records))
 
         record = records[0]
-        self.assertEquals(self.FILENAME, record.filename)
-        self.assertEquals(self.EMAIL, record.email)
-        self.assertEquals(self.MODEL_NAME, record.model_name)
+        self.assertEqual(self.FILENAME, record.filename)
+        self.assertEqual(self.EMAIL, record.email)
+        self.assertEqual(self.MODEL_NAME, record.model_name)
 
     def test_delete(self):
         db = self._create_db_object()
@@ -70,7 +70,7 @@ class TestBatchFilesDB(unittest.TestCase):
         db.delete(filename_dbrecord)
 
         records = len(records_org) - len(db.select())
-        self.assertEquals(1, records)
+        self.assertEqual(1, records)
 
 if __name__ == '__main__':
     unittest.main()
