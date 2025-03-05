@@ -1,4 +1,4 @@
-FROM python:3.11.0-slim-bullseye as copied_files
+FROM python:3.12.9-slim-bookworm as copied_files
 
 COPY serving/translate-service/*.py /srv/
 COPY serving/translate-service/docker/entry-point.sh /srv/
@@ -6,7 +6,7 @@ COPY serving/translate-service/???-gender* /srv/
 
 FROM nmt-models as models
 
-FROM python:3.11.0-slim-bullseye
+FROM python:3.12.9-slim-bookworm
 
 RUN apt-get update -y && apt-get upgrade -y && apt-get install gcc vim git -y
 RUN apt-get install python3-pip -y --no-install-recommends

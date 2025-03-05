@@ -17,7 +17,7 @@ before_script:
   - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
 
 tests:
-  image: python:3.11.0-slim-bullseye
+  image: python:3.12.9-slim-bookworm
   before_script:
     - apt-get update && apt-get install make gcc git -y
     - pip install nose2

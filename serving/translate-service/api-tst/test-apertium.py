@@ -18,7 +18,7 @@ class TestApertium(TestCase):
         response = requests.get(self.URL + self.LANGUAGE_NAMES + "?locale=ca&languages=cat+eng")
         languages = response.json()
 
-        self.assertEquals(self.OK, response.status_code)
+        self.assertEqual(self.OK, response.status_code)
         self.assertIn('eng', languages)
         self.assertIn('cat', languages)
 
@@ -26,7 +26,7 @@ class TestApertium(TestCase):
         response = requests.get(self.URL + self.LANGUAGE_NAMES + "?locale=ca&languages=cat+xxx")
         languages = response.json()
 
-        self.assertEquals(self.OK, response.status_code)
+        self.assertEqual(self.OK, response.status_code)
         self.assertNotIn('xxx', languages)
         self.assertIn('cat', languages)
 
@@ -42,7 +42,7 @@ class TestApertium(TestCase):
             languagePair = f"{source}-{target}"
             languages.add(languagePair)
 
-        self.assertEquals(self.OK, status)
+        self.assertEqual(self.OK, status)
         self.assertIn('eng-cat', languages)
         self.assertIn('cat-eng', languages)
     
@@ -53,8 +53,8 @@ class TestApertium(TestCase):
         status = response.json()['responseStatus']
         translation = response.json()['responseData']['translatedText']
        
-        self.assertEquals(self.OK, status)
-        self.assertEquals("Com ", translation[:4])
+        self.assertEqual(self.OK, status)
+        self.assertEqual("Com ", translation[:4])
 
     def test_translate_post_additional_slash(self):
 
@@ -63,8 +63,8 @@ class TestApertium(TestCase):
         status = response.json()['responseStatus']
         translation = response.json()['responseData']['translatedText']
 
-        self.assertEquals(self.OK, status)
-        self.assertEquals("Com ", translation[:4])
+        self.assertEqual(self.OK, status)
+        self.assertEqual("Com ", translation[:4])
 
     def test_translate_get(self):
 
@@ -75,5 +75,5 @@ class TestApertium(TestCase):
         status = response.json()['responseStatus']
         translation = response.json()['responseData']['translatedText']
        
-        self.assertEquals(self.OK, status)
-        self.assertEquals("Com ", translation[:4])
+        self.assertEqual(self.OK, status)
+        self.assertEqual("Com ", translation[:4])
