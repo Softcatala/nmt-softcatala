@@ -19,7 +19,6 @@
 
 import unittest
 import os
-import datetime
 from genderbiasdetection import (
     GenderBiasDetection,
     GenderBiasDetectionFactory,
@@ -53,7 +52,7 @@ class TestGenderBiasDetectionBasque(unittest.TestCase):
         detector = GenderBiasDetectionBasque(terms=self.terms_file, regexs=self.regexs)
         self.assertEqual(0, len(detector.get_words("Kaixo")))
 
-    def test_bias_false(self):
+    def test_bias_false_large(self):
 
         sentence = """
             Eusko Jaurlaritza osatzen duten alderdiek —EAJk eta PSE-EEk— eta EH Bilduk ez dute akordiorik lortu Gasteizko gobernuaren 2025eko aurrekontu proiektuaren inguruan. Negoziazioan murgildurik egon dira gaur arte, baina koalizio abertzaleak ez du onartu Ogasun Sailak eskainitako azken proposamena, Bingen Zupiria Segurtasun sailburuak Euskadi Irratian iragarri duenez, eta, hortaz, gobernuak bukatutzat jo du koalizioarekin egin duen negoziazio prozesua. Gobernuaren iragarpenaren ondorioa da EAJk eta PSEk euren gehiengoa baliatuko dutela Eusko Legebiltzarrean, abenduaren 20ko osoko bilkuran, aurrekontuak euren kabuz onartzeko, oposizioko taldeen babesik gabe.

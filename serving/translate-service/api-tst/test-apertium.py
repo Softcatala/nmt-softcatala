@@ -22,7 +22,7 @@ class TestApertium(TestCase):
         self.assertIn('eng', languages)
         self.assertIn('cat', languages)
 
-    def test_listlanguagesname_languages(self):
+    def test_listlanguagesname_languages_xxx(self):
         response = requests.get(self.URL + self.LANGUAGE_NAMES + "?locale=ca&languages=cat+xxx")
         languages = response.json()
 
