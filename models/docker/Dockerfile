@@ -75,7 +75,7 @@ RUN wget -q $URL/$FILE && unzip $FILE -x */tensorflow/*
 
 RUN rm *.zip
 
-FROM python:3.11.0-slim-bullseye
+FROM python:3.12.9-slim-bookworm
 COPY --from=generate_data /models/ /srv/models/
 
 ENTRYPOINT bash
