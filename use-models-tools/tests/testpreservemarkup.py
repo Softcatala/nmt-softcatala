@@ -33,35 +33,35 @@ class TestPreserveMarkup(unittest.TestCase):
         text = '<b>Hello</b>'
         markers, text = preserve_markup.create_markers_in_string(text)
         keys = list(markers.keys())
-        self.assertEquals(f"{self.TAG_0} Hello {self.TAG_1}", text)
-        self.assertEquals(f"{self.TAG_0} ", keys[0])
-        self.assertEquals(f" {self.TAG_1}", keys[1])
+        self.assertEqual(f"{self.TAG_0} Hello {self.TAG_1}", text)
+        self.assertEqual(f"{self.TAG_0} ", keys[0])
+        self.assertEqual(f" {self.TAG_1}", keys[1])
 
     def test_create_markers_in_string_two_words(self):
         preserve_markup = PreserveMarkup()
         text = '<b>Hello</b><u id=1>World</u>'
         markers, text = preserve_markup.create_markers_in_string(text)
         keys = list(markers.keys())
-        self.assertEquals(f"{self.TAG_0} Hello {self.TAG_1}  {self.TAG_2} World {self.TAG_3}", text)
-        self.assertEquals(f"{self.TAG_0} ", keys[0])
-        self.assertEquals(f" {self.TAG_1} ", keys[1])
-        self.assertEquals(f" {self.TAG_2} ", keys[2])
-        self.assertEquals(f" {self.TAG_3}", keys[3])
+        self.assertEqual(f"{self.TAG_0} Hello {self.TAG_1}  {self.TAG_2} World {self.TAG_3}", text)
+        self.assertEqual(f"{self.TAG_0} ", keys[0])
+        self.assertEqual(f" {self.TAG_1} ", keys[1])
+        self.assertEqual(f" {self.TAG_2} ", keys[2])
+        self.assertEqual(f" {self.TAG_3}", keys[3])
 
     def test_create_markers_in_string_self_close(self):
         preserve_markup = PreserveMarkup()
         text = 'Hello<br/>my friends'
         markers, text = preserve_markup.create_markers_in_string(text)
         keys = list(markers.keys())
-        self.assertEquals(f"Hello {self.TAG_0} my friends", text)
-        self.assertEquals(f" {self.TAG_0} ", keys[0])
+        self.assertEqual(f"Hello {self.TAG_0} my friends", text)
+        self.assertEqual(f" {self.TAG_0} ", keys[0])
         
     def test_get_back_markup(self):
         preserve_markup = PreserveMarkup()
         src_text = '<b>Hello</b>'
         markers, text = preserve_markup.create_markers_in_string(src_text)
         translated = preserve_markup.get_back_markup(text, markers)
-        self.assertEquals(src_text, translated)
+        self.assertEqual(src_text, translated)
 
     def _simulate_ctranslate_eating_spaces_when_translating(self, text, markers):
         marker0 = list(markers.keys())[0]
@@ -78,7 +78,7 @@ class TestPreserveMarkup(unittest.TestCase):
         translated_text = self._simulate_ctranslate_eating_spaces_when_translating(text, markers)
 
         translated = preserve_markup.get_back_markup(translated_text, markers)
-        self.assertEquals(src_text, translated)
+        self.assertEqual(src_text, translated)
 
 if __name__ == '__main__':
     unittest.main()
