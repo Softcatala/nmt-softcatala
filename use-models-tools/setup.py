@@ -1,8 +1,14 @@
 import os
-import pkg_resources
 from setuptools import setup, find_packages
 
-# This call to setup() does all the work
+def parse_requirements(filename):
+    with open(os.path.join(os.path.dirname(__file__), filename)) as f:
+        return [
+            line.strip()
+            for line in f
+            if line.strip() and not line.startswith("#")
+        ]
+
 setup(
     name="use_models_tools",
     py_modules=["nmt_sc"],
@@ -17,16 +23,11 @@ setup(
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
-        'Programming Language :: Python :: 3.11',
+        "Programming Language :: Python :: 3.11",
     ],
     include_package_data=True,
     packages=find_packages(exclude=["test*"]),
-    install_requires=[
-        str(r)
-        for r in pkg_resources.parse_requirements(
-            open(os.path.join(os.path.dirname(__file__), "requirements.txt"))
-        )
-    ],
+    install_requires=parse_requirements("requirements.txt"),
     package_data={'nmt_sc': ['segment.srx']},
     entry_points={
         "console_scripts": [
@@ -35,4 +36,3 @@ setup(
         ]
     },
 )
-
