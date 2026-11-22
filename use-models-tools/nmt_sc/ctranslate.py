@@ -38,6 +38,12 @@ class CTranslate():
     LANGUAGE_MATCH = "([a-z]{3})-([a-z]{3})"
     TOKENIZER_SUBDIR = "tokenizer"
     TOKENIZER_FILE = "sp_m.model"
+    # Replacements for characters a model cannot represent, applied only to those it lacks.
+    # Without them, e.g. L’ordinador would be protected as a whole and left untranslated.
+    UNKNOWN_CHAR_REPLACEMENTS = {'’': "'", '‘': "'", '“': '"', '”': '"', '—': '-', '–': '-',
+                                 '…': '...', '¿': '', '¡': ''}
+    # Markers for protected text; the first one made only of characters the model knows is used.
+    MARKER_CANDIDATES = ["{87719", "87719"]
 
     def __init__(self, models_path, model_name, translator = None):
 
@@ -48,6 +54,8 @@ class CTranslate():
 
         self.tokenizer = SentencePieceTokenizer(tokenizer_path)
         self.tokenizer_language = self._get_sentence_tokenizer_language(model_name)
+        self.marker = next((m for m in self.MARKER_CANDIDATES
+                            if not any(self.tokenizer.is_unknown(c) for c in m)), self.MARKER_CANDIDATES[-1])
 
         print(f"device: {self.device}, inter_threads: {self.inter_threads}, intra_threads: {self.intra_threads}, beam_size {self.beam_size}, use_vmap {self.use_vmap}")
 
@@ -118,6 +126,10 @@ class CTranslate():
             for char in mapping.keys():
                 result = result.replace(char, mapping[char])
 
+        for char, replacement in self.UNKNOWN_CHAR_REPLACEMENTS.items():
+            if char in result and self.tokenizer.is_unknown(char):
+                result = result.replace(char, replacement)
+
         return result
 
     def translate_parallel(self, text):
@@ -158,7 +170,7 @@ class CTranslate():
         batch_input_tokenized = []
         batch_input_markers = []
 
-        preserve_markup = PreserveMarkup()
+        preserve_markup = PreserveMarkup(self.tokenizer.is_unknown, self.marker)
 
         num_sentences = len(input_batch)
         for pos in range(0, num_sentences):
