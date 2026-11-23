@@ -123,6 +123,13 @@ class TestPreserveMarkup(unittest.TestCase):
         self.assertEqual([], protected)
         self.assertEqual("Please restart your computer.", marked)
 
+    def test_get_back_markup_brace_removed_by_ctranslator(self):
+        preserve = PreserveMarkup(lambda c: c == "_")
+        markers, text = preserve.create_markers_in_string("See ([link](https://example.org/a_b)) now")
+        # The model returns "See ([877190 )) now": it drops both the space and the {.
+        restored = preserve.get_back_markup(text.replace(" {", ""), markers)
+        self.assertEqual("See ([link](https://example.org/a_b)) now", restored)
+
     def test_more_than_ten_markers(self):
         text = " ".join(f"<i>w{i}</i>" for i in range(8))
         protected, _ = self._protect(text)

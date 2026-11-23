@@ -108,5 +108,8 @@ class PreserveMarkup():
             translated = translated.replace(marker.rstrip(), markup, 1)
             translated = translated.replace(marker.lstrip(), markup, 1)
             translated = translated.replace(marker.strip(), markup, 1)
+            # In case it ate the { too, e.g. after [ in a Markdown link: [{877190 → [877190
+            translated = translated.replace(marker.lstrip().lstrip("{"), markup, 1)
+            translated = translated.replace(marker.strip().lstrip("{"), markup, 1)
 
         return translated
