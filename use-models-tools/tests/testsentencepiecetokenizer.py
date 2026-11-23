@@ -33,5 +33,12 @@ class TestSentencePieceTokenizer(unittest.TestCase):
         tokenized = sp.detokenize(['▁H', 'ola', ',', '▁com', '▁', 'est', 'eu', '▁a', 'v', 'ui', '?'])
         self.assertEqual("Hola, com esteu avui?", tokenized)
 
+    def test_is_unknown(self):
+        sp = SentencePieceTokenizer("tests/data/eng-cat/tokenizer/sp_m.model")
+        for char in "_~^€":
+            self.assertTrue(sp.is_unknown(char), char)
+        for char in "aZ7.,-' ":
+            self.assertFalse(sp.is_unknown(char), char)
+
 if __name__ == '__main__':
     unittest.main()

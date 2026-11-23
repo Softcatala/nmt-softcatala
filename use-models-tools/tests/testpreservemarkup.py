@@ -80,5 +80,65 @@ class TestPreserveMarkup(unittest.TestCase):
         translated = preserve_markup.get_back_markup(translated_text, markers)
         self.assertEqual(src_text, translated)
 
+    UNKNOWN = "_`@|>=€°"
+
+    def _protect(self, text):
+        preserve_markup = PreserveMarkup(lambda char: char in self.UNKNOWN)
+        markers, marked = preserve_markup.create_markers_in_string(text)
+        self.assertEqual(text, preserve_markup.get_back_markup(marked, markers))
+        return list(markers.values()), marked
+
+    def test_code_spans(self):
+        text = ("An MR numbered 125 made against the ``ubports/24.6.x`` branch of Git repository "
+                "``morph-browser`` will have an APT archive named ``24.6.x_-_PR_morph-browser_125``.")
+        protected, marked = self._protect(text)
+        self.assertEqual(["``ubports/24.6.x``", "``morph-browser``", "``24.6.x_-_PR_morph-browser_125``"], protected)
+        self.assertNotIn("`", marked)
+
+    def test_single_backtick_code_span(self):
+        protected, _ = self._protect("Run `make install` now.")
+        self.assertEqual(["`make install`"], protected)
+
+    def test_words_with_unknown_chars(self):
+        protected, marked = self._protect("Set my_variable_name and mail user@example.com.")
+        self.assertEqual(["my_variable_name", "user@example.com"], protected)
+        self.assertTrue(marked.endswith("."))
+
+    def test_surrounding_punctuation_left_to_the_model(self):
+        protected, marked = self._protect("(see my_var), then stop.")
+        self.assertEqual(["my_var"], protected)
+        self.assertTrue(marked.startswith("("))
+
+    def test_standalone_unknown_chars(self):
+        protected, _ = self._protect("If x >= 3, it costs 20 € at 30 °C, a | b.")
+        self.assertEqual([">=", "€", "°C", "|"], protected)
+
+    def test_tags_keep_text_between_them(self):
+        protected, marked = self._protect("Click <b>Save</b> to keep my_file.")
+        self.assertEqual(["<b>", "</b>", "my_file"], protected)
+        self.assertIn(" Save ", marked)
+
+    def test_text_without_unknown_chars_is_unchanged(self):
+        protected, marked = self._protect("Please restart your computer.")
+        self.assertEqual([], protected)
+        self.assertEqual("Please restart your computer.", marked)
+
+    def test_get_back_markup_brace_removed_by_ctranslator(self):
+        preserve = PreserveMarkup(lambda c: c == "_")
+        markers, text = preserve.create_markers_in_string("See ([link](https://example.org/a_b)) now")
+        # The model returns "See ([877190 )) now": it drops both the space and the {.
+        restored = preserve.get_back_markup(text.replace(" {", ""), markers)
+        self.assertEqual("See ([link](https://example.org/a_b)) now", restored)
+
+    def test_more_than_ten_markers(self):
+        text = " ".join(f"<i>w{i}</i>" for i in range(8))
+        protected, _ = self._protect(text)
+        self.assertEqual(16, len(protected))
+
+    def test_custom_tag(self):
+        preserve_markup = PreserveMarkup(tag="87719")
+        markers, text = preserve_markup.create_markers_in_string("<b>Hello</b>")
+        self.assertEqual("877190 Hello 877191", text)
+
 if __name__ == '__main__':
     unittest.main()

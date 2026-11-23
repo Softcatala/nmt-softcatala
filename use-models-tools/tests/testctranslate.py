@@ -18,6 +18,7 @@
 # Boston, MA 02111-1307, USA.
 
 from nmt_sc.ctranslate import CTranslate
+from nmt_sc.texttokenizer import TextTokenizer
 import unittest
 
 class CTranslate2Mock():
@@ -85,6 +86,36 @@ class TestCTranslate(unittest.TestCase):
 
         result = ctranslate._normalize_input_string(text)
         self.assertEqual("L'oferta demà és molt bona", result)
+
+    def test_normalize_input_string_only_unknown_chars(self):
+        ctranslate = CTranslate("tests/data/", "eng-cat", translator = CTranslate2Mock())
+        # “ ” and ’ are known to this model and kept; ¿ ¡ are unknown and dropped.
+        self.assertEqual("“It’s” fine? Yes!", ctranslate._normalize_input_string("“It’s” fine? ¡Yes!¿"))
+
+    def test_normalize_input_string_skips_code_and_tags(self):
+        ctranslate = CTranslate("tests/data/", "eng-cat", translator = CTranslate2Mock())
+        text = "¡Run ``printf '¡Hola!¿'`` and <a title=\"¿Qué?\">this</a>!"
+        self.assertEqual("Run ``printf '¡Hola!¿'`` and <a title=\"¿Qué?\">this</a>!",
+                         ctranslate._normalize_input_string(text))
+
+    def test_join_split_spans(self):
+        ctranslate = CTranslate("tests/data/", "eng-cat", translator = CTranslate2Mock())
+        text = "Run ``echo Hello. Goodbye world`` now. Then stop."
+        sentences, translate = TextTokenizer().tokenize(text, "English")
+        self.assertEqual(text, "".join(sentences))
+        sentences, translate = ctranslate._join_split_spans(text, sentences, translate)
+        self.assertEqual(["Run ``echo Hello. Goodbye world`` now.", " ", "Then stop."], sentences)
+        self.assertEqual([True, False, True], translate)
+
+    def test_marker_uses_known_chars(self):
+        ctranslate = CTranslate("tests/data/", "eng-cat", translator = CTranslate2Mock())
+        self.assertEqual("{87719", ctranslate.marker)
+
+    def test_translate_parallel_keeps_unknown_chars(self):
+        ctranslate = CTranslate("tests/data/", "eng-cat", translator = CTranslate2Mock())
+        # The mock echoes untranslated input, so protected text must come back as it was.
+        text = "Run ``make_all`` as user@example.com."
+        self.assertEqual(text, ctranslate.translate_parallel(text))
 
     def test_languages(self):
         ctranslate = CTranslate("tests/data/", "cat-eng", translator = CTranslate2Mock())

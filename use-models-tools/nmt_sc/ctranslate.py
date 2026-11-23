@@ -38,6 +38,12 @@ class CTranslate():
     LANGUAGE_MATCH = "([a-z]{3})-([a-z]{3})"
     TOKENIZER_SUBDIR = "tokenizer"
     TOKENIZER_FILE = "sp_m.model"
+    # Replacements for characters a model cannot represent, applied only to those it lacks.
+    # Without them, e.g. L’ordinador would be protected as a whole and left untranslated.
+    UNKNOWN_CHAR_REPLACEMENTS = {'’': "'", '‘': "'", '“': '"', '”': '"', '—': '-', '–': '-',
+                                 '…': '...', '¿': '', '¡': ''}
+    # Markers for protected text; the first one made only of characters the model knows is used.
+    MARKER_CANDIDATES = ["{87719", "87719"]
 
     def __init__(self, models_path, model_name, translator = None):
 
@@ -48,6 +54,8 @@ class CTranslate():
 
         self.tokenizer = SentencePieceTokenizer(tokenizer_path)
         self.tokenizer_language = self._get_sentence_tokenizer_language(model_name)
+        self.marker = next((m for m in self.MARKER_CANDIDATES
+                            if not any(self.tokenizer.is_unknown(c) for c in m)), self.MARKER_CANDIDATES[-1])
 
         print(f"device: {self.device}, inter_threads: {self.inter_threads}, intra_threads: {self.intra_threads}, beam_size {self.beam_size}, use_vmap {self.use_vmap}")
 
@@ -110,15 +118,36 @@ class CTranslate():
     def _normalize_input_string(self, result):
         result = unicodedata.normalize('NFC', result)
 
-        if (self.model_name[:3] == "cat"):
-            mapping = {
-                        '’' : '\'',
-            }
+        mapping = {char: replacement for char, replacement in self.UNKNOWN_CHAR_REPLACEMENTS.items()
+                   if char in result and self.tokenizer.is_unknown(char)}
+        if self.model_name[:3] == "cat":
+            mapping['’'] = '\''
 
-            for char in mapping.keys():
-                result = result.replace(char, mapping[char])
+        # Tags and inline code are restored verbatim, so leave them untouched.
+        parts = re.split(f"({PreserveMarkup.SPANS_REGEX.pattern})", result)
+        for i in range(0, len(parts), 2):
+            for char, replacement in mapping.items():
+                parts[i] = parts[i].replace(char, replacement)
 
-        return result
+        return "".join(parts)
+
+    def _join_split_spans(self, text, sentences, translate):
+        # The SRX rules can split inside a tag or inline code (``echo Hi. Bye``), so its pieces
+        # would be translated separately; rejoin them into one sentence.
+        inside = set()
+        for match in PreserveMarkup.SPANS_REGEX.finditer(text):
+            inside.update(range(match.start() + 1, match.end()))
+
+        joined, flags, pos = [], [], 0
+        for sentence, flag in zip(sentences, translate):
+            if joined and pos in inside:
+                joined[-1] += sentence
+                flags[-1] = True
+            else:
+                joined.append(sentence)
+                flags.append(flag)
+            pos += len(sentence)
+        return joined, flags
 
     def translate_parallel(self, text):
 
@@ -127,6 +156,7 @@ class CTranslate():
         # Split sentences
         tokenizer = TextTokenizer()
         sentences, translate = tokenizer.tokenize(text, self.tokenizer_language)
+        sentences, translate = self._join_split_spans(text, sentences, translate)
         input_batch = sentences
 
         num_sentences = len(sentences)
@@ -158,7 +188,7 @@ class CTranslate():
         batch_input_tokenized = []
         batch_input_markers = []
 
-        preserve_markup = PreserveMarkup()
+        preserve_markup = PreserveMarkup(self.tokenizer.is_unknown, self.marker)
 
         num_sentences = len(input_batch)
         for pos in range(0, num_sentences):

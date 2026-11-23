@@ -21,6 +21,7 @@
 from __future__ import print_function
 import datetime
 import polib
+import re
 from shutil import copyfile
 import os
 from optparse import OptionParser
@@ -38,14 +39,26 @@ def init_logging(del_logs):
     logger.addHandler(hdlr)
     logger.setLevel(logging.WARNING)
 
-def _clean_string(result):
-    CHARS = (
-        '_', '&', '~',  # Accelerators.
-    )
-    for c in CHARS:
-        result = result.replace(c, '')
+# HTML entities (&amp; &sup2; &#39; &#x27;) contain & but are not accelerators.
+NOT_ENTITY = r"(?!(?:[a-zA-Z][a-zA-Z0-9]*|#\d+|#[xX][0-9a-fA-F]+);)"
+# A UI accelerator starts a word (_File, &Open, ~Save). A leading _ counts only before a word
+# with no further _, so identifiers such as __init__ or _private_member are kept.
+ACCELERATOR_REGEX = re.compile(r"(?:^|(?<=\s))(?:~(?=\w)|_(?=[^\W_]+(?!\w))|&" + NOT_ENTITY + r"(?=\w))")
+# KDE/Qt and LibreOffice also put & or ~ inside a word (Sa&ve, E~xit).
+MID_WORD_ACCELERATOR_REGEX = re.compile(r"(?<=[^\W\d_])(?:~|&" + NOT_ENTITY + r")(?=[^\W\d_])")
+CODE_REGEX = re.compile(r"(``.+?``|`[^`\n]+`)")
 
-    return result.strip()
+
+def _clean_string(result):
+    # Only accelerators are removed: _ & ~ inside words (my_variable, 24.6.x_-_PR) and inside
+    # inline code are kept, since documentation strings need them.
+    parts = CODE_REGEX.split(result)
+    for i in range(0, len(parts), 2):
+        parts[i] = ACCELERATOR_REGEX.sub('', parts[i])
+        # Only when it's the single one: an accelerator appears once per string.
+        if len(MID_WORD_ACCELERATOR_REGEX.findall(parts[i])) == 1:
+            parts[i] = MID_WORD_ACCELERATOR_REGEX.sub('', parts[i])
+    return ''.join(parts).strip()
 
 
 def read_parameters():

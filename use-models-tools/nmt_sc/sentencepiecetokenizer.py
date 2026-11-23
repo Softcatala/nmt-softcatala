@@ -25,6 +25,14 @@ class SentencePieceTokenizer:
 
     def __init__(self, tokenizer_path):
         self.tokenizer = spm.SentencePieceProcessor(model_file=tokenizer_path)
+        self._unknown = {}
+
+    def is_unknown(self, char: str) -> bool:
+        """True if the model has no piece for this character, so it would become <unk>."""
+        if char not in self._unknown:
+            ids = self.tokenizer.encode("a" + char + "a")
+            self._unknown[char] = not char.isspace() and self.tokenizer.unk_id() in ids
+        return self._unknown[char]
 
     def tokenize(self, text: str) -> list[str]:
         return self.tokenizer.encode(text, out_type=str)
