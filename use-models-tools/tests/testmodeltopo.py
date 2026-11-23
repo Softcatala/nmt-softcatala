@@ -30,7 +30,8 @@ class TestModelToPo(unittest.TestCase):
 
     def test_clean_string_keeps_other_uses(self):
         for text in ["my_variable_name", "24.6.x_-_PR_morph-browser_125", "Tom & Jerry",
-                     "Fish &amp; chips", "Rock&Roll&Blues", "Use ``_a_b`` here"]:
+                     "Fish &amp; chips", "Rock&Roll&Blues", "Use ``_a_b`` here",
+                     "__init__", "_private_member", "AT&amp;T", "Area &sup2;", "&#x27;quoted&#39;"]:
             self.assertEqual(text, _clean_string(text), text)
 
     def test_clean_string_skips_code_spans(self):

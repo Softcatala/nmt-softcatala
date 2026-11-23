@@ -118,19 +118,36 @@ class CTranslate():
     def _normalize_input_string(self, result):
         result = unicodedata.normalize('NFC', result)
 
-        if (self.model_name[:3] == "cat"):
-            mapping = {
-                        '’' : '\'',
-            }
+        mapping = {char: replacement for char, replacement in self.UNKNOWN_CHAR_REPLACEMENTS.items()
+                   if char in result and self.tokenizer.is_unknown(char)}
+        if self.model_name[:3] == "cat":
+            mapping['’'] = '\''
 
-            for char in mapping.keys():
-                result = result.replace(char, mapping[char])
+        # Tags and inline code are restored verbatim, so leave them untouched.
+        parts = re.split(f"({PreserveMarkup.SPANS_REGEX.pattern})", result)
+        for i in range(0, len(parts), 2):
+            for char, replacement in mapping.items():
+                parts[i] = parts[i].replace(char, replacement)
 
-        for char, replacement in self.UNKNOWN_CHAR_REPLACEMENTS.items():
-            if char in result and self.tokenizer.is_unknown(char):
-                result = result.replace(char, replacement)
+        return "".join(parts)
 
-        return result
+    def _join_split_spans(self, text, sentences, translate):
+        # The SRX rules can split inside a tag or inline code (``echo Hi. Bye``), so its pieces
+        # would be translated separately; rejoin them into one sentence.
+        inside = set()
+        for match in PreserveMarkup.SPANS_REGEX.finditer(text):
+            inside.update(range(match.start() + 1, match.end()))
+
+        joined, flags, pos = [], [], 0
+        for sentence, flag in zip(sentences, translate):
+            if joined and pos in inside:
+                joined[-1] += sentence
+                flags[-1] = True
+            else:
+                joined.append(sentence)
+                flags.append(flag)
+            pos += len(sentence)
+        return joined, flags
 
     def translate_parallel(self, text):
 
@@ -139,6 +156,7 @@ class CTranslate():
         # Split sentences
         tokenizer = TextTokenizer()
         sentences, translate = tokenizer.tokenize(text, self.tokenizer_language)
+        sentences, translate = self._join_split_spans(text, sentences, translate)
         input_batch = sentences
 
         num_sentences = len(sentences)
